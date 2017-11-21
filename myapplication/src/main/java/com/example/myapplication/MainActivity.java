@@ -17,9 +17,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
-    View introText;
+    View welcomeText, introText;
     EditText textField;
     View searchButton;
     String movieTitle;
@@ -29,13 +30,12 @@ public class MainActivity extends AppCompatActivity {
    //Connector
     //ParseObject: movieTitle-soundtrack
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        welcomeText=findViewById(R.id.welcome);
         searchButton =  findViewById(R.id.search_button);
         introText=findViewById(R.id.intro_text);
         textField=(EditText) findViewById(R.id.text_input);
@@ -43,11 +43,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 movieTitle = textField.getText().toString();
-                searchResultSoundtrack=new MovieSoundtrack(movieTitle);
-                searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));
-                Intent intent = new Intent(getApplicationContext(), SearchResult.class);
+               // searchResultSoundtrack=new MovieSoundtrack(movieTitle);
+               // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));
+                Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, movieTitle);
 
-                intent.putExtra(EXTRA_MESSAGE, searchResultSoundtrack);
                 startActivity(intent);
 
 
@@ -55,15 +55,7 @@ public class MainActivity extends AppCompatActivity {
         });
 }
 
-    public List<Song> lookUpSoundtrack(String movie) {
 
-        List<Song>allSongs=new ArrayList<Song>();
-        allSongs.add(new Song("Song 1"));
-        allSongs.add(new Song("Song 2"));
-        allSongs.add(new Song("Song 3"));
-
-        return allSongs;
-    }
 }
 
 

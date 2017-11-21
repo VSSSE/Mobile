@@ -8,12 +8,26 @@
     android:orientation="vertical"
     >
 
+    <TextView android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25px"
+        android:text="Welcome to Movie Tunes"
+        android:textAlignment="center"
+        android:textSize="14pt"
+        android:textStyle="bold"/>
     <TextView android:id="@+id/intro_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Movie Tunes" />
+        android:layout_marginTop="25px"
+        android:text="Please enter a movie title to get soundtracks"
+        android:textAlignment="center"
+        android:textSize="12pt"
+        android:textStyle="italic"/>
     <EditText
         android:id="@+id/text_input"
+        android:layout_marginTop="25px"
+        android:layout_marginBottom="25px"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:inputType="text" />
@@ -22,6 +36,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LOOK UP SOUNDTRACK"
-        android:onClick="sendMessage" />
+        android:onClick="lookUpSoundtrack" />
 
 </LinearLayout>
