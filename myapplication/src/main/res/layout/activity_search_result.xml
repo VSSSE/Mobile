@@ -18,7 +18,7 @@ android:orientation="vertical" >
     <TextView android:id="@+id/search_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Song 1\nSong 2\nSong 3\nSong 4\n, Song 5\" />
+         />
 
 </LinearLayout>
 
