@@ -1,4 +1,4 @@
-package com.example.myapplication.org.dhbw.se.movietunes.model;
+package org.dhbw.se.movietunes.model;
 
 
 

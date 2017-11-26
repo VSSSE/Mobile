@@ -1,8 +1,4 @@
-package com.example.myapplication.org.dhbw.se.movietunes.model;
-
-import com.example.myapplication.*;
-
-import java.util.List;
+package org.dhbw.se.movietunes.model;
 
 /**
  * Created by anastasia.schwed on 11/26/2017.

@@ -6,7 +6,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import org.dhbw.se.movietunes.controller.SearchByTitleController;
 
-import com.example.myapplication.org.dhbw.se.movietunes.model.Song;
+import org.dhbw.se.movietunes.model.Song;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
