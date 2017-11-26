@@ -7,14 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import org.dhbw.se.movietunes.logic.Controller;
+
 
 /**
  * Created by anastasia.schwed on 11/21/2017.
  */
 
 public class SimilarSongsActivity extends ListActivity{
-    private Controller c;
+
 
 
 

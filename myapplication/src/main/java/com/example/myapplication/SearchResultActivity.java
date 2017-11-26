@@ -8,12 +8,9 @@ import android.widget.TextView;
 
 import com.example.myapplication.controller.SearchByTitleController;
 
-import org.dhbw.se.movietunes.logic.Controller;
-
 public class SearchResultActivity extends AppCompatActivity {
     View intro;
     TextView searchResult;
-    Movie movieSoundtrack;
     Intent goToNextActivity;
 
 

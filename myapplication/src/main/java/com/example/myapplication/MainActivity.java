@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     EditText textField;
     View searchButton;
     String movieTitle;
-    Movie searchResultSoundtrack;
+
 
 
    //Connector
