@@ -40,7 +40,6 @@ public class ExampleInstrumentedTest {
         List<Song > songs = c.lookupSoundtrack("aaaa");
 
         assertTrue(songs.size() == 5);
-
         assertTrue (songs.get(2) != null);
 
     }
