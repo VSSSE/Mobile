@@ -4,25 +4,26 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import org.dhbw.se.movietunes.logic.Logic;
+import com.example.myapplication.controller.SearchByTitleController;
 
-import static android.R.id.message;
-import static com.example.myapplication.R.id.intro_text;
-import static com.example.myapplication.R.id.search_result;
+import org.dhbw.se.movietunes.logic.Controller;
 
 public class SearchResultActivity extends AppCompatActivity {
     View intro;
     TextView searchResult;
-    MovieSoundtrack movieSoundtrack;
+    Movie movieSoundtrack;
+    Intent goToNextActivity;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Logic logic = Logic.getInstance();
+        //Controller logic = Controller.getInstance();
+
+       //List<Song> songs = new SearchByTitleController (getApplicationContext()).lookupSoundtrack("atatat");
+
 
         setContentView(R.layout.activity_search_result);
         intro = findViewById(R.id.intro_text);
@@ -39,8 +40,10 @@ public class SearchResultActivity extends AppCompatActivity {
         View showSimilarSongs=findViewById(R.id.show_similar_songs);
         showSimilarSongs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent Intent = new Intent(getApplicationContext(), SimilarSongsActivity.class);
-                startActivity(Intent);
+               // Intent Intent1 = new Intent(getApplicationContext(), SimilarSongsActivity.class);
+                //startActivity(Intent1);
+                goToNextActivity = new Intent(getApplicationContext(), SimilarSongsActivity.class);
+                startActivity(goToNextActivity);
 
             }
         });

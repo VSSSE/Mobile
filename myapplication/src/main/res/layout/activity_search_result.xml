@@ -18,7 +18,7 @@ android:orientation="vertical" >
     android:layout_height="wrap_content"
     android:text="Movie soundtrack:"
     android:layout_marginTop="25px"
-    android:textAlignment="center"
+    android:textAlignment="textStart"
     android:textSize="14pt"
     android:textStyle="bold"/>
 
@@ -36,8 +36,8 @@ android:orientation="vertical" >
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25px"
-        android:textAlignment="center"
-        android:textSize="12pt"
+        android:textAlignment="textStart"
+        android:textSize="10pt"
         android:textStyle="normal"
          />
     <Button android:id="@+id/show_similar_songs"

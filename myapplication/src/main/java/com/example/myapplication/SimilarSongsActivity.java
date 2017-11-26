@@ -7,15 +7,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import org.dhbw.se.movietunes.logic.Controller;
+
 /**
  * Created by anastasia.schwed on 11/21/2017.
  */
 
 public class SimilarSongsActivity extends ListActivity{
+    private Controller c;
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_result);
+        Intent intent=getIntent();
+
+        setContentView(R.layout.similar_songs);
         View intro = findViewById(R.id.similar);
 
     }

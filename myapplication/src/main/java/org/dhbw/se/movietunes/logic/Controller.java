@@ -1,6 +1,5 @@
 package org.dhbw.se.movietunes.logic;
 
-import com.example.myapplication.MovieSoundtrack;
 import com.example.myapplication.Song;
 
 import java.util.ArrayList;
@@ -10,11 +9,11 @@ import java.util.List;
  * Created by anastasia.schwed on 11/21/2017.
  */
 
-public class Logic {
+public class Controller {
 
-    private static Logic instance = null;
+   // private static Controller instance = null;
 
-    private Logic(){
+    private Controller(){
     }
 
 
@@ -38,21 +37,24 @@ public class Logic {
 
     }
     
-    public List<MovieSoundtrack> findSoundtrackByMovieTitle(String input){
+    public void findSoundtrackByMovieTitle(String input){
         List<Song> soundTracks=new ArrayList<Song>();
     }
-
-
-
-
-
-    public static Logic getInstance() {
-        if (instance==null){
-            instance = new Logic();
+    public double getTotalTime(List<Song>allSongs){
+        double x=0;
+        for(Song song:allSongs){
+            x+=Double.parseDouble(song.getTime());
         }
-        return instance;
+        return x;
     }
 
+    //public static Controller getInstance() {
+      //  if (instance==null){
+           // instance = new Controller();
+        }
+       // return instance;
+   // }
 
 
-}
+
+//}
