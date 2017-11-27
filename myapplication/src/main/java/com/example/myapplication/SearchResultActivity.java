@@ -4,44 +4,45 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import org.dhbw.se.movietunes.controller.SearchByTitleController;
+import org.dhbw.se.movietunes.model.Song;
+
+import java.util.List;
 
 public class SearchResultActivity extends AppCompatActivity {
     View intro;
     TextView searchResult;
     Intent goToNextActivity;
+    private ListView mListView;
+    private SearchByTitleController controller;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        controller=new SearchByTitleController(getApplicationContext());
+
         super.onCreate(savedInstanceState);
-        //Controller logic = Controller.getInstance();
-
-       //List<Song> songs = new SearchByTitleController (getApplicationContext()).lookupSoundtrack("atatat");
-
 
         setContentView(R.layout.activity_search_result);
-        intro = findViewById(R.id.intro_text);
-        Intent intent = getIntent();
-        //movieSoundtrack=intent.getParcelableExtra(MainActivity.EXTRA_MESSAGE);
-        String movieTitle = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        TextView movie = (TextView)findViewById(R.id.movie);
-        movie.setText(movieTitle);
-        //movie.setText(movieSoundtrack.getMovieTitle());
-        searchResult = (TextView) findViewById(R.id.search_result);
-        //searchResult.setText(movieSoundtrack.getSoundtracks().toString());
 
+        mListView = (ListView) findViewById(R.id.soundtrack_list_view);
+// 1
+        List<Song> songArrayList = controller.lookupSoundtrack("");
+// 2
+        String[] strings = new String[songArrayList.size()];
+// 3
+        for(int i = 0; i < songArrayList.size(); i++){
+            Song song = songArrayList.get(i);
+            strings[i] = song.getSongTitle() + "("+ song.getComposer() + ")";
+        }
+// 4
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, strings);
+        mListView.setAdapter(adapter);
 
-        View showSimilarSongs=findViewById(R.id.show_similar_songs);
-        showSimilarSongs.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-               // Intent Intent1 = new Intent(getApplicationContext(), SimilarSongsActivity.class);
-                //startActivity(Intent1);
-                goToNextActivity = new Intent(getApplicationContext(), SimilarSongsActivity.class);
-                startActivity(goToNextActivity);
-
-            }
-        });
     }
     }
 

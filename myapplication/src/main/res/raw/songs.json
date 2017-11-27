@@ -8,35 +8,35 @@
 },
 
 {
-"songId":"1",
-"songTitle" :"Song 1",
-"composer":"Composer 1",
+"songId":"2",
+"songTitle" :"Rehe singen in der Nacht",
+"composer":"J.S.Hirsch",
 "singer":"Singer 1",
 "duration":"3:55",
 "usedInMovies": []
 },
 
 {
-"songId":"1",
-"songTitle" :"Song 1",
-"composer":"Composer 1",
+"songId":"3",
+"songTitle" :"Your Own Personal Hirsch",
+"composer":"D.Reh",
 "singer":"Singer 1",
 "duration":"3:55",
 "usedInMovies": []
 },
 {
-"songId":"1",
-"songTitle" :"Song 1",
-"composer":"Composer 1",
-"singer":"Singer 1",
+"songId":"4",
+"songTitle" :"Love me deer love",
+"composer":"Rothirsch",
+"singer":"Pudu",
 "duration":"3:55",
 "usedInMovies": []
 },
 
 {
-"songId":"1",
-"songTitle" :"Song 1",
-"composer":"Composer 1",
+"songId":"5",
+"songTitle" :"Damm damm damm",
+"composer":"Dammhirsch",
 "singer":"Singer 1",
 "duration":"3:55",
 "usedInMovies": []
