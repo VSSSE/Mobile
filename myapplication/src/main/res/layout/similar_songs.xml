@@ -4,12 +4,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<TextView android:id="@+id/similar"
+<TextView android:id="@+id/intro"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:textSize="14pt"
-    android:text="Similar  songs"
+    android:text="Similar  songs found:"
 android:textStyle="bold"/>
+
+    <ListView
+        android:id="@+id/similarSongs_list_view"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+    </ListView>
 
 
 </LinearLayout>

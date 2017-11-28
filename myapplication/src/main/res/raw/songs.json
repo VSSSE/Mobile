@@ -1,6 +1,6 @@
 [{
   "songId":"1",
-  "songTitle" :"Song 1",
+  "songTitle" :"Fog found",
   "composer":"Composer 1",
   "singer":"Singer 1",
   "duration":"3:55",
@@ -8,37 +8,37 @@
 },
 
 {
-"songId":"1",
-"songTitle" :"Song 1",
-"composer":"Composer 1",
+"songId":"2",
+"songTitle" :"The Medallion Calls",
+"composer":"Composer",
 "singer":"Singer 1",
 "duration":"3:55",
 "usedInMovies": []
 },
 
 {
-"songId":"1",
-"songTitle" :"Song 1",
-"composer":"Composer 1",
+"songId":"3",
+"songTitle" :"The Black Pearl",
+"composer":"Composer",
 "singer":"Singer 1",
-"duration":"3:55",
+"duration":"2:55",
 "usedInMovies": []
 },
 {
-"songId":"1",
-"songTitle" :"Song 1",
-"composer":"Composer 1",
-"singer":"Singer 1",
-"duration":"3:55",
+"songId":"4",
+"songTitle" :"Blood Ritual",
+"composer":"",
+"singer":"Singer",
+"duration":"2:08",
 "usedInMovies": []
 },
 
 {
-"songId":"1",
-"songTitle" :"Song 1",
-"composer":"Composer 1",
+"songId":"5",
+"songTitle" :"One Last Shot",
+"composer":"",
 "singer":"Singer 1",
-"duration":"3:55",
+"duration":"3:03",
 "usedInMovies": []
 }]
 
