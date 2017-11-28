@@ -17,6 +17,9 @@ public class Soundtrack {
     public void setMovie(Movie movie) {
         this.movie = movie;
     }
+    public double calcDuration(){
+return 0;
+    }
 
     public List<Song> getSongs() {
         return songs;

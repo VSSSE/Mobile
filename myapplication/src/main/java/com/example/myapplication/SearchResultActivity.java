@@ -15,16 +15,16 @@ import org.dhbw.se.movietunes.model.Song;
 
 import java.util.List;
 
-public class SearchResultActivity extends AppCompatActivity {
-    View intro;
-    TextView searchResult;
-    Intent goToNextActivity;
-    private ListView mListView;
-    private SearchByTitleController controller;
+public class SearchResultActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
+    ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        View intro;
+        TextView searchResult;
+        Intent goToNextActivity;
+        SearchByTitleController controller;
         Intent intent = getIntent();
         controller = new SearchByTitleController(getApplicationContext());
 
@@ -50,47 +50,40 @@ public class SearchResultActivity extends AppCompatActivity {
         mListView.setAdapter(adapter);
 
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-
-                // ListView Clicked item index
-                int itemPosition = position;
-
-                // ListView Clicked item value
-                String songString = (String) mListView.getItemAtPosition(position);
-
-                // Show Alert
-                // Toast.makeText(getApplicationContext(),
-                //         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                //         .show();
-
-                Intent intent = new Intent(getApplicationContext(), SimilarSongsActivity.class);
-                intent.putExtra("SONG_STRING", songString);
-                startActivity(intent);
-            }
-        });
-
-
-        /*
-        View showSimilarSongs = findViewById(R.id.show_similar_songs);
-        showSimilarSongs.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Intent Intent1 = new Intent(getApplicationContext(), SimilarSongsActivity.class);
-                //startActivity(Intent1);
-                goToNextActivity = new Intent(getApplicationContext(), SimilarSongsActivity.class);
-                startActivity(goToNextActivity);
-
-            }
-        });
-
-        */
+        mListView.setOnItemClickListener(this);
 
 
     }
+    public void showStats(){
 
+    }
+    public void showMovies(){
+
+    }
+public void sortByTitle(){
+
+}
+public void sortByYear(){
+
+}
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        // ListView Clicked item index
+        int itemPosition = position;
+
+        // ListView Clicked item value
+        String songString = (String) mListView.getItemAtPosition(position);
+
+        // Show Alert
+        // Toast.makeText(getApplicationContext(),
+        //         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+        //         .show();
+
+        Intent intent = new Intent(getApplicationContext(), SimilarSongsActivity.class);
+        intent.putExtra("SONG_STRING", songString);
+        startActivity(intent);
+    }
 }
 
 
