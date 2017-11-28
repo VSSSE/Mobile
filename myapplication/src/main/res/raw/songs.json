@@ -1,6 +1,6 @@
 [{
   "songId":"1",
-  "songTitle" :"Song 1",
+  "songTitle" :"Fog found",
   "composer":"Composer 1",
   "singer":"Singer 1",
   "duration":"3:55",
@@ -9,8 +9,8 @@
 
 {
 "songId":"2",
-"songTitle" :"Rehe singen in der Nacht",
-"composer":"J.S.Hirsch",
+"songTitle" :"The Medallion Calls",
+"composer":"Composer",
 "singer":"Singer 1",
 "duration":"3:55",
 "usedInMovies": []
@@ -18,27 +18,27 @@
 
 {
 "songId":"3",
-"songTitle" :"Your Own Personal Hirsch",
-"composer":"D.Reh",
+"songTitle" :"The Black Pearl",
+"composer":"Composer",
 "singer":"Singer 1",
-"duration":"3:55",
+"duration":"2:55",
 "usedInMovies": []
 },
 {
 "songId":"4",
-"songTitle" :"Love me deer love",
-"composer":"Rothirsch",
-"singer":"Pudu",
-"duration":"3:55",
+"songTitle" :"Blood Ritual",
+"composer":"",
+"singer":"Singer",
+"duration":"2:08",
 "usedInMovies": []
 },
 
 {
 "songId":"5",
-"songTitle" :"Damm damm damm",
-"composer":"Dammhirsch",
+"songTitle" :"One Last Shot",
+"composer":"",
 "singer":"Singer 1",
-"duration":"3:55",
+"duration":"3:03",
 "usedInMovies": []
 }]
 

@@ -44,9 +44,6 @@ public class SearchByTitleController {
         //InputStream inputStream = getResources().openRawResource();
 
         InputStream in = appContext.getResources().openRawResource(R.raw.songs);
-
-
-
         InputStreamReader reader = new InputStreamReader(in);
 
         Gson gson = new GsonBuilder().create();

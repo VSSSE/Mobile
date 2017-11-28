@@ -17,6 +17,10 @@ public class Song {
     private List<Movie> usedInMovies;
     private List<Song> similarSongs;
 
+    public String getDuration() {
+        return duration;
+    }
+
     public String getSongId() {
         return songId;
     }
