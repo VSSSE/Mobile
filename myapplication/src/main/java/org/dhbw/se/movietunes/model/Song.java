@@ -20,6 +20,9 @@ public class Song {
     public String getDuration() {
         return duration;
     }
+    public void playOnSpotify(){
+
+    }
 
     public String getSongId() {
         return songId;

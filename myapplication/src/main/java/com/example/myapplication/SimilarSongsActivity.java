@@ -48,4 +48,13 @@ public class SimilarSongsActivity extends AppCompatActivity {
         similarSongsView.setAdapter(adapter);
 
     }
+    public void sortByTitle(){
+
+    }
+    public void sortByYear(){
+
+    }
+    public  void showStatistics(){
+
+    }
 }
