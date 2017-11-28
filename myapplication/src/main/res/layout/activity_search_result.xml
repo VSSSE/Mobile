@@ -7,18 +7,44 @@ android:layout_height="match_parent"
 android:paddingLeft="16dp"
 android:paddingRight="16dp"
 android:orientation="vertical" >
-<TextView android:id="@+id/intro_text"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Search result:" />
     <TextView android:id="@+id/movie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         />
+        android:textSize="14pt"
+        android:textStyle="bold"
+        />
+<TextView android:id="@+id/intro_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Movie soundtrack:"
+    android:layout_marginTop="25px"
+    android:textAlignment="textStart"
+    android:textSize="14pt"
+    android:textStyle="bold"/>
+
     <TextView android:id="@+id/search_result"
+        android:text="1.Fog Bound	2:16\n
+2.	The Medallion Calls	1:52\n
+3.	The Black Pearl	2:16\n
+4.	Will And Elizabeth	2:08\n
+5.	Swords Crossed	3:15\n
+6.	Walk The Plank	1:58\n
+7.	Barbossa Is Hungry	4:06\n
+8.	Blood Ritual	3:32\n
+9.	Moonlight Serenade	2:08\n
+10.	To The Pirates Cave!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Song 1\nSong 2\nSong 3\nSong 4\n, Song 5\" />
+        android:layout_marginTop="25px"
+        android:textAlignment="textStart"
+        android:textSize="10pt"
+        android:textStyle="normal"
+         />
+    <Button android:id="@+id/show_similar_songs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SHOW SIMILAR SONGS"
+        android:onClick="showSimilarSongsActivity" />
 
 </LinearLayout>
 
