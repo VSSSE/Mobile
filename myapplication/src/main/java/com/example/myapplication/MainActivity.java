@@ -14,8 +14,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     //Connector
-
-
     //ParseObject: movieTitle-soundtrack
 
      EditText textField;
