@@ -20,7 +20,7 @@ public class SearchSimilarSongsController {
 
 
     public List<Song> findSimilarSongs(String input) {
-        // TODO replace by a real call to the server
+
         List<Song> result = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {

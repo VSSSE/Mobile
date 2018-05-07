@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String movieTitle = textField.getText().toString();
         // searchResultSoundtrack=new Movie(movieTitle);
         // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));
+
+
         Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
         intent.putExtra(EXTRA_MESSAGE, movieTitle);
         startActivity(intent);
