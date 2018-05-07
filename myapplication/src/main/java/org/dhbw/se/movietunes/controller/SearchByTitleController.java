@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import java.util.zip.ZipEntry;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -34,6 +35,23 @@ import okhttp3.Response;
 /**
  * Created by anastasia.schwed on 11/26/2017.
  */
+
+class AsyncHttp extends AsyncTask<String, Integer, String> {
+    protected String doInBackground(String... params) {
+        try {
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url("http://www.google.de")
+                    .build();
+            Response response = client.newCall(request).execute();
+            return response.body().string();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "ERROR";
+        }
+    }
+}
+
 
 public class SearchByTitleController {
 
@@ -56,8 +74,20 @@ public class SearchByTitleController {
     }
 
     public List<Song> lookupSoundtrack(String input) {
+        AsyncHttp httpTask = new AsyncHttp();
+        httpTask.execute();
+        try {
+            String body = httpTask.get();
+            System.out.println(body);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
+        return new ArrayList<>();
+    }
+
+    public List<Song> lookupSoundtrack_44(String input) {
 
 
         AsyncTask.execute(new Runnable() {
