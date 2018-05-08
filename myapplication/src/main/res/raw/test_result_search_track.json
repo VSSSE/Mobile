@@ -1,0 +1,792 @@
+{
+  "playlists": {
+    "href": "https://api.spotify.com/v1/search?query=terminator&type=playlist&offset=0&limit=20",
+    "items": [
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/moyomba/playlist/6lwDOP2ZW0h2jOccLB0342"
+        },
+        "href": "https://api.spotify.com/v1/users/moyomba/playlists/6lwDOP2ZW0h2jOccLB0342",
+        "id": "6lwDOP2ZW0h2jOccLB0342",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/5120d7c9121304a394fdc9a6e2143114752186716c7840f237d21a55d58fcf702255ed1e12bba18871ae9ca1666d96db7ffda9430a609977c2cafe5c997e998d8f9d0900e2bcb1eaffed1b7bee89aeb4",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/5120d7c9121304a394fdc9a6e2143114752186716c7840f237d21a55d58fcf702255ed1e12bba18871ae9ca1666d96db7ffda9430a609977c2cafe5c997e998d8f9d0900e2bcb1eaffed1b7bee89aeb4",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/5120d7c9121304a394fdc9a6e2143114752186716c7840f237d21a55d58fcf702255ed1e12bba18871ae9ca1666d96db7ffda9430a609977c2cafe5c997e998d8f9d0900e2bcb1eaffed1b7bee89aeb4",
+            "width": 60
+          }
+        ],
+        "name": "Terminator soundtrack",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/moyomba"
+          },
+          "href": "https://api.spotify.com/v1/users/moyomba",
+          "id": "moyomba",
+          "type": "user",
+          "uri": "spotify:user:moyomba"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "Fjax4qhfziVjH1g8vRXVVDM+EhaRSCR3CVk8o0pASvOkDSS8lmdByew8TSZeCWV0",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/moyomba/playlists/6lwDOP2ZW0h2jOccLB0342/tracks",
+          "total": 95
+        },
+        "type": "playlist",
+        "uri": "spotify:user:moyomba:playlist:6lwDOP2ZW0h2jOccLB0342"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/revinjan28/playlist/6SNgCWsYUA9JSt9XWhU9JM"
+        },
+        "href": "https://api.spotify.com/v1/users/revinjan28/playlists/6SNgCWsYUA9JSt9XWhU9JM",
+        "id": "6SNgCWsYUA9JSt9XWhU9JM",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/a7db5a11960241544bb92a3b7ebcb06aab540861",
+            "width": 640
+          }
+        ],
+        "name": "Terminator Theme song",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/revinjan28"
+          },
+          "href": "https://api.spotify.com/v1/users/revinjan28",
+          "id": "revinjan28",
+          "type": "user",
+          "uri": "spotify:user:revinjan28"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "Z8301sATe48QQeh4NcGwZfEXTKhzBwFoNC9pzfT6uj2b+PcBZPOxsnw35YPErqBh",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/revinjan28/playlists/6SNgCWsYUA9JSt9XWhU9JM/tracks",
+          "total": 2
+        },
+        "type": "playlist",
+        "uri": "spotify:user:revinjan28:playlist:6SNgCWsYUA9JSt9XWhU9JM"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/emorcutt/playlist/3bytYnDqhTbbkgAsJgvtCj"
+        },
+        "href": "https://api.spotify.com/v1/users/emorcutt/playlists/3bytYnDqhTbbkgAsJgvtCj",
+        "id": "3bytYnDqhTbbkgAsJgvtCj",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/71ae9ca1666d96db7ffda9430a609977c2cafe5c",
+            "width": 640
+          }
+        ],
+        "name": "The Terminator 1 &2 OTS",
+        "owner": {
+          "display_name": "Eddie Orcutt",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/emorcutt"
+          },
+          "href": "https://api.spotify.com/v1/users/emorcutt",
+          "id": "emorcutt",
+          "type": "user",
+          "uri": "spotify:user:emorcutt"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "6Pst0N738QK2Q4rYdxqAelC7/13hwePFRbZeK4GIrY8sbUiaQb5bXk26RAlVTTtT",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/emorcutt/playlists/3bytYnDqhTbbkgAsJgvtCj/tracks",
+          "total": 37
+        },
+        "type": "playlist",
+        "uri": "spotify:user:emorcutt:playlist:3bytYnDqhTbbkgAsJgvtCj"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/nukovic1997/playlist/2Qh8uNpW8cWo42C422mJ5E"
+        },
+        "href": "https://api.spotify.com/v1/users/nukovic1997/playlists/2Qh8uNpW8cWo42C422mJ5E",
+        "id": "2Qh8uNpW8cWo42C422mJ5E",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/71ae9ca1666d96db7ffda9430a609977c2cafe5c",
+            "width": 640
+          }
+        ],
+        "name": "The Terminator/Terminator 2 (Soundtrack)",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/nukovic1997"
+          },
+          "href": "https://api.spotify.com/v1/users/nukovic1997",
+          "id": "nukovic1997",
+          "type": "user",
+          "uri": "spotify:user:nukovic1997"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "BXWpAhepYpPOeGXi1fth5s+fw0SVkHq/YhCSEH28KRW0xTxoG5MuA6F8x4ivIP54",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/nukovic1997/playlists/2Qh8uNpW8cWo42C422mJ5E/tracks",
+          "total": 37
+        },
+        "type": "playlist",
+        "uri": "spotify:user:nukovic1997:playlist:2Qh8uNpW8cWo42C422mJ5E"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/spotify/playlist/37i9dQZF1DWVN3C8NqiQOR"
+        },
+        "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWVN3C8NqiQOR",
+        "id": "37i9dQZF1DWVN3C8NqiQOR",
+        "images": [
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/b457e1895fdd95973ffbc70f3195e686beeeeecc",
+            "width": 300
+          }
+        ],
+        "name": "Suomi-EDM",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "wnACKJVpWIovu+FziqYOBIkh95hiILTFyPpSH1eAjQcMs2yQW0BuFx6DIQYRFAy8Lls5NACknEg=",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/spotify/playlists/37i9dQZF1DWVN3C8NqiQOR/tracks",
+          "total": 96
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWVN3C8NqiQOR"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/madmadi28/playlist/1DEIjnvL1ove0PzyvSbnWP"
+        },
+        "href": "https://api.spotify.com/v1/users/madmadi28/playlists/1DEIjnvL1ove0PzyvSbnWP",
+        "id": "1DEIjnvL1ove0PzyvSbnWP",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/b296ded2a8d255c7c5432c3bb43f8de38f4b7885",
+            "width": null
+          }
+        ],
+        "name": "dying/death/loss/grief/terminal illness/cancer",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/madmadi28"
+          },
+          "href": "https://api.spotify.com/v1/users/madmadi28",
+          "id": "madmadi28",
+          "type": "user",
+          "uri": "spotify:user:madmadi28"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "ee6UDZZhWfKx4NzFCyAfn4Gragn3ppccBT7tpGPj6z1uqYBjmz0gv+xYgNmHATe5",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/madmadi28/playlists/1DEIjnvL1ove0PzyvSbnWP/tracks",
+          "total": 210
+        },
+        "type": "playlist",
+        "uri": "spotify:user:madmadi28:playlist:1DEIjnvL1ove0PzyvSbnWP"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/amkofficial/playlist/3u6VbN0lrOTTkxgCVuJsku"
+        },
+        "href": "https://api.spotify.com/v1/users/amkofficial/playlists/3u6VbN0lrOTTkxgCVuJsku",
+        "id": "3u6VbN0lrOTTkxgCVuJsku",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/f312514aa64a4b67e505f202ad90392c2768f60a",
+            "width": null
+          }
+        ],
+        "name": "AMK Tourmusik AnnenMayKantereit",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/amkofficial"
+          },
+          "href": "https://api.spotify.com/v1/users/amkofficial",
+          "id": "amkofficial",
+          "type": "user",
+          "uri": "spotify:user:amkofficial"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "SYnC+N+kxy3MS+ryrIvYaTsTefv6Nw8CUIpKwrAx8TU0KMuaUlGEtvQc6lXcPqMD",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/amkofficial/playlists/3u6VbN0lrOTTkxgCVuJsku/tracks",
+          "total": 296
+        },
+        "type": "playlist",
+        "uri": "spotify:user:amkofficial:playlist:3u6VbN0lrOTTkxgCVuJsku"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/deejaylaco/playlist/3pPYzcCJyR3VhhH02lyFBb"
+        },
+        "href": "https://api.spotify.com/v1/users/deejaylaco/playlists/3pPYzcCJyR3VhhH02lyFBb",
+        "id": "3pPYzcCJyR3VhhH02lyFBb",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/50cf44d763e83585eeb890300eaa6d0abbe7536c",
+            "width": null
+          }
+        ],
+        "name": "Airbeat One 2018 - Festival Playlist by LACO",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/deejaylaco"
+          },
+          "href": "https://api.spotify.com/v1/users/deejaylaco",
+          "id": "deejaylaco",
+          "type": "user",
+          "uri": "spotify:user:deejaylaco"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "3Z2MOr7Jwc3sFaPhZjRoBIKN5eClwRBJDuGsqS08MkYZXIn+AH64FfItM/ebv/Vv",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/deejaylaco/playlists/3pPYzcCJyR3VhhH02lyFBb/tracks",
+          "total": 714
+        },
+        "type": "playlist",
+        "uri": "spotify:user:deejaylaco:playlist:3pPYzcCJyR3VhhH02lyFBb"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/yiernno9x8a530ywdrxo5rkh3/playlist/7blI4XgLSvUONkQnxzjFa1"
+        },
+        "href": "https://api.spotify.com/v1/users/yiernno9x8a530ywdrxo5rkh3/playlists/7blI4XgLSvUONkQnxzjFa1",
+        "id": "7blI4XgLSvUONkQnxzjFa1",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/ec3fcc77d85a22354ef2e810fd4994975a98086e",
+            "width": null
+          }
+        ],
+        "name": "Terminal V 2018",
+        "owner": {
+          "display_name": "Nightvision",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/yiernno9x8a530ywdrxo5rkh3"
+          },
+          "href": "https://api.spotify.com/v1/users/yiernno9x8a530ywdrxo5rkh3",
+          "id": "yiernno9x8a530ywdrxo5rkh3",
+          "type": "user",
+          "uri": "spotify:user:yiernno9x8a530ywdrxo5rkh3"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "Wa8QbQAlZGUT4BumRLWBORJxjnQx9DAOSWi0DDc7Z8CXT57kSBa2p7egEiEbDpDQ",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/yiernno9x8a530ywdrxo5rkh3/playlists/7blI4XgLSvUONkQnxzjFa1/tracks",
+          "total": 57
+        },
+        "type": "playlist",
+        "uri": "spotify:user:yiernno9x8a530ywdrxo5rkh3:playlist:7blI4XgLSvUONkQnxzjFa1"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/1214800222/playlist/6cPoFt0l3ITfUtnsRsHCH4"
+        },
+        "href": "https://api.spotify.com/v1/users/1214800222/playlists/6cPoFt0l3ITfUtnsRsHCH4",
+        "id": "6cPoFt0l3ITfUtnsRsHCH4",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/8b8850ef5be69e02893bffc2fb34cb32a2f85628",
+            "width": null
+          }
+        ],
+        "name": "Terminator 2: Judgement Day Full Soundtrack",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/1214800222"
+          },
+          "href": "https://api.spotify.com/v1/users/1214800222",
+          "id": "1214800222",
+          "type": "user",
+          "uri": "spotify:user:1214800222"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "ktumMNHmqvVJ7JdPQHOMmsZO4XhuylM5DQgZjAEUD/mlu52BYp5j0cl1GWNAI43X",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/1214800222/playlists/6cPoFt0l3ITfUtnsRsHCH4/tracks",
+          "total": 618
+        },
+        "type": "playlist",
+        "uri": "spotify:user:1214800222:playlist:6cPoFt0l3ITfUtnsRsHCH4"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/21dyuj2kw4rvcqowwbmcy4kny/playlist/2XwPVpCC3pZcLPoAWxMiPJ"
+        },
+        "href": "https://api.spotify.com/v1/users/21dyuj2kw4rvcqowwbmcy4kny/playlists/2XwPVpCC3pZcLPoAWxMiPJ",
+        "id": "2XwPVpCC3pZcLPoAWxMiPJ",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/d10a2b4a1558dd931c7736ab61005a14aee6c099",
+            "width": null
+          }
+        ],
+        "name": "Termin",
+        "owner": {
+          "display_name": "Cecilie Damkjær Jensen",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/21dyuj2kw4rvcqowwbmcy4kny"
+          },
+          "href": "https://api.spotify.com/v1/users/21dyuj2kw4rvcqowwbmcy4kny",
+          "id": "21dyuj2kw4rvcqowwbmcy4kny",
+          "type": "user",
+          "uri": "spotify:user:21dyuj2kw4rvcqowwbmcy4kny"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "cRDnzL9lj0C/UDzxmF10WroeclrGbqG244iXi+MYNpnTGsxSq6p0Ll/V2iYL4SpG",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/21dyuj2kw4rvcqowwbmcy4kny/playlists/2XwPVpCC3pZcLPoAWxMiPJ/tracks",
+          "total": 118
+        },
+        "type": "playlist",
+        "uri": "spotify:user:21dyuj2kw4rvcqowwbmcy4kny:playlist:2XwPVpCC3pZcLPoAWxMiPJ"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/21uf35nmjqsdmqraey2bcplmy/playlist/1VmfQE1pShXmOW8D9sVYmX"
+        },
+        "href": "https://api.spotify.com/v1/users/21uf35nmjqsdmqraey2bcplmy/playlists/1VmfQE1pShXmOW8D9sVYmX",
+        "id": "1VmfQE1pShXmOW8D9sVYmX",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/dcc8e6e9fd173d8952ecfe54318c90dd09f6725f",
+            "width": null
+          }
+        ],
+        "name": "Termin 🎶",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/21uf35nmjqsdmqraey2bcplmy"
+          },
+          "href": "https://api.spotify.com/v1/users/21uf35nmjqsdmqraey2bcplmy",
+          "id": "21uf35nmjqsdmqraey2bcplmy",
+          "type": "user",
+          "uri": "spotify:user:21uf35nmjqsdmqraey2bcplmy"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "UhCEdtAxTOjRgbW9hOVfPExnD+PBl6zup0uTYR/dFmYz4mhmtQaN7vJIIGO2DsEm",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/21uf35nmjqsdmqraey2bcplmy/playlists/1VmfQE1pShXmOW8D9sVYmX/tracks",
+          "total": 42
+        },
+        "type": "playlist",
+        "uri": "spotify:user:21uf35nmjqsdmqraey2bcplmy:playlist:1VmfQE1pShXmOW8D9sVYmX"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/1137098317/playlist/0hcO5YGd8dS2iTFoYfRpSP"
+        },
+        "href": "https://api.spotify.com/v1/users/1137098317/playlists/0hcO5YGd8dS2iTFoYfRpSP",
+        "id": "0hcO5YGd8dS2iTFoYfRpSP",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/14381f76c611df50a6f8a36ad3d00e9d73b5d1a525fe90d9319eb37a1915262d1a5b5d75cb06168529d07dfe50ad70fc8d1e7dcc1b367be036b98b955026fddc6c0b69e931ae99130f15d4214f1e7d41",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/14381f76c611df50a6f8a36ad3d00e9d73b5d1a525fe90d9319eb37a1915262d1a5b5d75cb06168529d07dfe50ad70fc8d1e7dcc1b367be036b98b955026fddc6c0b69e931ae99130f15d4214f1e7d41",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/14381f76c611df50a6f8a36ad3d00e9d73b5d1a525fe90d9319eb37a1915262d1a5b5d75cb06168529d07dfe50ad70fc8d1e7dcc1b367be036b98b955026fddc6c0b69e931ae99130f15d4214f1e7d41",
+            "width": 60
+          }
+        ],
+        "name": "Termin",
+        "owner": {
+          "display_name": "Nicolai Dohn",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/1137098317"
+          },
+          "href": "https://api.spotify.com/v1/users/1137098317",
+          "id": "1137098317",
+          "type": "user",
+          "uri": "spotify:user:1137098317"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "q5M2BMaepBcteEfMYXH8kK4Iu7/odGuoX9RTKaZVdC7cgSZ4bLOSN9KZlbg28x+a",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/1137098317/playlists/0hcO5YGd8dS2iTFoYfRpSP/tracks",
+          "total": 25
+        },
+        "type": "playlist",
+        "uri": "spotify:user:1137098317:playlist:0hcO5YGd8dS2iTFoYfRpSP"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/1286111497/playlist/3KGHMB9eAwP20mjXIGrmaA"
+        },
+        "href": "https://api.spotify.com/v1/users/1286111497/playlists/3KGHMB9eAwP20mjXIGrmaA",
+        "id": "3KGHMB9eAwP20mjXIGrmaA",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/b38cc50e2bd65276686b171d95ecebd1b0aef4beb51d5f12a764bcd7e2bd40926d2459cbb53edbaedc676fe4b2679ff4870146ef90544fa1434976cfe67687d5e09a10e784391b131c881a6e5a10f360",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/b38cc50e2bd65276686b171d95ecebd1b0aef4beb51d5f12a764bcd7e2bd40926d2459cbb53edbaedc676fe4b2679ff4870146ef90544fa1434976cfe67687d5e09a10e784391b131c881a6e5a10f360",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/b38cc50e2bd65276686b171d95ecebd1b0aef4beb51d5f12a764bcd7e2bd40926d2459cbb53edbaedc676fe4b2679ff4870146ef90544fa1434976cfe67687d5e09a10e784391b131c881a6e5a10f360",
+            "width": 60
+          }
+        ],
+        "name": "terminal ",
+        "owner": {
+          "display_name": "Hayley Ewers",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/1286111497"
+          },
+          "href": "https://api.spotify.com/v1/users/1286111497",
+          "id": "1286111497",
+          "type": "user",
+          "uri": "spotify:user:1286111497"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "1fxHGmDeUddocyqrLzl0JEZyPgAsxT9UVdHyY2nshuzx0rrdNNHWCw0sRe++9a7z",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/1286111497/playlists/3KGHMB9eAwP20mjXIGrmaA/tracks",
+          "total": 172
+        },
+        "type": "playlist",
+        "uri": "spotify:user:1286111497:playlist:3KGHMB9eAwP20mjXIGrmaA"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/11160864356/playlist/3q1en8d3GK9YTwvLRYxinx"
+        },
+        "href": "https://api.spotify.com/v1/users/11160864356/playlists/3q1en8d3GK9YTwvLRYxinx",
+        "id": "3q1en8d3GK9YTwvLRYxinx",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/225d4551ebc93b56b897b75c695b39ac61c4401caefaa85e983fc27460ce040d2762fa481d9c62fad219328e6e2018da8586b6482ecfbff69e8454aad30f10db04a3303623d70d7d930da769f5590019",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/225d4551ebc93b56b897b75c695b39ac61c4401caefaa85e983fc27460ce040d2762fa481d9c62fad219328e6e2018da8586b6482ecfbff69e8454aad30f10db04a3303623d70d7d930da769f5590019",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/225d4551ebc93b56b897b75c695b39ac61c4401caefaa85e983fc27460ce040d2762fa481d9c62fad219328e6e2018da8586b6482ecfbff69e8454aad30f10db04a3303623d70d7d930da769f5590019",
+            "width": 60
+          }
+        ],
+        "name": "termins",
+        "owner": {
+          "display_name": "Luna Skovgaard",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/11160864356"
+          },
+          "href": "https://api.spotify.com/v1/users/11160864356",
+          "id": "11160864356",
+          "type": "user",
+          "uri": "spotify:user:11160864356"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "pZeNKcyG06HC9EWXyKPmjJ+b/saudNEdJYwH13jkX3QCbLkjRLXVuthpReif2jb+",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/11160864356/playlists/3q1en8d3GK9YTwvLRYxinx/tracks",
+          "total": 43
+        },
+        "type": "playlist",
+        "uri": "spotify:user:11160864356:playlist:3q1en8d3GK9YTwvLRYxinx"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/1155846046/playlist/5RUOtzckMy4zYyiWVISFrv"
+        },
+        "href": "https://api.spotify.com/v1/users/1155846046/playlists/5RUOtzckMy4zYyiWVISFrv",
+        "id": "5RUOtzckMy4zYyiWVISFrv",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/10f0018cda6c54f4f8a79c636d505904aab8853c1ec5d6e1b6c12b28710be6a4f4d9ba56afb4e87e3fda592026281312202a3a993d0e1c0c9e8bb40f6f3483e372bbb81cddb5fab16ebf50d2ac5009b9",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/10f0018cda6c54f4f8a79c636d505904aab8853c1ec5d6e1b6c12b28710be6a4f4d9ba56afb4e87e3fda592026281312202a3a993d0e1c0c9e8bb40f6f3483e372bbb81cddb5fab16ebf50d2ac5009b9",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/10f0018cda6c54f4f8a79c636d505904aab8853c1ec5d6e1b6c12b28710be6a4f4d9ba56afb4e87e3fda592026281312202a3a993d0e1c0c9e8bb40f6f3483e372bbb81cddb5fab16ebf50d2ac5009b9",
+            "width": 60
+          }
+        ],
+        "name": "Termins",
+        "owner": {
+          "display_name": "Deniz Hakan Kuyulu",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/1155846046"
+          },
+          "href": "https://api.spotify.com/v1/users/1155846046",
+          "id": "1155846046",
+          "type": "user",
+          "uri": "spotify:user:1155846046"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "xQYMDCjTKCMV2MSri2y6BEuHN+SDup29sw4z2+P+WSnxi+iJq+0n+ylVZsWsPrtd",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/1155846046/playlists/5RUOtzckMy4zYyiWVISFrv/tracks",
+          "total": 70
+        },
+        "type": "playlist",
+        "uri": "spotify:user:1155846046:playlist:5RUOtzckMy4zYyiWVISFrv"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/clar2173/playlist/3UhSk72oAfGegxhbAUtPWa"
+        },
+        "href": "https://api.spotify.com/v1/users/clar2173/playlists/3UhSk72oAfGegxhbAUtPWa",
+        "id": "3UhSk72oAfGegxhbAUtPWa",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/89ab37133e9a7d007406b8a6e65e6eb731baa6b08ad13e65926dd920d8b64afec52d4f29eafe7f8cb12816c64a972833842f15a7a569fa4a699b690ee97e921a01f653a0152a8d5163c50bd55b1fd375",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/89ab37133e9a7d007406b8a6e65e6eb731baa6b08ad13e65926dd920d8b64afec52d4f29eafe7f8cb12816c64a972833842f15a7a569fa4a699b690ee97e921a01f653a0152a8d5163c50bd55b1fd375",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/89ab37133e9a7d007406b8a6e65e6eb731baa6b08ad13e65926dd920d8b64afec52d4f29eafe7f8cb12816c64a972833842f15a7a569fa4a699b690ee97e921a01f653a0152a8d5163c50bd55b1fd375",
+            "width": 60
+          }
+        ],
+        "name": "termins",
+        "owner": {
+          "display_name": "Annastasia Kaplan Wagner",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/clar2173"
+          },
+          "href": "https://api.spotify.com/v1/users/clar2173",
+          "id": "clar2173",
+          "type": "user",
+          "uri": "spotify:user:clar2173"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "dE+b6/DOwD/A72eQNZXjml8xcVKA64sItFQZ72Yq7l6n0yKOSQQQOT7jT/g2SghY",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/clar2173/playlists/3UhSk72oAfGegxhbAUtPWa/tracks",
+          "total": 166
+        },
+        "type": "playlist",
+        "uri": "spotify:user:clar2173:playlist:3UhSk72oAfGegxhbAUtPWa"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/11162187774/playlist/25S1lFhrtIjm5pixle7gBK"
+        },
+        "href": "https://api.spotify.com/v1/users/11162187774/playlists/25S1lFhrtIjm5pixle7gBK",
+        "id": "25S1lFhrtIjm5pixle7gBK",
+        "images": [
+          {
+            "height": null,
+            "url": "https://pl.scdn.co/images/pl/default/8aae2f86a656b7c31d4072724358e7a23a3e5e58",
+            "width": null
+          }
+        ],
+        "name": "Terminator",
+        "owner": {
+          "display_name": "Gian García",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/11162187774"
+          },
+          "href": "https://api.spotify.com/v1/users/11162187774",
+          "id": "11162187774",
+          "type": "user",
+          "uri": "spotify:user:11162187774"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "IQ6bgnswaBbYbAN9B2u/vK3JIxteTTVnNR6cNZI1dKeWztxn4AD416opfA0ckVdT",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/11162187774/playlists/25S1lFhrtIjm5pixle7gBK/tracks",
+          "total": 325
+        },
+        "type": "playlist",
+        "uri": "spotify:user:11162187774:playlist:25S1lFhrtIjm5pixle7gBK"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/zojanowicka/playlist/01KwdeItKX5KwUmbF3n6sU"
+        },
+        "href": "https://api.spotify.com/v1/users/zojanowicka/playlists/01KwdeItKX5KwUmbF3n6sU",
+        "id": "01KwdeItKX5KwUmbF3n6sU",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/324d0c58ea9d8d4a56ad6e1a07b28cc3b914cd6e3b1a4cf8418bb4c13847a1d2f007d49c1b47f15f87040219c252604f1c9b4c65b7a47bbb52048c5695eebc3d56a936dc1ab7f5851d6c83d588fc4d2d",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/324d0c58ea9d8d4a56ad6e1a07b28cc3b914cd6e3b1a4cf8418bb4c13847a1d2f007d49c1b47f15f87040219c252604f1c9b4c65b7a47bbb52048c5695eebc3d56a936dc1ab7f5851d6c83d588fc4d2d",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/324d0c58ea9d8d4a56ad6e1a07b28cc3b914cd6e3b1a4cf8418bb4c13847a1d2f007d49c1b47f15f87040219c252604f1c9b4c65b7a47bbb52048c5695eebc3d56a936dc1ab7f5851d6c83d588fc4d2d",
+            "width": 60
+          }
+        ],
+        "name": "termin waznosci",
+        "owner": {
+          "display_name": null,
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/zojanowicka"
+          },
+          "href": "https://api.spotify.com/v1/users/zojanowicka",
+          "id": "zojanowicka",
+          "type": "user",
+          "uri": "spotify:user:zojanowicka"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "q+UzTY1lhakC69RghNQmd4WriDYt/fdTEBC+SSbsmwH6JBtJJgTEdqX5NKzjbJqK",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/zojanowicka/playlists/01KwdeItKX5KwUmbF3n6sU/tracks",
+          "total": 46
+        },
+        "type": "playlist",
+        "uri": "spotify:user:zojanowicka:playlist:01KwdeItKX5KwUmbF3n6sU"
+      },
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/21dsvgafkv4ne4ayzk3i7b22y/playlist/3tSD0Sz8EGyWPYU6JrCBrq"
+        },
+        "href": "https://api.spotify.com/v1/users/21dsvgafkv4ne4ayzk3i7b22y/playlists/3tSD0Sz8EGyWPYU6JrCBrq",
+        "id": "3tSD0Sz8EGyWPYU6JrCBrq",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://mosaic.scdn.co/640/01cb306ed07d8a885261b9f5259175daa65f1367596a37576e445637e1d320726c0de726a7c9d2626f76dc9bc3dece8c38cdba548539476a0bdc3e53d17c7fc0f7e80f2d263b4ca29d83c54b88a01e20",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://mosaic.scdn.co/300/01cb306ed07d8a885261b9f5259175daa65f1367596a37576e445637e1d320726c0de726a7c9d2626f76dc9bc3dece8c38cdba548539476a0bdc3e53d17c7fc0f7e80f2d263b4ca29d83c54b88a01e20",
+            "width": 300
+          },
+          {
+            "height": 60,
+            "url": "https://mosaic.scdn.co/60/01cb306ed07d8a885261b9f5259175daa65f1367596a37576e445637e1d320726c0de726a7c9d2626f76dc9bc3dece8c38cdba548539476a0bdc3e53d17c7fc0f7e80f2d263b4ca29d83c54b88a01e20",
+            "width": 60
+          }
+        ],
+        "name": "Via Vallen — Terminal Giwangan",
+        "owner": {
+          "display_name": "Taufikz AswkamtiTerlatihpatahhatii Part IV",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/21dsvgafkv4ne4ayzk3i7b22y"
+          },
+          "href": "https://api.spotify.com/v1/users/21dsvgafkv4ne4ayzk3i7b22y",
+          "id": "21dsvgafkv4ne4ayzk3i7b22y",
+          "type": "user",
+          "uri": "spotify:user:21dsvgafkv4ne4ayzk3i7b22y"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "597S638Tqcn9AIM+/1U0MkLdrMLryRoZPKwYdKuj1FdJcBmfItOBoDe9Yf1vlCyz",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/users/21dsvgafkv4ne4ayzk3i7b22y/playlists/3tSD0Sz8EGyWPYU6JrCBrq/tracks",
+          "total": 28
+        },
+        "type": "playlist",
+        "uri": "spotify:user:21dsvgafkv4ne4ayzk3i7b22y:playlist:3tSD0Sz8EGyWPYU6JrCBrq"
+      }
+    ],
+    "limit": 20,
+    "next": "https://api.spotify.com/v1/search?query=terminator&type=playlist&offset=20&limit=20",
+    "offset": 0,
+    "previous": null,
+    "total": 1496
+  }
+}
