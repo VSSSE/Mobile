@@ -107,6 +107,8 @@ public class SearchByTitleController {
                     System.err.println(s);
 
 
+
+
                     // parse
 
                     // data
@@ -132,8 +134,11 @@ public class SearchByTitleController {
             public void run() {
 
                 try {
-                    URL url = new URL("http://www.android.com/");
+                    URL url = new URL("https://accounts.spotify.com/api/token");
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("POST");
+                    urlConnection.setRequestProperty("Authorization","Basic M2ZkOWFjYmJjZmY4NDVlNThhZTAxOGUwYTYwZjliMzU6ZTllODJjNmZjMDI0NGFiYWI1NWRiMTRjNGEzNjFhNzc=");
+
                     InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                     BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
