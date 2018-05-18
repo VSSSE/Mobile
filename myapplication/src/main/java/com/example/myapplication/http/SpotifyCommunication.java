@@ -1,14 +1,18 @@
 package com.example.myapplication.http;
 
 import com.example.myapplication.extract.Extractor;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+
+import java.util.List;
 
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class SpotifyCommunication {
 
@@ -16,7 +20,7 @@ public class SpotifyCommunication {
     Extractor extractor;
 
 
-    public SpotifyCommunication(){
+    public SpotifyCommunication() {
         token = fetchToken();
         extractor = new Extractor();
     }
@@ -49,9 +53,9 @@ public class SpotifyCommunication {
         return token;
     }
 
-    public String getPlaylistId(String searchString){
+    public String getPlaylistId(String searchString) {
         Request request = new Request.Builder()
-                .url("https://api.spotify.com/v1/search?q="+ searchString+"&type=playlist")
+                .url("https://api.spotify.com/v1/search?q=" + searchString + "&type=playlist")
                 .addHeader("Authorization", "Bearer " + token)
                 .get()
                 .build();
@@ -65,11 +69,56 @@ public class SpotifyCommunication {
             throw new RuntimeException("token req to spotify failed ", e);
         }
 
-
-
         String playlistId = extractor.extractPlaylistIdFromSearchResult(responseBody);
+
 
         return playlistId;
     }
 
+    public String getResponseBodyForSearch(String searchString) {
+        Request request = new Request.Builder()
+                .url("https://api.spotify.com/v1/search?q=" + searchString + "&type=playlist")
+                .addHeader("Authorization", "Bearer " + token)
+                .get()
+                .build();
+
+        String responseBody = null;
+
+        Response response = HttpCommunication.executeRequest(request);
+        try {
+            responseBody = response.body().string();
+        } catch (Exception e) {
+            throw new RuntimeException("token req to spotify failed ", e);
+        }
+        return responseBody;
+    }
+
+    public JsonArray getSoundtrackJson(String searchString) {
+        String responseBody = getResponseBodyForSearch(searchString);
+        String playlistId = extractor.extractPlaylistIdFromSearchResult(responseBody);
+        String userId = extractor.extractUserIdFromSearchResult(responseBody);
+        String url = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks?fields=items.track(name,duration_ms,artists)";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Authorization", "Bearer " + token)
+                .get()
+                .build();
+
+        responseBody = null;
+
+        Response response = HttpCommunication.executeRequest(request);
+        try {
+            responseBody = response.body().string();
+        } catch (Exception e) {
+            throw new RuntimeException("token req to spotify failed ", e);
+        }
+
+        JsonElement root = new JsonParser().parse(responseBody);
+
+
+    }
+
+
 }
+

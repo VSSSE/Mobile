@@ -27,7 +27,6 @@ public class Extractor {
 
         JsonElement firstPlaylist = getFirstPlaylistElement(searchResult);
 
-
         String id = firstPlaylist.getAsJsonObject().getAsJsonPrimitive("id").getAsString();
 
         return id;
