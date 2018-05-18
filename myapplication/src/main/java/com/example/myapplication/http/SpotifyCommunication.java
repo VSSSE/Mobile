@@ -25,8 +25,6 @@ public class SpotifyCommunication {
 
     public String fetchToken() {
         MediaType mediaType = MediaType.parse("x-www-form-urlencoded");
-
-
         RequestBody formBody = new FormBody.Builder().add("grant_type", "client_credentials").build();
 
         // RequestBody body = RequestBody.create( null, "grant_type:client_credentials");

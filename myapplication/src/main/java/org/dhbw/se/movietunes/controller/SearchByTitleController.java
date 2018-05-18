@@ -128,41 +128,7 @@ public class SearchByTitleController {
 
     }
 
-    public List<Song> lookupSoundtrack0234(String input) {
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
 
-                try {
-                    URL url = new URL("https://accounts.spotify.com/api/token");
-                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                    urlConnection.setRequestMethod("POST");
-                    urlConnection.setRequestProperty("Authorization","Basic M2ZkOWFjYmJjZmY4NDVlNThhZTAxOGUwYTYwZjliMzU6ZTllODJjNmZjMDI0NGFiYWI1NWRiMTRjNGEzNjFhNzc=");
-
-                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-                    StringBuilder result = new StringBuilder();
-
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line);
-                        result.append("\n");
-                    }
-
-                    System.out.println(result.toString());
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                //request = new HttpGetHC4("http://www.google.de");
-                //   client.execute(request);
-                //  client.close();
-            }
-        });
-
-        return null;
-    }
 
     public List<Song> lookupSoundtrack_OLD(String input) {
 
