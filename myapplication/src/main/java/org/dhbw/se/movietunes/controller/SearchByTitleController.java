@@ -7,6 +7,8 @@ import android.util.JsonReader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.dhbw.se.movietunes.http.PlaylistKey;
+import org.dhbw.se.movietunes.http.SpotifyCommunication;
 import org.dhbw.se.movietunes.model.Song;
 import org.dhbw.se.movietunes.model.Soundtrack;
 
@@ -58,8 +60,11 @@ public class SearchByTitleController {
 
     Context appContext;
 
+    SpotifyCommunication spotifyCommunication;
+
     public SearchByTitleController(Context appContext) {
         this.appContext = appContext;
+        spotifyCommunication = new SpotifyCommunication();
     }
 
     private Soundtrack soundtrack;
@@ -75,9 +80,13 @@ public class SearchByTitleController {
     }
 
     public List<Song> lookupSoundtrack(String input) {
-        Song song = new Song();
-        song.setSongTitle("Aaaaa");
-        return Arrays.asList(song);
+//        Song song = new Song();
+//        song.setSongTitle("Aaaaa");
+//        return Arrays.asList(song);
+
+        PlaylistKey playlistKey = spotifyCommunication.findPlaylist(input);
+        return spotifyCommunication.getSongsFromPlaylist(playlistKey);
+
     }
 
 
