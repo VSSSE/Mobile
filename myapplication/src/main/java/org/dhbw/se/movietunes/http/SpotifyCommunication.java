@@ -1,9 +1,12 @@
 package org.dhbw.se.movietunes.http;
 
 import org.dhbw.se.movietunes.extract.Extractor;
+import org.dhbw.se.movietunes.model.Song;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+
+import java.util.List;
 
 import okhttp3.FormBody;
 import okhttp3.MediaType;
@@ -100,12 +103,10 @@ public class SpotifyCommunication {
         return responseBody;
     }
 
-
-
-
-
-
-
+    public List<Song> getSongsFromPlaylist (PlaylistKey playlistKey){
+        String body = getSoundtrackJson(playlistKey);
+        return extractor.extractSongs(body);
+    }
 
 }
 

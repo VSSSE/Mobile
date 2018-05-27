@@ -8,6 +8,7 @@ import com.example.myapplication.R;
 
 import static junit.framework.Assert.*;
 
+import org.dhbw.se.movietunes.model.Song;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +16,7 @@ import org.junit.runner.RunWith;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -39,13 +41,33 @@ public class ExtractorTest {
 
 
     @Test
-    public void testEextractUserIdFromSearchResult (){
+    public void testExtractUserIdFromSearchResult (){
         String responseString = readStringFromFile (R.raw.test_result_search_track);
 
         String result = codeUnderTest.extractUserIdFromSearchResult (responseString);
 
         assertEquals( "moyomba", result);
     }
+    @Test
+    public void testExtractArtistName(){
+
+    }
+
+
+    @Test
+    public void testExtractSongs(){
+
+        List<Song> songs = codeUnderTest.extractSongs(readStringFromFile(R.raw.test_tracklist_details_response));
+
+        assertNotNull(songs);
+        assertTrue(songs.size()>0);
+        Song song = songs.get(0);
+
+        assertEquals("The Terminator (Main Title)", song.getSongTitle() );
+        assertEquals("160925", song.getDuration());
+        assertEquals("Brad Fiedel", song.getSinger());
+    }
+
 
 
     private String readStringFromFile (int resourceId){
