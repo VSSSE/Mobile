@@ -1,4 +1,4 @@
-package com.example.myapplication.http;
+package org.dhbw.se.movietunes.http;
 
 import android.support.test.runner.AndroidJUnit4;
 

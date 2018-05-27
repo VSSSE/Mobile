@@ -1,20 +1,15 @@
-package com.example.myapplication.http;
+package org.dhbw.se.movietunes.http;
 
-import com.example.myapplication.extract.Extractor;
-import com.google.gson.JsonArray;
+import org.dhbw.se.movietunes.extract.Extractor;
+
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-
-import org.dhbw.se.movietunes.model.Song;
-
-import java.util.List;
 
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 public class SpotifyCommunication {
 

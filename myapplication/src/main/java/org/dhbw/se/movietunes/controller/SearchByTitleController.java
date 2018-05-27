@@ -19,6 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -71,6 +72,12 @@ public class SearchByTitleController {
 
     public void setSoundtrack(Soundtrack soundtrack) {
         this.soundtrack = soundtrack;
+    }
+
+    public List<Song> lookupSoundtrack(String input) {
+        Song song = new Song();
+        song.setSongTitle("Aaaaa");
+        return Arrays.asList(song);
     }
 
 

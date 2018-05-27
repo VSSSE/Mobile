@@ -10,31 +10,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name="org.dhbw.se.movietunes.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchResultActivity"
-            android:parentActivityName=".MainActivity">
+        <activity android:name="org.dhbw.se.movietunes.SearchResultActivity"
+            android:parentActivityName="org.dhbw.se.movietunes.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="org.dhbw.se.movietunes.MainActivity" />
         </activity>
         <activity android:name=".SearchResultActivityList"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="org.dhbw.se.movietunes.MainActivity"
             tools:ignore="DuplicateActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="org.dhbw.se.movietunes.MainActivity" />
         </activity>
-        <activity android:name=".SimilarSongsActivity"
-            android:parentActivityName=".SearchResultActivity"
+        <activity android:name="org.dhbw.se.movietunes.SimilarSongsActivity"
+            android:parentActivityName="org.dhbw.se.movietunes.SearchResultActivity"
             tools:ignore="DuplicateActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SearchResultActivity" />
+                android:value="org.dhbw.se.movietunes.SearchResultActivity" />
         </activity>
 
 

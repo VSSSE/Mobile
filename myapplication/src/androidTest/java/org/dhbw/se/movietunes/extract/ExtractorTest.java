@@ -1,4 +1,4 @@
-package com.example.myapplication.extract;
+package org.dhbw.se.movietunes.extract;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -6,7 +6,6 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.myapplication.R;
 
-import junit.framework.Assert;
 import static junit.framework.Assert.*;
 
 import org.junit.Before;

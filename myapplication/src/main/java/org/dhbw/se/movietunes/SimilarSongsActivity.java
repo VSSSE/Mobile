@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package org.dhbw.se.movietunes;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.myapplication.R;
 
 import org.dhbw.se.movietunes.controller.SearchSimilarSongsController;
 import org.dhbw.se.movietunes.model.Song;

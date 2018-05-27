@@ -1,13 +1,9 @@
-package com.example.myapplication.http;
+package org.dhbw.se.movietunes.http;
 
 import android.os.AsyncTask;
 
 
-import org.dhbw.se.movietunes.model.Song;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

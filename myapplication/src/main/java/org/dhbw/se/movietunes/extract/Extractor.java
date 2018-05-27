@@ -1,4 +1,4 @@
-package com.example.myapplication.extract;
+package org.dhbw.se.movietunes.extract;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

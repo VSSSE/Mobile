@@ -1,4 +1,4 @@
-package com.example.myapplication.http;
+package org.dhbw.se.movietunes.http;
 
 public class PlaylistKey {
     private String userId;
