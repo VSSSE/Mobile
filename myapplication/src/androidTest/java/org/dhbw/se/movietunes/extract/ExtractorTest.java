@@ -66,6 +66,7 @@ public class ExtractorTest {
         assertEquals("The Terminator (Main Title)", song.getSongTitle() );
         assertEquals("160925", song.getDuration());
         assertEquals("Brad Fiedel", song.getSinger());
+        assertEquals("6vIZTOdX8TPTRBqcloIsUz", song.getTrackId());
     }
 
 

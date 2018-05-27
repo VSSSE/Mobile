@@ -14,11 +14,14 @@ import com.example.myapplication.R;
 import org.dhbw.se.movietunes.controller.SearchByTitleController;
 import org.dhbw.se.movietunes.model.Song;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchResultActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView mListView;
+
+    List<Song> currentSongList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +42,13 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
         mListView = (ListView) findViewById(R.id.soundtrack_list_view);
 // 1
         List<Song> songArrayList = controller.lookupSoundtrack(movieTitle);
+        currentSongList = new ArrayList<>(songArrayList);
 // 2
         String[] strings = new String[songArrayList.size()];
 // 3
         for (int i = 0; i < songArrayList.size(); i++) {
             Song song = songArrayList.get(i);
-            strings[i] = song.getSongTitle() + " (Duration:" + song.getDuration() + ")"+song.getSinger();
+            strings[i] = song.getSongTitle() + " (Duration:" + song.getDuration() + ")" + song.getSinger();
         }
 // 4
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, strings);
@@ -55,18 +59,23 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
 
 
     }
-    public void showStats(){
+
+    public void showStats() {
 
     }
-    public void showMovies(){
+
+    public void showMovies() {
 
     }
-public void sortByTitle(){
 
-}
-public void sortByYear(){
+    public void sortByTitle() {
 
-}
+    }
+
+    public void sortByYear() {
+
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -76,13 +85,14 @@ public void sortByYear(){
         // ListView Clicked item value
         String songString = (String) mListView.getItemAtPosition(position);
 
+        String trackId = currentSongList.get(position).getTrackId();
         // Show Alert
         // Toast.makeText(getApplicationContext(),
         //         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
         //         .show();
 
         Intent intent = new Intent(getApplicationContext(), SimilarSongsActivity.class);
-        intent.putExtra("SONG_STRING", songString);
+        intent.putExtra("TRACK_ID", trackId);
         startActivity(intent);
     }
 }

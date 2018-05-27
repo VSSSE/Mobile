@@ -29,7 +29,7 @@ public class SimilarSongsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        String songString = intent.getStringExtra("SONG_STRING");
+        String trackId = intent.getStringExtra("TRACK_ID");
 
 
         setContentView(R.layout.similar_songs);
@@ -39,7 +39,7 @@ public class SimilarSongsActivity extends AppCompatActivity {
         SearchSimilarSongsController controller = new SearchSimilarSongsController(getApplicationContext());
 
         List<String> similars = new ArrayList<>();
-        for (Song song : controller.findSimilarSongs(songString)) {
+        for (Song song : controller.findSimilarSongs(trackId)) {
             similars.add(song.getSongTitle());
         }
 

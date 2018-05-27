@@ -49,12 +49,14 @@ public class Extractor {
         JsonObject track=item.getAsJsonObject().getAsJsonObject("track");
         String songTitle=track.getAsJsonPrimitive("name").getAsString();
         String duration=track.getAsJsonPrimitive("duration_ms").getAsString();
+        String trackId = track.getAsJsonPrimitive("id").getAsString();
         String artist=extractArtistName(track);
 
         Song result = new Song();
         result.setSongTitle(songTitle);
         result.setDuration(duration);
         result.setSinger(artist);
+        result.setTrackId(trackId);
         return result;
     }
 

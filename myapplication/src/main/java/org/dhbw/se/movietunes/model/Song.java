@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 public class Song {
-    private String songId;
+    private String trackId;
     private String songTitle;
     private String composer;
     private String singer;
@@ -24,12 +24,12 @@ public class Song {
 
     }
 
-    public String getSongId() {
-        return songId;
+    public String getTrackId() {
+        return trackId;
     }
 
-    public void setSongId(String songId) {
-        this.songId = songId;
+    public void setTrackId(String trackId) {
+        this.trackId = trackId;
     }
 
     public String getSongTitle() {

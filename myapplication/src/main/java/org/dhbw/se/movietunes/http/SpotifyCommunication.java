@@ -84,7 +84,7 @@ public class SpotifyCommunication {
     public String getSoundtrackJson(PlaylistKey playlistKey) {
         String user=playlistKey.getUserId();
         String playlist=playlistKey.getPlaylistId();
-        String url = "https://api.spotify.com/v1/users/" + user + "/playlists/" + playlist + "/tracks?fields=items.track(name,duration_ms,artists)";
+        String url = "https://api.spotify.com/v1/users/" + user + "/playlists/" + playlist + "/tracks?fields=items.track(id,name,duration_ms,artists)";
 
         Request request = new Request.Builder()
                 .url(url)
@@ -103,9 +103,14 @@ public class SpotifyCommunication {
         return responseBody;
     }
 
+
     public List<Song> getSongsFromPlaylist (PlaylistKey playlistKey){
         String body = getSoundtrackJson(playlistKey);
         return extractor.extractSongs(body);
+    }
+
+    public List<Song>getSimilarSongs(){
+        return null;
     }
 
 }
