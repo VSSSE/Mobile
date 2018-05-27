@@ -80,7 +80,7 @@ public class SpotifyCommunication {
         return new PlaylistKey(userId, playlistId) ;
     }
 
-    List<Song> getRecommendations(String trackId){
+    public List<Song> getRecommendations(String trackId){
         String response = getRecommendationsBody(trackId);
         return extractor.extractSongsFromRecommendationsResponse(response);
     }

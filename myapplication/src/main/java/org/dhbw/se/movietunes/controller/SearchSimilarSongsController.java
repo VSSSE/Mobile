@@ -2,6 +2,7 @@ package org.dhbw.se.movietunes.controller;
 
 import android.content.Context;
 
+import org.dhbw.se.movietunes.http.SpotifyCommunication;
 import org.dhbw.se.movietunes.model.Song;
 
 import java.util.ArrayList;
@@ -13,23 +14,25 @@ import java.util.List;
 
 public class SearchSimilarSongsController {
     Context appContext;
+    SpotifyCommunication spotifyCommunication;
 
     public SearchSimilarSongsController(Context appContext) {
         this.appContext = appContext;
+        spotifyCommunication = new SpotifyCommunication();
     }
 
 
-    public List<Song> findSimilarSongs(String input) {
+    public List<Song> findSimilarSongs(String trackId) {
 
-        List<Song> result = new ArrayList<>();
-
-        for (int i = 0; i < 5; i++) {
-            Song song = new Song();
-            song.setSongTitle("similar to " + input + " " + i);
-            result.add(song);
-        }
-
-
+//       FAKE:
+//     List<Song> result = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            Song song = new Song();
+//            song.setSongTitle("similar to " + input + " " + i);
+//            result.add(song);
+//        }
+//
+        List<Song> result = spotifyCommunication.getRecommendations(trackId);
         return result;
     }
 
