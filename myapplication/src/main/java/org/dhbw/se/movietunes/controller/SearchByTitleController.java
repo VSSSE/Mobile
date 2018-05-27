@@ -73,18 +73,7 @@ public class SearchByTitleController {
         this.soundtrack = soundtrack;
     }
 
-    public List<Song> lookupSoundtrack(String input) {
-        AsyncHttp httpTask = new AsyncHttp();
-        httpTask.execute();
-        try {
-            String body = httpTask.get();
-            System.out.println(body);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        return new ArrayList<>();
-    }
 
 
     public List<Song> lookupSoundtrack_44(String input) {

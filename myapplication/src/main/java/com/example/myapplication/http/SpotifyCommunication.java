@@ -5,6 +5,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import org.dhbw.se.movietunes.model.Song;
+
 import java.util.List;
 
 import okhttp3.FormBody;
@@ -53,27 +55,6 @@ public class SpotifyCommunication {
         return token;
     }
 
-    public String getPlaylistId(String searchString) {
-        Request request = new Request.Builder()
-                .url("https://api.spotify.com/v1/search?q=" + searchString + "&type=playlist")
-                .addHeader("Authorization", "Bearer " + token)
-                .get()
-                .build();
-
-        String responseBody = null;
-
-        Response response = HttpCommunication.executeRequest(request);
-        try {
-            responseBody = response.body().string();
-        } catch (Exception e) {
-            throw new RuntimeException("token req to spotify failed ", e);
-        }
-
-        String playlistId = extractor.extractPlaylistIdFromSearchResult(responseBody);
-
-
-        return playlistId;
-    }
 
     public String getResponseBodyForSearch(String searchString) {
         Request request = new Request.Builder()
@@ -93,11 +74,19 @@ public class SpotifyCommunication {
         return responseBody;
     }
 
-    public JsonArray getSoundtrackJson(String searchString) {
+
+    public PlaylistKey findPlaylist (String searchString){
         String responseBody = getResponseBodyForSearch(searchString);
         String playlistId = extractor.extractPlaylistIdFromSearchResult(responseBody);
         String userId = extractor.extractUserIdFromSearchResult(responseBody);
-        String url = "https://api.spotify.com/v1/users/" + userId + "/playlists/" + playlistId + "/tracks?fields=items.track(name,duration_ms,artists)";
+        return new PlaylistKey(userId, playlistId) ;
+    }
+
+
+    public String getSoundtrackJson(PlaylistKey playlistKey) {
+        String user=playlistKey.getUserId();
+        String playlist=playlistKey.getPlaylistId();
+        String url = "https://api.spotify.com/v1/users/" + user + "/playlists/" + playlist + "/tracks?fields=items.track(name,duration_ms,artists)";
 
         Request request = new Request.Builder()
                 .url(url)
@@ -105,7 +94,7 @@ public class SpotifyCommunication {
                 .get()
                 .build();
 
-        responseBody = null;
+        String responseBody = null;
 
         Response response = HttpCommunication.executeRequest(request);
         try {
@@ -113,11 +102,14 @@ public class SpotifyCommunication {
         } catch (Exception e) {
             throw new RuntimeException("token req to spotify failed ", e);
         }
-
-        JsonElement root = new JsonParser().parse(responseBody);
-
-
+        return responseBody;
     }
+
+
+
+
+
+
 
 
 }

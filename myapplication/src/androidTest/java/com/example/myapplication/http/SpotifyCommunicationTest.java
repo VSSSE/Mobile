@@ -18,12 +18,13 @@ public class SpotifyCommunicationTest {
         Assert.assertTrue(token.length() > 20);
     }
 
-    @Test
-    public void testGetPlaylistId() {
-        String playlistId = classUnderTest.getPlaylistId("terminator");
-        Assert.assertEquals("6lwDOP2ZW0h2jOccLB0342", playlistId);
-    }
 
+    @Test
+    public void testFindPlaylist(){
+        PlaylistKey playlistKey = classUnderTest.findPlaylist("terminator");
+        Assert.assertEquals("6lwDOP2ZW0h2jOccLB0342", playlistKey.getPlaylistId());
+        Assert.assertEquals("moyomba", playlistKey.getUserId());
+    }
 
 
 }
