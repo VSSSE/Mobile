@@ -45,8 +45,10 @@ public class Extractor {
     }
 
 
-    public Song extractSingleSong(JsonElement item){
-        JsonObject track=item.getAsJsonObject().getAsJsonObject("track");
+    public Song extractSingleSong(JsonElement trackElement){
+
+        JsonObject track = trackElement.getAsJsonObject();
+
         String songTitle=track.getAsJsonPrimitive("name").getAsString();
         String duration=track.getAsJsonPrimitive("duration_ms").getAsString();
         String trackId = track.getAsJsonPrimitive("id").getAsString();
@@ -73,7 +75,7 @@ public class Extractor {
 
     }
 
-    public List<Song> extractSongs(String tracklistDetailsResponse){
+    public List<Song> extractSongsFromTracklistDetails(String tracklistDetailsResponse){
         JsonElement root = new JsonParser().parse(tracklistDetailsResponse);
         JsonArray items = root.getAsJsonObject().getAsJsonArray("items");
         if (items.size() < 0) {
@@ -83,11 +85,26 @@ public class Extractor {
 
        List<Song> songs=new ArrayList<>();
         for(JsonElement item:items){
-            songs.add(extractSingleSong(item));
+            JsonObject track=item.getAsJsonObject().getAsJsonObject("track");
+            songs.add(extractSingleSong(track));
         }
         return songs;
     }
 
+    public List<Song> extractSongsFromRecommendationsResponse(String recommendationsBody){
+        JsonElement root = new JsonParser().parse(recommendationsBody);
+        JsonArray tracks = root.getAsJsonObject().getAsJsonArray("tracks");
+        if (tracks.size() < 0) {
+            throw new RuntimeException("no tracks found");
+        }
+
+
+        List<Song> songs=new ArrayList<>();
+        for(JsonElement track:tracks){
+            songs.add(extractSingleSong(track));
+        }
+        return songs;
+    }
 
 
 

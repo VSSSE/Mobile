@@ -57,7 +57,7 @@ public class ExtractorTest {
     @Test
     public void testExtractSongs(){
 
-        List<Song> songs = codeUnderTest.extractSongs(readStringFromFile(R.raw.test_tracklist_details_response));
+        List<Song> songs = codeUnderTest.extractSongsFromTracklistDetails(readStringFromFile(R.raw.test_tracklist_details_response));
 
         assertNotNull(songs);
         assertTrue(songs.size()>0);
@@ -67,6 +67,21 @@ public class ExtractorTest {
         assertEquals("160925", song.getDuration());
         assertEquals("Brad Fiedel", song.getSinger());
         assertEquals("6vIZTOdX8TPTRBqcloIsUz", song.getTrackId());
+    }
+
+    @Test
+    public void testExtractSongsFromRecommendationsResponse(){
+
+        List<Song> songs = codeUnderTest.extractSongsFromRecommendationsResponse(readStringFromFile(R.raw.test_recommendations_response));
+
+        assertNotNull(songs);
+        assertTrue(songs.size()>0);
+        Song song = songs.get(0);
+
+        assertEquals("Tightrope", song.getSongTitle() );
+//        assertEquals("160925", song.getDuration()); TODO enable
+//        assertEquals("Brad Fiedel", song.getSinger());
+//        assertEquals("6vIZTOdX8TPTRBqcloIsUz", song.getTrackId());
     }
 
 

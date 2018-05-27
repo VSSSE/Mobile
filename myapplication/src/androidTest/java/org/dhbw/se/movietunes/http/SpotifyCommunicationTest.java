@@ -43,5 +43,17 @@ public class SpotifyCommunicationTest {
         assertNotNull(song.getSongTitle() != null);
     }
 
+    @Test
+    public void testGetRecommendations() {
+
+
+        List<Song> songsFromPlaylist = classUnderTest.getRecommendations("0c6xIDDpzE81m2q797ordA");
+
+        assertNotNull(songsFromPlaylist);
+        assertTrue(songsFromPlaylist.size() > 0);
+        Song song = songsFromPlaylist.get(0);
+        assertNotNull(song.getSongTitle() != null);
+    }
+
 
 }

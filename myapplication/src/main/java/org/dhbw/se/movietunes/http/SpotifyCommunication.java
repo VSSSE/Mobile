@@ -80,6 +80,34 @@ public class SpotifyCommunication {
         return new PlaylistKey(userId, playlistId) ;
     }
 
+    List<Song> getRecommendations(String trackId){
+        String response = getRecommendationsBody(trackId);
+        return extractor.extractSongsFromRecommendationsResponse(response);
+    }
+
+
+
+    public String getRecommendationsBody(String trackId){
+
+
+        String url = "https://api.spotify.com/v1/recommendations?seed_tracks="+trackId;
+
+        Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Authorization", "Bearer " + token)
+                .get()
+                .build();
+
+        String responseBody = null;
+
+        Response response = HttpCommunication.executeRequest(request);
+        try {
+            responseBody = response.body().string();
+        } catch (Exception e) {
+            throw new RuntimeException("token req to spotify failed ", e);
+        }
+        return responseBody;
+    }
 
     public String getSoundtrackJson(PlaylistKey playlistKey) {
         String user=playlistKey.getUserId();
@@ -106,12 +134,9 @@ public class SpotifyCommunication {
 
     public List<Song> getSongsFromPlaylist (PlaylistKey playlistKey){
         String body = getSoundtrackJson(playlistKey);
-        return extractor.extractSongs(body);
+        return extractor.extractSongsFromTracklistDetails(body);
     }
 
-    public List<Song>getSimilarSongs(){
-        return null;
-    }
 
 }
 
