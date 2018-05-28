@@ -14,6 +14,7 @@ public class Song {
     private String composer;
     private String singer;
     private String duration;
+    private String uri;
     private List<Movie> usedInMovies;
     private List<Song> similarSongs;
 
@@ -22,6 +23,9 @@ public class Song {
     }
     public void playOnSpotify(){
 
+    }
+    public void setUri(String uri){
+        this.uri=uri;
     }
 
     public String getTrackId() {
@@ -74,6 +78,9 @@ public class Song {
 
     public List<Song> getSimilarSongs() {
         return similarSongs;
+    }
+    public String getUri(){
+        return this.uri;
     }
 
     public void setSimilarSongs(List<Song> similarSongs) {

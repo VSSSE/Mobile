@@ -30,7 +30,6 @@ public class Extractor {
     public String extractPlaylistIdFromSearchResult(String searchResult) {
 
         JsonElement firstPlaylist = getFirstPlaylistElement(searchResult);
-
         String id = firstPlaylist.getAsJsonObject().getAsJsonPrimitive("id").getAsString();
 
         return id;
@@ -45,6 +44,7 @@ public class Extractor {
     }
 
 
+
     public Song extractSingleSong(JsonElement trackElement){
 
         JsonObject track = trackElement.getAsJsonObject();
@@ -52,13 +52,18 @@ public class Extractor {
         String songTitle=track.getAsJsonPrimitive("name").getAsString();
         String duration=track.getAsJsonPrimitive("duration_ms").getAsString();
         String trackId = track.getAsJsonPrimitive("id").getAsString();
+        String uri=track.getAsJsonPrimitive("uri").getAsString();
         String artist=extractArtistName(track);
+
 
         Song result = new Song();
         result.setSongTitle(songTitle);
         result.setDuration(duration);
         result.setSinger(artist);
         result.setTrackId(trackId);
+        result.setUri(uri);
+
+
         return result;
     }
 

@@ -86,6 +86,10 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
         String songString = (String) mListView.getItemAtPosition(position);
 
         String trackId = currentSongList.get(position).getTrackId();
+        String uri=currentSongList.get(position).getUri();
+        System.out.println("It works "+uri);
+
+
         // Show Alert
         // Toast.makeText(getApplicationContext(),
         //         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
