@@ -4,7 +4,7 @@ import org.dhbw.se.movietunes.extract.Extractor;
 import org.dhbw.se.movietunes.http.SpotifyCommunication;
 
 public class SpotifyPlayer extends Player {
-    
+
 
     public SpotifyPlayer(String songTitle) {
         super(songTitle);
