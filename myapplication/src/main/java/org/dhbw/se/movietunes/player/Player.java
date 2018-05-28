@@ -7,7 +7,7 @@ public class Player {
     protected String songTitle;
     protected HttpCommunication httpCommunication;
     protected String uri;
-    protected Extractor extractor;
+
 
 
     public Player(String songTitle) {
