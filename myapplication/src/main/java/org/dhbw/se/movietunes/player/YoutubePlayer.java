@@ -8,12 +8,7 @@ public class YoutubePlayer extends Player {
 
 
     @Override
-    public void play(){
-
-    }
-
-
-    private String createUri() {
+    protected String createUri() {
         return "";
     }
 }

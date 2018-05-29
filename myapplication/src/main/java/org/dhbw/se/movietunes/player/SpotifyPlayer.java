@@ -18,13 +18,9 @@ public class SpotifyPlayer extends Player {
 
    }
 
+
     @Override
-    public void play(){
-
-    }
-
-
-    private String createUri() {
+    public String createUri() {
 
         return "";
     }

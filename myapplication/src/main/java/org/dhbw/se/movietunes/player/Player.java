@@ -3,7 +3,7 @@ package org.dhbw.se.movietunes.player;
 import org.dhbw.se.movietunes.extract.Extractor;
 import org.dhbw.se.movietunes.http.HttpCommunication;
 
-public class Player {
+public abstract class Player {
     protected String songTitle;
     protected HttpCommunication httpCommunication;
     protected String uri;
@@ -14,17 +14,13 @@ public class Player {
         this.songTitle = songTitle;
     }
 
-    public String getSongTitle() {
-        return songTitle;
+
+    public void play()
+    {
+        //TODO open in browser ...
     }
 
-    public void setSongTitle(String songTitle) {
-        this.songTitle = songTitle;
-    }
-
-    public void play(){
-
-    }
+    protected abstract String createUri();
 
 
 
