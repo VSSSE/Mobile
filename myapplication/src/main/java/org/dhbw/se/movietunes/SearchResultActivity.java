@@ -1,16 +1,19 @@
 package org.dhbw.se.movietunes;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
-
 import org.dhbw.se.movietunes.controller.SearchByTitleController;
 import org.dhbw.se.movietunes.model.Song;
 import org.dhbw.se.movietunes.player.Player;
@@ -80,6 +83,13 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
     public void sortByYear() {
 
     }
+    public PopupMenu showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.popup_menu, popup.getMenu());
+        return popup;
+
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -94,9 +104,21 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
         String uri=currentSongList.get(position).getUri();
         System.out.println("It works "+uri);
         //Todo Buttons to play on Spotify or on Youtube
+        PopupMenu popupMenu=showPopup(mListView.getChildAt(itemPosition));
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(SearchResultActivity.this,"You Clicked : " + item.getTitle(),Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+        popupMenu.show();//showing popup menu
+
+
         player=new SpotifyPlayer(currentSongList.get(position).getSongTitle(), uri);
         player2=new YoutubePlayer(currentSongList.get(position).getSongTitle());
-        player.play();
+        //player.play();
+        //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.example.com")));
 
 
         // Show Alert
@@ -104,9 +126,9 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
         //         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
         //         .show();
 
-        Intent intent = new Intent(getApplicationContext(), SimilarSongsActivity.class);
-        intent.putExtra("TRACK_ID", trackId);
-        startActivity(intent);
+        //Intent intent = new Intent(getApplicationContext(), SimilarSongsActivity.class);
+        //intent.putExtra("TRACK_ID", trackId);
+        //startActivity(intent);
     }
 }
 

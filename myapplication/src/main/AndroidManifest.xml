@@ -22,7 +22,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.dhbw.se.movietunes.MainActivity" />
         </activity>
-        <activity android:name=".SearchResultActivityList"
+        <activity android:name="org.dhbw.se.movietunes.SearchResultActivity"
             android:parentActivityName="org.dhbw.se.movietunes.MainActivity"
             tools:ignore="DuplicateActivity">
             <meta-data

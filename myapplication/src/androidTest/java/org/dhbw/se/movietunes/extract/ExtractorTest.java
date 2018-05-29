@@ -6,8 +6,6 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.myapplication.R;
 
-import static junit.framework.Assert.*;
-
 import org.dhbw.se.movietunes.model.Song;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +15,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -57,7 +59,7 @@ public class ExtractorTest {
     @Test
     public void testExtractSongs(){
 
-        List<Song> songs = codeUnderTest.extractSongsFromTracklistDetails(readStringFromFile(R.raw.test_tracklist_details_response));
+        List<Song> songs = codeUnderTest.extractSongsFromTracklistDetails(readStringFromFile(R.raw.test_tracklist_details_uri));
 
         assertNotNull(songs);
         assertTrue(songs.size()>0);
@@ -67,6 +69,7 @@ public class ExtractorTest {
         assertEquals("160925", song.getDuration());
         assertEquals("Brad Fiedel", song.getSinger());
         assertEquals("6vIZTOdX8TPTRBqcloIsUz", song.getTrackId());
+        assertEquals("spotify:track:6vIZTOdX8TPTRBqcloIsUz", song.getUri());
     }
 
     @Test

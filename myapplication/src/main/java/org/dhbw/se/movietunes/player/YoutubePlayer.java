@@ -5,9 +5,14 @@ public class YoutubePlayer extends Player {
         super(songTitle);
     }
 
+    @Override
+    public void play() {
+
+    }
+
 
     @Override
-    protected String createUri() {
+    public String createUri() {
         return "";
     }
 }
