@@ -9,7 +9,6 @@ public class SpotifyPlayer extends Player {
 
     public SpotifyPlayer(String songTitle) {
         super(songTitle);
-        this.uri = createUri();
     }
 
    public SpotifyPlayer(String songTitle, String uri){

@@ -17,7 +17,10 @@ public abstract class Player {
 
     public void play()
     {
+
         //TODO open in browser ...
+        if(uri == "")
+            uri = createUri();
     }
 
     protected abstract String createUri();
