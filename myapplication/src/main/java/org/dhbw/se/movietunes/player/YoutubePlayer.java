@@ -6,15 +6,12 @@ public class YoutubePlayer extends Player {
         this.uri = createUri();
     }
 
-    @Override
-    public String getSongTitle() {
-        return super.getSongTitle();
-    }
 
     @Override
-    public void setSongTitle(String songTitle) {
-        super.setSongTitle(songTitle);
+    public void play(){
+
     }
+
 
     private String createUri() {
         return "";

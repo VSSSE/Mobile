@@ -21,6 +21,7 @@ public class Player {
     public void setSongTitle(String songTitle) {
         this.songTitle = songTitle;
     }
+
     public void play(){
 
     }

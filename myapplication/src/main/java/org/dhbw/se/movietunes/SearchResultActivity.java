@@ -15,6 +15,7 @@ import org.dhbw.se.movietunes.controller.SearchByTitleController;
 import org.dhbw.se.movietunes.model.Song;
 import org.dhbw.se.movietunes.player.Player;
 import org.dhbw.se.movietunes.player.SpotifyPlayer;
+import org.dhbw.se.movietunes.player.YoutubePlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
 
     List<Song> currentSongList = null;
     Player player;
-
+    Player player2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +94,8 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
         String uri=currentSongList.get(position).getUri();
         System.out.println("It works "+uri);
         //Todo Buttons to play on Spotify or on Youtube
-        player=new SpotifyPlayer(currentSongList.get(position).getSongTitle());
+        player=new SpotifyPlayer(currentSongList.get(position).getSongTitle(), uri);
+        player2=new YoutubePlayer(currentSongList.get(position).getSongTitle());
         player.play();
 
 

@@ -19,21 +19,12 @@ public class SpotifyPlayer extends Player {
    }
 
     @Override
-    public String getSongTitle() {
-        return super.getSongTitle();
-    }
-
-    @Override
-    public void setSongTitle(String songTitle) {
-        super.setSongTitle(songTitle);
-    }
-    @Override
     public void play(){
 
     }
 
 
-    public String createUri() {
+    private String createUri() {
 
         return "";
     }
