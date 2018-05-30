@@ -26,10 +26,13 @@ import java.util.List;
 public class SearchResultActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView mListView;
+    SoundtrackSearchResult strackSearchResult;
 
     List<Song> currentSongList = null;
+
     Player player;
     Player player2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +52,15 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
 
         mListView = (ListView) findViewById(R.id.soundtrack_list_view);
 // 1
-        List<Song> songArrayList = controller.lookupSoundtrack(movieTitle);
-        currentSongList = new ArrayList<>(songArrayList);
+        //List<Song> songArrayList = controller.lookupSoundtrack(movieTitle);
+        strackSearchResult = controller.searchTracklist(movieTitle);
+        //
+        currentSongList = new ArrayList<>(strackSearchResult.getSongs());
 // 2
-        String[] strings = new String[songArrayList.size()];
+        String[] strings = new String[currentSongList.size()];
 // 3
-        for (int i = 0; i < songArrayList.size(); i++) {
-            Song song = songArrayList.get(i);
+        for (int i = 0; i < currentSongList.size(); i++) {
+            Song song = currentSongList.get(i);
             strings[i] = song.getSongTitle() + " (Duration:" + song.getDuration() + ")" + song.getSinger();
         }
 // 4
@@ -102,21 +107,26 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
         String songString = (String) mListView.getItemAtPosition(position);
 
         final String trackId = currentSongList.get(position).getTrackId();
-        final String uri=currentSongList.get(position).getUri();
-        System.out.println("It works "+uri);
+        //final String uri=
+
+        //System.out.println("It works "+uri);
         //Todo Buttons to play on Spotify or on Youtube
         PopupMenu popupMenu=showPopup(mListView.getChildAt(itemPosition));
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
                 String title=(String) item.getTitle();
                 if(title.contains("Spotify")){
-                   // player=new SpotifyPlayer(currentSongList.get(position).getSongTitle(), uri);
+                   //player=new SpotifyPlayer(currentSongList.get(position).getSongTitle(), uri);
                     //url from search request!!
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://open.spotify.com/user/moyomba/playlist/6lwDOP2ZW0h2jOccLB0342")));
+
+                    String url=strackSearchResult.getUrl();
+
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 
                 }
                 if(title.contains("Youtube")){
                    // player=new YoutubePlayer(currentSongList.get(position).getSongTitle());
+
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.de")));
                 }
                 if(title.contains("similar")){

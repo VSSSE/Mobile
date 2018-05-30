@@ -7,25 +7,20 @@ import android.util.JsonReader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.dhbw.se.movietunes.SoundtrackSearchResult;
 import org.dhbw.se.movietunes.http.PlaylistKey;
 import org.dhbw.se.movietunes.http.SpotifyCommunication;
 import org.dhbw.se.movietunes.model.Song;
 import org.dhbw.se.movietunes.model.Soundtrack;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.zip.ZipEntry;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -62,13 +57,19 @@ public class SearchByTitleController {
 
     SpotifyCommunication spotifyCommunication;
 
+
     public SearchByTitleController(Context appContext) {
         this.appContext = appContext;
         spotifyCommunication = new SpotifyCommunication();
+
     }
 
     private Soundtrack soundtrack;
     private Song song;
+
+    public SearchByTitleController() {
+        spotifyCommunication=new SpotifyCommunication();
+    }
 
 
     public Soundtrack getSoundtrack() {
@@ -79,15 +80,20 @@ public class SearchByTitleController {
         this.soundtrack = soundtrack;
     }
 
-    public List<Song> lookupSoundtrack(String input) {
+    public  SoundtrackSearchResult searchTracklist (String input) {
 //        Song song = new Song();
 //        song.setSongTitle("Aaaaa");
 //        return Arrays.asList(song);
 
         PlaylistKey playlistKey = spotifyCommunication.findPlaylist(input);
-        return spotifyCommunication.getSongsFromPlaylist(playlistKey);
+        String url=playlistKey.getSpotifyUrl();
+        List<Song> songs=spotifyCommunication.getSongsFromPlaylist(playlistKey);
+        SoundtrackSearchResult trackResult=new SoundtrackSearchResult(url, songs);
+        return trackResult;
 
     }
+
+
 
 
 

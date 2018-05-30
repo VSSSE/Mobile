@@ -77,8 +77,10 @@ public class SpotifyCommunication {
         String responseBody = getResponseBodyForSearch(searchString);
         String playlistId = extractor.extractPlaylistIdFromSearchResult(responseBody);
         String userId = extractor.extractUserIdFromSearchResult(responseBody);
+        String spotifyUrl=extractor.extractSpotifyUrl(responseBody);
 
-        return new PlaylistKey(userId, playlistId) ;
+
+        return new PlaylistKey(userId, playlistId,spotifyUrl) ;
     }
 
     public List<Song> getRecommendations(String trackId){
