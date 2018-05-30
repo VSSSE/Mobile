@@ -1,10 +1,10 @@
 package org.dhbw.se.movietunes.http;
 
-import org.dhbw.se.movietunes.extract.Extractor;
-import org.dhbw.se.movietunes.model.Song;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+
+import org.dhbw.se.movietunes.extract.Extractor;
+import org.dhbw.se.movietunes.model.Song;
 
 import java.util.List;
 
@@ -77,6 +77,7 @@ public class SpotifyCommunication {
         String responseBody = getResponseBodyForSearch(searchString);
         String playlistId = extractor.extractPlaylistIdFromSearchResult(responseBody);
         String userId = extractor.extractUserIdFromSearchResult(responseBody);
+
         return new PlaylistKey(userId, playlistId) ;
     }
 

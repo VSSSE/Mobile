@@ -37,11 +37,20 @@ public class Extractor {
     }
 
 
+
     public String extractUserIdFromSearchResult(String searchResult) {
         JsonElement firstPlaylist = getFirstPlaylistElement(searchResult);
         String userID = firstPlaylist.getAsJsonObject().getAsJsonObject("owner").getAsJsonPrimitive("id").getAsString();
+
         return userID;
     }
+    public String extractSpotifyUrlFromSearchResult(String searchResult){
+        JsonElement firstPlayList=getFirstPlaylistElement(searchResult);
+        String spotifyUrl=firstPlayList.getAsJsonObject().getAsJsonObject("external_urls").getAsJsonPrimitive("spotify").getAsString();
+        return spotifyUrl;
+    }
+
+
 
 
 
@@ -52,7 +61,11 @@ public class Extractor {
         String songTitle=track.getAsJsonPrimitive("name").getAsString();
         String duration=track.getAsJsonPrimitive("duration_ms").getAsString();
         String trackId = track.getAsJsonPrimitive("id").getAsString();
+        //https://open.spotify.com/user/moyomba/playlist/6lwDOP2ZW0h2jOccLB0342
+        //String spotifyUrl=this.extractPlaylistUrlFromSearchResult();
         String uri=track.getAsJsonPrimitive("uri").getAsString();
+
+
         String artist=extractArtistName(track);
 
 
