@@ -81,9 +81,6 @@ public class SearchByTitleController {
     }
 
     public  SoundtrackSearchResult searchTracklist (String input) {
-//        Song song = new Song();
-//        song.setSongTitle("Aaaaa");
-//        return Arrays.asList(song);
 
         PlaylistKey playlistKey = spotifyCommunication.findPlaylist(input);
         String url=playlistKey.getSpotifyUrl();

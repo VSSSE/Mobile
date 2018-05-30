@@ -73,22 +73,6 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
 
     }
 
-
-    public void showStats() {
-
-    }
-
-    public void showMovies() {
-
-    }
-
-    public void sortByTitle() {
-
-    }
-
-    public void sortByYear() {
-
-    }
     public PopupMenu showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
