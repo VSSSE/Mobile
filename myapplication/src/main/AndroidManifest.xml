@@ -35,6 +35,24 @@
                 android:value="org.dhbw.se.movietunes.MainActivity" />
         </activity>
         <activity
+            android:name="org.dhbw.se.movietunes.LookUpSoundtrackActivity"
+            android:parentActivityName="org.dhbw.se.movietunes.MainActivity"
+            tools:ignore="DuplicateActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.dhbw.se.movietunes.MainActivity" />
+        </activity>
+        <activity
+            android:name="org.dhbw.se.movietunes.LookUpMoviesActivity"
+            android:parentActivityName="org.dhbw.se.movietunes.SearchResultActivity"
+            tools:ignore="DuplicateActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.dhbw.se.movietunes.SearchResultActivity" />
+        </activity>
+
+
+        <activity
             android:name="org.dhbw.se.movietunes.SimilarSongsActivity"
             android:parentActivityName="org.dhbw.se.movietunes.SearchResultActivity"
             tools:ignore="DuplicateActivity">

@@ -1,5 +1,7 @@
 package org.dhbw.se.movietunes;
 
+
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,17 +16,11 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class LookUpSoundtrackActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
 
-
-    //Connector
-    //ParseObject: movieTitle-soundtrack
-
-     EditText textField;
+    EditText textField;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -36,12 +32,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         //setHasOptionsMenu(true);
-
-        setContentView(R.layout.activity_main);
+Intent intent=getIntent();
+        setContentView(R.layout.look_up_soundtrack_activity);
         View welcomeText = findViewById(R.id.welcome);
         searchButton = findViewById(R.id.search_button);
         View introText = findViewById(R.id.intro_text);
-         textField = (EditText) findViewById(R.id.text_input);
+        textField = (EditText) findViewById(R.id.text_input);
         searchButton.setOnClickListener(this);
     }
 
@@ -65,20 +61,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
             case R.id.menu_search_by_movie:
-                intent = new Intent(getApplicationContext(), LookUpSoundtrackActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LookUpSoundtrackActivity.class);
                 startActivity(intent);
                 Toast.makeText(this, "Search by movie selected", Toast.LENGTH_SHORT)
                         .show();
                 break;
             // action with ID action_settings was selected
             case R.id.menu_search_by_song:
-                intent = new Intent(getApplicationContext(), LookUpMoviesActivity.class);
-                startActivity(intent);
-                Toast.makeText(this, "Search by song title ", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Search by song ", Toast.LENGTH_SHORT)
                         .show();
                 break;
             default:
@@ -90,10 +83,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 }
-
-
-
-
 
 
 

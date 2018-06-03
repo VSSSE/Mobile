@@ -73,6 +73,7 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
 
     }
 
+
     public PopupMenu showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
