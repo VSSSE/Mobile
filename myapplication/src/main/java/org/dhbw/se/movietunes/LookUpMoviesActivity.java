@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 
-public class LookUpMoviesActivity extends AppCompatActivity implements View.OnClickListener {
+public class LookUpMoviesActivity extends MainActivity implements View.OnClickListener {
 
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
 

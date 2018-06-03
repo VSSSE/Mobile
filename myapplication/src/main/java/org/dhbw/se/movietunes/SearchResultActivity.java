@@ -2,8 +2,9 @@ package org.dhbw.se.movietunes;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.RequiresApi;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +24,7 @@ import org.dhbw.se.movietunes.player.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class SearchResultActivity extends MainActivity implements AdapterView.OnItemClickListener {
 
     ListView mListView;
     SoundtrackSearchResult strackSearchResult;
@@ -34,6 +35,7 @@ public class SearchResultActivity extends AppCompatActivity implements AdapterVi
     Player player2;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         View intro;

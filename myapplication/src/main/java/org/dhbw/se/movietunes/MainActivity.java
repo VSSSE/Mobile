@@ -18,6 +18,7 @@ import com.example.myapplication.R;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
+
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
 
 
@@ -32,11 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         View searchButton;
-
-
         super.onCreate(savedInstanceState);
         //setHasOptionsMenu(true);
-
         setContentView(R.layout.activity_main);
         View welcomeText = findViewById(R.id.welcome);
         searchButton = findViewById(R.id.search_button);
@@ -55,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.putExtra(EXTRA_MESSAGE, movieTitle);
         startActivity(intent);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

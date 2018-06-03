@@ -1,8 +1,9 @@
 package org.dhbw.se.movietunes;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -20,9 +21,10 @@ import java.util.List;
  * Created by anastasia.schwed on 11/21/2017.
  */
 
-public class SimilarSongsActivity extends AppCompatActivity {
+public class SimilarSongsActivity extends MainActivity {
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
