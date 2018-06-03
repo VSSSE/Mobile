@@ -8,10 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.myapplication.R;
 
@@ -42,13 +40,14 @@ public class LookUpMoviesActivity extends MainActivity implements View.OnClickLi
     }
 
     public void onClick(View v) {
-        String songTitle = textField.getText().toString();
+        String movieTitle = textField.getText().toString();
         // searchResultSoundtrack=new Movie(movieTitle);
         // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));
 
-
+// TODO MovieSearchResultActivity!!
+        //Intent intent = new Intent(getApplicationContext(), MovieSearchResultActivity.class);
         Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, songTitle);
+        intent.putExtra(EXTRA_MESSAGE, movieTitle);
         startActivity(intent);
     }
 
@@ -59,27 +58,7 @@ public class LookUpMoviesActivity extends MainActivity implements View.OnClickLi
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // action with ID action_refresh was selected
-            case R.id.menu_search_by_movie:
-                Intent intent = new Intent(getApplicationContext(), LookUpSoundtrackActivity.class);
-                startActivity(intent);
-                Toast.makeText(this, "Search by movie selected", Toast.LENGTH_SHORT)
-                        .show();
-                break;
-            // action with ID action_settings was selected
-            case R.id.menu_search_by_song:
-                Toast.makeText(this, "Search by song ", Toast.LENGTH_SHORT)
-                        .show();
-                break;
-            default:
-                break;
-        }
 
-        return true;
-    }
 
 
 }
