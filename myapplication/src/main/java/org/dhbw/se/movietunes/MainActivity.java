@@ -1,8 +1,12 @@
 package org.dhbw.se.movietunes;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.EditText;
 
@@ -20,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
      EditText textField;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         super.onCreate(savedInstanceState);
+        //setHasOptionsMenu(true);
 
         setContentView(R.layout.activity_main);
         View welcomeText = findViewById(R.id.welcome);
@@ -46,6 +52,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
         intent.putExtra(EXTRA_MESSAGE, movieTitle);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
     }
 
 
