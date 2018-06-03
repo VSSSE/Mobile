@@ -9,13 +9,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements Button.OnClickListener {
 
 
 
@@ -25,33 +25,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Connector
     //ParseObject: movieTitle-soundtrack
 
-     EditText textField;
+     //EditText textField;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
-        View searchButton;
+        Button lookUpSoundtrackButton;
+        Button lookUpMoviesButton;
         super.onCreate(savedInstanceState);
         //setHasOptionsMenu(true);
         setContentView(R.layout.activity_main);
         View welcomeText = findViewById(R.id.welcome);
-        searchButton = findViewById(R.id.search_button);
-        View introText = findViewById(R.id.intro_text);
-         textField = (EditText) findViewById(R.id.text_input);
-        searchButton.setOnClickListener(this);
+        lookUpSoundtrackButton = findViewById(R.id.search_button);
+        lookUpMoviesButton = findViewById(R.id.movies_button);
+       // View introText = findViewById(R.id.intro_text);
+         //textField = (EditText) findViewById(R.id.text_input);
+        lookUpSoundtrackButton.setOnClickListener(this);
+        lookUpMoviesButton.setOnClickListener(this);
     }
-
+@Override
     public void onClick(View v) {
-        String movieTitle = textField.getText().toString();
+        //String movieTitle = textField.getText().toString();
         // searchResultSoundtrack=new Movie(movieTitle);
         // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));
+    Button button = (Button)v;
+        String text= (String)button.getText();
+        Intent intent;
 
 
-        Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, movieTitle);
-        startActivity(intent);
+        switch(button.getId()){
+            case R.id.search_button:
+                intent = new Intent(getApplicationContext(), LookUpSoundtrackActivity.class);
+                // intent.putExtra(EXTRA_MESSAGE, movieTitle);
+                startActivity(intent);
+                break;
+            case R.id.movies_button:
+                intent = new Intent(getApplicationContext(), LookUpMoviesActivity.class);
+                startActivity(intent);
+                break;
+
+
+        }
+
+
+        //Intent intent = new Intent(getApplicationContext(), LookUpSoundtrackActivity.class);
+       // intent.putExtra(EXTRA_MESSAGE, movieTitle);
+        //startActivity(intent);
     }
 
 
@@ -87,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         return true;
     }
+
 
 
 }
