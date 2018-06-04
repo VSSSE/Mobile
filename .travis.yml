@@ -34,17 +34,15 @@ android:
 
 before_script:
   - android list targets
-  - ls /usr/local/android-sdk/system-images/android-${EMULATOR_API_LEVEL}/${ANDROID_TAG}/${ANDROID_ABI}/
   - export ANDROID_SDK_ROOT=/usr/local/android-sdk
   - export QEMU_AUDIO_DRV=none 
   - echo y | sdkmanager --update
   - android list sdk --use-sdk-wrapper
   - ls /usr/local/android-sdk/system-images/android-${EMULATOR_API_LEVEL}/${ANDROID_TAG}/${ANDROID_ABI}/ -la 
-  - ls  ~ -la
 
-  - echo no | ~/Android/tools/android create avd --force -n test -k "system-images;android-${EMULATOR_API_LEVEL};${ANDROID_TAG};${ANDROID_ABI}" 
+  - echo no | android create avd --force -n test -k "system-images;android-${EMULATOR_API_LEVEL};${ANDROID_TAG};${ANDROID_ABI}" 
  
-  - ~/Android/tools/emulator -avd test -no-skin -no-window &
+  - emulator -avd test -no-skin -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
 
