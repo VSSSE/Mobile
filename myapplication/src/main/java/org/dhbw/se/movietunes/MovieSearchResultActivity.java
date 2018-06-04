@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
@@ -21,5 +22,10 @@ public class MovieSearchResultActivity extends MainActivity implements AdapterVi
         setContentView(R.layout.movie_search_result);
         song = (TextView) findViewById(R.id.song);
         song.setText(songTitle);
+    }
+
+    @Override
+    public void onClick(View v) {
+        
     }
 }
