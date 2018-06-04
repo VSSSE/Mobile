@@ -30,8 +30,7 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     # Specify at least one system image
-    - sys-img-${ANDROID_ABI}-${ANDROID_TAG}-$EMULATOR_API_LEVEL
-
+    #- sys-img-${ANDROID_ABI}-${ANDROID_TAG}-${EMULATOR_API_LEVEL}
 before_script:
   #- export ANDROID_SDK_ROOT=/usr/local/android-sdk
   #- export QEMU_AUDIO_DRV=none 
