@@ -19,6 +19,7 @@ android:orientation="vertical" >
     android:text="Movie soundtrack:"
     android:layout_marginTop="25px"
     android:textAlignment="textStart"
+    android:layout_gravity="start"
     android:textSize="14pt"
     android:textStyle="bold" />
 
