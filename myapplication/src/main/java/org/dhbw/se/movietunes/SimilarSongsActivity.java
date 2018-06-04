@@ -49,13 +49,5 @@ public class SimilarSongsActivity extends MainActivity {
         similarSongsView.setAdapter(adapter);
 
     }
-    public void sortByTitle(){
-
-    }
-    public void sortByYear(){
-
-    }
-    public  void showStatistics(){
-
-    }
+   
 }
