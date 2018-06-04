@@ -15,5 +15,9 @@
         androclass:title="Find similar songs"
         android:id="@+id/similar"
         android:title="Find similar songs"/>
+    <item
+        androclass:title="Share on Facebook"
+        android:id="@+id/facebook"
+        android:title="Share on Facebook"/>
 
 </menu>

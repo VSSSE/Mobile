@@ -101,6 +101,8 @@ public class MainActivity extends AppCompatActivity   {
                 Toast.makeText(this, "Search by song title ", Toast.LENGTH_SHORT)
                         .show();
                 break;
+            
+
             default:
                 break;
         }

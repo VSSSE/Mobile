@@ -26,6 +26,6 @@ public class MovieSearchResultActivity extends MainActivity implements AdapterVi
 
     @Override
     public void onClick(View v) {
-        
+
     }
 }
