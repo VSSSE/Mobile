@@ -49,5 +49,5 @@ public class SimilarSongsActivity extends MainActivity {
         similarSongsView.setAdapter(adapter);
 
     }
-   
+
 }

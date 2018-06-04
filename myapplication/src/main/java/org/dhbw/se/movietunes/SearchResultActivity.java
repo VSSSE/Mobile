@@ -116,6 +116,11 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
 
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.de")));
                 }
+                if(title.contains("Facebook")){
+                    // player=new YoutubePlayer(currentSongList.get(position).getSongTitle());
+
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.de")));
+                }
                 if(title.contains("similar")){
                     Intent intent = new Intent(getApplicationContext(), SimilarSongsActivity.class);
                     intent.putExtra("TRACK_ID", trackId);
