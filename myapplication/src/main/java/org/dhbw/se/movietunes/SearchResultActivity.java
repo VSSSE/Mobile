@@ -48,7 +48,7 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_search_result);
-        String movieTitle = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        String movieTitle = intent.getStringExtra(LookUpSoundtrackActivity.EXTRA_MESSAGE);
         TextView movie = (TextView) findViewById(R.id.movie);
         movie.setText(movieTitle);
 

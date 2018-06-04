@@ -40,14 +40,14 @@ public class LookUpMoviesActivity extends MainActivity implements View.OnClickLi
     }
 
     public void onClick(View v) {
-        String movieTitle = textField.getText().toString();
+        String songTitle = textField.getText().toString();
         // searchResultSoundtrack=new Movie(movieTitle);
         // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));
 
 // TODO MovieSearchResultActivity!!
-        //Intent intent = new Intent(getApplicationContext(), MovieSearchResultActivity.class);
-        Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, movieTitle);
+        Intent intent = new Intent(getApplicationContext(), MovieSearchResultActivity.class);
+       // Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
+        intent.putExtra(EXTRA_MESSAGE, songTitle);
         startActivity(intent);
     }
 

@@ -39,7 +39,7 @@ public class SimilarSongsActivity extends MainActivity {
 
         List<String> similars = new ArrayList<>();
         for (Song song : controller.findSimilarSongs(trackId)) {
-            similars.add(song.getSongTitle());
+            similars.add(song.getSongTitle()+"Duration: "+song.getDuration()+", "+song.getSinger());
         }
 
 
