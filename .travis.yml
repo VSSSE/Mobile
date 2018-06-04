@@ -39,10 +39,8 @@ before_script:
   - export QEMU_AUDIO_DRV=none 
   - echo y | sdkmanager --update
   - android list sdk --use-sdk-wrapper
-  - ls /usr/local/android-sdk/system-images/android-${EMULATOR_API_LEVEL}/${ANDROID_TAG}/${ANDROID_ABI}/ 
-  - ls ~
-  - ls ~/Android
-  - ls ~/.android
+  - ls /usr/local/android-sdk/system-images/android-${EMULATOR_API_LEVEL}/${ANDROID_TAG}/${ANDROID_ABI}/ -la 
+  - ls  ~ -la
 
   - echo no | ~/Android/tools/android create avd --force -n test -k "system-images;android-${EMULATOR_API_LEVEL};${ANDROID_TAG};${ANDROID_ABI}" 
  
