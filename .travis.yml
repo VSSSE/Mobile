@@ -36,6 +36,7 @@ before_script:
   - android list targets
   - ls /usr/local/android-sdk/system-images/android-${EMULATOR_API_LEVEL}/google_apis/${ANDROID_ABI}/
   - export ANDROID_SDK_ROOT=/usr/local/android-sdk
+  - export QEMU_AUDIO_DRV=none 
   - echo no | android create avd --force -n test -t "android-"$EMULATOR_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG 
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
