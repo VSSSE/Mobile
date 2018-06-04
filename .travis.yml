@@ -34,10 +34,10 @@ android:
 
 before_script:
   - android list targets
-  - ls /usr/local/android-sdk
+  - ls /usr/local/android-sdk/system-images
   - export ANDROID_SDK_ROOT=/usr/local/android-sdk
   - echo no | android create avd --force -n test -t "android-"$EMULATOR_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG 
-  - emulator -avd test -no-audio -no-window &
+  - emulator -avd test -no-audio -no-window -verbose &
   - android-wait-for-emulator
 
 
