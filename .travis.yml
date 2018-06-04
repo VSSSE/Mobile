@@ -38,7 +38,7 @@ before_script:
   - export ANDROID_SDK_ROOT=/usr/local/android-sdk
   - export QEMU_AUDIO_DRV=none 
   - echo y | sdkmanager --update
-  - android list targets
+  - android list sdk
   - ls /usr/local/android-sdk/system-images/android-${EMULATOR_API_LEVEL}/${ANDROID_TAG}/${ANDROID_ABI}/ 
   - ls ~
   - ls ~/Android
