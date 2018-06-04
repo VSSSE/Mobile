@@ -39,7 +39,7 @@ before_script:
   - echo y | sdkmanager --update
   - android list sdk --use-sdk-wrapper
   - ls /usr/local/android-sdk/system-images/android-${EMULATOR_API_LEVEL}/${ANDROID_TAG}/${ANDROID_ABI}/ -la 
-
+  - sdkmanager "platform-tools" "platforms;android-${EMULATOR_API_LEVEL}"
   - echo no | android create avd --force -n test -k "system-images;android-${EMULATOR_API_LEVEL};${ANDROID_TAG};${ANDROID_ABI}" 
  
   - /usr/local/android-sdk/emulator/emulator -avd test -no-skin -no-window &
