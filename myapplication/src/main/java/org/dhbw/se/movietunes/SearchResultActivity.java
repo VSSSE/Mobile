@@ -114,7 +114,7 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
                 if(title.contains("Youtube")){
                    // player=new YoutubePlayer(currentSongList.get(position).getSongTitle());
 
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.de")));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=t7jzmW9tYX0")));
                 }
                 if(title.contains("Facebook")){
                     // player=new YoutubePlayer(currentSongList.get(position).getSongTitle());

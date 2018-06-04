@@ -51,6 +51,16 @@ public class Extractor {
 
     }
 
+    private String convertToSeconds(String s){
+        int ml=Integer.parseInt(s);
+        ml=ml/1000;
+        int min=ml/60;
+        int sec=ml%60;
+
+
+        return String.valueOf(min)+":"+String.valueOf(sec);
+    }
+
 
 
 
@@ -66,14 +76,12 @@ public class Extractor {
         //https://open.spotify.com/user/moyomba/playlist/6lwDOP2ZW0h2jOccLB0342
         String url=track.getAsJsonPrimitive("uri").getAsString();
 
-
-
-
         String artist=extractArtistName(track);
 
 
         Song result = new Song();
         result.setSongTitle(songTitle);
+        duration=convertToSeconds(duration);
         result.setDuration(duration);
         result.setSinger(artist);
         result.setTrackId(trackId);
