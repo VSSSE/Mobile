@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import com.example.myapplication.R;
 
-public class LookUpSoundtrackActivity extends MainActivity implements View.OnClickListener {
+public class LookUpSoundtrackActivity extends MainActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
 
@@ -33,10 +33,9 @@ Intent intent=getIntent();
         searchButton = findViewById(R.id.search_button);
         View introText = findViewById(R.id.intro_text);
         textField = (EditText) findViewById(R.id.text_input);
-        searchButton.setOnClickListener(this);
     }
 
-    public void onClick(View v) {
+    public void onClickLookUpSoundtracks(View v) {
         String movieTitle = textField.getText().toString();
         // searchResultSoundtrack=new Movie(movieTitle);
         // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));

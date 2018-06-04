@@ -39,7 +39,7 @@ public class LookUpMoviesActivity extends MainActivity implements View.OnClickLi
         searchButton.setOnClickListener(this);
     }
 
-    public void onClick(View v) {
+    public void onClickLookUpMovies(View v) {
         String songTitle = textField.getText().toString();
         // searchResultSoundtrack=new Movie(movieTitle);
         // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));

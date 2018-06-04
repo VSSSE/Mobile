@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 
 
-public class MainActivity extends AppCompatActivity implements Button.OnClickListener {
+public class MainActivity extends AppCompatActivity   {
 
 
 
@@ -42,11 +42,10 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         lookUpMoviesButton = findViewById(R.id.movies_button);
        // View introText = findViewById(R.id.intro_text);
          //textField = (EditText) findViewById(R.id.text_input);
-        lookUpSoundtrackButton.setOnClickListener(this);
-        lookUpMoviesButton.setOnClickListener(this);
+
     }
-@Override
-    public void onClick(View v) {
+
+    public void onClickMainActivity(View v) {
         //String movieTitle = textField.getText().toString();
         // searchResultSoundtrack=new Movie(movieTitle);
         // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));

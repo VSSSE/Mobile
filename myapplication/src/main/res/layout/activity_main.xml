@@ -24,7 +24,7 @@
         android:id="@+id/movies_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="lookUpMovies"
+        android:onClick="onClickMainActivity"
         android:text="LOOK UP MOVIES" />
 
 
@@ -32,7 +32,7 @@
         android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="lookUpSoundtrack"
+        android:onClick="onClickMainActivity"
         android:text="LOOK UP SOUNDTRACK" />
 
 </LinearLayout>
