@@ -33,7 +33,7 @@ public class SpotifyCommunicationTest {
 
     @Test
     public void testGetSongsFromPlaylist() {
-        PlaylistKey key = new PlaylistKey("moyomba", "6lwDOP2ZW0h2jOccLB0342");
+        PlaylistKey key = new PlaylistKey("moyomba", "6lwDOP2ZW0h2jOccLB0342", "");
 
         List<Song> songsFromPlaylist = classUnderTest.getSongsFromPlaylist(key);
 
