@@ -21,13 +21,9 @@ public class LookUpSoundtrackActivity extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         View searchButton;
-
-
         super.onCreate(savedInstanceState);
         //setHasOptionsMenu(true);
-Intent intent=getIntent();
         setContentView(R.layout.look_up_soundtrack_activity);
         View welcomeText = findViewById(R.id.welcome);
         searchButton = findViewById(R.id.search_button);
@@ -39,8 +35,6 @@ Intent intent=getIntent();
         String movieTitle = textField.getText().toString();
         // searchResultSoundtrack=new Movie(movieTitle);
         // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));
-
-
         Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
         intent.putExtra(EXTRA_MESSAGE, movieTitle);
         startActivity(intent);

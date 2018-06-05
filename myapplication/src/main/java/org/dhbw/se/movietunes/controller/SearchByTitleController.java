@@ -147,8 +147,6 @@ public class SearchByTitleController {
 
                     HttpsURLConnection myConnection =
                             (HttpsURLConnection) spotifyEndpoint.openConnection();
-                    Map<String, List<String>> requestProperties = myConnection.getRequestProperties();
-
 
                     myConnection.getResponseCode();
                     if (myConnection.getResponseCode() == 200) {

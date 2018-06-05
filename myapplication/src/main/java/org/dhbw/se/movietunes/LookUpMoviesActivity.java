@@ -16,32 +16,21 @@ import com.example.myapplication.R;
 public class LookUpMoviesActivity extends MainActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
-
     EditText textField;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-        View searchButton;
-
-
+        View searchButton=findViewById(R.id.search_button);
         super.onCreate(savedInstanceState);
-        //setHasOptionsMenu(true);
-        Intent intent=getIntent();
         setContentView(R.layout.look_up_movies_activity);
         View welcomeText = findViewById(R.id.welcome);
-        searchButton = findViewById(R.id.search_button);
         View introText = findViewById(R.id.intro_text);
-
         textField = (EditText) findViewById(R.id.text_input);
     }
 
     public void onClickLookUpMovies(View v) {
         String songTitle = textField.getText().toString();
-        // searchResultSoundtrack=new Movie(movieTitle);
-        // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));
 
 // TODO MovieSearchResultActivity!!
         Intent intent = new Intent(getApplicationContext(), MovieSearchResultActivity.class);

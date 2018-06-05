@@ -2,8 +2,6 @@ package org.dhbw.se.movietunes.http;
 
 import android.support.test.runner.AndroidJUnit4;
 
-import static junit.framework.Assert.*;
-
 import org.dhbw.se.movietunes.model.Song;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,11 +9,13 @@ import org.junit.runner.RunWith;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class SpotifyCommunicationTest {
 
-    SpotifyCommunication classUnderTest = new SpotifyCommunication();
+    private SpotifyCommunication classUnderTest = new SpotifyCommunication();
 
     @Test
     public void testFetchToken() {

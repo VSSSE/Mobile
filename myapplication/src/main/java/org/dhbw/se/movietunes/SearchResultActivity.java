@@ -28,9 +28,7 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
 
     ListView mListView;
     SoundtrackSearchResult strackSearchResult;
-
     List<Song> currentSongList = null;
-
     Player player;
     Player player2;
 
@@ -53,23 +51,16 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
         movie.setText(movieTitle);
 
         mListView = (ListView) findViewById(R.id.soundtrack_list_view);
-// 1
         //List<Song> songArrayList = controller.lookupSoundtrack(movieTitle);
         strackSearchResult = controller.searchTracklist(movieTitle);
-        //
         currentSongList = new ArrayList<>(strackSearchResult.getSongs());
-// 2
         String[] strings = new String[currentSongList.size()];
-// 3
         for (int i = 0; i < currentSongList.size(); i++) {
             Song song = currentSongList.get(i);
             strings[i] = song.getSongTitle() + " (Duration:" + song.getDuration() + ")" + song.getSinger();
         }
-// 4
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, strings);
         mListView.setAdapter(adapter);
-
-
         mListView.setOnItemClickListener(this);
 
 
@@ -105,20 +96,16 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
                 if(title.contains("Spotify")){
                    //player=new SpotifyPlayer(currentSongList.get(position).getSongTitle(), uri);
                     //url from search request!!
-
                     String url=strackSearchResult.getUrl();
-
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 
                 }
                 if(title.contains("Youtube")){
                    // player=new YoutubePlayer(currentSongList.get(position).getSongTitle());
-
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=t7jzmW9tYX0")));
                 }
                 if(title.contains("Facebook")){
                     // player=new YoutubePlayer(currentSongList.get(position).getSongTitle());
-
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.de")));
                 }
                 if(title.contains("similar")){
@@ -136,20 +123,7 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
         popupMenu.show();//showing popup menu
 
 
-        //player=new SpotifyPlayer(currentSongList.get(position).getSongTitle(), uri);
-       // player2=new YoutubePlayer(currentSongList.get(position).getSongTitle());
-        //player.play();
-        //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.example.com")));
 
-
-        // Show Alert
-        // Toast.makeText(getApplicationContext(),
-        //         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-        //         .show();
-
-        //Intent intent = new Intent(getApplicationContext(), SimilarSongsActivity.class);
-        //intent.putExtra("TRACK_ID", trackId);
-        //startActivity(intent);
     }
 
 }
