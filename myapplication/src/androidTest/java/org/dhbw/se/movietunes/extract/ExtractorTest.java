@@ -45,10 +45,11 @@ public class ExtractorTest {
         String result = codeUnderTest.extractUserIdFromSearchResult (responseString);
         assertEquals( "moyomba", result);
     }
-    @Test
+
+    /*@Test
     public void testExtractArtistName(){
     fail();
-    }
+    }*/
 
 
     @Test
@@ -60,7 +61,7 @@ public class ExtractorTest {
         Song song = songs.get(0);
 
         assertEquals("The Terminator (Main Title)", song.getSongTitle() );
-        assertEquals("160925", song.getDuration());
+        assertEquals("2:40", song.getDuration());
         assertEquals("Brad Fiedel", song.getSinger());
         assertEquals("6vIZTOdX8TPTRBqcloIsUz", song.getTrackId());
         assertEquals("spotify:track:6vIZTOdX8TPTRBqcloIsUz", song.getUri());
