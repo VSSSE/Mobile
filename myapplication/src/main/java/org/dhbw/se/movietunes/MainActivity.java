@@ -30,25 +30,14 @@ public class MainActivity extends AppCompatActivity   {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-        Button lookUpSoundtrackButton;
-        Button lookUpMoviesButton;
-        super.onCreate(savedInstanceState);
-        //setHasOptionsMenu(true);
-        setContentView(R.layout.activity_main);
         View welcomeText = findViewById(R.id.welcome);
-        lookUpSoundtrackButton = findViewById(R.id.search_button);
-        lookUpMoviesButton = findViewById(R.id.movies_button);
-       // View introText = findViewById(R.id.intro_text);
-         //textField = (EditText) findViewById(R.id.text_input);
-
+        Button lookUpSoundtrackButton=findViewById(R.id.search_button);
+        Button lookUpMoviesButton=findViewById(R.id.movies_button);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
     }
 
     public void onClickMainActivity(View v) {
-        //String movieTitle = textField.getText().toString();
-        // searchResultSoundtrack=new Movie(movieTitle);
-        // searchResultSoundtrack.setSoundtracks(lookUpSoundtrack(movieTitle));
     Button button = (Button)v;
         String text= (String)button.getText();
         Intent intent;
