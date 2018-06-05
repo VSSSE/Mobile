@@ -57,7 +57,7 @@
             android:name="org.dhbw.se.movietunes.LookUpMoviesActivity"
             android:parentActivityName="org.dhbw.se.movietunes.SearchResultActivity"
             tools:ignore="DuplicateActivity"
-            android:theme="@style/movieTunes">
+            android:theme="@style/movieTunesStart">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.dhbw.se.movietunes.SearchResultActivity" />
@@ -68,7 +68,7 @@
             android:name="org.dhbw.se.movietunes.SimilarSongsActivity"
             android:parentActivityName="org.dhbw.se.movietunes.SearchResultActivity"
             tools:ignore="DuplicateActivity"
-            android:theme="@style/movieTunes">
+            android:theme="@style/movieTunesStart">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.dhbw.se.movietunes.SearchResultActivity" />
