@@ -21,9 +21,7 @@ public class Song {
     public String getDuration() {
         return duration;
     }
-    public void playOnSpotify(){
 
-    }
     public void setUri(String uri){
         this.uri=uri;
     }

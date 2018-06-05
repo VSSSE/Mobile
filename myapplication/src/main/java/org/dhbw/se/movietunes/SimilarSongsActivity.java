@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -32,7 +31,7 @@ public class SimilarSongsActivity extends MainActivity {
 
 
         setContentView(R.layout.similar_songs);
-        View intro = findViewById(R.id.intro);
+        //View intro = findViewById(R.id.intro);
         ListView similarSongsView = (ListView) findViewById(R.id.similarSongs_list_view);
 
         SearchSimilarSongsController controller = new SearchSimilarSongsController(getApplicationContext());

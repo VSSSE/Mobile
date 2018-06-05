@@ -43,7 +43,6 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
         controller = new SearchByTitleController(getApplicationContext());
 
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_search_result);
         String movieTitle = intent.getStringExtra(LookUpSoundtrackActivity.EXTRA_MESSAGE);
         movie = (TextView) findViewById(R.id.movie);
@@ -118,7 +117,6 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
         });
 
         popupMenu.show();//showing popup menu
-
 
 
     }

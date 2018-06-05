@@ -16,7 +16,6 @@ public class MovieSearchResultActivity extends MainActivity implements AdapterVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Intent intent=getIntent();
         String songTitle = intent.getStringExtra(LookUpMoviesActivity.EXTRA_MESSAGE);
         setContentView(R.layout.movie_search_result);
@@ -26,6 +25,8 @@ public class MovieSearchResultActivity extends MainActivity implements AdapterVi
 
     @Override
     public void onClick(View v) {
+        String s="";
+        s=s+"a";
 
     }
 }

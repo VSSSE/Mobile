@@ -1,11 +1,8 @@
 package org.dhbw.se.movietunes.controller;
 
 import android.content.Context;
-
 import org.dhbw.se.movietunes.http.SpotifyCommunication;
 import org.dhbw.se.movietunes.model.Song;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

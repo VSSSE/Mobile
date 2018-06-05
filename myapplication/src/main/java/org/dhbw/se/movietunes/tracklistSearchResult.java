@@ -12,4 +12,12 @@ private List<Song> songs;
         this.url = url;
         this.songs = songs;
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
 }

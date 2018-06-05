@@ -2,7 +2,6 @@ package org.dhbw.se.movietunes.controller;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.JsonReader;
 
 import org.dhbw.se.movietunes.SoundtrackSearchResult;
 import org.dhbw.se.movietunes.http.PlaylistKey;
@@ -149,10 +148,6 @@ public class SearchByTitleController {
                         InputStream responseBody = myConnection.getInputStream();
                         InputStreamReader responseBodyReader =
                                 new InputStreamReader(responseBody, "UTF-8");
-                        JsonReader jsonReader = new JsonReader(responseBodyReader);
-
-
-                        // Success
                         // Further processing here
                     } else {
                         System.out.println("Funktioniert nicht");
@@ -165,20 +160,10 @@ public class SearchByTitleController {
                     e.printStackTrace();
                 }
 
-                // All your networking logic
-                // should be here
             }
         });
 
-        //InputStream inputStream = getResources().openRawResource();
-
-        //InputStream in = appContext.getResources().openRawResource(R.raw.songs);
-        //InputStreamReader reader = new InputStreamReader(in);
-        //  List<Song> songs = Arrays.asList(gson.fromJson(reader, Song[].class));
-
         System.out.println("AAAAAAAAAAAAAAAA song read successfully");
-
-
         return null;
 
 

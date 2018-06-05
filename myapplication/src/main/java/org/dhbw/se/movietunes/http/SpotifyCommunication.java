@@ -9,7 +9,6 @@ import org.dhbw.se.movietunes.model.Song;
 import java.util.List;
 
 import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -18,6 +17,8 @@ public class SpotifyCommunication {
 
     String token;
     Extractor extractor;
+    private static final String HEADER_AUTHORIZATION = "Basic M2ZkOWFjYmJjZmY4NDVlNThhZTAxOGUwYTYwZjliMzU6ZTllODJjNmZjMDI0NGFiYWI1NWRiMTRjNGEzNjFhNzc=";
+
 
 
     public SpotifyCommunication() {
@@ -25,10 +26,9 @@ public class SpotifyCommunication {
         extractor = new Extractor();
     }
 
-    private static final String HEADER_AUTHORIZATION = "Basic M2ZkOWFjYmJjZmY4NDVlNThhZTAxOGUwYTYwZjliMzU6ZTllODJjNmZjMDI0NGFiYWI1NWRiMTRjNGEzNjFhNzc=";
 
     public String fetchToken() {
-        MediaType mediaType = MediaType.parse("x-www-form-urlencoded");
+        //MediaType mediaType = MediaType.parse("x-www-form-urlencoded");
         RequestBody formBody = new FormBody.Builder().add("grant_type", "client_credentials").build();
 
         // RequestBody body = RequestBody.create( null, "grant_type:client_credentials");

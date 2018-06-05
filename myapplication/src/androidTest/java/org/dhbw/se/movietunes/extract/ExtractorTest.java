@@ -19,6 +19,7 @@ import java.util.List;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.fail;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -30,8 +31,6 @@ public class ExtractorTest {
     public  void setUp(){
         codeUnderTest = new Extractor();
     }
-
-
     @Test
     public void testExtractPlaylistIdFromSearchResult(){
         String responseString = readStringFromFile (R.raw.test_result_search_track);
@@ -40,19 +39,15 @@ public class ExtractorTest {
 
         assertEquals( "6lwDOP2ZW0h2jOccLB0342", result);
     }
-
-
     @Test
     public void testExtractUserIdFromSearchResult (){
         String responseString = readStringFromFile (R.raw.test_result_search_track);
-
         String result = codeUnderTest.extractUserIdFromSearchResult (responseString);
-
         assertEquals( "moyomba", result);
     }
     @Test
     public void testExtractArtistName(){
-
+    fail();
     }
 
 
@@ -60,7 +55,6 @@ public class ExtractorTest {
     public void testExtractSongs(){
 
         List<Song> songs = codeUnderTest.extractSongsFromTracklistDetails(readStringFromFile(R.raw.test_tracklist_details_uri));
-
         assertNotNull(songs);
         assertTrue(songs.size()>0);
         Song song = songs.get(0);
@@ -76,15 +70,11 @@ public class ExtractorTest {
     public void testExtractSongsFromRecommendationsResponse(){
 
         List<Song> songs = codeUnderTest.extractSongsFromRecommendationsResponse(readStringFromFile(R.raw.test_recommendations_response));
-
         assertNotNull(songs);
         assertTrue(songs.size()>0);
         Song song = songs.get(0);
 
         assertEquals("Tightrope", song.getSongTitle() );
-//        assertEquals("160925", song.getDuration()); TODO enable
-//        assertEquals("Brad Fiedel", song.getSinger());
-//        assertEquals("6vIZTOdX8TPTRBqcloIsUz", song.getTrackId());
     }
 
 
@@ -94,16 +84,12 @@ public class ExtractorTest {
             Context appContext = InstrumentationRegistry.getTargetContext();
             InputStream in = appContext.getResources().openRawResource(resourceId);
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
             StringBuilder result = new StringBuilder();
-
             String line;
             while ((line = reader.readLine()) != null) {
                 result.append(line);
                 result.append("\n");
             }
-
-
             reader.close();
             return result.toString();
         }

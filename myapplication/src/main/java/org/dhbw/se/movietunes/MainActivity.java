@@ -20,19 +20,14 @@ public class MainActivity extends AppCompatActivity   {
 
 
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
-
-
-    //Connector
-    //ParseObject: movieTitle-soundtrack
-
      //EditText textField;
-
+Button lookUpSoundtrackButton,lookUpMoviesButton;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         View welcomeText = findViewById(R.id.welcome);
-        Button lookUpSoundtrackButton=findViewById(R.id.search_button);
-        Button lookUpMoviesButton=findViewById(R.id.movies_button);
+        lookUpSoundtrackButton=findViewById(R.id.search_button);
+        lookUpMoviesButton=findViewById(R.id.movies_button);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
@@ -52,8 +47,6 @@ public class MainActivity extends AppCompatActivity   {
                 intent = new Intent(getApplicationContext(), LookUpMoviesActivity.class);
                 startActivity(intent);
                 break;
-
-
         }
 
 
