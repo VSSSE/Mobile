@@ -37,8 +37,7 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         View intro;
-        TextView searchResult;
-        Intent goToNextActivity;
+        TextView searchResult, movie;
         SearchByTitleController controller;
         Intent intent = getIntent();
         controller = new SearchByTitleController(getApplicationContext());
@@ -47,11 +46,9 @@ public class SearchResultActivity extends MainActivity implements AdapterView.On
 
         setContentView(R.layout.activity_search_result);
         String movieTitle = intent.getStringExtra(LookUpSoundtrackActivity.EXTRA_MESSAGE);
-        TextView movie = (TextView) findViewById(R.id.movie);
+        movie = (TextView) findViewById(R.id.movie);
         movie.setText(movieTitle);
-
         mListView = (ListView) findViewById(R.id.soundtrack_list_view);
-        //List<Song> songArrayList = controller.lookupSoundtrack(movieTitle);
         strackSearchResult = controller.searchTracklist(movieTitle);
         currentSongList = new ArrayList<>(strackSearchResult.getSongs());
         String[] strings = new String[currentSongList.size()];

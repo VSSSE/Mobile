@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity   {
 
     public void onClickMainActivity(View v) {
     Button button = (Button)v;
-        String text= (String)button.getText();
         Intent intent;
 
 

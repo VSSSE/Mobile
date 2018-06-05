@@ -4,9 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.JsonReader;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import org.dhbw.se.movietunes.SoundtrackSearchResult;
 import org.dhbw.se.movietunes.http.PlaylistKey;
 import org.dhbw.se.movietunes.http.SpotifyCommunication;
@@ -20,7 +17,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -178,9 +174,6 @@ public class SearchByTitleController {
 
         //InputStream in = appContext.getResources().openRawResource(R.raw.songs);
         //InputStreamReader reader = new InputStreamReader(in);
-
-
-        Gson gson = new GsonBuilder().create();
         //  List<Song> songs = Arrays.asList(gson.fromJson(reader, Song[].class));
 
         System.out.println("AAAAAAAAAAAAAAAA song read successfully");

@@ -17,6 +17,7 @@ public class LookUpMoviesActivity extends MainActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
     EditText textField;
+    View introText, welcomeText;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -24,8 +25,8 @@ public class LookUpMoviesActivity extends MainActivity {
         View searchButton=findViewById(R.id.search_button);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.look_up_movies_activity);
-        View welcomeText = findViewById(R.id.welcome);
-        View introText = findViewById(R.id.intro_text);
+        welcomeText = findViewById(R.id.welcome);
+        introText = findViewById(R.id.intro_text);
         textField = (EditText) findViewById(R.id.text_input);
     }
 
