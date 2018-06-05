@@ -1,4 +1,4 @@
-package org.dhbw.se.movietunes.extract;
+package org.dhbw.se.movietunes;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -6,6 +6,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.myapplication.R;
 
+import org.dhbw.se.movietunes.extract.Extractor;
 import org.dhbw.se.movietunes.model.Song;
 import org.junit.Before;
 import org.junit.Test;
