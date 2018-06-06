@@ -11,7 +11,7 @@ public abstract class Player extends AppCompatActivity {
     public Player(String songTitle) {
         this.songTitle = songTitle;
     }
-public abstract  void play();
+    public abstract  void play();
 
 
     public abstract String createUri();
