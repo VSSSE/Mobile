@@ -32,7 +32,7 @@ jobs:
           background: true
       - run:
           name: Run Tests2
-          command: ./gradlew :demo:connectedAndroidTest
+          command: ./gradlew :connectedAndroidTest
       - store_artifacts:
           path: myapplication/build/reports
           destination: reports
