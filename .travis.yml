@@ -22,7 +22,7 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     # Specify at least one system image
-    - sys-img-armeabi-v7a-default-24
+    - sys-img-armeabi-v7a-google_apis-24
 before_script:
   - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-google-google_play_services,extra-google-m2repository,android-27
   - echo y | android update sdk --no-ui --all --filter build-tools-27.0.3
@@ -31,11 +31,11 @@ before_script:
   - sdkmanager "platform-tools" "platforms;android-4"
   - ./gradlew androidDependencies
   - sdkmanager --list --verbose | grep system-images
-  - echo "y" | sdkmanager "system-images;android-24;default;armeabi-v7a" && echo "no" | android create avd --force -n test -k "system-images;android-24;default;armeabi-v7a"
+  - echo "y" | sdkmanager "system-images;android-24;google_apis;armeabi-v7a" && echo "no" | android create avd --force -n test -k "system-images;android-24;google_apis;armeabi-v7a"
   #- export ANDROID_SDK_ROOT=/usr/local/android-sdk
   - export QEMU_AUDIO_DRV=none
-  - export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && $ANDROID_HOME/emulator/emulator -avd test -noaudio -no-boot-anim -no-window -accel on -use-system-libs -verbose &
-
+  - export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && $ANDROID_HOME/emulator/emulator -avd test -noaudio -use-system-libs -verbose &
+# -no-boot-anim -no-window -accel on
   #- echo no | android create avd --force -n test -k "system-images;android-${EMULATOR_API_LEVEL};${ANDROID_TAG};${ANDROID_ABI}" 
   #- /usr/local/android-sdk/emulator/emulator -avd test -no-skin -no-window -engine classic &
   - android-wait-for-emulator
