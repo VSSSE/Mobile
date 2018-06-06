@@ -46,4 +46,5 @@ before_script:
 script:
   #- ./gradlew clean check connectedCheck
   - ./gradlew lint test
-  - ./gradlew clean check connectedCheck connectedAndroidTest
+  - ./gradlew clean check connectedCheck --info --stacktrace
+  #connectedAndroidTest
