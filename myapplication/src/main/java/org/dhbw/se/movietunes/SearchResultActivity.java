@@ -2,125 +2,96 @@ package org.dhbw.se.movietunes;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.PopupMenu;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
 import com.example.myapplication.R;
-
-import org.dhbw.se.movietunes.controller.SearchByTitleController;
-import org.dhbw.se.movietunes.model.Song;
-import org.dhbw.se.movietunes.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultActivity extends MainActivity implements AdapterView.OnItemClickListener {
-
-    ListView mListView;
-    SoundtrackSearchResult strackSearchResult;
-    List<Song> currentSongList = null;
-    Player player;
-    Player player2;
+import org.dhbw.se.movietunes.controller.SearchByTitleController;
+import org.dhbw.se.movietunes.model.Song;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        View intro;
-        TextView searchResult, movie;
-        SearchByTitleController controller;
-        Intent intent = getIntent();
-        controller = new SearchByTitleController(getApplicationContext());
+public class SearchResultActivity extends AppCompatActivity
+        implements AdapterView.OnItemClickListener {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_result);
-        String movieTitle = intent.getStringExtra(LookUpSoundtrackActivity.EXTRA_MESSAGE);
-        movie = (TextView) findViewById(R.id.movie);
-        movie.setText(movieTitle);
-        mListView = (ListView) findViewById(R.id.soundtrack_list_view);
-        strackSearchResult = controller.searchTracklist(movieTitle);
-        currentSongList = new ArrayList<>(strackSearchResult.getSongs());
-        String[] strings = new String[currentSongList.size()];
-        for (int i = 0; i < currentSongList.size(); i++) {
-            Song song = currentSongList.get(i);
-            strings[i] = song.getSongTitle() + " (Duration:" + song.getDuration() + ")" + song.getSinger();
+  ListView resultList;
+  SoundtrackSearchResult strackSearchResult;
+  List<Song> currentSongList = null;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    setContentView(R.layout.activity_search_result);
+
+    Intent intent = getIntent();
+    TextView movie = findViewById(R.id.movie);
+    resultList = findViewById(R.id.soundtrack_list_view);
+
+    String movieTitle = intent.getStringExtra(LookUpSoundtrackActivity.EXTRA_MESSAGE);
+    movie.setText(movieTitle);
+
+    SearchByTitleController controller = new SearchByTitleController(getApplicationContext());
+    strackSearchResult = controller.searchTracklist(movieTitle);
+    currentSongList = new ArrayList<>(strackSearchResult.getSongs());
+    String[] strings = new String[currentSongList.size()];
+
+    for (int i = 0; i < currentSongList.size(); i++) {
+      Song song = currentSongList.get(i);
+      strings[i] = song.getSongTitle() + " (Duration:" + song.getDuration() + ")"
+              + song.getSinger();
+    }
+
+    ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, strings);
+    resultList.setAdapter(adapter);
+    resultList.setOnItemClickListener(this);
+
+  }
+
+  public PopupMenu showPopup(View v) {
+    PopupMenu popup = new PopupMenu(this, v);
+    MenuInflater inflater = popup.getMenuInflater();
+    inflater.inflate(R.menu.popup_menu, popup.getMenu());
+    return popup;
+  }
+
+  @Override
+  public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+
+    final String trackId = currentSongList.get(position).getTrackId();
+
+    //Todo Buttons to play on Spotify or on Youtube
+    PopupMenu popupMenu = showPopup(resultList.getChildAt(position));
+    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+      public boolean onMenuItemClick(MenuItem item) {
+        String title = (String) item.getTitle();
+        if (title.contains("Spotify")) {
+          String url = strackSearchResult.getUrl();
+          startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+
+        } else if (title.contains("Youtube")) {
+          startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=t7jzmW9tYX0")));
+
+        } else if (title.contains("Facebook")) {
+          startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.de")));
+
+        } else if (title.contains("similar")) {
+          Intent intent = new Intent(getApplicationContext(), SimilarSongsActivity.class);
+          intent.putExtra("TRACK_ID", trackId);
+          startActivity(intent);
         }
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, strings);
-        mListView.setAdapter(adapter);
-        mListView.setOnItemClickListener(this);
+        return true;
+      }
+    });
 
-
-    }
-
-
-    public PopupMenu showPopup(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.popup_menu, popup.getMenu());
-        return popup;
-
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-
-        // ListView Clicked item index
-        int itemPosition = position;
-
-        // ListView Clicked item value
-        String songString = (String) mListView.getItemAtPosition(position);
-
-        final String trackId = currentSongList.get(position).getTrackId();
-        //final String uri=
-
-        //System.out.println("It works "+uri);
-        //Todo Buttons to play on Spotify or on Youtube
-        PopupMenu popupMenu=showPopup(mListView.getChildAt(itemPosition));
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                String title=(String) item.getTitle();
-                if(title.contains("Spotify")){
-                   //player=new SpotifyPlayer(currentSongList.get(position).getSongTitle(), uri);
-                    //url from search request!!
-                    String url=strackSearchResult.getUrl();
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-
-                }
-                if(title.contains("Youtube")){
-                   // player=new YoutubePlayer(currentSongList.get(position).getSongTitle());
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=t7jzmW9tYX0")));
-                }
-                if(title.contains("Facebook")){
-                    // player=new YoutubePlayer(currentSongList.get(position).getSongTitle());
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.de")));
-                }
-                if(title.contains("similar")){
-                    Intent intent = new Intent(getApplicationContext(), SimilarSongsActivity.class);
-                    intent.putExtra("TRACK_ID", trackId);
-                    startActivity(intent);
-
-                }
-                Toast.makeText(SearchResultActivity.this,"You Clicked : " + item.getTitle(),Toast.LENGTH_SHORT).show();
-                
-                return true;
-            }
-        });
-
-        popupMenu.show();//showing popup menu
-
-
-    }
-
+    popupMenu.show();
+  }
 }
 
 

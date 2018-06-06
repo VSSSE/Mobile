@@ -1,32 +1,23 @@
 package org.dhbw.se.movietunes;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.view.View;
-import android.widget.AdapterView;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-
 import com.example.myapplication.R;
 
-public class MovieSearchResultActivity extends MainActivity implements AdapterView.OnClickListener{
-    TextView song;
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Intent intent=getIntent();
-        String songTitle = intent.getStringExtra(LookUpMoviesActivity.EXTRA_MESSAGE);
-        setContentView(R.layout.movie_search_result);
-        song = (TextView) findViewById(R.id.song);
-        song.setText(songTitle);
-    }
+public class MovieSearchResultActivity extends AppCompatActivity {
+  TextView song;
 
-    @Override
-    public void onClick(View v) {
-        String s="";
-        s=s+"a";
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-    }
+    setContentView(R.layout.movie_search_result);
+
+    Intent intent = getIntent();
+    String songTitle = intent.getStringExtra(LookUpMoviesActivity.EXTRA_MESSAGE);
+    song = findViewById(R.id.song);
+    song.setText(songTitle);
+  }
 }

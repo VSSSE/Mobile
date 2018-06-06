@@ -3,11 +3,11 @@ package org.dhbw.se.movietunes;
 import java.util.List;
 import org.dhbw.se.movietunes.model.Song;
 
-public class SoundtrackSearchResult {
+class TracklistSearchResult {
   private String url;
   private List<Song> songs;
 
-  public SoundtrackSearchResult(String url, List<Song> songs) {
+  public TracklistSearchResult(String url, List<Song> songs) {
     this.url = url;
     this.songs = songs;
   }

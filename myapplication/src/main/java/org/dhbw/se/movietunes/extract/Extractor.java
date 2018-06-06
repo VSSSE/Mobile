@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Extractor {
 
-    private JsonElement getFirstPlaylistElement(String playlistSearchResult) {
+  private JsonElement getFirstPlaylistElement(String playlistSearchResult) {
         JsonElement root = new JsonParser().parse(playlistSearchResult);
         JsonObject playlists = root.getAsJsonObject().getAsJsonObject("playlists");
 
