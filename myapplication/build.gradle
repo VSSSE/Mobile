@@ -5,6 +5,7 @@ apply plugin: 'jacoco-android'
 apply from: '../android-sonarqube.gradle'
 
 android {
+
     compileSdkVersion 27
     defaultConfig {
         //   useLibrary 'org.apache.http.legacy'
@@ -16,6 +17,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            testCoverageEnabled = true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
