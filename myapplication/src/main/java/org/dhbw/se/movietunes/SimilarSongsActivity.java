@@ -28,7 +28,7 @@ public class SimilarSongsActivity extends AppCompatActivity {
 
     String trackId = intent.getStringExtra("TRACK_ID");
     SearchSimilarSongsController controller
-            = new SearchSimilarSongsController(getApplicationContext());
+            = new SearchSimilarSongsController();
 
     List<String> similars = new ArrayList<>();
     for (Song song : controller.findSimilarSongs(trackId)) {
