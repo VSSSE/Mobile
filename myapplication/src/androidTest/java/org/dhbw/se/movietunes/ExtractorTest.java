@@ -1,4 +1,4 @@
-package org.dhbw.se.movietunes.extract;
+package org.dhbw.se.movietunes;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -6,6 +6,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.myapplication.R;
 
+import org.dhbw.se.movietunes.extract.Extractor;
 import org.dhbw.se.movietunes.model.Song;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,10 +46,11 @@ public class ExtractorTest {
         String result = codeUnderTest.extractUserIdFromSearchResult (responseString);
         assertEquals( "moyomba", result);
     }
-    @Test
+
+    /*@Test
     public void testExtractArtistName(){
     fail();
-    }
+    }*/
 
 
     @Test
@@ -60,7 +62,7 @@ public class ExtractorTest {
         Song song = songs.get(0);
 
         assertEquals("The Terminator (Main Title)", song.getSongTitle() );
-        assertEquals("160925", song.getDuration());
+        assertEquals("2:40", song.getDuration());
         assertEquals("Brad Fiedel", song.getSinger());
         assertEquals("6vIZTOdX8TPTRBqcloIsUz", song.getTrackId());
         assertEquals("spotify:track:6vIZTOdX8TPTRBqcloIsUz", song.getUri());

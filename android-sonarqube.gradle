@@ -1,0 +1,49 @@
+ 
+sonarqube {
+    //noinspection GroovyAssignabilityCheck
+    properties {
+        // Update your android version
+        def libraries = project.android.sdkDirectory.getPath() + "/platforms/android-27/android.jar"
+
+        property "sonar.sources", "src/main/java"
+        // Defines where the java files are
+        property "sonar.binaries", "build/intermediates/classes/debug"
+        property "sonar.libraries", libraries
+        // Defines where the xml files are
+        property "sonar.java.binaries", "build/intermediates/classes/debug"
+        property "sonar.java.libraries", libraries
+
+        property "sonar.tests", "src/androidTest/java"
+
+        property "sonar.java.test.binaries", "build/intermediates/classes/debug"
+        property "sonar.java.test.libraries", libraries
+
+        property "sonar.jacoco.reportPath", "build/outputs/code-coverage/connected/Nexus_5X_API_27_x86(AVD) - 8.1.0-coverage.ec"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.junit.reportsPath", "build/outputs/androidTest-results/connected/"
+        property "sonar.android.lint.report", "build/outputs/lint-results.xml"
+    }
+}
+
+
+jacoco {
+    toolVersion = "0.7.9"
+}
+
+
+jacocoAndroidUnitTestReport {
+    csv.enabled false
+    html.enabled false
+    xml.enabled true
+}
+
+
+android {
+    testOptions {
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
+    }
+}

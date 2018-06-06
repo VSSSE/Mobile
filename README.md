@@ -4,6 +4,9 @@
 
 [![Build Status](https://jiratinf16b4.it.dh-karlsruhe.de/buildStatus/icon?job=VSS)](https://jiratinf16b4.it.dh-karlsruhe.de/job/VSS)
 [![Build Status](https://travis-ci.org/VSSSE/VSS-Mobile.svg?branch=master)](https://travis-ci.org/VSSSE/VSS-Mobile)
+[![CircleCI](https://circleci.com/gh/VSSSE/VSS-Mobile.svg?style=svg)](https://circleci.com/gh/VSSSE/VSS-Mobile)
+[![Sonaqube](https://sonarcloud.io/api/project_badges/measure?project=VSS-Mobile%3Amyapplication&metric=coverage)](https://sonarcloud.io/organizations/vss/projects)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/eb4cec1f9c244020ab167004d3f1fe99)](https://www.codacy.com/app/C0D3D3V/VSS-Mobile?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=VSSSE/VSS-Mobile&amp;utm_campaign=Badge_Grade)
 
 Repository for the mobile component of team VSS 2017/18 software engineering class project MovieTunes.
-This part of the project will be written in java. This repository will contain an Android application. 
+This part of the project will be written in java. This repository contains an Android application. 

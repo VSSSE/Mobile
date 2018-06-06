@@ -1,7 +1,8 @@
-package org.dhbw.se.movietunes.http;
+package org.dhbw.se.movietunes;
 
 import android.support.test.runner.AndroidJUnit4;
 
+import org.dhbw.se.movietunes.http.HttpCommunication;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

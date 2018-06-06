@@ -8,41 +8,42 @@ cache:
   directories:
     - ${TRAVIS_BUILD_DIR}/gradle/caches/
     - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
-env:
-  global:
-    - ANDROID_API_LEVEL=27
-      #- EMULATOR_API_LEVEL=22
-    - ANDROID_BUILD_TOOLS_VERSION=27.0.3
-      #- ANDROID_ABI=armeabi-v7a
-      #- ANDROID_TAG=google_apis
-      #- ADB_INSTALL_TIMEOUT=20 
 
 android:
   components:
     - tools
     - platform-tools
-    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-    - android-$ANDROID_API_LEVEL
-      #- android-$EMULATOR_API_LEVEL
+    - build-tools-27.0.3
+    - android-27
+    - android-24
     - extra
     - extra-google-google_play_services
     # Latest artifacts in local repository
     - extra-google-m2repository
     - extra-android-m2repository
     # Specify at least one system image
-    #- sys-img-${ANDROID_ABI}-${ANDROID_TAG}-${EMULATOR_API_LEVEL}
+    - sys-img-armeabi-v7a-default-24
 before_script:
+  - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-google-google_play_services,extra-google-m2repository,android-27
+  - echo y | android update sdk --no-ui --all --filter build-tools-27.0.3
+
+  - echo y | sdkmanager --update
+  - sdkmanager "platform-tools" "platforms;android-4"
+  - ./gradlew androidDependencies
+  - sdkmanager --list --verbose | grep system-images
+  - echo "y" | sdkmanager "system-images;android-24;default;armeabi-v7a" && echo "no" | android create avd --force -n test -k "system-images;android-24;default;armeabi-v7a"
   #- export ANDROID_SDK_ROOT=/usr/local/android-sdk
-  #- export QEMU_AUDIO_DRV=none 
-  #- echo y | sdkmanager --update
-  #- sdkmanager "platform-tools" "platforms;android-${EMULATOR_API_LEVEL}"
+  - export QEMU_AUDIO_DRV=none
+  - export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator -avd test -noaudio -no-boot-anim -no-window -accel on
+
   #- echo no | android create avd --force -n test -k "system-images;android-${EMULATOR_API_LEVEL};${ANDROID_TAG};${ANDROID_ABI}" 
   #- /usr/local/android-sdk/emulator/emulator -avd test -no-skin -no-window -engine classic &
-  #- android-wait-for-emulator
-  #- adb shell input keyevent 82 &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
 
 
 
 script:
-  #- ./gradlew clean check connectedCheck 
-  - ./gradlew assemble
+  #- ./gradlew clean check connectedCheck
+  - ./gradlew lint test
+  - ./gradlew clean check connectedCheck connectedAndroidTest

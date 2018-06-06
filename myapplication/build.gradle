@@ -1,6 +1,11 @@
+
 apply plugin: 'com.android.application'
+apply plugin: 'org.sonarqube'
+apply plugin: 'jacoco-android'
+apply from: '../android-sonarqube.gradle'
 
 android {
+
     compileSdkVersion 27
     defaultConfig {
         //   useLibrary 'org.apache.http.legacy'
@@ -12,13 +17,16 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            testCoverageEnabled = true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
 
+}
 
 
 dependencies {
@@ -34,6 +42,7 @@ dependencies {
     //compile 'com.android.support.test:runner:0.2'
 
     // compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+
 
 
 }

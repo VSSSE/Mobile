@@ -37,10 +37,10 @@ public class ExampleInstrumentedTest {
 
         SearchByTitleController c = new SearchByTitleController(appContext);
 
-        List<Song > songs = c.lookupSoundtrack_OLD("aaaa");
+        SoundtrackSearchResult songs = c.searchTracklist("aaaa");
 
-        assertTrue(songs.size() == 5);
-        assertTrue (songs.get(2) != null);
+        assertTrue(songs.getSongs().size() > 0 );
+        assertTrue (songs.getSongs().get(1) != null);
 
     }
 }
