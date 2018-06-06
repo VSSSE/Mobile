@@ -14,15 +14,27 @@ jobs:
 #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this. 
 #         command: sudo chmod +x ./gradlew
       - run:
+          name: update android sdk
+          command: |
+              echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-google-google_play_services,extra-google-m2repository,android-27
+              echo y | android update sdk --no-ui --all --filter build-tools-27.0.3
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "myapplication/build.gradle" }}
+
+
       - run:
-          name: Run Tests
+          name: Run Unit Tests
           command: ./gradlew lint test
+
+      - run:
+          name: Show list of system-images
+          command: sdkmanager --list --verbose | grep system-images
+
       - run:
           name: Setup emulator
           command: sdkmanager "system-images;android-24;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-24;default;armeabi-v7a"
@@ -37,7 +49,7 @@ jobs:
               circle-android wait-for-boot
               adb shell input keyevent 82
       - run:
-          name: Run Tests2
+          name: Run UI Tests
           command: ./gradlew clean check connectedCheck connectedAndroidTest
       - store_artifacts:
           path: myapplication/build/reports
