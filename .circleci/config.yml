@@ -6,6 +6,12 @@ jobs:
       - image: circleci/android:api-27-alpha
     environment:
       JVM_OPTS: -Xmx3200m
+      QEMU_AUDIO_DRV: none
+    pre:
+      - emulator -avd circleci-android27 -no-window:
+         background: true
+         parallel: true
+      - circle-android wait-for-boot
     steps:
       - checkout
       - restore_cache:
