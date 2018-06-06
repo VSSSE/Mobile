@@ -38,7 +38,7 @@ jobs:
               adb shell input keyevent 82
       - run:
           name: Run Tests2
-          command: ./gradlew clean check connectedCheck
+          command: ./gradlew clean check connectedCheck connectedAndroidTest
       - store_artifacts:
           path: myapplication/build/reports
           destination: reports
