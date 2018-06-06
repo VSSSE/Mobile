@@ -16,6 +16,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -30,6 +32,7 @@ import okhttp3.Response;
  */
 
 class AsyncHttp extends AsyncTask<String, Integer, String> {
+    private final static Logger LOGGER = Logger.getLogger(AsyncHttp.class.getName());
     protected String doInBackground(String... params) {
         try {
             OkHttpClient client = new OkHttpClient();
@@ -39,7 +42,7 @@ class AsyncHttp extends AsyncTask<String, Integer, String> {
             Response response = client.newCall(request).execute();
             return response.body().string();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING,"SearchByTitle", e);
             return "ERROR";
         }
     }
@@ -48,6 +51,7 @@ class AsyncHttp extends AsyncTask<String, Integer, String> {
 
 public class SearchByTitleController {
 
+    private final static Logger LOGGER = Logger.getLogger(SearchByTitleController.class.getName());
     Context appContext;
 
     SpotifyCommunication spotifyCommunication;
@@ -120,7 +124,7 @@ public class SearchByTitleController {
                         IOException e)
 
                 {
-                    e.printStackTrace();
+                    LOGGER.log(Level.WARNING,"SearchByTitle", e);
                 }
             }
         });
@@ -155,9 +159,9 @@ public class SearchByTitleController {
                     }
 
                 } catch (MalformedURLException e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.WARNING,"SearchByTitle", e);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.WARNING,"SearchByTitle", e);
                 }
 
             }
