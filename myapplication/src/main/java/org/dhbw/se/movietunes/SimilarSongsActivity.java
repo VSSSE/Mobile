@@ -12,7 +12,7 @@ import org.dhbw.se.movietunes.controller.SearchSimilarSongsController;
 import org.dhbw.se.movietunes.model.Song;
 
 /**
- * Created by anastasia.schwed on 11/21/2017.
+ * Created by anastasia.schwed on 11/21/2017..
  */
 
 public class SimilarSongsActivity extends AppCompatActivity {
