@@ -70,14 +70,14 @@ Button lookUpSoundtrackButton,lookUpMoviesButton;
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
             case R.id.menu_search_by_movie:
-                intent = new Intent(getApplicationContext(), LookUpSoundtrackActivity.class);
+                intent = new Intent(getApplicationContext(), LookUpMoviesActivity.class);
                 startActivity(intent);
                 Toast.makeText(this, "Search by movie selected", Toast.LENGTH_SHORT)
                         .show();
                 break;
             // action with ID action_settings was selected
             case R.id.menu_search_by_song:
-                intent = new Intent(getApplicationContext(), LookUpMoviesActivity.class);
+                intent = new Intent(getApplicationContext(), LookUpSoundtrackActivity.class);
                 startActivity(intent);
                 Toast.makeText(this, "Search by song title ", Toast.LENGTH_SHORT)
                         .show();
