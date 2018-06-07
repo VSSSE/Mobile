@@ -45,6 +45,7 @@ before_script:
 
 script:
   #- ./gradlew clean check connectedCheck
+  - "travis_wait 30 sleep 1800 &"
   - ./gradlew lint test
   - ./gradlew clean check connectedCheck --info --stacktrace
   #connectedAndroidTest
