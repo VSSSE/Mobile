@@ -25,8 +25,8 @@ public class SpotifyCommunicationTest {
   @Test
   public void testFindPlaylist() {
     PlaylistKey playlistKey = classUnderTest.findPlaylist("terminator");
-    assertTrue(playlistKey.getPlaylistId() != "");
-    assertTrue(playlistKey.getUserId() != "");
+    assertTrue(playlistKey.getPlaylistId().equals(""));
+    assertTrue(playlistKey.getUserId().equals(""));
   }
 
   @Test
@@ -36,7 +36,7 @@ public class SpotifyCommunicationTest {
     List<Song> songsFromPlaylist = classUnderTest.getSongsFromPlaylist(key);
 
     assertNotNull(songsFromPlaylist);
-    assertTrue(songsFromPlaylist.size() > 0);
+    assertTrue(!songsFromPlaylist.isEmpty());
     assertNotNull(songsFromPlaylist.get(0));
   }
 
@@ -46,7 +46,7 @@ public class SpotifyCommunicationTest {
     List<Song> songsFromPlaylist = classUnderTest.getRecommendations("0c6xIDDpzE81m2q797ordA");
 
     assertNotNull(songsFromPlaylist);
-    assertTrue(songsFromPlaylist.size() > 0);
+    assertTrue(!songsFromPlaylist.isEmpty());
     assertNotNull(songsFromPlaylist.get(0));
   }
 
