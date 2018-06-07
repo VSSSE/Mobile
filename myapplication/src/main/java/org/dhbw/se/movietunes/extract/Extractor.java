@@ -12,39 +12,34 @@ public class Extractor {
 
   private JsonElement getFirstPlaylistElement(String playlistSearchResult) {
     JsonElement root = new JsonParser().parse(playlistSearchResult);
-    JsonObject playlists = root.getAsJsonObject().getAsJsonObject("playlists");
+    JsonArray playlists = root.getAsJsonObject()
+            .getAsJsonObject("playlists").getAsJsonArray("items");
 
-    JsonArray items = playlists.getAsJsonArray("items");
-    if (items.size() < 0) {
-      throw new RuntimeException("no playlists found");
+    if (playlists.size() == 0) {
+      throw new ExtractorException("No playlist found!");
     }
 
-    JsonElement firstPlaylist = items.get(0);
-
-    return firstPlaylist;
+    return playlists.get(0);
   }
 
   public String extractPlaylistIdFromSearchResult(String searchResult) {
-
     JsonElement firstPlaylist = getFirstPlaylistElement(searchResult);
-    String id = firstPlaylist.getAsJsonObject().getAsJsonPrimitive("id").getAsString();
 
-    return id;
-
+    return firstPlaylist.getAsJsonObject().getAsJsonPrimitive("id").getAsString();
   }
 
   public String extractUserIdFromSearchResult(String searchResult) {
     JsonElement firstPlaylist = getFirstPlaylistElement(searchResult);
-    String userID = firstPlaylist.getAsJsonObject().getAsJsonObject("owner").getAsJsonPrimitive("id").getAsString();
 
-    return userID;
+    return firstPlaylist.getAsJsonObject()
+            .getAsJsonObject("owner").getAsJsonPrimitive("id").getAsString();
   }
 
   public String extractSpotifyUrl(String searchResult) {
     JsonElement firstPlaylist = getFirstPlaylistElement(searchResult);
-    String spotifyUrl = firstPlaylist.getAsJsonObject().getAsJsonObject("external_urls").getAsJsonPrimitive("spotify").getAsString();
-    return spotifyUrl;
 
+    return firstPlaylist.getAsJsonObject().getAsJsonObject("external_urls")
+            .getAsJsonPrimitive("spotify").getAsString();
   }
 
   private String convertToSeconds(String s) {
@@ -59,45 +54,40 @@ public class Extractor {
   public Song extractSingleSong(JsonElement trackElement) {
 
     JsonObject track = trackElement.getAsJsonObject();
+    Song result = new Song();
 
     String songTitle = track.getAsJsonPrimitive("name").getAsString();
-    String duration = track.getAsJsonPrimitive("duration_ms").getAsString();
+    String duration = convertToSeconds(track.getAsJsonPrimitive("duration_ms").getAsString());
     String trackId = track.getAsJsonPrimitive("id").getAsString();
-    //https://open.spotify.com/user/moyomba/playlist/6lwDOP2ZW0h2jOccLB0342
     String url = track.getAsJsonPrimitive("uri").getAsString();
-
     String artist = extractArtistName(track);
 
-    Song result = new Song();
     result.setSongTitle(songTitle);
-    duration = convertToSeconds(duration);
     result.setDuration(duration);
     result.setSinger(artist);
     result.setTrackId(trackId);
     result.setUri(url);
-    //result.setUri(uri);
 
     return result;
   }
 
   private String extractArtistName(JsonObject track) {
     JsonArray artists = track.getAsJsonArray("artists");
-    if (artists.size() < 0) {
-      throw new RuntimeException("No artists found");
+
+    if (artists.size() == 0) {
+      throw new ExtractorException("No artists found!");
     }
+
     JsonElement singleArtist = artists.get(0);
-    String name = singleArtist.getAsJsonObject().getAsJsonPrimitive("name").getAsString();
-    return name;
-
-    // JsonArray artists=item.getAsJsonObject().getAsJsonObject("artists").getAsJsonArray();
-
+    return  singleArtist.getAsJsonObject().getAsJsonPrimitive("name").getAsString();
   }
 
   public List<Song> extractSongsFromTracklistDetails(String tracklistDetailsResponse) {
     JsonElement root = new JsonParser().parse(tracklistDetailsResponse);
+
     JsonArray items = root.getAsJsonObject().getAsJsonArray("items");
     if (items.size() < 0) {
-      throw new RuntimeException("no items found");
+      throw new ExtractorException("No items found!");
     }
 
     List<Song> songs = new ArrayList<>();
@@ -110,9 +100,10 @@ public class Extractor {
 
   public List<Song> extractSongsFromRecommendationsResponse(String recommendationsBody) {
     JsonElement root = new JsonParser().parse(recommendationsBody);
+
     JsonArray tracks = root.getAsJsonObject().getAsJsonArray("tracks");
     if (tracks.size() < 0) {
-      throw new RuntimeException("no tracks found");
+      throw new ExtractorException("No tracks found!");
     }
 
     List<Song> songs = new ArrayList<>();

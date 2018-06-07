@@ -37,8 +37,7 @@ public class SpotifyCommunicationTest {
 
     assertNotNull(songsFromPlaylist);
     assertTrue(songsFromPlaylist.size() > 0);
-    Song song = songsFromPlaylist.get(0);
-    assertNotNull(song.getSongTitle() != null);
+    assertNotNull(songsFromPlaylist.get(0));
   }
 
   @Test
@@ -48,8 +47,7 @@ public class SpotifyCommunicationTest {
 
     assertNotNull(songsFromPlaylist);
     assertTrue(songsFromPlaylist.size() > 0);
-    Song song = songsFromPlaylist.get(0);
-    assertNotNull(song.getSongTitle() != null);
+    assertNotNull(songsFromPlaylist.get(0));
   }
 
 }

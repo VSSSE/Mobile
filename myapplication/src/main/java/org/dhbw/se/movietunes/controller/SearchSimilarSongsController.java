@@ -18,6 +18,5 @@ public class SearchSimilarSongsController {
   public List<Song> findSimilarSongs(String trackId) {
     return spotifyCommunication.getRecommendations(trackId);
   }
-
 }
 
