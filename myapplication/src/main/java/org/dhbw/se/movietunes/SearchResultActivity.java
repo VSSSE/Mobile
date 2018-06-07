@@ -37,7 +37,7 @@ public class SearchResultActivity extends AppCompatActivity
     String movieTitle = intent.getStringExtra(LookUpSoundtrackActivity.EXTRA_MESSAGE);
     movie.setText(movieTitle);
 
-    SearchByTitleController controller = new SearchByTitleController(getApplicationContext());
+    SearchByTitleController controller = new SearchByTitleController();
     strackSearchResult = controller.searchTracklist(movieTitle);
     currentSongList = new ArrayList<>(strackSearchResult.getSongs());
     String[] strings = new String[currentSongList.size()];

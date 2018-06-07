@@ -28,9 +28,7 @@ public class ExampleInstrumentedTest {
   @Test
   public void testSearchByTitle() throws Exception {
     // Context of the app under test.
-    Context appContext = InstrumentationRegistry.getTargetContext();
-
-    SearchByTitleController c = new SearchByTitleController(appContext);
+    SearchByTitleController c = new SearchByTitleController();
 
     SoundtrackSearchResult songs = c.searchTracklist("aaaa");
 
