@@ -17,6 +17,7 @@ public class HttpCommunicatorTest {
     Request request = new Request.Builder()
             .url("http://www.google.de")
             .build();
+
     Response response = HttpCommunication.executeRequest(request);
 
     String bodyString = response.body().string();

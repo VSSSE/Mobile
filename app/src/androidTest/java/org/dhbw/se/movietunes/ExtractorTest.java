@@ -42,17 +42,12 @@ public class ExtractorTest {
     assertEquals("moyomba", result);
   }
 
-    /*@Test
-    public void testExtractArtistName(){
-    fail();
-    }*/
-
   @Test
   public void testExtractSongs() {
 
     List<Song> songs = codeUnderTest.extractSongsFromTracklistDetails(readStringFromFile(R.raw.test_tracklist_details_uri));
     assertNotNull(songs);
-    assertTrue(songs.size() > 0);
+    assertTrue(!songs.isEmpty());
     Song song = songs.get(0);
 
     assertEquals("The Terminator (Main Title)", song.getSongTitle());
@@ -67,7 +62,7 @@ public class ExtractorTest {
 
     List<Song> songs = codeUnderTest.extractSongsFromRecommendationsResponse(readStringFromFile(R.raw.test_recommendations_response));
     assertNotNull(songs);
-    assertTrue(songs.size() > 0);
+    assertTrue(!songs.isEmpty());
     Song song = songs.get(0);
 
     assertEquals("Tightrope", song.getSongTitle());

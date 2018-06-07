@@ -18,7 +18,7 @@ import static org.junit.Assert.assertTrue;
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
   @Test
-  public void useAppContext() throws Exception {
+  public void useAppContext()  {
     // Context of the app under test.
     Context appContext = InstrumentationRegistry.getTargetContext();
 
@@ -26,13 +26,13 @@ public class ExampleInstrumentedTest {
   }
 
   @Test
-  public void testSearchByTitle() throws Exception {
+  public void testSearchByTitle()  {
     // Context of the app under test.
     SearchByTitleController c = new SearchByTitleController();
 
     SoundtrackSearchResult songs = c.searchTracklist("aaaa");
 
-    assertTrue(songs.getSongs().size() > 0);
+    assertTrue(!songs.getSongs().isEmpty());
     assertTrue(songs.getSongs().get(1) != null);
 
   }
