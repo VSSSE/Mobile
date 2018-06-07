@@ -1,8 +1,10 @@
-
 apply plugin: 'com.android.application'
 apply plugin: 'org.sonarqube'
 apply plugin: 'jacoco-android'
 apply from: '../android-sonarqube.gradle'
+
+def APP_VERSION = "1.0.0"
+ext.set('AppVersion', APP_VERSION)
 
 android {
 
@@ -21,13 +23,24 @@ android {
             testCoverageEnabled = true
         }
         release {
+            testCoverageEnabled false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
     }
 
 }
 
+jacoco {
+    toolVersion = "0.7.9"
+}
+
+jacocoAndroidUnitTestReport {
+    csv.enabled true
+    html.enabled true
+    xml.enabled true
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
