@@ -5,33 +5,32 @@ package org.dhbw.se.movietunes.model;
  */
 
 public class Movie {
-   private Soundtrack soundtrack;
-    private String movieId;
-    private String movieTitle;
+  private Soundtrack soundtrack;
+  private String movieId;
+  private String movieTitle;
 
 
+  public Soundtrack getSoundtrack() {
+    return soundtrack;
+  }
 
-    public Soundtrack getSoundtrack() {
-        return soundtrack;
-    }
+  public void setSoundtrack(Soundtrack soundtrack) {
+    this.soundtrack = soundtrack;
+  }
 
-    public void setSoundtrack(Soundtrack soundtrack) {
-        this.soundtrack = soundtrack;
-    }
+  public String getMovieId() {
+    return movieId;
+  }
 
-    public String getMovieId() {
-        return movieId;
-    }
+  public void setMovieId(String movieId) {
+    this.movieId = movieId;
+  }
 
-    public void setMovieId(String movieId) {
-        this.movieId = movieId;
-    }
+  public String getMovieTitle() {
+    return movieTitle;
+  }
 
-    public String getMovieTitle() {
-        return movieTitle;
-    }
-
-    public void setMovieTitle(String movieTitle) {
-        this.movieTitle = movieTitle;
-    }
+  public void setMovieTitle(String movieTitle) {
+    this.movieTitle = movieTitle;
+  }
 }

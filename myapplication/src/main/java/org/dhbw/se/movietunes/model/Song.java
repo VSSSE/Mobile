@@ -1,7 +1,5 @@
 package org.dhbw.se.movietunes.model;
 
-
-
 import java.util.List;
 
 /**
@@ -9,79 +7,80 @@ import java.util.List;
  */
 
 public class Song {
-    private String trackId;
-    private String songTitle;
-    private String composer;
-    private String singer;
-    private String duration;
-    private String uri;
-    private List<Movie> usedInMovies;
-    private List<Song> similarSongs;
+  private String trackId;
+  private String songTitle;
+  private String composer;
+  private String singer;
+  private String duration;
+  private String uri;
+  private List<Movie> usedInMovies;
+  private List<Song> similarSongs;
 
-    public String getDuration() {
-        return duration;
-    }
+  public String getDuration() {
+    return duration;
+  }
 
-    public void setUri(String uri){
-        this.uri=uri;
-    }
+  public void setDuration(String time) {
+    this.duration = time;
+  }
 
-    public String getTrackId() {
-        return trackId;
-    }
+  public String getTrackId() {
+    return trackId;
+  }
 
-    public void setTrackId(String trackId) {
-        this.trackId = trackId;
-    }
+  public void setTrackId(String trackId) {
+    this.trackId = trackId;
+  }
 
-    public String getSongTitle() {
-        return songTitle;
-    }
+  public String getSongTitle() {
+    return songTitle;
+  }
 
-    public void setSongTitle(String songTitle) {
-        this.songTitle = songTitle;
-    }
+  public void setSongTitle(String songTitle) {
+    this.songTitle = songTitle;
+  }
 
-    public String getComposer() {
-        return composer;
-    }
+  public String getComposer() {
+    return composer;
+  }
 
-    public void setComposer(String composer) {
-        this.composer = composer;
-    }
+  public void setComposer(String composer) {
+    this.composer = composer;
+  }
 
-    public String getSinger() {
-        return singer;
-    }
+  public String getSinger() {
+    return singer;
+  }
 
-    public void setSinger(String singer) {
-        this.singer = singer;
-    }
+  public void setSinger(String singer) {
+    this.singer = singer;
+  }
 
-    public String getTime() {
-        return duration;
-    }
+  public String getTime() {
+    return duration;
+  }
 
-    public void setDuration(String time) {
-        this.duration = time;
-    }
+  public List<Movie> getUsedInMovies() {
+    return usedInMovies;
+  }
 
-    public List<Movie> getUsedInMovies() {
-        return usedInMovies;
-    }
+  public void setUsedInMovies(List<Movie> usedInMovies) {
+    this.usedInMovies = usedInMovies;
+  }
 
-    public void setUsedInMovies(List<Movie> usedInMovies) {
-        this.usedInMovies = usedInMovies;
-    }
+  public List<Song> getSimilarSongs() {
+    return similarSongs;
+  }
 
-    public List<Song> getSimilarSongs() {
-        return similarSongs;
-    }
-    public String getUri(){
-        return this.uri;
-    }
+  public void setSimilarSongs(List<Song> similarSongs) {
+    this.similarSongs = similarSongs;
+  }
 
-    public void setSimilarSongs(List<Song> similarSongs) {
-        this.similarSongs = similarSongs;
-    }
+  public String getUri() {
+    return this.uri;
+  }
+
+  public void setUri(String uri) {
+    this.uri = uri;
+  }
 }

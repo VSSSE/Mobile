@@ -7,26 +7,27 @@ import java.util.List;
  */
 
 public class Soundtrack {
-    private Movie movie;
-    private List<Song> songs;
+  private Movie movie;
+  private List<Song> songs;
 
-    public Movie getMovie() {
-        return movie;
-    }
+  public Movie getMovie() {
+    return movie;
+  }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
-    public double calcDuration(){
-return 0;
-    }
+  public void setMovie(Movie movie) {
+    this.movie = movie;
+  }
 
-    public List<Song> getSongs() {
-        return songs;
-    }
+  public double calcDuration() {
+    return 0;
+  }
 
-    public void setSongs(List<Song> songs) {
-        this.songs = songs;
-    }
+  public List<Song> getSongs() {
+    return songs;
+  }
+
+  public void setSongs(List<Song> songs) {
+    this.songs = songs;
+  }
 }
 
