@@ -10,14 +10,11 @@ jobs:
       - checkout
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-#      - run:
-#         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this. 
-#         command: sudo chmod +x ./gradlew
       - run:
-          name: update android sdk
+          name: Update android sdk
           command: |
-              echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-google-google_play_services,extra-google-m2repository,android-27
-              echo y | android update sdk --no-ui --all --filter build-tools-27.0.3
+              echo "y" | sdkmanager "emulator" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "build-tools;27.0.3" "platform-tools" "platforms;android-24" "platforms;android-27" "system-images;android-24;default;armeabi-v7a"
+              echo "y" | sdkmanager --update
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
@@ -25,22 +22,18 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-
-
       - run:
           name: Run Unit Tests
           command: ./gradlew lint test
 
       - run:
-          name: Show list of system-images
-          command: sdkmanager --list --verbose | grep system-images
-
-      - run:
           name: Setup emulator
-          command: sdkmanager "system-images;android-24;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-24;default;armeabi-v7a"
+          command: avdmanager create avd -n test -k "system-images;android-24;default;armeabi-v7a"
       - run:
           name: Launch emulator
-          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
+          command: |
+              export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
+              emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
           background: true
 
       - run:
@@ -49,8 +42,8 @@ jobs:
               circle-android wait-for-boot
               adb shell input keyevent 82
       - run:
-          name: Run UI Tests
-          command: ./gradlew clean check connectedCheck connectedAndroidTest
+          name: Run Tests
+          command: ./gradlew clean lint test check connectedCheck connectedAndroidTest
       - store_artifacts:
           path: app/build/reports
           destination: reports
