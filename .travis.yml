@@ -14,7 +14,7 @@ android:
     - tools
     - platform-tools
 before_script:
-
+  - export JVM_OPTS="-Xmx3200m"
   - echo "y" | sdkmanager "emulator" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "build-tools;27.0.3" "platform-tools" "platforms;android-24" "platforms;android-27" "system-images;android-24;default;armeabi-v7a"
   - echo "y" | sdkmanager --update
 

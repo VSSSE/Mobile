@@ -22,13 +22,10 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Run Unit Tests
-          command: ./gradlew lint test
 
       - run:
           name: Setup emulator
-          command: avdmanager create avd -n test -k "system-images;android-24;default;armeabi-v7a"
+          command: echo "no" | avdmanager create avd -n test -k "system-images;android-24;default;armeabi-v7a"
       - run:
           name: Launch emulator
           command: |
