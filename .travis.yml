@@ -8,7 +8,7 @@ cache:
   directories:
     - ${TRAVIS_BUILD_DIR}/gradle/caches/
     - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
-    - ${ANDROID_HOME}
+    - /usr/local/android-sdk-25.2.3
 android:
   components:
     - tools
@@ -21,21 +21,17 @@ before_script:
   - ./gradlew androidDependencies
 
   - echo "no" | android create avd --force -n test -k "system-images;android-24;default;armeabi-v7a"
-  #- export ANDROID_SDK_ROOT=/usr/local/android-sdk
 
   - export QEMU_AUDIO_DRV=none
   - export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
-  - $ANDROID_HOME/emulator/emulator -avd test -noaudio  -no-boot-anim -no-window -accel on -use-system-libs -verbose &
+  - $ANDROID_HOME/emulator/emulator -avd test -noaudio -accel on -use-system-libs -verbose &
 
-  #- echo no | android create avd --force -n test -k "system-images;android-${EMULATOR_API_LEVEL};${ANDROID_TAG};${ANDROID_ABI}" 
-  #- /usr/local/android-sdk/emulator/emulator -avd test -no-skin -no-window -engine classic &
   - android-wait-for-emulator
-  - adb shell input keyevent 82 &
 
+  - echo ${ANDROID_HOME}
 
+  - while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
 
 script:
-  #- ./gradlew clean check connectedCheck
   - "travis_wait 30 sleep 1800 &"
   - ./gradlew clean lint test check connectedCheck --info --stacktrace
-  #connectedAndroidTest
