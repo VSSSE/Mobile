@@ -2,6 +2,7 @@ language: android
 jdk: oraclejdk8
 
 sudo: false
+cache: false
 
 android:
   components:
@@ -22,7 +23,7 @@ before_script:
 
   - android-wait-for-emulator
 
-  - ls -la ${ANDROID_HOME}
+  - ls -la /usr/local/
 
 
 script:
