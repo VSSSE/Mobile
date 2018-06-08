@@ -24,7 +24,7 @@ before_script:
   - echo "y" | sdkmanager "system-images;android-24;default;armeabi-v7a" && echo "no" | android create avd --force -n test -k "system-images;android-24;default;armeabi-v7a"
   #- export ANDROID_SDK_ROOT=/usr/local/android-sdk
   - export QEMU_AUDIO_DRV=none
-  - export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && $ANDROID_HOME/emulator/emulator -avd test -noaudio  -no-boot-anim -no-window -accel on -use-system-libs -verbose &
+  - export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && $ANDROID_HOME/emulator/emulator -avd test -noaudio  -no-boot-anim -no-window -accel on -use-system-libs &
 
   #- echo no | android create avd --force -n test -k "system-images;android-${EMULATOR_API_LEVEL};${ANDROID_TAG};${ANDROID_ABI}" 
   #- /usr/local/android-sdk/emulator/emulator -avd test -no-skin -no-window -engine classic &
@@ -36,6 +36,6 @@ before_script:
 script:
   #- ./gradlew clean check connectedCheck
   - "travis_wait 30 sleep 1800 &"
-  - ./gradlew lint test --info --stacktrace
-  - ./gradlew clean check connectedCheck --info --stacktrace
+  - ./gradlew lint test
+  - ./gradlew clean check connectedCheck
   #connectedAndroidTest
