@@ -1,4 +1,3 @@
- 
 language: android
 jdk: oraclejdk8
 
@@ -8,6 +7,7 @@ cache:
   directories:
     - ${TRAVIS_BUILD_DIR}/gradle/caches/
     - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
+    - "/usr/local/android-sdk-25.2.3"
 android:
   components:
     - tools
@@ -19,19 +19,19 @@ before_script:
 
   - ./gradlew androidDependencies
 
-  - echo "no" | android create avd --force -n test24 -k "system-images;android-24;default;armeabi-v7a"
+  - echo "no" | android create avd --force -n test -k "system-images;android-24;default;armeabi-v7a"
 
   - export QEMU_AUDIO_DRV=none
   - export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
-  - $ANDROID_HOME/emulator/emulator -avd test24 -noaudio -no-boot-anim -no-window -accel on -use-system-libs -verbose &
+  - $ANDROID_HOME/emulator/emulator -avd test -noaudio -no-boot-anim -no-window -accel on -use-system-libs -verbose &
 
   - android-wait-for-emulator
 
+  - ls -la ${ANDROID_HOME}
 
 
 script:
   - "travis_wait 30 sleep 1800 &"
   - echo "start waiting"
   - while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
-  - adb shell getprop
-  - ./gradlew clean lint test check connectedCheck connectedAndroidTest --info --stacktrace
+- ./gradlew clean lint test check connectedCheck --info --stacktrace
