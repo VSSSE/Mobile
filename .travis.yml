@@ -19,11 +19,11 @@ before_script:
 
   - ./gradlew androidDependencies
 
-  - echo "no" | android create avd --force -n test -k "system-images;android-24;default;armeabi-v7a"
+  - echo "no" | android create avd --force -n test24 -k "system-images;android-24;default;armeabi-v7a"
 
   - export QEMU_AUDIO_DRV=none
   - export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
-  - $ANDROID_HOME/emulator/emulator -avd test -noaudio -no-boot-anim -no-window -accel on -use-system-libs -verbose &
+  - $ANDROID_HOME/emulator/emulator -avd test24 -noaudio -no-boot-anim -no-window -accel on -use-system-libs -verbose &
 
   - android-wait-for-emulator
 
