@@ -7,7 +7,7 @@ cache:
   directories:
     - ${TRAVIS_BUILD_DIR}/gradle/caches/
     - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
-    - /usr/local/android-sdk-25.2.3
+    - "/usr/local/android-sdk-25.2.3"
 android:
   components:
     - tools
@@ -34,4 +34,4 @@ script:
   - "travis_wait 30 sleep 1800 &"
   - echo "start waiting"
   - while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
-- ./gradlew clean lint test check connectedCheck --info --stacktrace
+  - ./gradlew clean lint test check connectedCheck --info --stacktrace
