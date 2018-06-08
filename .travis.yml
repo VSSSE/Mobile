@@ -8,16 +8,17 @@ cache:
   directories:
     - ${TRAVIS_BUILD_DIR}/gradle/caches/
     - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
-
+    - ${ANDROID_HOME}
 android:
   components:
     - tools
     - platform-tools
 before_script:
-  - ./gradlew androidDependencies
 
   - echo "y" | sdkmanager "emulator" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "build-tools;27.0.3" "platform-tools" "platforms;android-24" "platforms;android-27" "system-images;android-24;default;armeabi-v7a"
   - echo "y" | sdkmanager --update
+
+  - ./gradlew androidDependencies
 
   - echo "no" | android create avd --force -n test -k "system-images;android-24;default;armeabi-v7a"
   #- export ANDROID_SDK_ROOT=/usr/local/android-sdk
