@@ -76,9 +76,11 @@ public class SearchResultActivity extends AppCompatActivity
           startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 
         } else if (title.contains("Youtube")) {
+          //TODO: get real link
           startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=t7jzmW9tYX0")));
 
         } else if (title.contains("Facebook")) {
+          //TODO: open facebook app
           startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.de")));
 
         } else if (title.contains("similar")) {
