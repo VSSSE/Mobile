@@ -30,8 +30,8 @@ public class ExampleInstrumentedTest {
     // Context of the app under test.
     SearchByTitleController c = new SearchByTitleController();
 
-    //searching for song "aaa"
-    SoundtrackSearchResult songs = c.searchTracklist("aaaa");
+    //searching for song "titanic"
+    SoundtrackSearchResult songs = c.searchTracklist("titanic");
 
     assertTrue(!songs.getSongs().isEmpty());
     assertTrue(songs.getSongs().get(1) != null);
