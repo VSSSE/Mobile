@@ -1,39 +1,34 @@
 <?xml version="1.0" encoding="utf-8"  ?>
 
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linear_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:gravity="center">
+              android:id="@+id/linear_layout"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingLeft="16dp"
+              android:paddingRight="16dp"
+              android:orientation="vertical"
+              android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25px"
-        android:text="Welcome to Movie Tunes"
-        android:textAlignment="center"
-        android:textSize="14pt"
-        android:textStyle="bold" />
+  <TextView
+      android:id="@+id/welcome"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="25dp"
+      android:text="@string/WelcomeText"
+      android:textAlignment="center"
+      android:textSize="14pt"
+      android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/movies_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickMainActivity"
-        android:text="LOOK UP MOVIES" />
+  <Button
+      android:id="@+id/movies_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/lookupmovies"/>
 
-
-    <Button
-        android:id="@+id/search_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickMainActivity"
-        android:text="LOOK UP SOUNDTRACK" />
+  <Button
+      android:id="@+id/search_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/lookupsoundtracks"/>
 
 </LinearLayout>

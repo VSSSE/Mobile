@@ -1,13 +1,16 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="movieTitle">Movie Title</string>
-    <string name="Search">Search</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_activity_main3">Main3Activity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Movie Tunes</string>
+    <string name="WelcomeText">Welcome to Movie Tunes</string>
+    <string name="lookupmovies">LOOK UP MOVIES</string>
+    <string name="lookupsoundtracks">LOOK UP SOUNDTRACKS</string>
+    <string name="moviesoundtrackTitle">Movie soundtracks:</string>
+    <string name="searchmoviesinstructions">Please enter a song title to get movie titles</string>
+    <string name="lookupmoviesBtn">LOOK UP MOVIES</string>
+    <string name="lookupsoundtracksBtn">LOOK UP SOUNDTRACKS</string>
+    <string name="searchsoundtracksinstructions">Please enter a movie title to get soundtracks</string>
+    <string name="similarsongsTitle">Similar  songs found:</string>
+    <string name="playonSpotify">Play on Spotify</string>
+    <string name="playonYoutube">Play on Youtube</string>
+    <string name="findsimilarsongs">Find similar songs</string>
+    <string name="shareonFacebook">Share on Facebook</string>
 </resources>

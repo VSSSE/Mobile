@@ -1,18 +1,18 @@
 package org.dhbw.se.movietunes.http;
 
-import android.os.HandlerThread;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import java.io.IOException;
 import java.util.List;
-import okhttp3.FormBody;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import java.util.logging.Logger;
+import okhttp3.*;
 import org.dhbw.se.movietunes.extract.Extractor;
+import org.dhbw.se.movietunes.model.PlaylistKey;
 import org.dhbw.se.movietunes.model.Song;
 
 public class SpotifyCommunication {
 
+  private static final Logger LOGGER = Logger.getLogger(SpotifyCommunication.class.getName());
   private static final String HEADER_AUTHORIZATION = "Basic M2ZkOWFjYmJjZmY4NDVlNThhZTAxOGUwYTYwZjliMzU6ZTllODJjNmZjMDI0NGFiYWI1NWRiMTRjNGEzNjFhNzc=";
 
   private String token;
@@ -39,7 +39,7 @@ public class SpotifyCommunication {
     try {
       responseBody = response.body().string();
     } catch (Exception e) {
-      throw new HttpException("Token req to spotify failed!", e);
+      throw new HttpException("Empty Response! Could not get a Token!", e);
     }
 
     JsonElement root = new JsonParser().parse(responseBody);
@@ -59,7 +59,7 @@ public class SpotifyCommunication {
     try {
       responseBody = response.body().string();
     } catch (Exception e) {
-      throw new HttpException("Response body for search failed!", e);
+      throw new HttpException("Response body for search is empty!", e);
     }
     return responseBody;
   }
@@ -94,7 +94,7 @@ public class SpotifyCommunication {
     try {
       responseBody = response.body().string();
     } catch (Exception e) {
-      throw new HttpException("Recommendations body failed!", e);
+      throw new HttpException("Response body for Recommendations is empty!", e);
     }
 
     return responseBody;
@@ -117,7 +117,7 @@ public class SpotifyCommunication {
     try {
       responseBody = response.body().string();
     } catch (Exception e) {
-      throw new HttpException("Soundtrack Json failed!", e);
+      throw new HttpException("Response body for Soundtrack Json is empty!", e);
     }
     return responseBody;
   }

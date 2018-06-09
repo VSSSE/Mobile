@@ -2,7 +2,7 @@ package org.dhbw.se.movietunes;
 
 import android.support.test.runner.AndroidJUnit4;
 import java.util.List;
-import org.dhbw.se.movietunes.http.PlaylistKey;
+import org.dhbw.se.movietunes.model.PlaylistKey;
 import org.dhbw.se.movietunes.http.SpotifyCommunication;
 import org.dhbw.se.movietunes.model.Song;
 import org.junit.Test;

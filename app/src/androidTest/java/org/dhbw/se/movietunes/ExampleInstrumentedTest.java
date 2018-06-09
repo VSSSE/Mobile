@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import org.dhbw.se.movietunes.controller.SearchByTitleController;
+import org.dhbw.se.movietunes.model.SoundtrackSearchResult;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

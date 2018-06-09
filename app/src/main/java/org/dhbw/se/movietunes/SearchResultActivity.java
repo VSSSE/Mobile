@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +16,7 @@ import java.util.List;
 
 import org.dhbw.se.movietunes.controller.SearchByTitleController;
 import org.dhbw.se.movietunes.model.Song;
-
+import org.dhbw.se.movietunes.model.SoundtrackSearchResult;
 
 public class SearchResultActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
@@ -61,6 +62,12 @@ public class SearchResultActivity extends AppCompatActivity
     return popup;
   }
 
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.main_menu, menu);
+    return true;
+  }
   @Override
   public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 

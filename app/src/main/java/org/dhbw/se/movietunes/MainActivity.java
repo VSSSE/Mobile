@@ -9,11 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import com.example.myapplication.R;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
   private static final Logger LOGGER = Logger.getLogger(MainActivity.class.getName());
   Button lookUpSoundtrackButton;
@@ -27,26 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     lookUpSoundtrackButton = findViewById(R.id.search_button);
     lookUpMoviesButton = findViewById(R.id.movies_button);
-  }
 
-  public void onClickMainActivity(View v) {
-    Button button = (Button) v;
-    Intent intent;
-
-    switch (button.getId()) {
-      case R.id.search_button:
-        intent = new Intent(getApplicationContext(), LookUpSoundtrackActivity.class);
-        startActivity(intent);
-        break;
-
-      case R.id.movies_button:
-        intent = new Intent(getApplicationContext(), LookUpMoviesActivity.class);
-        startActivity(intent);
-        break;
-      default:
-        LOGGER.log(Level.INFO, "Button not found!");
-        break;
-    }
+    lookUpSoundtrackButton.setOnClickListener(this);
+    lookUpMoviesButton.setOnClickListener(this);
   }
 
   @Override
@@ -78,6 +60,26 @@ public class MainActivity extends AppCompatActivity {
     return true;
   }
 
+  @Override
+  public void onClick(View v) {
+    Button button = (Button) v;
+    Intent intent;
+
+    switch (button.getId()) {
+      case R.id.search_button:
+        intent = new Intent(getApplicationContext(), LookUpSoundtrackActivity.class);
+        startActivity(intent);
+        break;
+
+      case R.id.movies_button:
+        intent = new Intent(getApplicationContext(), LookUpMoviesActivity.class);
+        startActivity(intent);
+        break;
+      default:
+        LOGGER.log(Level.INFO, "Button not found!");
+        break;
+    }
+  }
 }
 
 

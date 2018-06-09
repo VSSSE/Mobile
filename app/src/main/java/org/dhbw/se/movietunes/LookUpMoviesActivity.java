@@ -6,17 +6,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.myapplication.R;
 
-public class LookUpMoviesActivity extends AppCompatActivity {
+public class LookUpMoviesActivity extends AppCompatActivity implements View.OnClickListener {
 
   public static final String EXTRA_MESSAGE = "org.dhbw.se.movietunes.LookUpMovie";
 
   EditText textField;
   TextView introText;
   TextView welcomeText;
+  Button lookupMoviesBtn;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +29,11 @@ public class LookUpMoviesActivity extends AppCompatActivity {
     welcomeText = findViewById(R.id.welcome);
     introText = findViewById(R.id.intro_text);
     textField = findViewById(R.id.text_input);
+    lookupMoviesBtn = findViewById(R.id.search_button);
+
+    lookupMoviesBtn.setOnClickListener(this);
   }
 
-  public void onClickLookUpMovies(View v) {
-    String songTitle = textField.getText().toString();
-
-    Intent intent = new Intent(getApplicationContext(), MovieSearchResultActivity.class);
-    intent.putExtra(EXTRA_MESSAGE, songTitle);
-    startActivity(intent);
-  }
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,6 +42,14 @@ public class LookUpMoviesActivity extends AppCompatActivity {
     return true;
   }
 
+  @Override
+  public void onClick(View v) {
+    String songTitle = textField.getText().toString();
+
+    Intent intent = new Intent(getApplicationContext(), MovieSearchResultActivity.class);
+    intent.putExtra(EXTRA_MESSAGE, songTitle);
+    startActivity(intent);
+  }
 }
 
 

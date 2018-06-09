@@ -3,6 +3,8 @@ package org.dhbw.se.movietunes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.example.myapplication.R;
@@ -41,4 +43,11 @@ public class SimilarSongsActivity extends AppCompatActivity {
 
   }
 
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.main_menu, menu);
+    return true;
+  }
 }

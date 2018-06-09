@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/menu_search_by_song"
-        android:title="Look up soundtrack" />
-    <item
-        android:id="@+id/menu_search_by_movie"
-        android:title="Look up movies" />
 
-
+  <item
+      android:id="@+id/menu_search_by_song"
+      android:title="@string/lookupsoundtracks"/>
+  <item
+      android:id="@+id/menu_search_by_movie"
+      android:title="@string/lookupmovies"/>
 
 </menu>
 

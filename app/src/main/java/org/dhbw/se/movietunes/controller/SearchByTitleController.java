@@ -1,8 +1,8 @@
 package org.dhbw.se.movietunes.controller;
 
 import java.util.List;
-import org.dhbw.se.movietunes.SoundtrackSearchResult;
-import org.dhbw.se.movietunes.http.PlaylistKey;
+import org.dhbw.se.movietunes.model.SoundtrackSearchResult;
+import org.dhbw.se.movietunes.model.PlaylistKey;
 import org.dhbw.se.movietunes.http.SpotifyCommunication;
 import org.dhbw.se.movietunes.model.Song;
 import org.dhbw.se.movietunes.model.Soundtrack;

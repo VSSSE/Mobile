@@ -1,4 +1,4 @@
-package org.dhbw.se.movietunes;
+package org.dhbw.se.movietunes.model;
 
 import java.util.List;
 import org.dhbw.se.movietunes.model.Song;

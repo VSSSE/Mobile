@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/similar_songs"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView android:id="@+id/intro"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:textSize="14pt"
-    android:text="Similar  songs found:"
-android:textStyle="bold"/>
+              android:id="@+id/similar_songs"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/similarSongs_list_view"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
-    </ListView>
+  <TextView android:id="@+id/intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14pt"
+            android:text="@string/similarsongsTitle"
+            android:textStyle="bold"/>
 
+  <ListView
+      android:id="@+id/similarSongs_list_view"
+      android:layout_height="match_parent"
+      android:layout_width="match_parent">
+  </ListView>
 
 </LinearLayout>

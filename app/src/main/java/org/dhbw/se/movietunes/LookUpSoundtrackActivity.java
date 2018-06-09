@@ -3,13 +3,15 @@ package org.dhbw.se.movietunes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.myapplication.R;
 
-public class LookUpSoundtrackActivity extends AppCompatActivity {
+public class LookUpSoundtrackActivity extends AppCompatActivity implements View.OnClickListener {
 
   public static final String EXTRA_MESSAGE = "org.dhbw.se.movietunes.LookUpSoundtrack";
 
@@ -28,9 +30,19 @@ public class LookUpSoundtrackActivity extends AppCompatActivity {
     searchButton = findViewById(R.id.search_button);
     introText = findViewById(R.id.intro_text);
     textField = findViewById(R.id.text_input);
+
+    searchButton.setOnClickListener(this);
   }
 
-  public void onClickLookUpSoundtracks(View v) {
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.main_menu, menu);
+    return true;
+  }
+
+  @Override
+  public void onClick(View v) {
     String movieTitle = textField.getText().toString();
 
     Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
