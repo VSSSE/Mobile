@@ -4,7 +4,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class HttpCommunication {
-  public static Response executeRequest(Request request) {
+  public static Response executeRequest(Request request) throws HttpException {
     HttpAsyncTask httpTask = new HttpAsyncTask();
     httpTask.execute(request);
     Response response;
@@ -13,7 +13,8 @@ public class HttpCommunication {
       response = httpTask.get();
 
     } catch (Exception e) {
-      throw new HttpException("Sync request failed!", e);
+
+      throw new HttpException("Could not get Response!!", e);
     }
 
     return response;

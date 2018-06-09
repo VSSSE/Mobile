@@ -9,7 +9,7 @@ import okhttp3.Response;
 public class HttpAsyncTask extends AsyncTask<Request, Integer, Response> {
 
   @Override
-  protected Response doInBackground(Request... params) {
+  protected Response doInBackground(Request... params) throws  HttpException{
     try {
       if (params.length != 1) {
         throw new HttpException("Only 1 prameter expected");
