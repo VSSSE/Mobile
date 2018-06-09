@@ -10,12 +10,12 @@ android:
     - platform-tools
 before_script:
   - export JVM_OPTS="-Xmx3200m"
-  - echo "y" | sdkmanager "tools" "emulator" "lldb;3.1" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "build-tools;19.1.0" "build-tools;27.0.3" "platform-tools" "platforms;android-15" "platforms;android-27" "system-images;android-15;default;armeabi-v7a"
+  - echo "y" | sdkmanager "tools" "emulator" "lldb;3.1" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "build-tools;19.1.0" "build-tools;27.0.3" "platform-tools" "platforms;android-16" "platforms;android-27" "system-images;android-19;google_apis;armeabi-v7a"
   - echo "y" | sdkmanager --update
 
   - ./gradlew androidDependencies
 
-  - echo "no" | android create avd --force -n test -k "system-images;android-15;default;armeabi-v7a"
+  - echo "no" | android create avd --force -n test -k "system-images;android-19;google_apis;armeabi-v7a"
 
   - export QEMU_AUDIO_DRV=none
   - export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
@@ -23,7 +23,6 @@ before_script:
 
   - android-wait-for-emulator
 
-  - ls -la /usr/local/
 
 
 script:
