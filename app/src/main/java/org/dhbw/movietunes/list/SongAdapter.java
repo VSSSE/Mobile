@@ -12,19 +12,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.http.ImageLoader;
+import org.dhbw.movietunes.model.Song;
 
 public class SongAdapter extends BaseAdapter {
 
-  private Activity activity;
-  private ArrayList<HashMap<String, String>> data;
-  private static LayoutInflater inflater=null;
+  private static LayoutInflater inflater = null;
   public ImageLoader imageLoader;
+  private Activity activity;
+  private ArrayList<Song> data;
 
-  public SongAdapter(Activity a, ArrayList<HashMap<String, String>> d) {
+  public SongAdapter(Activity a, ArrayList<Song> d) {
     activity = a;
-    data=d;
-    inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    imageLoader=new ImageLoader(activity.getApplicationContext());
+    data = d;
+    inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    imageLoader = new ImageLoader(activity.getApplicationContext());
   }
 
   public int getCount() {
@@ -40,23 +41,22 @@ public class SongAdapter extends BaseAdapter {
   }
 
   public View getView(int position, View convertView, ViewGroup parent) {
-    View vi=convertView;
-    if(convertView==null)
+    View vi = convertView;
+    if (convertView == null)
       vi = inflater.inflate(R.layout.list_row, null);
 
-    TextView title = (TextView)vi.findViewById(R.id.title); // title
-    TextView artist = (TextView)vi.findViewById(R.id.artist); // artist name
-    TextView duration = (TextView)vi.findViewById(R.id.duration); // duration
-    ImageView thumb_image=(ImageView)vi.findViewById(R.id.list_image); // thumb image
+    TextView title = (TextView) vi.findViewById(R.id.title); // title
+    TextView artist = (TextView) vi.findViewById(R.id.artist); // artist name
+    TextView duration = (TextView) vi.findViewById(R.id.duration); // duration
+    ImageView thumb_image = (ImageView) vi.findViewById(R.id.list_image); // thumb image
 
-    HashMap<String, String> song = new HashMap<String, String>();
-    song = data.get(position);
+    Song song = data.get(position);
 
     // Setting all values in listview
-   /* title.setText(song.get(CustomizedListView.KEY_TITLE));
-    artist.setText(song.get(CustomizedListView.KEY_ARTIST));
-    duration.setText(song.get(CustomizedListView.KEY_DURATION));
-    imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL), thumb_image);*/
+    title.setText(song.getSongTitle());
+    artist.setText(song.getSinger());
+    duration.setText(song.getDuration());
+    imageLoader.DisplayImage(song.getImageUri(), thumb_image);
     return vi;
   }
 }

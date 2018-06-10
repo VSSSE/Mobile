@@ -13,8 +13,11 @@ public class Song {
   private String singer;
   private String duration;
   private String uri;
+  private String imageUri;
   private List<Movie> usedInMovies;
   private List<Song> similarSongs;
+
+
 
   public String getDuration() {
     return duration;
@@ -78,5 +81,13 @@ public class Song {
 
   public void setUri(String uri) {
     this.uri = uri;
+  }
+
+  public String getImageUri() {
+    return imageUri;
+  }
+
+  public void setImageUri(String imageUri) {
+    this.imageUri = imageUri;
   }
 }
