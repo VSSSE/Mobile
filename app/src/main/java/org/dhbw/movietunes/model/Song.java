@@ -45,4 +45,15 @@ public class Song {
     return imageUri;
   }
 
+  public boolean equals(Song object2) {
+
+    return object2 != null &&
+            (trackId.equals(object2.trackId)) &&
+            (songTitle.equals(object2.songTitle)) &&
+            (artist.equals(object2.artist)) &&
+            (duration.equals(object2.duration)) &&
+            (uri.equals(object2.uri)) &&
+            (imageUri.equals(object2.imageUri));
+  }
+
 }

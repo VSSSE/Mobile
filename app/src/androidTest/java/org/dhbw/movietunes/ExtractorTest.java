@@ -12,11 +12,13 @@ import org.dhbw.movietunes.exception.ExtractorException;
 import org.dhbw.movietunes.extract.Extractor;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertSame;
 
 @RunWith(AndroidJUnit4.class)
 public class ExtractorTest {
@@ -43,7 +45,27 @@ public class ExtractorTest {
     String responseString = readStringFromFile(R.raw.get_tracks_of_playlist);
     ArrayList<Song> result = new ArrayList<>(codeUnderTest.getSongsFromPlaylist(responseString));
 
-    assertEquals("moyomba", result);
+    ArrayList<Song> excpected = new ArrayList<>();
+    excpected.add(new Song(
+            "24TPOx1PUEl8sJIVnMMs0m",
+            "The Terminator Theme - Extended Version",
+            "Brad Fiedel",
+            "4:20",
+            "https://open.spotify.com/track/24TPOx1PUEl8sJIVnMMs0m",
+            "https://i.scdn.co/image/a7db5a11960241544bb92a3b7ebcb06aab540861"
+    ));
+    excpected.add(new Song(
+            "7aZn38ep1wLgOHyiRQ212o",
+            "Terminator 2 (\"From Terminator\")",
+            "Movie Themes Studio",
+            "1:57",
+            "https://open.spotify.com/track/7aZn38ep1wLgOHyiRQ212o",
+            "https://i.scdn.co/image/ca32b21b56dfd3da1961709b557983cc7648ed99"
+    ));
+    assertEquals(excpected.size(), result.size());
+    for(int i = 0; i < excpected.size(); i++){
+      assertTrue(excpected.get(i).equals(result.get(i)));
+    }
   }
 
   @Test
@@ -51,7 +73,26 @@ public class ExtractorTest {
     String responseString = readStringFromFile(R.raw.get_recomations);
     ArrayList<Song> result = new ArrayList<>(codeUnderTest.getRecommendedSongs(responseString));
 
-    assertEquals("moyomba", result);
+    Song excpected0 = new Song(
+            "5HcDgTNMMjSG3VrpTiP940",
+            "Will Exploring",
+            "Christopher Lennertz",
+            "5:4",
+            "https://open.spotify.com/track/5HcDgTNMMjSG3VrpTiP940",
+            "https://i.scdn.co/image/f91f46d0fd648c7f3e3c4e9c3b223a397e22b062"
+    );
+    Song excpected19 = new Song(
+            "5MlY3mwE2eQlmaYHONLTaO",
+            "Forth Eorlingas)",
+            "Howard Shore, Ben Del Maestro",
+            "3:15",
+            "https://open.spotify.com/track/5MlY3mwE2eQlmaYHONLTaO",
+            "https://i.scdn.co/image/29fc60dc9d2bf7e29dbdc985141a4a45711d5456"
+    );
+
+    assertEquals(20, result.size());
+    assertTrue(result.get(0).equals(excpected0));
+    assertTrue(result.get(19).equals(excpected19));
   }
 
 
@@ -74,5 +115,6 @@ public class ExtractorTest {
     }
 
   }
+
 
 }
