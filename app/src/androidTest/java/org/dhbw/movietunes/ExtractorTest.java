@@ -7,18 +7,16 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 import org.dhbw.movietunes.exception.ExtractorException;
 import org.dhbw.movietunes.extract.Extractor;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static junit.framework.Assert.*;
-import static junit.framework.Assert.assertSame;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class ExtractorTest {
@@ -30,14 +28,19 @@ public class ExtractorTest {
     codeUnderTest = new Extractor();
   }
 
-
   @Test
   public void testGetFirstPlaylist() {
     String responseString = readStringFromFile(R.raw.search_playlists);
     PlaylistKey playlist = codeUnderTest.getFirstPlaylist(responseString);
 
+    PlaylistKey excpected = new PlaylistKey(
+            "revinjan28",
+            "6SNgCWsYUA9JSt9XWhU9JM",
+            "Terminator Theme song",
+            "https://open.spotify.com/user/revinjan28/playlist/6SNgCWsYUA9JSt9XWhU9JM"
+    );
 
-    assertEquals("6lwDOP2ZW0h2jOccLB0342", playlist);
+    assertTrue(excpected.equals(playlist));
   }
 
   @Test
@@ -63,7 +66,7 @@ public class ExtractorTest {
             "https://i.scdn.co/image/ca32b21b56dfd3da1961709b557983cc7648ed99"
     ));
     assertEquals(excpected.size(), result.size());
-    for(int i = 0; i < excpected.size(); i++){
+    for (int i = 0; i < excpected.size(); i++) {
       assertTrue(excpected.get(i).equals(result.get(i)));
     }
   }
@@ -83,7 +86,7 @@ public class ExtractorTest {
     );
     Song excpected19 = new Song(
             "5MlY3mwE2eQlmaYHONLTaO",
-            "Forth Eorlingas)",
+            "Forth Eorlingas",
             "Howard Shore, Ben Del Maestro",
             "3:15",
             "https://open.spotify.com/track/5MlY3mwE2eQlmaYHONLTaO",
@@ -94,8 +97,6 @@ public class ExtractorTest {
     assertTrue(result.get(0).equals(excpected0));
     assertTrue(result.get(19).equals(excpected19));
   }
-
-
 
   private String readStringFromFile(int resourceId) {
     try {
@@ -115,6 +116,5 @@ public class ExtractorTest {
     }
 
   }
-
 
 }

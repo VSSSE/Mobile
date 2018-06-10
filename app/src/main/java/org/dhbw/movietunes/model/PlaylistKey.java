@@ -28,4 +28,14 @@ public class PlaylistKey {
   public String getPlaylistName() {
     return playlistName;
   }
+
+
+  public boolean equals(PlaylistKey object2) {
+
+    return object2 != null &&
+            (userId.equals(userId)) &&
+            (playlistId.equals(playlistId)) &&
+            (spotifyUrl.equals(spotifyUrl)) &&
+            (playlistName.equals(playlistName));
+  }
 }
