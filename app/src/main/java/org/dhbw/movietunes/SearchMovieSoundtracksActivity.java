@@ -8,8 +8,6 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import com.example.myapplication.R;
 
 public class SearchMovieSoundtracksActivity extends AppCompatActivity implements View.OnClickListener {
 

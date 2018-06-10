@@ -9,9 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import com.example.myapplication.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.dhbw.movietunes.controller.SearchMovieSoundtracksController;
@@ -24,8 +22,6 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
   private ListView resultList;
   private SoundtrackSearchResult strackSearchResult;
   private List<Song> currentSongList;
-
-
   private String[] strings;
 
   @Override
@@ -42,10 +38,8 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
     movie.setText(movieTitle);
 
     SearchMovieSoundtracksController controller = new SearchMovieSoundtracksController(this);
-    controller.execute();
+    controller.execute(movieTitle);
 
-    ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, strings);
-    resultList.setAdapter(adapter);
     resultList.setOnItemClickListener(this);
 
 

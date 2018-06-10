@@ -4,7 +4,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import java.util.List;
 import java.util.logging.Logger;
-import okhttp3.*;
+import okhttp3.FormBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.extract.Extractor;
 import org.dhbw.movietunes.model.PlaylistKey;
@@ -33,13 +35,9 @@ public class SpotifyCommunication {
             .post(formBody)
             .build();
 
-    String responseBody;
-
-    Response response = HttpCommunication.executeRequest(request);
-    try {
-      responseBody = response.body().string();
-    } catch (Exception e) {
-      throw new HttpException("Empty Response! Could not get a Token!", e);
+    String responseBody = HttpCommunication.executeRequest(request);
+    if (responseBody.equals("")) {
+      throw new HttpException("Empty Response! Could not get a Token!");
     }
 
     JsonElement root = new JsonParser().parse(responseBody);
@@ -53,13 +51,9 @@ public class SpotifyCommunication {
             .get()
             .build();
 
-    String responseBody;
-
-    Response response = HttpCommunication.executeRequest(request);
-    try {
-      responseBody = response.body().string();
-    } catch (Exception e) {
-      throw new HttpException("Response body for search is empty!", e);
+    String responseBody = HttpCommunication.executeRequest(request);
+    if (responseBody.equals("")) {
+      throw new HttpException("Response body for search is empty!");
     }
     return responseBody;
   }
@@ -88,13 +82,9 @@ public class SpotifyCommunication {
             .get()
             .build();
 
-    String responseBody;
-
-    Response response = HttpCommunication.executeRequest(request);
-    try {
-      responseBody = response.body().string();
-    } catch (Exception e) {
-      throw new HttpException("Response body for Recommendations is empty!", e);
+    String responseBody = HttpCommunication.executeRequest(request);
+    if (responseBody.equals("")) {
+      throw new HttpException("Response body for Recommendations is empty!");
     }
 
     return responseBody;
@@ -111,13 +101,9 @@ public class SpotifyCommunication {
             .get()
             .build();
 
-    String responseBody;
-
-    Response response = HttpCommunication.executeRequest(request);
-    try {
-      responseBody = response.body().string();
-    } catch (Exception e) {
-      throw new HttpException("Response body for Soundtrack Json is empty!", e);
+    String responseBody = HttpCommunication.executeRequest(request);
+    if (responseBody.equals("")) {
+      throw new HttpException("Response body for Soundtrack Json is empty!");
     }
     return responseBody;
   }

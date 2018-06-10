@@ -8,7 +8,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import com.example.myapplication.R;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

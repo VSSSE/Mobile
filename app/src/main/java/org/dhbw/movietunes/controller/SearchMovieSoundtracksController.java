@@ -2,8 +2,10 @@ package org.dhbw.movietunes.controller;
 
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
+import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
 import org.dhbw.movietunes.SearchMovieSoundtracksActivity;
 import org.dhbw.movietunes.exception.HttpException;
@@ -18,19 +20,18 @@ import org.dhbw.movietunes.model.Song;
 
 public class SearchMovieSoundtracksController extends AsyncTask<String, Integer, SoundtrackSearchResult> {
 
-  private SpotifyCommunication spotifyCommunication;
-  ResultMovieSoundtracksActivity activity;
+  private ResultMovieSoundtracksActivity activity;
 
   public SearchMovieSoundtracksController(ResultMovieSoundtracksActivity activity) {
     this.activity = activity;
-    spotifyCommunication = new SpotifyCommunication();
   }
 
   @Override
   protected SoundtrackSearchResult doInBackground(String... params) {
     if (params.length != 1) {
-      throw new HttpException("Only 1 prameter expected");
+      throw new HttpException("Expected 1 prameter, got " + params.length);
     }
+    SpotifyCommunication spotifyCommunication = new SpotifyCommunication();
 
     PlaylistKey playlistKey = spotifyCommunication.findPlaylist(params[0]);
 
@@ -64,6 +65,10 @@ public class SearchMovieSoundtracksController extends AsyncTask<String, Integer,
     activity.setCurrentSongList(currentSongList);
     activity.setStrackSearchResult(result);
     activity.setStrings(strings);
+
+    ArrayAdapter adapter = new ArrayAdapter(activity, android.R.layout.simple_list_item_1, strings);
+    ListView list = activity.findViewById(R.id.soundtrack_list_view);
+    list.setAdapter(adapter);
   }
 
 }

@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.example.myapplication.R;
 import java.util.ArrayList;
 import java.util.List;
 import org.dhbw.movietunes.controller.SearchSimilarSongsController;

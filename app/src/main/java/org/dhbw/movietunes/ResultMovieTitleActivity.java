@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.TextView;
-import com.example.myapplication.R;
 
 public class ResultMovieTitleActivity extends AppCompatActivity {
 
