@@ -16,14 +16,14 @@ import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.player.SpotifyPlayer;
 import org.dhbw.movietunes.player.YoutubePlayer;
 
-public class SimilarSongsAdapter extends BaseAdapter {
+public class SongAdapter extends BaseAdapter {
 
   private static LayoutInflater inflater = null;
   public ImageLoader imageLoader;
   private Activity activity;
   private ArrayList<Song> data;
 
-  public SimilarSongsAdapter(Activity a, ArrayList<Song> d) {
+  public SongAdapter(Activity a, ArrayList<Song> d) {
     activity = a;
     data = d;
     inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -61,38 +61,7 @@ public class SimilarSongsAdapter extends BaseAdapter {
     imageLoader.DisplayImage(song.getImageUri(), thumb_image);
 
 
-    vi.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        PopupMenu popupMenu =  new PopupMenu(activity, v);
-        MenuInflater inflater = popupMenu.getMenuInflater();
-        inflater.inflate(R.menu.popup_menu_similar_songs, popupMenu.getMenu());
-
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-          public boolean onMenuItemClick(MenuItem item) {
-            switch (item.getItemId()) {
-              case R.id.spotify:
-                new SpotifyPlayer(activity, song.getSongTitle(), song.getUri()).play();
-                break;
-              case R.id.youTube:
-                new YoutubePlayer(activity, song.getSongTitle()).play();
-                break;
-              case R.id.facebook:
-                String ShareBody = "I love Movie Tunes!";
-                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Share Song found on Movie tunes");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, ShareBody);
-                activity.startActivity(Intent.createChooser(sharingIntent, activity.getResources().getString(R.string.share_using)));
-                break;
-            }
-            return true;
-          }
-        });
-
-        popupMenu.show();
-      }
-    });
+    vi.setOnClickListener(new SimilarSongsListener(activity, song));
     return vi;
   }
 

@@ -10,7 +10,6 @@ import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.http.SpotifyCommunication;
-import org.dhbw.movietunes.list.MovieSoundtracksAdapter;
 import org.dhbw.movietunes.model.Song;
 
 /**
