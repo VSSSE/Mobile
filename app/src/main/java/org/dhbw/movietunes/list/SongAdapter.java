@@ -2,17 +2,20 @@ package org.dhbw.movietunes.list;
 
 import android.app.Activity;
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.Intent;
+import android.view.*;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.dhbw.movietunes.R;
+import org.dhbw.movietunes.ResultSimilarSongsActivity;
 import org.dhbw.movietunes.http.ImageLoader;
 import org.dhbw.movietunes.model.Song;
+import org.dhbw.movietunes.player.SpotifyPlayer;
+import org.dhbw.movietunes.player.YoutubePlayer;
 
 public class SongAdapter extends BaseAdapter {
 
@@ -50,13 +53,58 @@ public class SongAdapter extends BaseAdapter {
     TextView duration = vi.findViewById(R.id.duration); // duration
     ImageView thumb_image = vi.findViewById(R.id.list_image); // thumb image
 
-    Song song = data.get(position);
+    final Song song = data.get(position);
 
     // Setting all values in listview
     title.setText(song.getSongTitle());
     artist.setText(song.getArtist());
     duration.setText(song.getDuration());
     imageLoader.DisplayImage(song.getImageUri(), thumb_image);
+
+
+    vi.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        PopupMenu popupMenu = showPopup(v);
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+          public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+              case R.id.spotify:
+                new SpotifyPlayer(activity, song.getSongTitle(), song.getUri());
+                break;
+              case R.id.youTube:
+                new YoutubePlayer(activity, song.getSongTitle());
+                break;
+              case R.id.similar:
+                Intent intent = new Intent(activity.getApplicationContext(), ResultSimilarSongsActivity.class);
+                intent.putExtra("TRACK_ID", song.getTrackId());
+                activity.startActivity(intent);
+                break;
+              case R.id.facebook:
+                String ShareBody = "I love Movie Tunes!";
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Share Song found on Movie tunes");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, ShareBody);
+                activity.startActivity(Intent.createChooser(sharingIntent, activity.getResources().getString(R.string.share_using)));
+                break;
+            }
+            return true;
+          }
+        });
+
+        popupMenu.show();
+      }
+    });
     return vi;
+  }
+
+
+  public PopupMenu showPopup(View v) {
+    PopupMenu popup = new PopupMenu(activity, v);
+    MenuInflater inflater = popup.getMenuInflater();
+    inflater.inflate(R.menu.popup_menu_movie_soundtracks, popup.getMenu());
+    return popup;
   }
 }
