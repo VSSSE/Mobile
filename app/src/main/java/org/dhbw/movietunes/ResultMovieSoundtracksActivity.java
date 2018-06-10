@@ -20,10 +20,6 @@ import org.dhbw.movietunes.model.Song;
 public class ResultMovieSoundtracksActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
 
-  private ListView resultList;
-  private SoundtrackSearchResult strackSearchResult;
-  private List<Song> currentSongList;
-  private String[] strings;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +29,6 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
 
     Intent intent = getIntent();
     TextView movie = findViewById(R.id.movie);
-    resultList = findViewById(R.id.soundtrack_list_view);
 
     String movieTitle = intent.getStringExtra(SearchMovieSoundtracksActivity.EXTRA_MESSAGE);
     movie.setText(movieTitle);
@@ -41,14 +36,12 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
     SearchMovieSoundtracksController controller = new SearchMovieSoundtracksController(this);
     controller.execute(movieTitle);
 
-    resultList.setOnItemClickListener(this);
-
   }
 
   public PopupMenu showPopup(View v) {
     PopupMenu popup = new PopupMenu(this, v);
     MenuInflater inflater = popup.getMenuInflater();
-    inflater.inflate(R.menu.popup_menu, popup.getMenu());
+    inflater.inflate(R.menu.popup_menu_movie_soundtracks, popup.getMenu());
     return popup;
   }
 
@@ -68,23 +61,23 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
     PopupMenu popupMenu = showPopup(resultList.getChildAt(position));
     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
       public boolean onMenuItemClick(MenuItem item) {
-        String title = (String) item.getTitle();
-        if (title.contains("Spotify")) {
-          String url = strackSearchResult.getUrl();
-          startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        switch (item.getItemId())
+        {
+          case R.id.spotify:
+            String url = strackSearchResult.getUrl();
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+            break;
 
-        } else if (title.contains("Youtube")) {
-          //TODO: get real link
-          startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=t7jzmW9tYX0")));
+          case R.id.youTube:
+            break;
+          case R.id.similar:
+            Intent intent = new Intent(getApplicationContext(), ResultSimilarSongsActivity.class);
+            intent.putExtra("TRACK_ID", trackId);
+            startActivity(intent);
+            break;
+          case R.id.facebook:
 
-        } else if (title.contains("Facebook")) {
-          //TODO: open facebook app
-          startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.de")));
-
-        } else if (title.contains("similar")) {
-          Intent intent = new Intent(getApplicationContext(), ResultSimilarSongsActivity.class);
-          intent.putExtra("TRACK_ID", trackId);
-          startActivity(intent);
+            break;
         }
         return true;
       }
@@ -93,29 +86,6 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
     popupMenu.show();
   }
 
-  public SoundtrackSearchResult getStrackSearchResult() {
-    return strackSearchResult;
-  }
-
-  public void setStrackSearchResult(SoundtrackSearchResult strackSearchResult) {
-    this.strackSearchResult = strackSearchResult;
-  }
-
-  public List<Song> getCurrentSongList() {
-    return currentSongList;
-  }
-
-  public void setCurrentSongList(List<Song> currentSongList) {
-    this.currentSongList = currentSongList;
-  }
-
-  public String[] getStrings() {
-    return strings;
-  }
-
-  public void setStrings(String[] strings) {
-    this.strings = strings;
-  }
 }
 
 
