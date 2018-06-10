@@ -10,6 +10,7 @@ import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.http.SpotifyCommunication;
+import org.dhbw.movietunes.list.SongAdapter;
 import org.dhbw.movietunes.model.Song;
 
 /**
@@ -50,7 +51,7 @@ public class SearchMovieSoundtracksController extends AsyncTask<String, Integer,
     ProgressBar bar = activity.findViewById(R.id.progressSearch);
     bar.setVisibility(View.GONE);
 
-    MovieSoundtracksAdapter adapter = new MovieSoundtracksAdapter(activity, new ArrayList<>(result));
+    SongAdapter adapter = new SongAdapter(activity, new ArrayList<>(result));
     ListView list = activity.findViewById(R.id.soundtrack_list_view);
     list.setAdapter(adapter);
   }

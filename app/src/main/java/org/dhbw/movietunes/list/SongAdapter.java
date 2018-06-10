@@ -10,7 +10,9 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import java.util.ArrayList;
 import org.dhbw.movietunes.R;
+import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
 import org.dhbw.movietunes.ResultSimilarSongsActivity;
+import org.dhbw.movietunes.SearchMovieTitlesActivity;
 import org.dhbw.movietunes.http.ImageLoader;
 import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.player.SpotifyPlayer;
@@ -61,7 +63,11 @@ public class SongAdapter extends BaseAdapter {
     imageLoader.DisplayImage(song.getImageUri(), thumb_image);
 
 
-    vi.setOnClickListener(new SimilarSongsListener(activity, song));
+    if(activity.getClass() == ResultSimilarSongsActivity.class) {
+      vi.setOnClickListener(new SimilarSongsListener(activity, song));
+    } else if(activity.getClass() == ResultMovieSoundtracksActivity.class) {
+      vi.setOnClickListener(new MovieSoundtracksListener(activity, song));
+    }
     return vi;
   }
 
