@@ -96,6 +96,17 @@ public class Extractor {
     return result;
   }
 
+  public List<Song> getRecommendedSongs(String recommendationsBody) {
+    List<Song> result = new ArrayList<>();
+    JsonElement root = new JsonParser().parse(recommendationsBody);
+
+    JsonArray tracks = root.getAsJsonObject().getAsJsonArray("tracks");
+    for (JsonElement track : tracks) {
+      result.add(extractSingleSong(track.getAsJsonObject()));
+    }
+    return result;
+  }
+
   private String convertToSeconds(String s) {
     int ml = Integer.parseInt(s);
     ml = ml / 1000;
@@ -105,19 +116,6 @@ public class Extractor {
     return min + ":" + sec;
   }
 
-  public List<Song> extractSongsFromRecommendationsResponse(String recommendationsBody) {
-    JsonElement root = new JsonParser().parse(recommendationsBody);
 
-    JsonArray tracks = root.getAsJsonObject().getAsJsonArray("tracks");
-    if (tracks.size() < 0) {
-      throw new ExtractorException("No tracks found!");
-    }
-
-    List<Song> songs = new ArrayList<>();
-    for (JsonElement track : tracks) {
-      songs.add(extractSingleSong(track));
-    }
-    return songs;
-  }
 
 }

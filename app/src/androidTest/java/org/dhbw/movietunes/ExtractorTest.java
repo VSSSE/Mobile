@@ -59,7 +59,7 @@ public class ExtractorTest {
   @Test
   public void testExtractSongsFromRecommendationsResponse() {
 
-    List<Song> songs = codeUnderTest.extractSongsFromRecommendationsResponse(readStringFromFile(R.raw.test_recommendations_response));
+    List<Song> songs = codeUnderTest.getRecommendedSongs(readStringFromFile(R.raw.test_recommendations_response));
     assertNotNull(songs);
     assertFalse(songs.isEmpty());
     Song song = songs.get(0);

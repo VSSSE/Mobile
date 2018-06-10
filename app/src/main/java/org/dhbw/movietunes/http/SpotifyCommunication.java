@@ -25,7 +25,7 @@ public class SpotifyCommunication {
     extractor = new Extractor();
   }
 
-  public String fetchToken() {
+  private String fetchToken() {
     RequestBody formBody = new FormBody.Builder().add("grant_type", "client_credentials").build();
 
     Request request = new Request.Builder()
@@ -101,8 +101,7 @@ public class SpotifyCommunication {
   }
 
   public List<Song> getRecommendations(String trackId) {
-    String response = getRecommendationsBody(trackId);
-    return extractor.extractSongsFromRecommendationsResponse(response);
+    return extractor.getRecommendedSongs(getRecommendationsBody(trackId));
   }
 
 
