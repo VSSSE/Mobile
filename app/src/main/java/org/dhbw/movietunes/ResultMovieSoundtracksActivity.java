@@ -54,7 +54,7 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
 
   @Override
   public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-
+/*
     final String trackId = currentSongList.get(position).getTrackId();
 
     //Todo Buttons to play on Spotify or on Youtube
@@ -83,7 +83,7 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
       }
     });
 
-    popupMenu.show();
+    popupMenu.show();*/
   }
 
 }

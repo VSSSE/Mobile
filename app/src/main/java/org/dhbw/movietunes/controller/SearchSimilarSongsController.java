@@ -51,7 +51,6 @@ public class SearchSimilarSongsController extends AsyncTask<String, Integer, Lis
               + ", " + song.getSinger());
     }
 
-    activity.setSimilars(similars);
     ArrayAdapter adapter = new ArrayAdapter(activity, android.R.layout.simple_list_item_1, similars);
     ListView list = activity.findViewById(R.id.similarSongs_list_view);
     list.setAdapter(adapter);

@@ -60,9 +60,6 @@ public class SearchMovieSoundtracksController extends AsyncTask<String, Integer,
               + song.getSinger();
     }
 
-    activity.setCurrentSongList(currentSongList);
-    activity.setStrackSearchResult(result);
-    activity.setStrings(strings);
 
     ArrayAdapter adapter = new ArrayAdapter(activity, android.R.layout.simple_list_item_1, strings);
     ListView list = activity.findViewById(R.id.soundtrack_list_view);
