@@ -44,7 +44,7 @@ public class ExtractorTest {
 
   @Test
   public void testExtractSongs() {
-    List<Song> songs = codeUnderTest.extractSongsFromTracklistDetails(readStringFromFile(R.raw.test_tracklist_details_uri));
+    List<Song> songs = codeUnderTest.getSongsFromPlaylist(readStringFromFile(R.raw.test_tracklist_details_uri));
     assertNotNull(songs);
     assertFalse(songs.isEmpty());
     Song song = songs.get(0);

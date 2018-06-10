@@ -44,7 +44,7 @@ public class SpotifyCommunication {
     return root.getAsJsonObject().get("access_token").getAsString();
   }
 
-  private String getResponseBodyForSearch(String searchString) {
+  private String getJsonForSearchPlaylist(String searchString) {
     Request request = new Request.Builder()
             .url("https://api.spotify.com/v1/search?q=" + searchString + "&type=playlist")
             .addHeader(HEADER_1, HEADER_2 + token)
@@ -58,42 +58,10 @@ public class SpotifyCommunication {
     return responseBody;
   }
 
-  public PlaylistKey findPlaylist(String searchString) {
-    String responseBody = getResponseBodyForSearch(searchString);
-    String playlistId = extractor.extractPlaylistIdFromSearchResult(responseBody);
-    String userId = extractor.extractUserIdFromSearchResult(responseBody);
-    String spotifyUrl = extractor.extractSpotifyUrl(responseBody);
-
-    return new PlaylistKey(userId, playlistId, spotifyUrl);
-  }
-
-  public List<Song> getRecommendations(String trackId) {
-    String response = getRecommendationsBody(trackId);
-    return extractor.extractSongsFromRecommendationsResponse(response);
-  }
-
-  private String getRecommendationsBody(String trackId) {
-
-    String url = "https://api.spotify.com/v1/recommendations?seed_tracks=" + trackId;
-
-    Request request = new Request.Builder()
-            .url(url)
-            .addHeader(HEADER_1, HEADER_2 + token)
-            .get()
-            .build();
-
-    String responseBody = HttpCommunication.executeRequest(request);
-    if (responseBody == null || responseBody.isEmpty() ){
-      throw new HttpException("Response body for Recommendations is empty!");
-    }
-
-    return responseBody;
-  }
-
   private String getSoundtrackJson(PlaylistKey playlistKey) {
     String user = playlistKey.getUserId();
     String playlist = playlistKey.getPlaylistId();
-    String url = "https://api.spotify.com/v1/users/" + user + "/playlists/" + playlist + "/tracks?fields=items.track(id,name,duration_ms,artists, uri)";
+    String url = "https://api.spotify.com/v1/users/" + user + "/playlists/" + playlist + "/tracks?fields=items.track(id,name,duration_ms,artists, external_urls, album.images)";
 
     Request request = new Request.Builder()
             .url(url)
@@ -108,9 +76,35 @@ public class SpotifyCommunication {
     return responseBody;
   }
 
-  public List<Song> getSongsFromPlaylist(PlaylistKey playlistKey) {
-    String body = getSoundtrackJson(playlistKey);
-    return extractor.extractSongsFromTracklistDetails(body);
+  private String getRecommendationsBody(String trackId) {
+
+    String url = "https://api.spotify.com/v1/recommendations?seed_tracks=" + trackId;
+
+    Request request = new Request.Builder()
+            .url(url)
+            .addHeader(HEADER_1, HEADER_2 + token)
+            .get()
+            .build();
+
+    String responseBody = HttpCommunication.executeRequest(request);
+    if (responseBody == null || responseBody.isEmpty()) {
+      throw new HttpException("Response body for Recommendations is empty!");
+    }
+
+    return responseBody;
   }
+
+  public List<Song> findSoundtracks(String searchString) {
+
+    PlaylistKey first = extractor.getFirstPlaylist(getJsonForSearchPlaylist(searchString));
+    return extractor.getSongsFromPlaylist(getSoundtrackJson(first));
+  }
+
+  public List<Song> getRecommendations(String trackId) {
+    String response = getRecommendationsBody(trackId);
+    return extractor.extractSongsFromRecommendationsResponse(response);
+  }
+
+
 }
 

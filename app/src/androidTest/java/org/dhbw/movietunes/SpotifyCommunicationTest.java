@@ -23,7 +23,7 @@ public class SpotifyCommunicationTest {
 
   @Test
   public void testFindPlaylist() {
-    PlaylistKey playlistKey = classUnderTest.findPlaylist("terminator");
+    PlaylistKey playlistKey = classUnderTest.findSoundtracks("terminator");
     assertFalse(playlistKey.getPlaylistId().isEmpty());
     assertFalse(playlistKey.getUserId().isEmpty());
   }

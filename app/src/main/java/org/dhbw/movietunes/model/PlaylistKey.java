@@ -4,23 +4,17 @@ public class PlaylistKey {
   private String userId;
   private String playlistId;
   private String spotifyUrl;
+  private String playlistName;
 
-  public PlaylistKey(String userId, String playlistId, String spotifyUrl) {
-    if (userId == null || playlistId == null) {
-      throw new IllegalArgumentException("Null values are not allowed!");
-    }
-
+  public PlaylistKey(String userId, String playlistId, String playlistName, String spotifyUrl) {
     this.userId = userId;
     this.playlistId = playlistId;
     this.spotifyUrl = spotifyUrl;
+    this.playlistName = playlistName;
   }
 
   public String getSpotifyUrl() {
     return spotifyUrl;
-  }
-
-  public void setSpotifyUrl(String spotifyUrl) {
-    this.spotifyUrl = spotifyUrl;
   }
 
   public String getUserId() {
@@ -29,5 +23,9 @@ public class PlaylistKey {
 
   public String getPlaylistId() {
     return playlistId;
+  }
+
+  public String getPlaylistName() {
+    return playlistName;
   }
 }

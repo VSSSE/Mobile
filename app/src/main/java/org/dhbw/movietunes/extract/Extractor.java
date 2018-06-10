@@ -7,40 +7,93 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
 import org.dhbw.movietunes.exception.ExtractorException;
+import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
 
 public class Extractor {
 
-  private JsonElement getFirstPlaylistElement(String playlistSearchResult) {
+  private PlaylistKey extractSinglePlaylist(JsonObject playlist) {
+    return new PlaylistKey(
+            playlist.getAsJsonObject("owner").getAsJsonPrimitive("id").getAsString(),
+            playlist.getAsJsonPrimitive("id").getAsString(),
+            playlist.getAsJsonPrimitive("name").getAsString(),
+            playlist.getAsJsonObject("external_urls").getAsJsonPrimitive("spotify").getAsString());
+  }
+
+  private List<PlaylistKey> getListOfPlaylists(String playlistSearchResult) {
     JsonElement root = new JsonParser().parse(playlistSearchResult);
     JsonArray playlists = root.getAsJsonObject()
             .getAsJsonObject("playlists").getAsJsonArray("items");
 
-    if (playlists.size() == 0) {
-      throw new ExtractorException("No playlist found!");
+    ArrayList<PlaylistKey> list = new ArrayList<>();
+
+    for (JsonElement playlist : playlists) {
+      list.add(extractSinglePlaylist(playlist.getAsJsonObject()));
     }
 
-    return playlists.get(0);
+    return list;
   }
 
-  public String extractPlaylistIdFromSearchResult(String searchResult) {
-    JsonElement firstPlaylist = getFirstPlaylistElement(searchResult);
+  public PlaylistKey getFirstPlaylist(String playlistSearchResult) {
+    List<PlaylistKey> result = getListOfPlaylists(playlistSearchResult);
 
-    return firstPlaylist.getAsJsonObject().getAsJsonPrimitive("id").getAsString();
+    if (result.isEmpty()) {
+      return null;
+    } else {
+      return getListOfPlaylists(playlistSearchResult).get(0);
+    }
   }
 
-  public String extractUserIdFromSearchResult(String searchResult) {
-    JsonElement firstPlaylist = getFirstPlaylistElement(searchResult);
+  private String extractArtists(JsonObject track) {
+    String result = "";
+    JsonArray artists = track.getAsJsonArray("artists");
 
-    return firstPlaylist.getAsJsonObject()
-            .getAsJsonObject("owner").getAsJsonPrimitive("id").getAsString();
+    for (JsonElement artist : artists) {
+      if (!result.isEmpty()) {
+        result += ", ";
+      }
+
+      result += artist.getAsJsonObject().getAsJsonPrimitive("name").getAsString();
+    }
+
+    return result;
   }
 
-  public String extractSpotifyUrl(String searchResult) {
-    JsonElement firstPlaylist = getFirstPlaylistElement(searchResult);
+  private String extractBestImage(JsonObject track) {
+    JsonArray images = track.getAsJsonObject("album").getAsJsonArray("images");
 
-    return firstPlaylist.getAsJsonObject().getAsJsonObject("external_urls")
-            .getAsJsonPrimitive("spotify").getAsString();
+    if (images.size() == 0) {
+      return "";
+    } else {
+      return images.get(0).getAsJsonObject().getAsJsonPrimitive("url").getAsString();
+    }
+
+  }
+
+  private Song extractSingleSong(JsonObject track) {
+
+    return new Song(
+            track.getAsJsonPrimitive("id").getAsString(),
+            track.getAsJsonPrimitive("name").getAsString(),
+            extractArtists(track),
+            convertToSeconds(track.getAsJsonPrimitive("duration_ms").getAsString()),
+            track.getAsJsonObject("external_urls").getAsJsonPrimitive("spotify").getAsString(),
+            extractBestImage(track)
+    );
+  }
+
+  public List<Song> getSongsFromPlaylist(String tracklistDetailsResponse) {
+    List<Song> result = new ArrayList<>();
+
+    JsonElement root = new JsonParser().parse(tracklistDetailsResponse);
+
+    JsonArray items = root.getAsJsonObject().getAsJsonArray("items");
+
+    for (JsonElement item : items) {
+      JsonObject track = item.getAsJsonObject().getAsJsonObject("track");
+      result.add(extractSingleSong(track));
+    }
+    return result;
   }
 
   private String convertToSeconds(String s) {
@@ -50,53 +103,6 @@ public class Extractor {
     int sec = ml % 60;
 
     return min + ":" + sec;
-  }
-
-  public Song extractSingleSong(JsonElement trackElement) {
-
-    JsonObject track = trackElement.getAsJsonObject();
-    Song result = new Song();
-
-    String songTitle = track.getAsJsonPrimitive("name").getAsString();
-    String duration = convertToSeconds(track.getAsJsonPrimitive("duration_ms").getAsString());
-    String trackId = track.getAsJsonPrimitive("id").getAsString();
-    String url = track.getAsJsonPrimitive("uri").getAsString();
-    String artist = extractArtistName(track);
-
-    result.setSongTitle(songTitle);
-    result.setDuration(duration);
-    result.setSinger(artist);
-    result.setTrackId(trackId);
-    result.setUri(url);
-
-    return result;
-  }
-
-  private String extractArtistName(JsonObject track) {
-    JsonArray artists = track.getAsJsonArray("artists");
-
-    if (artists.size() == 0) {
-      throw new ExtractorException("No artists found!");
-    }
-
-    JsonElement singleArtist = artists.get(0);
-    return singleArtist.getAsJsonObject().getAsJsonPrimitive("name").getAsString();
-  }
-
-  public List<Song> extractSongsFromTracklistDetails(String tracklistDetailsResponse) {
-    JsonElement root = new JsonParser().parse(tracklistDetailsResponse);
-
-    JsonArray items = root.getAsJsonObject().getAsJsonArray("items");
-    if (items.size() < 0) {
-      throw new ExtractorException("No items found!");
-    }
-
-    List<Song> songs = new ArrayList<>();
-    for (JsonElement item : items) {
-      JsonObject track = item.getAsJsonObject().getAsJsonObject("track");
-      songs.add(extractSingleSong(track));
-    }
-    return songs;
   }
 
   public List<Song> extractSongsFromRecommendationsResponse(String recommendationsBody) {

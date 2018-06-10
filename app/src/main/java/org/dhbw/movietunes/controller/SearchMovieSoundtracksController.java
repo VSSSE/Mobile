@@ -1,15 +1,16 @@
 package org.dhbw.movietunes.controller;
 
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import java.util.ArrayList;
 import java.util.List;
 import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.http.SpotifyCommunication;
-import org.dhbw.movietunes.list.SoundtrackSearchResult;
+import org.dhbw.movietunes.list.SongAdapter;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
 
@@ -17,7 +18,7 @@ import org.dhbw.movietunes.model.Song;
  * Created by anastasia.schwed on 11/26/2017.
  */
 
-public class SearchMovieSoundtracksController extends AsyncTask<String, Integer, SoundtrackSearchResult> {
+public class SearchMovieSoundtracksController extends AsyncTask<String, Integer, List<Song>> {
 
   private ResultMovieSoundtracksActivity activity;
 
@@ -26,22 +27,21 @@ public class SearchMovieSoundtracksController extends AsyncTask<String, Integer,
   }
 
   @Override
-  protected SoundtrackSearchResult doInBackground(String... params) {
+  protected List<Song>  doInBackground(String... params) {
     if (params.length != 1) {
       throw new HttpException("Expected 1 prameter, got " + params.length);
     }
     SpotifyCommunication spotifyCommunication = new SpotifyCommunication();
 
-    PlaylistKey playlistKey = spotifyCommunication.findPlaylist(params[0]);
+    PlaylistKey playlistKey = spotifyCommunication.findSoundtracks(params[0]);
 
-    String url = playlistKey.getSpotifyUrl();
-    List<Song> songs = spotifyCommunication.getSongsFromPlaylist(playlistKey);
-    return new SoundtrackSearchResult(url, songs);
+    return spotifyCommunication.getSongsFromPlaylist(playlistKey);
   }
 
   @Override
   protected void onPreExecute() {
-
+    ProgressBar bar = activity.findViewById(R.id.progressSearch);
+    bar.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -50,18 +50,10 @@ public class SearchMovieSoundtracksController extends AsyncTask<String, Integer,
   }
 
   @Override
-  protected void onPostExecute(SoundtrackSearchResult result) {
-    List<Song> currentSongList = new ArrayList<>(result.getSongs());
-    String[] strings = new String[currentSongList.size()];
-
-    for (int i = 0; i < currentSongList.size(); i++) {
-      Song song = currentSongList.get(i);
-      strings[i] = song.getSongTitle() + " (Duration:" + song.getDuration() + ")"
-              + song.getSinger();
-    }
-
-
-    ArrayAdapter adapter = new ArrayAdapter(activity, android.R.layout.simple_list_item_1, strings);
+  protected void onPostExecute(List<Song> result) {
+    ProgressBar bar = activity.findViewById(R.id.progressSearch);
+    bar.setVisibility(View.GONE);
+    SongAdapter adapter = new SongAdapter(activity, new ArrayList<>(result));
     ListView list = activity.findViewById(R.id.soundtrack_list_view);
     list.setAdapter(adapter);
   }

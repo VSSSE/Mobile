@@ -5,7 +5,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import java.util.List;
 import org.dhbw.movietunes.http.SpotifyCommunication;
-import org.dhbw.movietunes.list.SoundtrackSearchResult;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
 import org.junit.Test;
@@ -34,7 +33,7 @@ public class ExampleInstrumentedTest {
     SpotifyCommunication c = new SpotifyCommunication();
 
     //searching for song "titanic"
-    PlaylistKey playlistKey = c.findPlaylist("titanic");
+    PlaylistKey playlistKey = c.findSoundtracks("titanic");
 
     String url = playlistKey.getSpotifyUrl();
     List<Song> songList = c.getSongsFromPlaylist(playlistKey);

@@ -1,0 +1,86 @@
+{
+  "items": [
+    {
+      "track": {
+        "album": {
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/a7db5a11960241544bb92a3b7ebcb06aab540861",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/71222e892a71dcca9460f9df8d0d861e38117869",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/a040c3272e7828540fed645972e1c70fc7688565",
+              "width": 64
+            }
+          ]
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4GcS4MPc2DtgpYCeghy88O"
+            },
+            "href": "https://api.spotify.com/v1/artists/4GcS4MPc2DtgpYCeghy88O",
+            "id": "4GcS4MPc2DtgpYCeghy88O",
+            "name": "Brad Fiedel",
+            "type": "artist",
+            "uri": "spotify:artist:4GcS4MPc2DtgpYCeghy88O"
+          }
+        ],
+        "duration_ms": 260612,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/24TPOx1PUEl8sJIVnMMs0m"
+        },
+        "id": "24TPOx1PUEl8sJIVnMMs0m",
+        "name": "The Terminator Theme - Extended Version"
+      }
+    },
+    {
+      "track": {
+        "album": {
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/ca32b21b56dfd3da1961709b557983cc7648ed99",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/8212343797860649d3ef8d695ea4928a63d61cd2",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/8dc480fa3171a721b73825139e884401c9441ec9",
+              "width": 64
+            }
+          ]
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/1GXFec79QCHubeGw2q4x3B"
+            },
+            "href": "https://api.spotify.com/v1/artists/1GXFec79QCHubeGw2q4x3B",
+            "id": "1GXFec79QCHubeGw2q4x3B",
+            "name": "Movie Themes Studio",
+            "type": "artist",
+            "uri": "spotify:artist:1GXFec79QCHubeGw2q4x3B"
+          }
+        ],
+        "duration_ms": 117933,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/7aZn38ep1wLgOHyiRQ212o"
+        },
+        "id": "7aZn38ep1wLgOHyiRQ212o",
+        "name": "Terminator 2 (\"From Terminator\")"
+      }
+    }
+  ]
+}

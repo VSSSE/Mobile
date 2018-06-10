@@ -45,10 +45,10 @@ public class SongAdapter extends BaseAdapter {
     if (convertView == null)
       vi = inflater.inflate(R.layout.list_row, null);
 
-    TextView title = (TextView) vi.findViewById(R.id.title); // title
-    TextView artist = (TextView) vi.findViewById(R.id.artist); // artist name
-    TextView duration = (TextView) vi.findViewById(R.id.duration); // duration
-    ImageView thumb_image = (ImageView) vi.findViewById(R.id.list_image); // thumb image
+    TextView title = vi.findViewById(R.id.title); // title
+    TextView artist = vi.findViewById(R.id.artist); // artist name
+    TextView duration = vi.findViewById(R.id.duration); // duration
+    ImageView thumb_image = vi.findViewById(R.id.list_image); // thumb image
 
     Song song = data.get(position);
 
