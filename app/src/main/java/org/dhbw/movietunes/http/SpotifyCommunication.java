@@ -14,7 +14,6 @@ import org.dhbw.movietunes.model.Song;
 
 public class SpotifyCommunication {
 
-  private static final Logger LOGGER = Logger.getLogger(SpotifyCommunication.class.getName());
   private static final String HEADER_AUTHORIZATION = "Basic M2ZkOWFjYmJjZmY4NDVlNThhZTAxOGUwYTYwZjliMzU6ZTllODJjNmZjMDI0NGFiYWI1NWRiMTRjNGEzNjFhNzc=";
 
   private String token;
@@ -36,7 +35,7 @@ public class SpotifyCommunication {
             .build();
 
     String responseBody = HttpCommunication.executeRequest(request);
-    if (responseBody.equals("")) {
+    if (responseBody == null || responseBody.isEmpty()) {
       throw new HttpException("Empty Response! Could not get a Token!");
     }
 

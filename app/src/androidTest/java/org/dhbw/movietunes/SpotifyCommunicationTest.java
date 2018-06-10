@@ -8,6 +8,7 @@ import org.dhbw.movietunes.model.Song;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
@@ -25,8 +26,8 @@ public class SpotifyCommunicationTest {
   @Test
   public void testFindPlaylist() {
     PlaylistKey playlistKey = classUnderTest.findPlaylist("terminator");
-    assertTrue(!playlistKey.getPlaylistId().equals(""));
-    assertTrue(!playlistKey.getUserId().equals(""));
+    assertFalse(playlistKey.getPlaylistId().equals(""));
+    assertFalse(playlistKey.getUserId().equals(""));
   }
 
   @Test
@@ -36,7 +37,7 @@ public class SpotifyCommunicationTest {
     List<Song> songsFromPlaylist = classUnderTest.getSongsFromPlaylist(key);
 
     assertNotNull(songsFromPlaylist);
-    assertTrue(!songsFromPlaylist.isEmpty());
+    assertFalse(songsFromPlaylist.isEmpty());
     assertNotNull(songsFromPlaylist.get(0));
   }
 
@@ -46,7 +47,7 @@ public class SpotifyCommunicationTest {
     List<Song> songsFromPlaylist = classUnderTest.getRecommendations("0c6xIDDpzE81m2q797ordA");
 
     assertNotNull(songsFromPlaylist);
-    assertTrue(!songsFromPlaylist.isEmpty());
+    assertFalse(songsFromPlaylist.isEmpty());
     assertNotNull(songsFromPlaylist.get(0));
   }
 

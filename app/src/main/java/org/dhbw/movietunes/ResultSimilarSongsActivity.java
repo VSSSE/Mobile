@@ -16,7 +16,7 @@ import org.dhbw.movietunes.controller.SearchSimilarSongsController;
 
 public class ResultSimilarSongsActivity extends AppCompatActivity {
 
-  List<String> similars;
+  private List<String> similars;
 
   protected void onCreate(Bundle savedInstanceState) {
 
@@ -24,8 +24,7 @@ public class ResultSimilarSongsActivity extends AppCompatActivity {
 
     setContentView(R.layout.result_similar_songs_activity);
 
-    Intent intent = getIntent();
-    ListView similarSongsView = findViewById(R.id.similarSongs_list_view);
+    Intent intent = getIntent();;
 
     String trackId = intent.getStringExtra("TRACK_ID");
     SearchSimilarSongsController controller
@@ -33,7 +32,7 @@ public class ResultSimilarSongsActivity extends AppCompatActivity {
 
     controller.execute(trackId);
 
-    List<String> similars = new ArrayList<>();
+    similars = new ArrayList<>();
 
   }
 

@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import org.dhbw.movietunes.exception.ExtractorException;
 import org.dhbw.movietunes.extract.Extractor;
 import org.dhbw.movietunes.model.Song;
 import org.junit.Before;
@@ -18,7 +19,7 @@ import static junit.framework.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class ExtractorTest {
 
-  Extractor codeUnderTest;
+  private Extractor codeUnderTest;
 
   @Before
   public void setUp() {
@@ -60,7 +61,7 @@ public class ExtractorTest {
 
     List<Song> songs = codeUnderTest.extractSongsFromRecommendationsResponse(readStringFromFile(R.raw.test_recommendations_response));
     assertNotNull(songs);
-    assertTrue(!songs.isEmpty());
+    assertFalse(songs.isEmpty());
     Song song = songs.get(0);
 
     assertEquals("Tightrope", song.getSongTitle());
@@ -80,7 +81,7 @@ public class ExtractorTest {
       reader.close();
       return result.toString();
     } catch (Exception e) {
-      throw new RuntimeException(e);
+      throw new ExtractorException("Could not readd File!", e);
     }
 
   }
