@@ -1,7 +1,11 @@
 package org.dhbw.movietunes.controller;
 
 import android.os.AsyncTask;
+import android.widget.ArrayAdapter;
+import java.util.ArrayList;
 import java.util.List;
+import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
+import org.dhbw.movietunes.SearchMovieSoundtracksActivity;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.http.SpotifyCommunication;
 import org.dhbw.movietunes.list.SoundtrackSearchResult;
@@ -15,8 +19,10 @@ import org.dhbw.movietunes.model.Song;
 public class SearchMovieSoundtracksController extends AsyncTask<String, Integer, SoundtrackSearchResult> {
 
   private SpotifyCommunication spotifyCommunication;
+  ResultMovieSoundtracksActivity activity;
 
-  public SearchMovieSoundtracksController() {
+  public SearchMovieSoundtracksController(ResultMovieSoundtracksActivity activity) {
+    this.activity = activity;
     spotifyCommunication = new SpotifyCommunication();
   }
 
@@ -45,7 +51,19 @@ public class SearchMovieSoundtracksController extends AsyncTask<String, Integer,
 
   @Override
   protected void onPostExecute(SoundtrackSearchResult result) {
+    List<Song> currentSongList = new ArrayList<>(result.getSongs());
+    String[] strings = new String[currentSongList.size()];
 
+    for (int i = 0; i < currentSongList.size(); i++) {
+      Song song = currentSongList.get(i);
+      strings[i] = song.getSongTitle() + " (Duration:" + song.getDuration() + ")"
+              + song.getSinger();
+    }
+
+
+    activity.setCurrentSongList(currentSongList);
+    activity.setStrackSearchResult(result);
+    activity.setStrings(strings);
   }
 
 }

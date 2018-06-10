@@ -23,7 +23,10 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
 
   private ListView resultList;
   private SoundtrackSearchResult strackSearchResult;
-  private List<Song> currentSongList = null;
+  private List<Song> currentSongList;
+
+
+  private String[] strings;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +41,13 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
     String movieTitle = intent.getStringExtra(SearchMovieSoundtracksActivity.EXTRA_MESSAGE);
     movie.setText(movieTitle);
 
-    SearchMovieSoundtracksController controller = new SearchMovieSoundtracksController();
-    strackSearchResult = controller.searchTracklist(movieTitle);
-    currentSongList = new ArrayList<>(strackSearchResult.getSongs());
-    String[] strings = new String[currentSongList.size()];
-
-    for (int i = 0; i < currentSongList.size(); i++) {
-      Song song = currentSongList.get(i);
-      strings[i] = song.getSongTitle() + " (Duration:" + song.getDuration() + ")"
-              + song.getSinger();
-    }
+    SearchMovieSoundtracksController controller = new SearchMovieSoundtracksController(this);
+    controller.execute();
 
     ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, strings);
     resultList.setAdapter(adapter);
     resultList.setOnItemClickListener(this);
+
 
   }
 
@@ -100,6 +96,32 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
     });
 
     popupMenu.show();
+  }
+
+
+
+  public SoundtrackSearchResult getStrackSearchResult() {
+    return strackSearchResult;
+  }
+
+  public void setStrackSearchResult(SoundtrackSearchResult strackSearchResult) {
+    this.strackSearchResult = strackSearchResult;
+  }
+
+  public List<Song> getCurrentSongList() {
+    return currentSongList;
+  }
+
+  public void setCurrentSongList(List<Song> currentSongList) {
+    this.currentSongList = currentSongList;
+  }
+
+  public String[] getStrings() {
+    return strings;
+  }
+
+  public void setStrings(String[] strings) {
+    this.strings = strings;
   }
 }
 
