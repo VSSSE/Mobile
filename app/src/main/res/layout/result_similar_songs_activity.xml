@@ -4,7 +4,8 @@
     android:id="@+id/similar_songs"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
   <TextView
       android:id="@+id/intro"
@@ -12,7 +13,8 @@
       android:layout_height="wrap_content"
       android:textSize="14pt"
       android:text="@string/similarsongsTitle"
-      android:textStyle="bold"/>
+      android:textStyle="bold"
+      />
 
   <ProgressBar
       android:layout_width="wrap_content"
@@ -26,7 +28,8 @@
   <ListView
       android:id="@+id/similarSongs_list_view"
       android:layout_height="match_parent"
-      android:layout_width="match_parent">
+      android:layout_width="match_parent"
+      >
   </ListView>
 
 </LinearLayout>

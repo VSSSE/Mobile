@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">Movie Tunes</string>
-    <string name="WelcomeText">Welcome to Movie Tunes</string>
-    <string name="lookupmovies">LOOK UP MOVIES</string>
-    <string name="lookupsoundtracks">LOOK UP SOUNDTRACKS</string>
-    <string name="moviesoundtrackTitle">Movie soundtracks:</string>
-    <string name="searchmoviesinstructions">Please enter a song title to get movie titles</string>
-    <string name="lookupmoviesBtn">LOOK UP MOVIES</string>
-    <string name="lookupsoundtracksBtn">LOOK UP SOUNDTRACKS</string>
-    <string name="searchsoundtracksinstructions">Please enter a movie title to get soundtracks</string>
-    <string name="similarsongsTitle">Similar  songs found:</string>
-    <string name="playonSpotify">Play on Spotify</string>
-    <string name="playonYoutube">Play on Youtube</string>
-    <string name="findsimilarsongs">Find similar songs</string>
-    <string name="shareonFacebook">Share</string>
+  <string name="app_name">Movie Tunes</string>
+  <string name="WelcomeText">Welcome to Movie Tunes</string>
+  <string name="lookupmovies">LOOK UP MOVIES</string>
+  <string name="lookupsoundtracks">LOOK UP SOUNDTRACKS</string>
+  <string name="moviesoundtrackTitle">Movie soundtracks:</string>
+  <string name="searchmoviesinstructions">Please enter a song title to get movie titles</string>
+  <string name="lookupmoviesBtn">LOOK UP MOVIES</string>
+  <string name="lookupsoundtracksBtn">LOOK UP SOUNDTRACKS</string>
+  <string name="searchsoundtracksinstructions">Please enter a movie title to get soundtracks</string>
+  <string name="similarsongsTitle">Similar  songs found:</string>
+  <string name="playonSpotify">Play on Spotify</string>
+  <string name="playonYoutube">Play on Youtube</string>
+  <string name="findsimilarsongs">Find similar songs</string>
+  <string name="shareonFacebook">Share</string>
 </resources>
