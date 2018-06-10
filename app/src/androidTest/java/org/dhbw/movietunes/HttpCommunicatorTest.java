@@ -18,11 +18,9 @@ public class HttpCommunicatorTest {
             .url("http://www.google.de")
             .build();
 
-    Response response = HttpCommunication.executeRequest(request);
+    String response = HttpCommunication.executeRequest(request);
 
-    String bodyString = response.body().string();
-
-    Assert.assertTrue(bodyString.contains("http://www.google.de/"));
+    Assert.assertTrue(response.contains("http://www.google.de/"));
 
   }
 

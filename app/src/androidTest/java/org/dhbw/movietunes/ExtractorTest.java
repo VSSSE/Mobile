@@ -3,7 +3,6 @@ package org.dhbw.movietunes;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-import com.example.myapplication.R;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
