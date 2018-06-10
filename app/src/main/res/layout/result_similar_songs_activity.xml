@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/similar_songs"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/similar_songs"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-  <TextView android:id="@+id/intro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14pt"
-            android:text="@string/similarsongsTitle"
-            android:textStyle="bold"/>
+  <TextView
+      android:id="@+id/intro"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="14pt"
+      android:text="@string/similarsongsTitle"
+      android:textStyle="bold"/>
+
+  <ProgressBar
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:indeterminate="true"
+      android:layout_gravity="center_horizontal"
+      android:layout_marginTop="40dp"
+      android:visibility="gone"
+      />
 
   <ListView
       android:id="@+id/similarSongs_list_view"

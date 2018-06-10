@@ -1,5 +1,6 @@
-<menu xmlns:androclass="http://schemas.android.com/apk/res/android"
-      xmlns:android="http://schemas.android.com/tools">
+<menu
+    xmlns:androclass="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/tools">
 
   <item
       androclass:title="@string/playonSpotify"
