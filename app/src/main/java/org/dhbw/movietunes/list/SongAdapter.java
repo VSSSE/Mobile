@@ -2,21 +2,18 @@ package org.dhbw.movietunes.list;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import java.util.ArrayList;
 import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
 import org.dhbw.movietunes.ResultSimilarSongsActivity;
-import org.dhbw.movietunes.SearchMovieTitlesActivity;
 import org.dhbw.movietunes.http.ImageLoader;
 import org.dhbw.movietunes.model.Song;
-import org.dhbw.movietunes.player.SpotifyPlayer;
-import org.dhbw.movietunes.player.YoutubePlayer;
 
 public class SongAdapter extends BaseAdapter {
 
@@ -60,16 +57,14 @@ public class SongAdapter extends BaseAdapter {
     title.setText(song.getSongTitle());
     artist.setText(song.getArtist());
     duration.setText(song.getDuration());
-    imageLoader.DisplayImage(song.getImageUri(), thumb_image);
+    imageLoader.displayImage(song.getImageUri(), thumb_image);
 
-
-    if(activity.getClass() == ResultSimilarSongsActivity.class) {
+    if (activity.getClass() == ResultSimilarSongsActivity.class) {
       vi.setOnClickListener(new SimilarSongsListener(activity, song));
-    } else if(activity.getClass() == ResultMovieSoundtracksActivity.class) {
+    } else if (activity.getClass() == ResultMovieSoundtracksActivity.class) {
       vi.setOnClickListener(new MovieSoundtracksListener(activity, song));
     }
     return vi;
   }
-
 
 }

@@ -12,7 +12,7 @@ import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.player.SpotifyPlayer;
 import org.dhbw.movietunes.player.YoutubePlayer;
 
-public class MovieSoundtracksListener implements View.OnClickListener{
+public class MovieSoundtracksListener implements View.OnClickListener {
 
   Activity activity;
   Song song;
@@ -24,7 +24,7 @@ public class MovieSoundtracksListener implements View.OnClickListener{
 
   @Override
   public void onClick(View v) {
-    PopupMenu popupMenu =  new PopupMenu(activity, v);
+    PopupMenu popupMenu = new PopupMenu(activity, v);
     MenuInflater inflater = popupMenu.getMenuInflater();
     inflater.inflate(R.menu.popup_menu_movie_soundtracks, popupMenu.getMenu());
 

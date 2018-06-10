@@ -26,7 +26,7 @@ public class SearchMovieSoundtracksController extends AsyncTask<String, Integer,
   }
 
   @Override
-  protected List<Song>  doInBackground(String... params) {
+  protected List<Song> doInBackground(String... params) {
     if (params.length != 1) {
       throw new HttpException("Expected 1 prameter, got " + params.length);
     }

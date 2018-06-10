@@ -2,15 +2,14 @@ package org.dhbw.movietunes;
 
 import android.support.test.runner.AndroidJUnit4;
 import java.util.List;
-import org.dhbw.movietunes.extract.Extractor;
 import org.dhbw.movietunes.http.SpotifyCommunication;
-import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNotNull;
 
 @RunWith(AndroidJUnit4.class)
 public class SpotifyCommunicationTest {
@@ -21,7 +20,6 @@ public class SpotifyCommunicationTest {
   public void setUp() {
     codeUnderTest = new SpotifyCommunication();
   }
-
 
   @Test
   public void testFindSoundtracks() {

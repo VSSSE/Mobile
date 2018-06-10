@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
-import org.dhbw.movietunes.exception.ExtractorException;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
 
@@ -115,7 +114,5 @@ public class Extractor {
 
     return min + ":" + sec;
   }
-
-
 
 }

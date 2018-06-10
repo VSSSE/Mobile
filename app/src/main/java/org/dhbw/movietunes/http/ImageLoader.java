@@ -20,25 +20,26 @@ import org.dhbw.movietunes.utils.Utils;
 
 public class ImageLoader {
 
-  final int stub_id = R.drawable.no_image;
-  MemoryCache memoryCache = new MemoryCache();
-  FileCache fileCache;
-  ExecutorService executorService;
-  private Map<ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
+  private static final int stubId = R.drawable.no_image;
+  private MemoryCache memoryCache = new MemoryCache();
+  private FileCache fileCache;
+  private ExecutorService executorService;
+  private Map<ImageView, String> imageViews
+          = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
 
   public ImageLoader(Context context) {
     fileCache = new FileCache(context);
     executorService = Executors.newFixedThreadPool(5);
   }
 
-  public void DisplayImage(String url, ImageView imageView) {
+  public void displayImage(String url, ImageView imageView) {
     imageViews.put(imageView, url);
     Bitmap bitmap = memoryCache.get(url);
-    if (bitmap != null)
+    if (bitmap != null) {
       imageView.setImageBitmap(bitmap);
-    else {
+    } else {
       queuePhoto(url, imageView);
-      imageView.setImageResource(stub_id);
+      imageView.setImageResource(stubId);
     }
   }
 
@@ -52,12 +53,12 @@ public class ImageLoader {
 
     //from SD cache
     Bitmap b = decodeFile(f);
-    if (b != null)
+    if (b != null) {
       return b;
+    }
 
     //from web
     try {
-      Bitmap bitmap = null;
       URL imageUrl = new URL(url);
       HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
       conn.setConnectTimeout(30000);
@@ -67,7 +68,7 @@ public class ImageLoader {
       OutputStream os = new FileOutputStream(f);
       Utils.CopyStream(is, os);
       os.close();
-      bitmap = decodeFile(f);
+      Bitmap bitmap = decodeFile(f);
       return bitmap;
     } catch (Exception ex) {
       ex.printStackTrace();
@@ -85,13 +86,15 @@ public class ImageLoader {
 
       //Find the correct scale value. It should be the power of 2.
       final int REQUIRED_SIZE = 70;
-      int width_tmp = o.outWidth, height_tmp = o.outHeight;
+      int widthTmp = o.outWidth;
+      int heightTmp = o.outHeight;
       int scale = 1;
       while (true) {
-        if (width_tmp / 2 < REQUIRED_SIZE || height_tmp / 2 < REQUIRED_SIZE)
+        if (widthTmp / 2 < REQUIRED_SIZE || heightTmp / 2 < REQUIRED_SIZE) {
           break;
-        width_tmp /= 2;
-        height_tmp /= 2;
+        }
+        widthTmp /= 2;
+        heightTmp /= 2;
         scale *= 2;
       }
 
@@ -100,6 +103,7 @@ public class ImageLoader {
       o2.inSampleSize = scale;
       return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
     } catch (FileNotFoundException e) {
+      e.printStackTrace();
     }
     return null;
   }
@@ -164,7 +168,7 @@ public class ImageLoader {
       if (bitmap != null)
         photoToLoad.imageView.setImageBitmap(bitmap);
       else
-        photoToLoad.imageView.setImageResource(stub_id);
+        photoToLoad.imageView.setImageResource(stubId);
     }
   }
 

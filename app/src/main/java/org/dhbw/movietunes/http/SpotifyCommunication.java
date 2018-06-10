@@ -109,6 +109,5 @@ public class SpotifyCommunication {
     return extractor.getRecommendedSongs(getRecommendationsBody(trackId));
   }
 
-
 }
 
