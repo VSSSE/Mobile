@@ -80,7 +80,7 @@ public class Extractor {
     }
 
     JsonElement singleArtist = artists.get(0);
-    return  singleArtist.getAsJsonObject().getAsJsonPrimitive("name").getAsString();
+    return singleArtist.getAsJsonObject().getAsJsonPrimitive("name").getAsString();
   }
 
   public List<Song> extractSongsFromTracklistDetails(String tracklistDetailsResponse) {

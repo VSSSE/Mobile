@@ -27,7 +27,6 @@ public class SearchMovieTitlesActivity extends AppCompatActivity implements View
     lookupMoviesBtn.setOnClickListener(this);
   }
 
-
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();

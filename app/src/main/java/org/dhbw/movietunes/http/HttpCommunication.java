@@ -2,10 +2,8 @@ package org.dhbw.movietunes.http;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import org.dhbw.movietunes.exception.HttpException;
 
 public class HttpCommunication {

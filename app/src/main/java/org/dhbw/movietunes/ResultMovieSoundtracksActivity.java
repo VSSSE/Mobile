@@ -8,13 +8,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
-
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.PopupMenu;
+import android.widget.TextView;
 import java.util.List;
-
 import org.dhbw.movietunes.controller.SearchMovieSoundtracksController;
-import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.list.SoundtrackSearchResult;
+import org.dhbw.movietunes.model.Song;
 
 public class ResultMovieSoundtracksActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
@@ -42,7 +43,6 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
 
     resultList.setOnItemClickListener(this);
 
-
   }
 
   public PopupMenu showPopup(View v) {
@@ -58,6 +58,7 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
     inflater.inflate(R.menu.main_menu, menu);
     return true;
   }
+
   @Override
   public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 
@@ -91,8 +92,6 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
 
     popupMenu.show();
   }
-
-
 
   public SoundtrackSearchResult getStrackSearchResult() {
     return strackSearchResult;

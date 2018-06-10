@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
-import org.dhbw.movietunes.SearchMovieSoundtracksActivity;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.http.SpotifyCommunication;
 import org.dhbw.movietunes.list.SoundtrackSearchResult;
@@ -60,7 +59,6 @@ public class SearchMovieSoundtracksController extends AsyncTask<String, Integer,
       strings[i] = song.getSongTitle() + " (Duration:" + song.getDuration() + ")"
               + song.getSinger();
     }
-
 
     activity.setCurrentSongList(currentSongList);
     activity.setStrackSearchResult(result);
