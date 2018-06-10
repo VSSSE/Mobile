@@ -11,7 +11,7 @@ import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.player.SpotifyPlayer;
 import org.dhbw.movietunes.player.YoutubePlayer;
 
-public class SimilarSongsListener implements View.OnClickListener{
+public class SimilarSongsListener implements View.OnClickListener {
 
   Activity activity;
   Song song;
@@ -23,7 +23,7 @@ public class SimilarSongsListener implements View.OnClickListener{
 
   @Override
   public void onClick(View v) {
-    PopupMenu popupMenu =  new PopupMenu(activity, v);
+    PopupMenu popupMenu = new PopupMenu(activity, v);
     MenuInflater inflater = popupMenu.getMenuInflater();
     inflater.inflate(R.menu.popup_menu_similar_songs, popupMenu.getMenu());
 
@@ -37,7 +37,9 @@ public class SimilarSongsListener implements View.OnClickListener{
             new YoutubePlayer(activity, song.getSongTitle()).play();
             break;
           case R.id.facebook:
-            String ShareBody = "I love Movie Tunes!";
+            String ShareBody = "I found " + song.getSongTitle()
+                    + " with Movie Tunes! Listen to it on Spotify: "
+                    + song.getUri() + " And visit the Movie Tunes Project: https://vssse.wordpress.com/";
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
             sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Share Song found on Movie tunes");

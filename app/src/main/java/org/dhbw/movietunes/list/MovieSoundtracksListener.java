@@ -43,7 +43,9 @@ public class MovieSoundtracksListener implements View.OnClickListener{
             activity.startActivity(intent);
             break;
           case R.id.facebook:
-            String ShareBody = "I love Movie Tunes!";
+            String ShareBody = "I found " + song.getSongTitle()
+                    + " with Movie Tunes! Listen to it on Spotify: "
+                    + song.getUri() + " And visit the Movie Tunes Project: https://vssse.wordpress.com/";
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
             sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Share Song found on Movie tunes");
