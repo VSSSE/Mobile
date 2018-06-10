@@ -8,10 +8,12 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import java.util.logging.Logger;
 
 public class SearchMovieTitlesActivity extends AppCompatActivity implements View.OnClickListener {
 
-  public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.LookUpMovie";
+  private static final Logger LOGGER = Logger.getLogger(SearchMovieTitlesActivity.class.getName());
+
 
   private EditText textField;
 
@@ -39,7 +41,7 @@ public class SearchMovieTitlesActivity extends AppCompatActivity implements View
     String songTitle = textField.getText().toString();
 
     Intent intent = new Intent(getApplicationContext(), ResultMovieTitleActivity.class);
-    intent.putExtra(EXTRA_MESSAGE, songTitle);
+    intent.putExtra(ResultMovieTitleActivity.EXTRA_MESSAGE, songTitle);
     startActivity(intent);
   }
 }

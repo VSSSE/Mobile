@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import org.dhbw.movietunes.controller.SearchSimilarSongsController;
 
 /**
@@ -21,7 +22,9 @@ import org.dhbw.movietunes.controller.SearchSimilarSongsController;
 
 public class ResultSimilarSongsActivity extends AppCompatActivity  {
 
+  private static final Logger LOGGER = Logger.getLogger(ResultSimilarSongsActivity.class.getName());
 
+  public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.SimilarSongsFor";
 
   protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,7 +36,7 @@ public class ResultSimilarSongsActivity extends AppCompatActivity  {
     ListView similarList = findViewById(R.id.similarSongs_list_view);
 
 
-    String trackId = intent.getStringExtra("TRACK_ID");
+    String trackId = intent.getStringExtra(EXTRA_MESSAGE);
     SearchSimilarSongsController controller
             = new SearchSimilarSongsController(this);
 

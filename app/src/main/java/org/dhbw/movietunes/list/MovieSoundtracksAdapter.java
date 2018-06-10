@@ -80,7 +80,7 @@ public class MovieSoundtracksAdapter extends BaseAdapter {
                 break;
               case R.id.similar:
                 Intent intent = new Intent(activity.getApplicationContext(), ResultSimilarSongsActivity.class);
-                intent.putExtra("TRACK_ID", song.getTrackId());
+                intent.putExtra(ResultSimilarSongsActivity.EXTRA_MESSAGE, song.getTrackId());
                 activity.startActivity(intent);
                 break;
               case R.id.facebook:

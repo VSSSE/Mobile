@@ -8,10 +8,12 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import java.util.logging.Logger;
 
 public class SearchMovieSoundtracksActivity extends AppCompatActivity implements View.OnClickListener {
 
-  public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.LookUpSoundtrack";
+  private static final Logger LOGGER = Logger.getLogger(SearchMovieSoundtracksActivity.class.getName());
+
 
   private EditText textField;
 
@@ -39,7 +41,7 @@ public class SearchMovieSoundtracksActivity extends AppCompatActivity implements
     String movieTitle = textField.getText().toString();
 
     Intent intent = new Intent(getApplicationContext(), ResultMovieSoundtracksActivity.class);
-    intent.putExtra(EXTRA_MESSAGE, movieTitle);
+    intent.putExtra(ResultMovieSoundtracksActivity.EXTRA_MESSAGE, movieTitle);
     startActivity(intent);
   }
 }
