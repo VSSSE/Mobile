@@ -16,9 +16,6 @@ public class SearchMovieTitlesActivity extends AppCompatActivity implements View
   public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.LookUpMovie";
 
   private EditText textField;
-  private TextView introText;
-  private TextView welcomeText;
-  private Button lookupMoviesBtn;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +23,8 @@ public class SearchMovieTitlesActivity extends AppCompatActivity implements View
 
     setContentView(R.layout.search_movie_titles_activity);
 
-    welcomeText = findViewById(R.id.welcome);
-    introText = findViewById(R.id.intro_text);
     textField = findViewById(R.id.text_input);
-    lookupMoviesBtn = findViewById(R.id.search_button);
+    Button lookupMoviesBtn = findViewById(R.id.search_button);
 
     lookupMoviesBtn.setOnClickListener(this);
   }

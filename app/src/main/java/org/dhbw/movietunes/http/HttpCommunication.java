@@ -19,8 +19,7 @@ public class HttpCommunication {
 
       LOGGER.log(Level.INFO, "Response: " + response.body().string());
     } catch (Exception e) {
-      LOGGER.log(Level.INFO, "Got no response from AsyncTask!");
-      throw new HttpException("\"Got no response from AsyncTask!", e);
+      throw new HttpException("\"Http Request faild!", e);
     }
 
     return response;

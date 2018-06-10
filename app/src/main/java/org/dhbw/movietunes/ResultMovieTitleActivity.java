@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 
 public class ResultMovieTitleActivity extends AppCompatActivity {
-  private TextView song;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +18,7 @@ public class ResultMovieTitleActivity extends AppCompatActivity {
 
     Intent intent = getIntent();
     String songTitle = intent.getStringExtra(SearchMovieTitlesActivity.EXTRA_MESSAGE);
-    song = findViewById(R.id.song);
+    TextView song = findViewById(R.id.song);
     song.setText(songTitle);
   }
 

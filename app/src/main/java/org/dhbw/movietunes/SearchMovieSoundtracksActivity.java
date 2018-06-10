@@ -16,9 +16,6 @@ public class SearchMovieSoundtracksActivity extends AppCompatActivity implements
   public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.LookUpSoundtrack";
 
   private EditText textField;
-  private Button searchButton;
-  private TextView welcomeText;
-  private TextView introText;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +23,7 @@ public class SearchMovieSoundtracksActivity extends AppCompatActivity implements
 
     setContentView(R.layout.search_movie_soundtracks_activity);
 
-    welcomeText = findViewById(R.id.welcome);
-    searchButton = findViewById(R.id.search_button);
-    introText = findViewById(R.id.intro_text);
+    Button searchButton = findViewById(R.id.search_button);
     textField = findViewById(R.id.text_input);
 
     searchButton.setOnClickListener(this);
