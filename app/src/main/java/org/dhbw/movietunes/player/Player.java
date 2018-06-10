@@ -17,6 +17,7 @@ public abstract class Player {
   }
 
   public void play() {
+    this.uri = createUri();
     activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)));
   }
 

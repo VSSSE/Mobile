@@ -17,14 +17,14 @@ import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.player.SpotifyPlayer;
 import org.dhbw.movietunes.player.YoutubePlayer;
 
-public class SongAdapter extends BaseAdapter {
+public class MovieSoundtracksAdapter extends BaseAdapter {
 
   private static LayoutInflater inflater = null;
   public ImageLoader imageLoader;
   private Activity activity;
   private ArrayList<Song> data;
 
-  public SongAdapter(Activity a, ArrayList<Song> d) {
+  public MovieSoundtracksAdapter(Activity a, ArrayList<Song> d) {
     activity = a;
     data = d;
     inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -65,7 +65,9 @@ public class SongAdapter extends BaseAdapter {
     vi.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        PopupMenu popupMenu = showPopup(v);
+        PopupMenu popupMenu =  new PopupMenu(activity, v);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.popup_menu_movie_soundtracks, popupMenu.getMenu());
 
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
           public boolean onMenuItemClick(MenuItem item) {
@@ -101,10 +103,4 @@ public class SongAdapter extends BaseAdapter {
   }
 
 
-  public PopupMenu showPopup(View v) {
-    PopupMenu popup = new PopupMenu(activity, v);
-    MenuInflater inflater = popup.getMenuInflater();
-    inflater.inflate(R.menu.popup_menu_movie_soundtracks, popup.getMenu());
-    return popup;
-  }
 }

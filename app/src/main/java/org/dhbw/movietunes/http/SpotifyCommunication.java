@@ -2,6 +2,7 @@ package org.dhbw.movietunes.http;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import java.util.ArrayList;
 import java.util.List;
 import okhttp3.FormBody;
 import okhttp3.Request;
@@ -97,7 +98,11 @@ public class SpotifyCommunication {
   public List<Song> findSoundtracks(String searchString) {
 
     PlaylistKey first = extractor.getFirstPlaylist(getJsonForSearchPlaylist(searchString));
-    return extractor.getSongsFromPlaylist(getSoundtrackJson(first));
+    if (first == null) {
+      return new ArrayList<Song>();
+    } else {
+      return extractor.getSongsFromPlaylist(getSoundtrackJson(first));
+    }
   }
 
   public List<Song> getRecommendations(String trackId) {

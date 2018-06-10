@@ -2,7 +2,6 @@ package org.dhbw.movietunes.controller;
 
 import android.os.AsyncTask;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultSimilarSongsActivity;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.http.SpotifyCommunication;
-import org.dhbw.movietunes.list.SongAdapter;
+import org.dhbw.movietunes.list.MovieSoundtracksAdapter;
 import org.dhbw.movietunes.model.Song;
 
 /**
@@ -51,7 +50,7 @@ public class SearchSimilarSongsController extends AsyncTask<String, Integer, Lis
     ProgressBar bar = activity.findViewById(R.id.progressSearch);
     bar.setVisibility(View.GONE);
 
-    SongAdapter adapter = new SongAdapter(activity, new ArrayList<>(result));
+    MovieSoundtracksAdapter adapter = new MovieSoundtracksAdapter(activity, new ArrayList<>(result));
     ListView list = activity.findViewById(R.id.similarSongs_list_view);
     list.setAdapter(adapter);
   }
