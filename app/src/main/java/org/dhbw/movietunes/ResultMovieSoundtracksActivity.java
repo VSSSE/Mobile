@@ -9,17 +9,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import java.util.List;
 import org.dhbw.movietunes.controller.SearchMovieSoundtracksController;
-import org.dhbw.movietunes.list.SoundtrackSearchResult;
-import org.dhbw.movietunes.model.Song;
 
 public class ResultMovieSoundtracksActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
-
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +56,7 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
     PopupMenu popupMenu = showPopup(resultList.getChildAt(position));
     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
       public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
           case R.id.spotify:
             String url = strackSearchResult.getUrl();
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));

@@ -14,6 +14,7 @@
       android:textSize="14pt"
       android:text="@string/similarsongsTitle"
       android:textStyle="bold"
+      android:layout_marginStart="10dp"
       />
 
   <ProgressBar
@@ -29,6 +30,9 @@
       android:id="@+id/similarSongs_list_view"
       android:layout_height="match_parent"
       android:layout_width="match_parent"
+      android:divider="#b5b5b5"
+      android:dividerHeight="1dp"
+      android:listSelector="@drawable/list_selector"
       >
   </ListView>
 

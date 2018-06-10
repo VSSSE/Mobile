@@ -16,6 +16,7 @@
       android:layout_height="wrap_content"
       android:textSize="14pt"
       android:textStyle="bold"
+      android:layout_marginStart="10dp"
       />
 
   <ProgressBar
