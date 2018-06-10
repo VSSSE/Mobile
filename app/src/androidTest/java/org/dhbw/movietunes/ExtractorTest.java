@@ -40,7 +40,7 @@ public class ExtractorTest {
             "https://open.spotify.com/user/revinjan28/playlist/6SNgCWsYUA9JSt9XWhU9JM"
     );
 
-    assertTrue(excpected.equals(playlist));
+    assertTrue(excpected.equalsTo(playlist));
   }
 
   @Test
@@ -67,7 +67,7 @@ public class ExtractorTest {
     ));
     assertEquals(excpected.size(), result.size());
     for (int i = 0; i < excpected.size(); i++) {
-      assertTrue(excpected.get(i).equals(result.get(i)));
+      assertTrue(excpected.get(i).equalsTo(result.get(i)));
     }
   }
 
@@ -94,8 +94,8 @@ public class ExtractorTest {
     );
 
     assertEquals(20, result.size());
-    assertTrue(result.get(0).equals(excpected0));
-    assertTrue(result.get(19).equals(excpected19));
+    assertTrue(result.get(0).equalsTo(excpected0));
+    assertTrue(result.get(19).equalsTo(excpected19));
   }
 
   private String readStringFromFile(int resourceId) {

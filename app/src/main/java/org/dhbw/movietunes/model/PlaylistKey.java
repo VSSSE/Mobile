@@ -29,7 +29,7 @@ public class PlaylistKey {
     return playlistName;
   }
 
-  public boolean equals(PlaylistKey object2) {
+  public boolean equalsTo(PlaylistKey object2) {
 
     return object2 != null &&
             (userId.equals(userId)) &&

@@ -45,7 +45,7 @@ public class Song {
     return imageUri;
   }
 
-  public boolean equals(Song object2) {
+  public boolean equalsTo(Song object2) {
 
     return object2 != null &&
             (trackId.equals(object2.trackId)) &&
