@@ -21,9 +21,9 @@ import org.dhbw.movietunes.list.SoundtrackSearchResult;
 public class ResultMovieSoundtracksActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
 
-  ListView resultList;
-  SoundtrackSearchResult strackSearchResult;
-  List<Song> currentSongList = null;
+  private ListView resultList;
+  private SoundtrackSearchResult strackSearchResult;
+  private List<Song> currentSongList = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

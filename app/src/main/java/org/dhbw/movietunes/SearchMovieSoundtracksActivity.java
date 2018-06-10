@@ -15,10 +15,10 @@ public class SearchMovieSoundtracksActivity extends AppCompatActivity implements
 
   public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.LookUpSoundtrack";
 
-  EditText textField;
-  Button searchButton;
-  TextView welcomeText;
-  TextView introText;
+  private EditText textField;
+  private Button searchButton;
+  private TextView welcomeText;
+  private TextView introText;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

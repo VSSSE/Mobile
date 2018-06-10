@@ -15,10 +15,10 @@ public class SearchMovieTitlesActivity extends AppCompatActivity implements View
 
   public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.LookUpMovie";
 
-  EditText textField;
-  TextView introText;
-  TextView welcomeText;
-  Button lookupMoviesBtn;
+  private EditText textField;
+  private TextView introText;
+  private TextView welcomeText;
+  private Button lookupMoviesBtn;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

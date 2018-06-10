@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 
 public class ResultMovieTitleActivity extends AppCompatActivity {
-  TextView song;
+  private TextView song;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

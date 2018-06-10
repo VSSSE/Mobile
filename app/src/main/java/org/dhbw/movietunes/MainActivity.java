@@ -15,8 +15,8 @@ import java.util.logging.Logger;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
   private static final Logger LOGGER = Logger.getLogger(MainActivity.class.getName());
-  Button lookUpSoundtrackButton;
-  Button lookUpMoviesButton;
+  private Button lookUpSoundtrackButton;
+  private Button lookUpMoviesButton;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
