@@ -34,7 +34,7 @@ public class SpotifyCommunicationTest {
 
   @Test
   public void testGetRecommendations() {
-    List<Song> recomendetSongs = codeUnderTest.getRecommendations("7aZn38ep1wLgOHyiRQ212o");
+    List<Song> recomendetSongs = codeUnderTest.getRecommendations("24TPOx1PUEl8sJIVnMMs0m");
 
     assertFalse(recomendetSongs.isEmpty());
     assertNotNull(recomendetSongs.get(0));
