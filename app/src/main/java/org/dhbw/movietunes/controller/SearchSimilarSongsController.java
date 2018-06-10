@@ -1,14 +1,17 @@
 package org.dhbw.movietunes.controller;
 
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import java.util.ArrayList;
 import java.util.List;
 import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultSimilarSongsActivity;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.http.SpotifyCommunication;
+import org.dhbw.movietunes.list.SongAdapter;
 import org.dhbw.movietunes.model.Song;
 
 /**
@@ -34,7 +37,8 @@ public class SearchSimilarSongsController extends AsyncTask<String, Integer, Lis
 
   @Override
   protected void onPreExecute() {
-
+    ProgressBar bar = activity.findViewById(R.id.progressSearch);
+    bar.setVisibility(View.VISIBLE);
   }
 
   @Override
@@ -44,17 +48,12 @@ public class SearchSimilarSongsController extends AsyncTask<String, Integer, Lis
 
   @Override
   protected void onPostExecute(List<Song> result) {
+    ProgressBar bar = activity.findViewById(R.id.progressSearch);
+    bar.setVisibility(View.GONE);
 
-    List<String> similars = new ArrayList<>();
-    for (Song song : result) {
-      similars.add(song.getSongTitle() + "Duration: " + song.getDuration()
-              + ", " + song.getSinger());
-    }
-
-    ArrayAdapter adapter = new ArrayAdapter(activity, android.R.layout.simple_list_item_1, similars);
+    SongAdapter adapter = new SongAdapter(activity, new ArrayList<>(result));
     ListView list = activity.findViewById(R.id.similarSongs_list_view);
     list.setAdapter(adapter);
-
   }
 
 }

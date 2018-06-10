@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class InstrumentedTest {
   @Test
   public void useAppContext() {
     // Context of the app under test.
@@ -27,21 +27,4 @@ public class ExampleInstrumentedTest {
     assertEquals("org.dhbw.movietunes", appContext.getPackageName());
   }
 
-  @Test
-  public void testSearchByTitle() {
-    // Context of the app under test.
-    SpotifyCommunication c = new SpotifyCommunication();
-
-    //searching for song "titanic"
-    PlaylistKey playlistKey = c.findSoundtracks("titanic");
-
-    String url = playlistKey.getSpotifyUrl();
-    List<Song> songList = c.getSongsFromPlaylist(playlistKey);
-
-    SoundtrackSearchResult songs = new SoundtrackSearchResult(url, songList);
-
-    assertFalse(songs.getSongs().isEmpty());
-    assertTrue(songs.getSongs().get(1) != null);
-
-  }
 }

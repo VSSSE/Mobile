@@ -2,9 +2,11 @@ package org.dhbw.movietunes;
 
 import android.support.test.runner.AndroidJUnit4;
 import java.util.List;
+import org.dhbw.movietunes.extract.Extractor;
 import org.dhbw.movietunes.http.SpotifyCommunication;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -13,40 +15,30 @@ import static junit.framework.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class SpotifyCommunicationTest {
 
-  private SpotifyCommunication classUnderTest = new SpotifyCommunication();
+  private SpotifyCommunication codeUnderTest;
 
-  @Test
-  public void testFetchToken() {
-    String token = classUnderTest.fetchToken();
-    assertTrue(token.length() > 20);
+  @Before
+  public void setUp() {
+    codeUnderTest = new SpotifyCommunication();
   }
 
-  @Test
-  public void testFindPlaylist() {
-    PlaylistKey playlistKey = classUnderTest.findSoundtracks("terminator");
-    assertFalse(playlistKey.getPlaylistId().isEmpty());
-    assertFalse(playlistKey.getUserId().isEmpty());
-  }
 
   @Test
-  public void testGetSongsFromPlaylist() {
-    PlaylistKey key = new PlaylistKey("moyomba", "6lwDOP2ZW0h2jOccLB0342", "");
+  public void testFindSoundtracks() {
+    List<Song> soundtracks = codeUnderTest.findSoundtracks("Terminator");
 
-    List<Song> songsFromPlaylist = classUnderTest.getSongsFromPlaylist(key);
-
-    assertNotNull(songsFromPlaylist);
-    assertFalse(songsFromPlaylist.isEmpty());
-    assertNotNull(songsFromPlaylist.get(0));
+    assertFalse(soundtracks.isEmpty());
+    assertNotNull(soundtracks.get(0));
+    assertFalse(soundtracks.get(0).getSongTitle().isEmpty());
   }
 
   @Test
   public void testGetRecommendations() {
+    List<Song> recomendetSongs = codeUnderTest.getRecommendations("7aZn38ep1wLgOHyiRQ212o");
 
-    List<Song> songsFromPlaylist = classUnderTest.getRecommendations("0c6xIDDpzE81m2q797ordA");
-
-    assertNotNull(songsFromPlaylist);
-    assertFalse(songsFromPlaylist.isEmpty());
-    assertNotNull(songsFromPlaylist.get(0));
+    assertFalse(recomendetSongs.isEmpty());
+    assertNotNull(recomendetSongs.get(0));
+    assertFalse(recomendetSongs.get(0).getSongTitle().isEmpty());
   }
 
 }

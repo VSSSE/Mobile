@@ -33,9 +33,7 @@ public class SearchMovieSoundtracksController extends AsyncTask<String, Integer,
     }
     SpotifyCommunication spotifyCommunication = new SpotifyCommunication();
 
-    PlaylistKey playlistKey = spotifyCommunication.findSoundtracks(params[0]);
-
-    return spotifyCommunication.getSongsFromPlaylist(playlistKey);
+    return spotifyCommunication.findSoundtracks(params[0]);
   }
 
   @Override
@@ -53,6 +51,7 @@ public class SearchMovieSoundtracksController extends AsyncTask<String, Integer,
   protected void onPostExecute(List<Song> result) {
     ProgressBar bar = activity.findViewById(R.id.progressSearch);
     bar.setVisibility(View.GONE);
+
     SongAdapter adapter = new SongAdapter(activity, new ArrayList<>(result));
     ListView list = activity.findViewById(R.id.soundtrack_list_view);
     list.setAdapter(adapter);

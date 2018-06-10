@@ -6,9 +6,11 @@ import android.support.test.runner.AndroidJUnit4;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import org.dhbw.movietunes.exception.ExtractorException;
 import org.dhbw.movietunes.extract.Extractor;
+import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,46 +28,33 @@ public class ExtractorTest {
     codeUnderTest = new Extractor();
   }
 
+
   @Test
-  public void testExtractPlaylistIdFromSearchResult() {
-    String responseString = readStringFromFile(R.raw.test_result_search_track);
+  public void testGetFirstPlaylist() {
+    String responseString = readStringFromFile(R.raw.search_playlists);
+    PlaylistKey playlist = codeUnderTest.getFirstPlaylist(responseString);
 
-    String result = codeUnderTest.extractPlaylistIdFromSearchResult(responseString);
 
-    assertEquals("6lwDOP2ZW0h2jOccLB0342", result);
+    assertEquals("6lwDOP2ZW0h2jOccLB0342", playlist);
   }
 
   @Test
-  public void testExtractUserIdFromSearchResult() {
-    String responseString = readStringFromFile(R.raw.test_result_search_track);
-    String result = codeUnderTest.extractUserIdFromSearchResult(responseString);
+  public void testGetSongsFromPlaylist() {
+    String responseString = readStringFromFile(R.raw.get_tracks_of_playlist);
+    ArrayList<Song> result = new ArrayList<>(codeUnderTest.getSongsFromPlaylist(responseString));
+
     assertEquals("moyomba", result);
   }
 
   @Test
-  public void testExtractSongs() {
-    List<Song> songs = codeUnderTest.getSongsFromPlaylist(readStringFromFile(R.raw.test_tracklist_details_uri));
-    assertNotNull(songs);
-    assertFalse(songs.isEmpty());
-    Song song = songs.get(0);
+  public void testGetRecommendedSongs() {
+    String responseString = readStringFromFile(R.raw.get_recomations);
+    ArrayList<Song> result = new ArrayList<>(codeUnderTest.getRecommendedSongs(responseString));
 
-    assertEquals("The Terminator (Main Title)", song.getSongTitle());
-    assertEquals("2:40", song.getDuration());
-    assertEquals("Brad Fiedel", song.getSinger());
-    assertEquals("6vIZTOdX8TPTRBqcloIsUz", song.getTrackId());
-    assertEquals("spotify:track:6vIZTOdX8TPTRBqcloIsUz", song.getUri());
+    assertEquals("moyomba", result);
   }
 
-  @Test
-  public void testExtractSongsFromRecommendationsResponse() {
 
-    List<Song> songs = codeUnderTest.getRecommendedSongs(readStringFromFile(R.raw.test_recommendations_response));
-    assertNotNull(songs);
-    assertFalse(songs.isEmpty());
-    Song song = songs.get(0);
-
-    assertEquals("Tightrope", song.getSongTitle());
-  }
 
   private String readStringFromFile(int resourceId) {
     try {

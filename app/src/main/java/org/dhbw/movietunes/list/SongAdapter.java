@@ -54,7 +54,7 @@ public class SongAdapter extends BaseAdapter {
 
     // Setting all values in listview
     title.setText(song.getSongTitle());
-    artist.setText(song.getSinger());
+    artist.setText(song.getArtist());
     duration.setText(song.getDuration());
     imageLoader.DisplayImage(song.getImageUri(), thumb_image);
     return vi;
