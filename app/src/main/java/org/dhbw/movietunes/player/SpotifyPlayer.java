@@ -18,6 +18,7 @@ public class SpotifyPlayer extends Player {
   @Override
   public String createUri() {
     if (preUri.isEmpty()) {
+      //TODO get URL
       return "";
     }
 
