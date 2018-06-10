@@ -1,13 +1,10 @@
 package org.dhbw.movietunes.player;
 
+import android.app.Activity;
+
 public class YoutubePlayer extends Player {
-  public YoutubePlayer(String songTitle) {
-    super(songTitle);
-  }
-
-  @Override
-  public void play() {
-
+  public YoutubePlayer(Activity activity, String songTitle) {
+    super(activity, songTitle);
   }
 
   @Override

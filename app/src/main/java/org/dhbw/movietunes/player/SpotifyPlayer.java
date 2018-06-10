@@ -1,26 +1,27 @@
 package org.dhbw.movietunes.player;
 
+import android.app.Activity;
+
 public class SpotifyPlayer extends Player {
+  String preUri;
 
-  public SpotifyPlayer(String songTitle, String uri) {
-    super(songTitle);
-    this.uri = uri;
+  public SpotifyPlayer(Activity activity, String songTitle, String uri) {
+    super(activity, songTitle);
+    this.preUri = uri;
 
   }
 
-  public String getUri() {
-    return uri;
-  }
-
-  @Override
-  public void play() {
-
+  public SpotifyPlayer(Activity activity, String songTitle) {
+    super(activity, songTitle);
   }
 
   @Override
   public String createUri() {
+    if (preUri.isEmpty()) {
+      return "";
+    }
 
-    return this.uri;
+    return preUri;
   }
 
 }

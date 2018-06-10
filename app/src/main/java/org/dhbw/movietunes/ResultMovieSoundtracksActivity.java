@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import org.dhbw.movietunes.controller.SearchMovieSoundtracksController;
+import org.dhbw.movietunes.player.SpotifyPlayer;
+import org.dhbw.movietunes.player.YoutubePlayer;
 
 public class ResultMovieSoundtracksActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
@@ -58,11 +60,10 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
       public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
           case R.id.spotify:
-            String url = strackSearchResult.getUrl();
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+            new SpotifyPlayer(this, strackSearchResult.getTitle(), strackSearchResult.getUrl());
             break;
-
           case R.id.youTube:
+            new YoutubePlayer(this, strackSearchResult.getTitle());
             break;
           case R.id.similar:
             Intent intent = new Intent(getApplicationContext(), ResultSimilarSongsActivity.class);
