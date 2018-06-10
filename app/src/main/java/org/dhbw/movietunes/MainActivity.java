@@ -11,7 +11,7 @@ import android.widget.Button;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends MainMenu implements View.OnClickListener {
 
   private static final Logger LOGGER = Logger.getLogger(MainActivity.class.getName());
 
@@ -26,35 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     lookUpSoundtrackButton.setOnClickListener(this);
     lookUpMoviesButton.setOnClickListener(this);
-  }
-
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.main_menu, menu);
-    return true;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    Intent intent;
-    switch (item.getItemId()) {
-      case R.id.menu_search_by_movie:
-        intent = new Intent(getApplicationContext(), SearchMovieTitlesActivity.class);
-        startActivity(intent);
-        break;
-
-      case R.id.menu_search_by_song:
-        intent = new Intent(getApplicationContext(), SearchMovieSoundtracksActivity.class);
-        startActivity(intent);
-        break;
-
-      default:
-        LOGGER.log(Level.INFO, "Option not found!");
-        break;
-    }
-
-    return true;
   }
 
   @Override

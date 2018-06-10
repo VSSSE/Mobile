@@ -10,10 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import java.util.logging.Logger;
 
-public class SearchMovieSoundtracksActivity extends AppCompatActivity implements View.OnClickListener {
-
-  private static final Logger LOGGER = Logger.getLogger(SearchMovieSoundtracksActivity.class.getName());
-
+public class SearchMovieSoundtracksActivity extends MainMenu implements View.OnClickListener {
 
   private EditText textField;
 
@@ -27,13 +24,6 @@ public class SearchMovieSoundtracksActivity extends AppCompatActivity implements
     textField = findViewById(R.id.text_input);
 
     searchButton.setOnClickListener(this);
-  }
-
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.main_menu, menu);
-    return true;
   }
 
   @Override

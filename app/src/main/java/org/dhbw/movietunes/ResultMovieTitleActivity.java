@@ -8,9 +8,7 @@ import android.view.MenuInflater;
 import android.widget.TextView;
 import java.util.logging.Logger;
 
-public class ResultMovieTitleActivity extends AppCompatActivity {
-
-  private static final Logger LOGGER = Logger.getLogger(ResultMovieTitleActivity.class.getName());
+public class ResultMovieTitleActivity extends MainMenu {
 
   public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.MovieTitleFor";
 
@@ -26,10 +24,4 @@ public class ResultMovieTitleActivity extends AppCompatActivity {
     song.setText(songTitle);
   }
 
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.main_menu, menu);
-    return true;
-  }
 }
