@@ -8,9 +8,7 @@ import org.dhbw.movietunes.model.Song;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
 public class SpotifyCommunicationTest {
@@ -26,8 +24,8 @@ public class SpotifyCommunicationTest {
   @Test
   public void testFindPlaylist() {
     PlaylistKey playlistKey = classUnderTest.findPlaylist("terminator");
-    assertFalse(playlistKey.getPlaylistId().equals(""));
-    assertFalse(playlistKey.getUserId().equals(""));
+    assertFalse(playlistKey.getPlaylistId().isEmpty());
+    assertFalse(playlistKey.getUserId().isEmpty());
   }
 
   @Test

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 import org.dhbw.movietunes.controller.SearchSimilarSongsController;
@@ -24,7 +23,7 @@ public class ResultSimilarSongsActivity extends AppCompatActivity {
 
     setContentView(R.layout.result_similar_songs_activity);
 
-    Intent intent = getIntent();;
+    Intent intent = getIntent();
 
     String trackId = intent.getStringExtra("TRACK_ID");
     SearchSimilarSongsController controller

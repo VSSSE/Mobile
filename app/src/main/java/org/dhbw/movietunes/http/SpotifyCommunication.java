@@ -3,7 +3,6 @@ package org.dhbw.movietunes.http;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import java.util.List;
-import java.util.logging.Logger;
 import okhttp3.FormBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -51,7 +50,7 @@ public class SpotifyCommunication {
             .build();
 
     String responseBody = HttpCommunication.executeRequest(request);
-    if (responseBody.equals("")) {
+    if (responseBody == null || responseBody.isEmpty()) {
       throw new HttpException("Response body for search is empty!");
     }
     return responseBody;
@@ -82,7 +81,7 @@ public class SpotifyCommunication {
             .build();
 
     String responseBody = HttpCommunication.executeRequest(request);
-    if (responseBody.equals("")) {
+    if (responseBody == null || responseBody.isEmpty() ){
       throw new HttpException("Response body for Recommendations is empty!");
     }
 
@@ -101,7 +100,7 @@ public class SpotifyCommunication {
             .build();
 
     String responseBody = HttpCommunication.executeRequest(request);
-    if (responseBody.equals("")) {
+    if (responseBody == null || responseBody.isEmpty()) {
       throw new HttpException("Response body for Soundtrack Json is empty!");
     }
     return responseBody;

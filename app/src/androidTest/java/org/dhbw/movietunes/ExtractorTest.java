@@ -46,7 +46,7 @@ public class ExtractorTest {
   public void testExtractSongs() {
     List<Song> songs = codeUnderTest.extractSongsFromTracklistDetails(readStringFromFile(R.raw.test_tracklist_details_uri));
     assertNotNull(songs);
-    assertTrue(!songs.isEmpty());
+    assertFalse(songs.isEmpty());
     Song song = songs.get(0);
 
     assertEquals("The Terminator (Main Title)", song.getSongTitle());
