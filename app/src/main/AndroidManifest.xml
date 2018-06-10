@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         <activity android:name="org.dhbw.movietunes.MainActivity"
-            android:theme="@style/movieTunes" >
+            android:theme="@style/movieTunesStart" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,28 +21,19 @@
         </activity>
         <activity
             android:name="org.dhbw.movietunes.ResultMovieSoundtracksActivity"
-            android:parentActivityName="org.dhbw.movietunes.MainActivity"
+            android:parentActivityName="org.dhbw.movietunes.SearchMovieSoundtracksActivity"
             android:theme="@style/movieTunes">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.dhbw.movietunes.MainActivity" />
+                android:value="org.dhbw.movietunes.SearchMovieSoundtracksActivity" />
         </activity>
         <activity
             android:name="org.dhbw.movietunes.ResultMovieTitleActivity"
-            android:parentActivityName="org.dhbw.movietunes.MainActivity"
+            android:parentActivityName="org.dhbw.movietunes.SearchMovieTitlesActivity"
             android:theme="@style/movieTunes">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.dhbw.movietunes.MainActivity" />
-        </activity>
-        <activity
-            android:name="org.dhbw.movietunes.ResultMovieSoundtracksActivity"
-            android:parentActivityName="org.dhbw.movietunes.MainActivity"
-            tools:ignore="DuplicateActivity"
-            android:theme="@style/movieTunes">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.dhbw.movietunes.MainActivity" />
+                android:value="org.dhbw.movietunes.SearchMovieTitlesActivity" />
         </activity>
         <activity
             android:name="org.dhbw.movietunes.SearchMovieSoundtracksActivity"
@@ -55,12 +46,12 @@
         </activity>
         <activity
             android:name="org.dhbw.movietunes.SearchMovieTitlesActivity"
-            android:parentActivityName="org.dhbw.movietunes.ResultMovieSoundtracksActivity"
+            android:parentActivityName="org.dhbw.movietunes.MainActivity"
             tools:ignore="DuplicateActivity"
-            android:theme="@style/movieTunesStart">
+            android:theme="@style/movieTunes">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.dhbw.movietunes.ResultMovieSoundtracksActivity" />
+                android:value="org.dhbw.movietunes.MainActivity" />
         </activity>
 
 
@@ -68,7 +59,7 @@
             android:name="org.dhbw.movietunes.ResultSimilarSongsActivity"
             android:parentActivityName="org.dhbw.movietunes.ResultMovieSoundtracksActivity"
             tools:ignore="DuplicateActivity"
-            android:theme="@style/movieTunesStart">
+            android:theme="@style/movieTunes">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.dhbw.movietunes.ResultMovieSoundtracksActivity" />
