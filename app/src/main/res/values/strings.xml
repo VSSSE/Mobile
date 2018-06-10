@@ -12,5 +12,6 @@
   <string name="playonSpotify">Play on Spotify</string>
   <string name="playonYoutube">Play on Youtube</string>
   <string name="findsimilarsongs">Find similar songs</string>
+  <string name="share_using">Share using:</string>
   <string name="shareonFacebook">Share</string>
 </resources>

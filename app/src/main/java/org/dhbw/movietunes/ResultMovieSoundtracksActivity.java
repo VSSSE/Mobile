@@ -54,7 +54,7 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
 
   @Override
   public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-/*
+
     final String trackId = currentSongList.get(position).getTrackId();
 
     //Todo Buttons to play on Spotify or on Youtube
@@ -76,14 +76,19 @@ public class ResultMovieSoundtracksActivity extends AppCompatActivity
             startActivity(intent);
             break;
           case R.id.facebook:
-
+            String ShareBody = "I love Movie Tunes!";
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Share Song found on Movie tunes");
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, ShareBody);
+            startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_using)));
             break;
         }
         return true;
       }
     });
 
-    popupMenu.show();*/
+    popupMenu.show();
   }
 
 }
