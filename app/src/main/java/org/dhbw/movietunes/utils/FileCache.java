@@ -11,7 +11,7 @@ public class FileCache {
     //Find the dir to save cached images
     if (android.os.Environment.getExternalStorageState()
             .equals(android.os.Environment.MEDIA_MOUNTED)) {
-      cacheDir = new File(android.os.Environment.getExternalStorageDirectory(), "Movie Tunes");
+      cacheDir = new File(context.getCacheDir(), "Movie_Tunes"); //android.os.Environment.getExternalStorageDirectory()
     } else {
       cacheDir = context.getCacheDir();
     }
