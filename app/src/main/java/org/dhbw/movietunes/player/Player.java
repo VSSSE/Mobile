@@ -12,8 +12,6 @@ public abstract class Player {
   protected Player(Activity activity, String songTitle) {
     this.songTitle = songTitle;
     this.activity = activity;
-    uri = createUri();
-    play();
   }
 
   public void play() {

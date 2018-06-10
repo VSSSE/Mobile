@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import java.util.ArrayList;
-import java.util.HashMap;
 import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultSimilarSongsActivity;
 import org.dhbw.movietunes.http.ImageLoader;
@@ -17,14 +16,14 @@ import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.player.SpotifyPlayer;
 import org.dhbw.movietunes.player.YoutubePlayer;
 
-public class MovieSoundtracksAdapter extends BaseAdapter {
+public class SimilarSongsAdapter extends BaseAdapter {
 
   private static LayoutInflater inflater = null;
   public ImageLoader imageLoader;
   private Activity activity;
   private ArrayList<Song> data;
 
-  public MovieSoundtracksAdapter(Activity a, ArrayList<Song> d) {
+  public SimilarSongsAdapter(Activity a, ArrayList<Song> d) {
     activity = a;
     data = d;
     inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -67,7 +66,7 @@ public class MovieSoundtracksAdapter extends BaseAdapter {
       public void onClick(View v) {
         PopupMenu popupMenu =  new PopupMenu(activity, v);
         MenuInflater inflater = popupMenu.getMenuInflater();
-        inflater.inflate(R.menu.popup_menu_movie_soundtracks, popupMenu.getMenu());
+        inflater.inflate(R.menu.popup_menu_similar_songs, popupMenu.getMenu());
 
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
           public boolean onMenuItemClick(MenuItem item) {
@@ -77,11 +76,6 @@ public class MovieSoundtracksAdapter extends BaseAdapter {
                 break;
               case R.id.youTube:
                 new YoutubePlayer(activity, song.getSongTitle()).play();
-                break;
-              case R.id.similar:
-                Intent intent = new Intent(activity.getApplicationContext(), ResultSimilarSongsActivity.class);
-                intent.putExtra("TRACK_ID", song.getTrackId());
-                activity.startActivity(intent);
                 break;
               case R.id.facebook:
                 String ShareBody = "I love Movie Tunes!";
