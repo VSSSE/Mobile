@@ -10,8 +10,12 @@ public class HttpCommunication {
 
   private static final Logger LOGGER = Logger.getLogger(HttpCommunication.class.getName());
 
+  private HttpCommunication() {
+
+  }
+
   public static String executeRequest(Request request) {
-    LOGGER.log(Level.INFO, "Request: " + request.toString());
+    LOGGER.log(Level.INFO, "Request: {0}", request.toString());
 
     String response;
     try {
@@ -20,7 +24,7 @@ public class HttpCommunication {
       throw new HttpException("Http Request faild!", e);
     }
 
-    LOGGER.log(Level.INFO, "Response: " + response);
+    LOGGER.log(Level.INFO, "Response: {0}", response);
     return response;
   }
 

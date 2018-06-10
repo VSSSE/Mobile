@@ -49,7 +49,7 @@ public class Extractor {
     int min = ml / 60;
     int sec = ml % 60;
 
-    return String.valueOf(min) + ":" + String.valueOf(sec);
+    return min + ":" + sec;
   }
 
   public Song extractSingleSong(JsonElement trackElement) {

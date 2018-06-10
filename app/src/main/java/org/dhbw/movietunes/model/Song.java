@@ -56,10 +56,6 @@ public class Song {
     this.singer = singer;
   }
 
-  public String getTime() {
-    return duration;
-  }
-
   public List<Movie> getUsedInMovies() {
     return usedInMovies;
   }

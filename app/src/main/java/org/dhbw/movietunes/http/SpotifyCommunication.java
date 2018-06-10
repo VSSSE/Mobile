@@ -14,6 +14,8 @@ import org.dhbw.movietunes.model.Song;
 public class SpotifyCommunication {
 
   private static final String HEADER_AUTHORIZATION = "Basic M2ZkOWFjYmJjZmY4NDVlNThhZTAxOGUwYTYwZjliMzU6ZTllODJjNmZjMDI0NGFiYWI1NWRiMTRjNGEzNjFhNzc=";
+  private static final String HEADER_1 = "Authorization";
+  private static final String HEADER_2 = "Bearer ";
 
   private String token;
   private Extractor extractor;
@@ -28,7 +30,7 @@ public class SpotifyCommunication {
 
     Request request = new Request.Builder()
             .url("https://accounts.spotify.com/api/token")
-            .addHeader("Authorization", HEADER_AUTHORIZATION)
+            .addHeader(HEADER_1, HEADER_AUTHORIZATION)
             .addHeader("Content-Type", "application/x-www-form-urlencoded")
             .post(formBody)
             .build();
@@ -45,7 +47,7 @@ public class SpotifyCommunication {
   private String getResponseBodyForSearch(String searchString) {
     Request request = new Request.Builder()
             .url("https://api.spotify.com/v1/search?q=" + searchString + "&type=playlist")
-            .addHeader("Authorization", "Bearer " + token)
+            .addHeader(HEADER_1, HEADER_2 + token)
             .get()
             .build();
 
@@ -76,7 +78,7 @@ public class SpotifyCommunication {
 
     Request request = new Request.Builder()
             .url(url)
-            .addHeader("Authorization", "Bearer " + token)
+            .addHeader(HEADER_1, HEADER_2 + token)
             .get()
             .build();
 
@@ -95,7 +97,7 @@ public class SpotifyCommunication {
 
     Request request = new Request.Builder()
             .url(url)
-            .addHeader("Authorization", "Bearer " + token)
+            .addHeader(HEADER_1, HEADER_2 + token)
             .get()
             .build();
 
