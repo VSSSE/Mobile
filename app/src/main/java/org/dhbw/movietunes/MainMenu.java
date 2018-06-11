@@ -2,6 +2,7 @@ package org.dhbw.movietunes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,9 +40,13 @@ public class MainMenu extends AppCompatActivity {
         startActivity(intent);
         break;
 
+      case android.R.id.home:
+        NavUtils.navigateUpFromSameTask(this);
+        break;
+
       default:
         LOGGER.log(Level.INFO, "Option not found!");
-        break;
+       return false;
     }
 
     return true;
