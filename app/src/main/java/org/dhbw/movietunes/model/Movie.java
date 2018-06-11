@@ -5,16 +5,16 @@ package org.dhbw.movietunes.model;
  */
 
 public class Movie {
-  private String movieId;
+  private String movieUri;
   private String movieTitle;
 
-  public Movie(String movieId, String movieTitle) {
-    this.movieId = movieId;
+  public Movie(String movieUri, String movieTitle) {
+    this.movieUri = movieUri;
     this.movieTitle = movieTitle;
   }
 
-  public String getMovieId() {
-    return movieId;
+  public String getMovieUri() {
+    return movieUri;
   }
 
   public String getMovieTitle() {

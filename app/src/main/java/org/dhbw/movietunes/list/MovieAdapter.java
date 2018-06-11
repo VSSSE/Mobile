@@ -62,7 +62,7 @@ public class MovieAdapter extends BaseAdapter {
         PopupMenu popupMenu = new PopupMenu(activity, v);
         MenuInflater inflater = popupMenu.getMenuInflater();
 
-        inflater.inflate(R.menu.popup_menu_similar_songs, popupMenu.getMenu());
+        inflater.inflate(R.menu.popup_menu_movie_title, popupMenu.getMenu());
 
 
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

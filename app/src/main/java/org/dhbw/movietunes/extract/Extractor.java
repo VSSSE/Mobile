@@ -10,6 +10,10 @@ import org.dhbw.movietunes.model.Movie;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.model.Video;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class Extractor {
 
@@ -153,12 +157,19 @@ public class Extractor {
     }
   }
 
-  private Movie extractSingleMovie(JsonObject track) {
+  private Movie extractSingleMovie(Element eintrag) {
     try {
-      return new Movie(
-              track.getAsJsonPrimitive("id").getAsString(),
-              track.getAsJsonPrimitive("name").getAsString()
-      );
+
+      Elements links = eintrag.select("a");
+      if (links.size() >= 2) {
+        return new Movie(
+                links.get(1).attr("href"),
+                links.get(1).text()
+        );
+      } else {
+        return null;
+      }
+
     } catch (Exception e) {
       return null;
     }
@@ -167,11 +178,14 @@ public class Extractor {
 
   public List<Movie> getMovies(String recommendationsBody) {
     List<Movie> result = new ArrayList<>();
-    JsonElement root = new JsonParser().parse(recommendationsBody);
 
-    JsonArray videos = root.getAsJsonObject().getAsJsonArray("items");
-    for (JsonElement video : videos) {
-      Movie newmovie = extractSingleMovie(video.getAsJsonObject());
+    Document document = Jsoup.parse(recommendationsBody);
+    Elements elements = document.select("OL");
+    Elements eintraege = elements.first().select("LI");
+
+
+    for (Element eintrag : eintraege) {
+      Movie newmovie = extractSingleMovie(eintrag);
       if (newmovie != null) {
         result.add(newmovie);
       }
