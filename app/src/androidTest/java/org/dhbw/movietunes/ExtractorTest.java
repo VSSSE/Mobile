@@ -11,6 +11,7 @@ import org.dhbw.movietunes.exception.ExtractorException;
 import org.dhbw.movietunes.extract.Extractor;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
+import org.dhbw.movietunes.model.Video;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -96,6 +97,19 @@ public class ExtractorTest {
     assertEquals(20, result.size());
     assertTrue(result.get(0).equalsTo(excpected0));
     assertTrue(result.get(19).equalsTo(excpected19));
+  }
+
+  @Test
+  public void testGetFirstVideo() {
+    String responseString = readStringFromFile(R.raw.get_youtube_video);
+    Video result = codeUnderTest.getFirstVideo(responseString);
+
+    Video excpected = new Video(
+            "3hL99eTKil8",
+            "Erika Jayne - XXPEN$IVE (Official Video)"
+    );
+
+    assertTrue(result.equalsTo(excpected));
   }
 
   private String readStringFromFile(int resourceId) {
