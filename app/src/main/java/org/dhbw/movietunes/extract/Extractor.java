@@ -154,7 +154,20 @@ public class Extractor {
     }
   }
 
-  private List<Movie> getMovies(String recommendationsBody) {
+
+  private Movie extractSingleMovie(JsonObject track) {
+    try {
+      return new Movie(
+              track.getAsJsonPrimitive("id").getAsString(),
+              track.getAsJsonPrimitive("name").getAsString()
+      );
+    } catch (Exception e) {
+      return null;
+    }
+
+  }
+
+  public List<Movie> getMovies(String recommendationsBody) {
     List<Movie> result = new ArrayList<>();
     JsonElement root = new JsonParser().parse(recommendationsBody);
 

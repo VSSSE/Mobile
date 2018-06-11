@@ -44,7 +44,7 @@ public class SongAdapter extends BaseAdapter {
   public View getView(int position, View convertView, ViewGroup parent) {
     View vi = convertView;
     if (convertView == null)
-      vi = inflater.inflate(R.layout.list_row, null);
+      vi = inflater.inflate(R.layout.list_row_song, null);
 
     TextView title = vi.findViewById(R.id.title); // title
     TextView artist = vi.findViewById(R.id.artist); // artist name

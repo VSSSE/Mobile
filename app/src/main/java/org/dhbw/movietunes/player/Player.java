@@ -24,8 +24,6 @@ public abstract class Player extends AsyncTask<String, Integer, String> {
     this.activity = activity;
   }
 
-  protected abstract String createUri(String searchString);
-
 
   @Override
   protected String doInBackground(String... params) {
@@ -34,6 +32,9 @@ public abstract class Player extends AsyncTask<String, Integer, String> {
     }
     return createUri(params[0]);
   }
+
+  protected abstract String createUri(String searchString);
+
 
   @Override
   protected void onPostExecute(String result) {

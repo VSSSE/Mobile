@@ -6,11 +6,11 @@ import org.dhbw.movietunes.model.Video;
 
 public class YoutubePlayer extends Player {
   YoutubeCommunication ytCom;
+
   public YoutubePlayer(Activity activity) {
     super(activity);
     ytCom = new YoutubeCommunication();
   }
-
 
   @Override
   public String createUri(String searchString) {

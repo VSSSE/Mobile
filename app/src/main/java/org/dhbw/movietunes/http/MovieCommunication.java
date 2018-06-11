@@ -1,8 +1,10 @@
 package org.dhbw.movietunes.http;
 
+import java.util.List;
 import okhttp3.Request;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.extract.Extractor;
+import org.dhbw.movietunes.model.Movie;
 import org.dhbw.movietunes.model.Video;
 
 public class MovieCommunication {
@@ -26,7 +28,7 @@ public class MovieCommunication {
     return responseBody;
   }
 
-  public Video findMovies(String searchString) {
+  public List<Movie> findMovies(String searchString) {
     return extractor.getMovies(getHtmlForSearchMovie(searchString));
   }
 
