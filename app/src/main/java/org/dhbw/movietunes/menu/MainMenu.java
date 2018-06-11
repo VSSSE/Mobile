@@ -44,7 +44,7 @@ public class MainMenu extends AppCompatActivity {
         break;
 
       case android.R.id.home:
-        NavUtils.navigateUpFromSameTask(this);
+        finish();
         break;
 
       default:
