@@ -32,10 +32,12 @@ public class MovieSoundtracksListener implements View.OnClickListener {
       public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
           case R.id.spotify:
-            new SpotifyPlayer(activity, song.getSongTitle(), song.getUri()).play();
+            SpotifyPlayer sp = new SpotifyPlayer(activity, song.getUri());
+            sp.execute(song.getSongTitle() + " " + song.getArtist());
             break;
           case R.id.youTube:
-            new YoutubePlayer(activity, song.getSongTitle()).play();
+            YoutubePlayer yt = new YoutubePlayer(activity);
+            yt.execute(song.getSongTitle() + " " + song.getArtist());
             break;
           case R.id.similar:
             Intent intent = new Intent(activity.getApplicationContext(), ResultSimilarSongsActivity.class);

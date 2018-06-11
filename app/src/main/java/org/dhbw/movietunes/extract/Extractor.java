@@ -71,22 +71,31 @@ public class Extractor {
   }
 
   private Song extractSingleSong(JsonObject track) {
+    try {
+      return new Song(
+              track.getAsJsonPrimitive("id").getAsString(),
+              track.getAsJsonPrimitive("name").getAsString(),
+              extractArtists(track),
+              convertToSeconds(track.getAsJsonPrimitive("duration_ms").getAsString()),
+              track.getAsJsonObject("external_urls").getAsJsonPrimitive("spotify").getAsString(),
+              extractBestImage(track)
+      );
+    } catch (Exception e) {
+      return null;
+    }
 
-    return new Song(
-            track.getAsJsonPrimitive("id").getAsString(),
-            track.getAsJsonPrimitive("name").getAsString(),
-            extractArtists(track),
-            convertToSeconds(track.getAsJsonPrimitive("duration_ms").getAsString()),
-            track.getAsJsonObject("external_urls").getAsJsonPrimitive("spotify").getAsString(),
-            extractBestImage(track)
-    );
   }
 
   private Video extractSingleVideo(JsonObject video) {
-    return new Video(
-            video.getAsJsonObject("id").getAsJsonPrimitive("videoId").getAsString(),
-            video.getAsJsonObject("snippet").getAsJsonPrimitive("title").getAsString()
-    );
+    try {
+      return new Video(
+              video.getAsJsonObject("id").getAsJsonPrimitive("videoId").getAsString(),
+              video.getAsJsonObject("snippet").getAsJsonPrimitive("title").getAsString()
+      );
+    } catch (Exception e) {
+      return null;
+    }
+
   }
 
   public List<Song> getSongsFromPlaylist(String tracklistDetailsResponse) {
@@ -98,7 +107,10 @@ public class Extractor {
 
     for (JsonElement item : items) {
       JsonObject track = item.getAsJsonObject().getAsJsonObject("track");
-      result.add(extractSingleSong(track));
+      Song newSong = extractSingleSong(track);
+      if (newSong != null) {
+        result.add(newSong);
+      }
     }
     return result;
   }
@@ -109,7 +121,10 @@ public class Extractor {
 
     JsonArray tracks = root.getAsJsonObject().getAsJsonArray("tracks");
     for (JsonElement track : tracks) {
-      result.add(extractSingleSong(track.getAsJsonObject()));
+      Song newSong = extractSingleSong(track.getAsJsonObject());
+      if (newSong != null) {
+        result.add(newSong);
+      }
     }
     return result;
   }
@@ -121,7 +136,10 @@ public class Extractor {
 
     JsonArray videos = root.getAsJsonObject().getAsJsonArray("items");
     for (JsonElement video : videos) {
-      result.add(extractSingleVideo(video.getAsJsonObject()));
+      Video newVideo = extractSingleVideo(video.getAsJsonObject());
+      if (newVideo != null) {
+        result.add(newVideo);
+      }
     }
     return result;
   }

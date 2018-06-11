@@ -5,18 +5,14 @@ import android.app.Activity;
 public class SpotifyPlayer extends Player {
   String preUri = "";
 
-  public SpotifyPlayer(Activity activity, String searchString, String uri) {
-    super(activity, searchString);
+  public SpotifyPlayer(Activity activity, String uri) {
+    super(activity);
     this.preUri = uri;
 
   }
 
-  public SpotifyPlayer(Activity activity, String searchString) {
-    super(activity, searchString);
-  }
-
   @Override
-  public String createUri() {
+  public String createUri(String searchString) {
     if (preUri.isEmpty()) {
       //TODO get URL
       return "";
