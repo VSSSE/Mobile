@@ -35,11 +35,11 @@
       android:layout_height="wrap_content"
       android:layout_alignTop="@+id/thumbnail"
       android:layout_toEndOf="@+id/thumbnail"
-      android:text="Rihanna Love the way lie"
       android:textColor="#040404"
       android:typeface="sans"
       android:textSize="16sp"
       android:textStyle="bold"
+      android:text="Song Title..."
       />
 
   <!-- Artist Name -->
@@ -52,7 +52,7 @@
       android:textSize="12sp"
       android:layout_marginTop="1dip"
       android:layout_toEndOf="@+id/thumbnail"
-      android:text="Just gona stand there and ..."
+      android:text="Artist Name..."
       />
 
   <!-- Duration -->
@@ -63,11 +63,11 @@
       android:layout_alignParentEnd="true"
       android:layout_alignTop="@id/title"
       android:gravity="end"
-      android:text="5:45"
       android:layout_marginEnd="5dip"
       android:textSize="12sp"
       android:textColor="#10bcc9"
       android:textStyle="bold"
+      android:text="00:00"
       />
 
   <ImageView
