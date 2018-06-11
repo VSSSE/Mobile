@@ -13,23 +13,22 @@ import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
 import org.dhbw.movietunes.ResultSimilarSongsActivity;
 import org.dhbw.movietunes.http.ImageLoader;
+import org.dhbw.movietunes.model.Movie;
 import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.player.SpotifyPlayer;
 import org.dhbw.movietunes.player.YoutubePlayer;
 import org.dhbw.movietunes.utils.Utils;
 
-public class SongAdapter extends BaseAdapter {
+public class MovieAdapter extends BaseAdapter {
 
   private static LayoutInflater inflater = null;
-  public ImageLoader imageLoader;
   private Activity activity;
-  private ArrayList<Song> data;
+  private ArrayList<Movie> data;
 
-  public SongAdapter(Activity a, ArrayList<Song> d) {
+  public MovieAdapter(Activity a, ArrayList<Movie> d) {
     activity = a;
     data = d;
     inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    imageLoader = new ImageLoader(activity.getApplicationContext());
   }
 
   public int getCount() {
@@ -47,20 +46,14 @@ public class SongAdapter extends BaseAdapter {
   public View getView(int position, View convertView, ViewGroup parent) {
     View vi = convertView;
     if (convertView == null)
-      vi = inflater.inflate(R.layout.list_row_song, null);
+      vi = inflater.inflate(R.layout.list_row_movie, null);
 
     TextView title = vi.findViewById(R.id.title); // title
-    TextView artist = vi.findViewById(R.id.artist); // artist name
-    TextView duration = vi.findViewById(R.id.duration); // duration
-    ImageView thumb_image = vi.findViewById(R.id.list_image); // thumb image
 
-    final Song song = data.get(position);
+    final Movie movie = data.get(position);
 
     // Setting all values in listview
-    title.setText(song.getSongTitle());
-    artist.setText(song.getArtist());
-    duration.setText(song.getDuration());
-    imageLoader.displayImage(song.getImageUri(), thumb_image);
+    title.setText(movie.getMovieTitle());
 
     vi.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -69,33 +62,20 @@ public class SongAdapter extends BaseAdapter {
         PopupMenu popupMenu = new PopupMenu(activity, v);
         MenuInflater inflater = popupMenu.getMenuInflater();
 
-        if (activity.getClass() == ResultSimilarSongsActivity.class) {
-          inflater.inflate(R.menu.popup_menu_similar_songs, popupMenu.getMenu());
-        } else if (activity.getClass() == ResultMovieSoundtracksActivity.class) {
-          inflater.inflate(R.menu.popup_menu_movie_soundtracks, popupMenu.getMenu());
-        }
+        inflater.inflate(R.menu.popup_menu_similar_songs, popupMenu.getMenu());
 
 
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
           public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
-              case R.id.spotify:
-                SpotifyPlayer sp = new SpotifyPlayer(activity, song.getUri());
-                sp.execute(song.getSongTitle() + " " + song.getArtist());
-                break;
-              case R.id.youTube:
-                YoutubePlayer yt = new YoutubePlayer(activity);
-                yt.execute(song.getSongTitle() + " " + song.getArtist());
-                break;
-              case R.id.similar:
-                Intent intent = new Intent(activity.getApplicationContext(), ResultSimilarSongsActivity.class);
-                intent.putExtra(ResultSimilarSongsActivity.EXTRA_MESSAGE, song.getTrackId());
+              case R.id.searchSoundtracks:
+                Intent intent = new Intent(activity.getApplicationContext(), ResultMovieSoundtracksActivity.class);
+                intent.putExtra(ResultMovieSoundtracksActivity.EXTRA_MESSAGE, movie.getMovieTitle());
                 activity.startActivity(intent);
                 break;
               case R.id.facebook:
-                Utils.ShareText(activity,"I found " + song.getSongTitle()
-                        + " with Movie Tunes! Listen to it on Spotify: "
-                        + song.getUri() + " And visit the Movie Tunes Project: https://vssse.wordpress.com/");
+                Utils.ShareText(activity,"I found " + movie.getMovieTitle()
+                        + " with Movie Tunes!");
                 break;
                 default:
                   return false;

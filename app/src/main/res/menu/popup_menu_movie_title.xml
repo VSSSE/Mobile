@@ -1,0 +1,14 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+      android:title="@string/searchSoundtracks"
+      android:id="@+id/searchSoundtracks"
+      />
+
+  <item
+      android:title="@string/shareonFacebook"
+      android:id="@+id/facebook"
+      />
+
+</menu>
