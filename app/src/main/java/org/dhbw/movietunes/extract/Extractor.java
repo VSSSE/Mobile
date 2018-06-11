@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
+import org.dhbw.movietunes.model.Movie;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.model.Video;
@@ -151,6 +152,20 @@ public class Extractor {
     } else {
       return found.get(0);
     }
+  }
+
+  private List<Movie> getMovies(String recommendationsBody) {
+    List<Movie> result = new ArrayList<>();
+    JsonElement root = new JsonParser().parse(recommendationsBody);
+
+    JsonArray videos = root.getAsJsonObject().getAsJsonArray("items");
+    for (JsonElement video : videos) {
+      Movie newmovie = extractSingleMovie(video.getAsJsonObject());
+      if (newmovie != null) {
+        result.add(newmovie);
+      }
+    }
+    return result;
   }
 
   private String convertToSeconds(String s) {
