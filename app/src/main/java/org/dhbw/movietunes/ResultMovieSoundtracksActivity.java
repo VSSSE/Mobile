@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import org.dhbw.movietunes.controller.SearchMovieSoundtracksController;
+import org.dhbw.movietunes.menu.MainMenu;
 
 public class ResultMovieSoundtracksActivity extends MainMenu {
 

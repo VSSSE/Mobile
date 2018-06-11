@@ -3,8 +3,8 @@ package org.dhbw.movietunes;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import org.dhbw.movietunes.controller.SearchMovieSoundtracksController;
 import org.dhbw.movietunes.controller.SearchMovieTitleController;
+import org.dhbw.movietunes.menu.MainMenu;
 
 public class ResultMovieTitleActivity extends MainMenu {
 

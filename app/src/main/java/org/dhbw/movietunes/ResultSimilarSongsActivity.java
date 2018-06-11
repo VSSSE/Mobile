@@ -3,6 +3,7 @@ package org.dhbw.movietunes;
 import android.content.Intent;
 import android.os.Bundle;
 import org.dhbw.movietunes.controller.SearchSimilarSongsController;
+import org.dhbw.movietunes.menu.MainMenu;
 
 /**
  * Created by anastasia.schwed on 11/21/2017.

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.dhbw.movietunes.menu.MainMenu;
 
 public class MainActivity extends MainMenu implements View.OnClickListener {
 

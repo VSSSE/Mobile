@@ -1,4 +1,4 @@
-package org.dhbw.movietunes;
+package org.dhbw.movietunes.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.dhbw.movietunes.R;
+import org.dhbw.movietunes.SearchMovieSoundtracksActivity;
+import org.dhbw.movietunes.SearchMovieTitlesActivity;
 
 public class MainMenu extends AppCompatActivity {
 

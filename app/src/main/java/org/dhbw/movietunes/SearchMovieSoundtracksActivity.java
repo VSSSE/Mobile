@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import org.dhbw.movietunes.menu.MainMenu;
 
 public class SearchMovieSoundtracksActivity extends MainMenu implements View.OnClickListener {
 
