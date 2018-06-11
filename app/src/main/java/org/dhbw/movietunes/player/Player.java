@@ -4,26 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import java.util.ArrayList;
-import java.util.List;
-import org.dhbw.movietunes.R;
-import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
 import org.dhbw.movietunes.exception.HttpException;
-import org.dhbw.movietunes.http.SpotifyCommunication;
-import org.dhbw.movietunes.list.SongAdapter;
-import org.dhbw.movietunes.model.Song;
 
 public abstract class Player extends AsyncTask<String, Integer, String> {
   protected Activity activity;
 
-
   public Player(Activity activity) {
     this.activity = activity;
   }
-
 
   @Override
   protected String doInBackground(String... params) {
@@ -34,7 +22,6 @@ public abstract class Player extends AsyncTask<String, Integer, String> {
   }
 
   protected abstract String createUri(String searchString);
-
 
   @Override
   protected void onPostExecute(String result) {

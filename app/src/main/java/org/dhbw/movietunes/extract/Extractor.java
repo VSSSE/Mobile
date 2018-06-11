@@ -130,7 +130,6 @@ public class Extractor {
     return result;
   }
 
-
   private List<Video> getVideos(String recommendationsBody) {
     List<Video> result = new ArrayList<>();
     JsonElement root = new JsonParser().parse(recommendationsBody);
@@ -147,13 +146,12 @@ public class Extractor {
 
   public Video getFirstVideo(String searchString) {
     List<Video> found = getVideos(searchString);
-    if(found.isEmpty()) {
+    if (found.isEmpty()) {
       return null;
     } else {
       return found.get(0);
     }
   }
-
 
   private Movie extractSingleMovie(JsonObject track) {
     try {

@@ -46,7 +46,7 @@ public class MainMenu extends AppCompatActivity {
 
       default:
         LOGGER.log(Level.INFO, "Option not found!");
-       return false;
+        return false;
     }
 
     return true;

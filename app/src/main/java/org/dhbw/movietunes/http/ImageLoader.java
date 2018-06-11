@@ -52,7 +52,7 @@ public class ImageLoader {
     File f = fileCache.getFile(url);
 
     //from SD cache
-    if(f.exists()) {
+    if (f.exists()) {
       Bitmap b = decodeFile(f);
       if (b != null) {
         return b;

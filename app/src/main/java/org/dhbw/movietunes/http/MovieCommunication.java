@@ -5,7 +5,6 @@ import okhttp3.Request;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.extract.Extractor;
 import org.dhbw.movietunes.model.Movie;
-import org.dhbw.movietunes.model.Video;
 
 public class MovieCommunication {
 

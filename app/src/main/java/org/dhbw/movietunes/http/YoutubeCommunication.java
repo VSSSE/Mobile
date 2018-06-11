@@ -1,6 +1,5 @@
 package org.dhbw.movietunes.http;
 
-import java.util.List;
 import okhttp3.Request;
 import org.dhbw.movietunes.exception.HttpException;
 import org.dhbw.movietunes.extract.Extractor;

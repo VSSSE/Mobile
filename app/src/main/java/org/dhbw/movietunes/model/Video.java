@@ -2,8 +2,8 @@ package org.dhbw.movietunes.model;
 
 public class Video {
 
-String videoID;
-String title;
+  String videoID;
+  String title;
 
   public Video(String videoID, String title) {
     this.videoID = videoID;

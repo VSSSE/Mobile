@@ -9,7 +9,7 @@ public class Utils {
     int bufferLength = 0;
 
     try {
-      while ( (bufferLength = is.read(buffer)) > 0 ) {
+      while ((bufferLength = is.read(buffer)) > 0) {
         os.write(buffer, 0, bufferLength);
       }
 
