@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
+import org.dhbw.movietunes.model.Video;
 
 public class Extractor {
 
@@ -39,7 +40,7 @@ public class Extractor {
     if (result.isEmpty()) {
       return null;
     } else {
-      return getListOfPlaylists(playlistSearchResult).get(0);
+      return result.get(0);
     }
   }
 
@@ -81,6 +82,13 @@ public class Extractor {
     );
   }
 
+  private Video extractSingleVideo(JsonObject video) {
+    return new Video(
+            video.getAsJsonObject("id").getAsJsonPrimitive("videoId").getAsString(),
+            video.getAsJsonObject("snippet").getAsJsonPrimitive("title").getAsString()
+    );
+  }
+
   public List<Song> getSongsFromPlaylist(String tracklistDetailsResponse) {
     List<Song> result = new ArrayList<>();
 
@@ -104,6 +112,27 @@ public class Extractor {
       result.add(extractSingleSong(track.getAsJsonObject()));
     }
     return result;
+  }
+
+
+  private List<Video> getVideos(String recommendationsBody) {
+    List<Video> result = new ArrayList<>();
+    JsonElement root = new JsonParser().parse(recommendationsBody);
+
+    JsonArray videos = root.getAsJsonObject().getAsJsonArray("items");
+    for (JsonElement video : videos) {
+      result.add(extractSingleVideo(video.getAsJsonObject()));
+    }
+    return result;
+  }
+
+  public Video getFirstVideo(String searchString) {
+    List<Video> found = getVideos(searchString);
+    if(found.isEmpty()) {
+      return null;
+    } else {
+      return found.get(0);
+    }
   }
 
   private String convertToSeconds(String s) {
