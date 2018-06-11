@@ -1,15 +1,28 @@
 package org.dhbw.movietunes.player;
 
 import android.app.Activity;
+import org.dhbw.movietunes.http.YoutubeCommunication;
+import org.dhbw.movietunes.model.Video;
 
 public class YoutubePlayer extends Player {
-  public YoutubePlayer(Activity activity, String songTitle) {
-    super(activity, songTitle);
+  YoutubeCommunication ytCom;
+  public YoutubePlayer(Activity activity, String searchString) {
+    super(activity, searchString);
+    ytCom = new YoutubeCommunication();
+
   }
+
 
   @Override
   public String createUri() {
     //TODO Get URL
-    return "";
+
+    Video thatVideo = ytCom.findFirstVideo(searchString);
+
+    if (thatVideo != null) {
+      return "https://www.youtube.com/watch?v=" + thatVideo.getVideoID();
+    } else {
+      return "https://www.youtube.com/watch?v=VideoNotFound";
+    }
   }
 }

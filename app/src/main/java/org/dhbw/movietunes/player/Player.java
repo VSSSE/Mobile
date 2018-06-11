@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.net.Uri;
 
 public abstract class Player {
-  protected String songTitle;
+  protected String searchString;
   protected String uri;
   protected Activity activity;
 
-  protected Player(Activity activity, String songTitle) {
-    this.songTitle = songTitle;
+  protected Player(Activity activity, String searchString) {
+    this.searchString = searchString;
     this.activity = activity;
   }
 

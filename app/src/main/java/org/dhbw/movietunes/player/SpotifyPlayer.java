@@ -5,14 +5,14 @@ import android.app.Activity;
 public class SpotifyPlayer extends Player {
   String preUri = "";
 
-  public SpotifyPlayer(Activity activity, String songTitle, String uri) {
-    super(activity, songTitle);
+  public SpotifyPlayer(Activity activity, String searchString, String uri) {
+    super(activity, searchString);
     this.preUri = uri;
 
   }
 
-  public SpotifyPlayer(Activity activity, String songTitle) {
-    super(activity, songTitle);
+  public SpotifyPlayer(Activity activity, String searchString) {
+    super(activity, searchString);
   }
 
   @Override
