@@ -32,7 +32,6 @@ public class SpotifyCommunication {
     Request request = new Request.Builder()
             .url("https://accounts.spotify.com/api/token")
             .addHeader(HEADER_1, HEADER_AUTHORIZATION)
-            .addHeader("Content-Type", "application/x-www-form-urlencoded")
             .post(formBody)
             .build();
 
@@ -67,6 +66,7 @@ public class SpotifyCommunication {
     Request request = new Request.Builder()
             .url(url)
             .addHeader(HEADER_1, HEADER_2 + token)
+            .addHeader("Content-Type", "application/json; charset=utf-8")
             .get()
             .build();
 
