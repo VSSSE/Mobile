@@ -50,4 +50,29 @@ jobs:
           destination: reports
       - store_test_results:
           path: app/build/outputs/androidTest-results/connected
-      # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples    
+      # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Deploy Over GIT
+          command: |
+            cp app/build/outputs/apk/release/app-release-unsigned.apk install/ -f
+            cp app/build/outputs/apk/debug/app-debug.apk install/ -f
+            git add install/app-debug.apk
+            git add install/app-release-unsigned.apk
+            git commit -m "deploy new apk from circleCI"
+            git push
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
