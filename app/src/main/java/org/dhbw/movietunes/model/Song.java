@@ -1,6 +1,8 @@
 package org.dhbw.movietunes.model;
 
+import android.database.Cursor;
 import android.provider.BaseColumns;
+import java.nio.charset.Charset;
 
 /**
  * Created by anastasia.schwed on 11/26/2017.
@@ -28,6 +30,15 @@ public class Song implements BaseColumns {
     this.duration = duration;
     this.uri = uri;
     this.imageUri = imageUri;
+  }
+  public Song(Cursor cursor) {
+    Charset UTF8_CHARSET = Charset.forName("UTF-8");
+    this.trackId = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_TtrackId)), UTF8_CHARSET);
+    this.songTitle = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_SongTitle)), UTF8_CHARSET);
+    this.artist = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_Artist)), UTF8_CHARSET);
+    this.duration = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_Duration)), UTF8_CHARSET);
+    this.uri = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_Uri)), UTF8_CHARSET);
+    this.imageUri = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_ImageUri)), UTF8_CHARSET);
   }
 
   public String getDuration() {

@@ -1,6 +1,8 @@
 package org.dhbw.movietunes.model;
 
+import android.database.Cursor;
 import android.provider.BaseColumns;
+import java.nio.charset.Charset;
 
 public class IsSimilarTo implements BaseColumns {
 
@@ -14,7 +16,11 @@ public class IsSimilarTo implements BaseColumns {
     this.isId = isId;
     this.toId = toId;
   }
-
+  public IsSimilarTo(Cursor cursor) {
+    Charset UTF8_CHARSET = Charset.forName("UTF-8");
+    this.isId = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_IsId)), UTF8_CHARSET);
+    this.toId = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_ToId)), UTF8_CHARSET);
+  }
   public String getIsId() {
     return isId;
   }

@@ -1,6 +1,8 @@
 package org.dhbw.movietunes.model;
 
+import android.database.Cursor;
 import android.provider.BaseColumns;
+import java.nio.charset.Charset;
 
 public class IsPlayedIn implements BaseColumns {
 
@@ -15,6 +17,12 @@ public class IsPlayedIn implements BaseColumns {
     this.movieName = movieName;
   }
 
+  public IsPlayedIn(Cursor cursor) {
+    Charset UTF8_CHARSET = Charset.forName("UTF-8");
+    this.songId = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_SongId)), UTF8_CHARSET);
+    this.movieName = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_MovieName)), UTF8_CHARSET);
+  }
+
   public String getSongId() {
     return songId;
   }
@@ -22,4 +30,5 @@ public class IsPlayedIn implements BaseColumns {
   public String getMovieName() {
     return movieName;
   }
+
 }
