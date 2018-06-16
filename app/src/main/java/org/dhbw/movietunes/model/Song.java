@@ -1,10 +1,19 @@
 package org.dhbw.movietunes.model;
 
+import android.provider.BaseColumns;
+
 /**
  * Created by anastasia.schwed on 11/26/2017.
  */
 
-public class Song {
+public class Song implements BaseColumns {
+  public static final String _TabellenName = "Song";
+  public static final String _TtrackId = "trackId";
+  public static final String _SongTitle = "songTitle";
+  public static final String _Artist = "artist";
+  public static final String _Duration = "duration";
+  public static final String _Uri = "uri";
+  public static final String _ImageUri = "imageUri";
   private String trackId;
   private String songTitle;
   private String artist;
