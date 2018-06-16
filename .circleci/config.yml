@@ -48,6 +48,7 @@ jobs:
       - run:
           name: Deploy Over GIT
           command: |
+            ./gradlew assemble
             cp app/build/outputs/apk/release/app-release-unsigned.apk install/ -f
             cp app/build/outputs/apk/debug/app-debug.apk install/ -f
             git add install/app-debug.apk
