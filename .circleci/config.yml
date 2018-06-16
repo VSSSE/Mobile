@@ -44,7 +44,7 @@ jobs:
       - run:
           name: Run Upload
           command: |
-              java -jar lib/codacy-coverage-reporter-4.0.1-assembly.jar report -l Java -r app/build/reports/coverage/debug/report.xml -t ${CodacyToken}
+              java -jar lib/codacy-coverage-reporter-4.0.1-assembly.jar report -l Java -r app/build/reports/coverage/debug/report.xml -t ${CodacyToken} --commit-uuid ${CIRCLE_SHA1}
               ./gradlew sonarComplete sonarqube --info --stacktrace -Dsonar.organization=vss -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SonarqubeToken}
 
       - store_artifacts:
