@@ -51,10 +51,12 @@ jobs:
             ./gradlew assemble
             cp app/build/outputs/apk/release/app-release-unsigned.apk install/ -f
             cp app/build/outputs/apk/debug/app-debug.apk install/ -f
+            git config --global user.email "circelci@c0d3d3v.ml"
+            git config --global user.name "circelCI"
             git add install/app-debug.apk
             git add install/app-release-unsigned.apk
             git commit -m "deploy new apk from circleCI"
-            git push
+            git push -u origin master
       - store_artifacts:
           path: app/build/reports
           destination: reports
