@@ -15,6 +15,7 @@ public class ResultMovieTitleActivity extends MainMenu {
 
   public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.MovieTitleFor";
   private String songTitle;
+  private MovieAdapter adapter;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +29,20 @@ public class ResultMovieTitleActivity extends MainMenu {
     songTitle = intent.getStringExtra(EXTRA_MESSAGE);
     song.setText(songTitle);
 
-    MovieAdapter adapter = new MovieAdapter(this);
+    adapter = new MovieAdapter(this);
     list.setAdapter(adapter);
 
-    SearchMovieTitleController controller = new SearchMovieTitleController(this);
-    controller.execute(songTitle);
+    if(adapter.getCount() <= 2) {
+      SearchMovieTitleController controller = new SearchMovieTitleController(this);
+      controller.execute(songTitle);
+    }
   }
 
   public String getSongTitle() {
     return songTitle;
+  }
+
+  public void updateList() {
+    adapter.notifyDataSetChanged();
   }
 }

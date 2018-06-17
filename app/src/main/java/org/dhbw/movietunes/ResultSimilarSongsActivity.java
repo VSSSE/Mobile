@@ -18,6 +18,7 @@ public class ResultSimilarSongsActivity extends MainMenu {
 
   public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.SimilarSongsFor";
   private String trackId;
+  private SongAdapter adapter;
 
   protected void onCreate(Bundle savedInstanceState) {
 
@@ -29,17 +30,24 @@ public class ResultSimilarSongsActivity extends MainMenu {
     ListView list = findViewById(R.id.similarSongs_list_view);
 
     trackId = intent.getStringExtra(EXTRA_MESSAGE);
-    SearchSimilarSongsController controller
-            = new SearchSimilarSongsController(this);
 
-    SongAdapter adapter = new SongAdapter(this);
+    adapter = new SongAdapter(this);
     list.setAdapter(adapter);
 
-    controller.execute(trackId);
+
+    if(adapter.getCount() <= 2) {
+      SearchSimilarSongsController controller
+              = new SearchSimilarSongsController(this);
+      controller.execute(trackId);
+    }
 
   }
 
   public String getTrackId() {
     return trackId;
+  }
+
+  public void updateList() {
+    adapter.notifyDataSetChanged();
   }
 }
