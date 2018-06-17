@@ -59,7 +59,7 @@ jobs:
             yarn add publish-release
             cp app/build/outputs/apk/release/app-release-unsigned.apk install/ -f
             cp app/build/outputs/apk/debug/app-debug.apk install/ -f
-            yarn run publish-release --assets install/app-debug.apk,install/app-release-unsigned.apk --owner "VSSSE" --repo "VSS-Mobile" --tag "1.0.0" --name "Movie Tunes 1.0.0" --notes "This is a developer release! Use it on your own risk" --token ${GIT_TOKEN}
+            yarn run publish-release --reuseRelease --assets install/app-debug.apk,install/app-release-unsigned.apk --owner "VSSSE" --repo "VSS-Mobile" --tag "1.0.0" --name "Movie Tunes 1.0.0" --notes "This is a developer release! Use it on your own risk" --token ${GIT_TOKEN}
       - store_artifacts:
           path: app/build/reports
           destination: reports
