@@ -2,7 +2,6 @@ package org.dhbw.movietunes.model;
 
 import android.database.Cursor;
 import android.provider.BaseColumns;
-import java.nio.charset.Charset;
 
 /**
  * Created by anastasia.schwed on 11/26/2017.
@@ -31,6 +30,7 @@ public class Song implements BaseColumns {
     this.uri = uri;
     this.imageUri = imageUri;
   }
+
   public Song(Cursor cursor) {
     this.trackId = cursor.getString(cursor.getColumnIndexOrThrow(_TrackId));
     this.songTitle = cursor.getString(cursor.getColumnIndexOrThrow(_SongTitle));

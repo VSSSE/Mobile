@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
 import org.dhbw.movietunes.controller.SearchMovieTitleController;
 import org.dhbw.movietunes.list.MovieAdapter;
 import org.dhbw.movietunes.menu.MainMenu;
-import org.dhbw.movietunes.model.Movie;
 
 public class ResultMovieTitleActivity extends MainMenu {
 
@@ -32,7 +29,7 @@ public class ResultMovieTitleActivity extends MainMenu {
     adapter = new MovieAdapter(this);
     list.setAdapter(adapter);
 
-    if(adapter.getCount() <= 2) {
+    if (adapter.getCount() <= 2) {
       SearchMovieTitleController controller = new SearchMovieTitleController(this);
       controller.execute(songTitle);
     }

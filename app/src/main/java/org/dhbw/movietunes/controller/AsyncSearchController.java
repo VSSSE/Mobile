@@ -3,24 +3,20 @@ package org.dhbw.movietunes.controller;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import java.nio.charset.Charset;
-import java.util.List;
 import java.util.logging.Logger;
 import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.exception.HttpException;
-import org.dhbw.movietunes.http.HttpCommunication;
 
 /**
  * Created by anastasia.schwed on 11/26/2017.
  */
 
 public abstract class AsyncSearchController extends AsyncTask<String, Integer, Boolean> {
-  protected Activity activity;
-
   protected static final Logger LOGGER = Logger.getLogger(AsyncSearchController.class.getName());
   protected static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
+  protected Activity activity;
 
   public AsyncSearchController(Activity activity) {
     this.activity = activity;

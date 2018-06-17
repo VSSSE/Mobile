@@ -8,7 +8,6 @@
     android:padding="5dip"
     >
 
-
   <!-- Title -->
   <TextView
       android:id="@+id/title"

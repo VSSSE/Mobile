@@ -3,19 +3,11 @@ package org.dhbw.movietunes.controller;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.ListView;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
-import org.dhbw.movietunes.ResultMovieTitleActivity;
 import org.dhbw.movietunes.database.Database;
 import org.dhbw.movietunes.http.SpotifyCommunication;
-import org.dhbw.movietunes.list.SongAdapter;
 import org.dhbw.movietunes.model.IsPlayedIn;
-import org.dhbw.movietunes.model.IsSimilarTo;
 import org.dhbw.movietunes.model.Movie;
 import org.dhbw.movietunes.model.Song;
 
@@ -34,7 +26,6 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
     SpotifyCommunication spotifyCommunication = new SpotifyCommunication();
 
     ArrayList<Song> result = new ArrayList(spotifyCommunication.findSoundtracks(searchString));
-
 
     SQLiteDatabase db = Database.getDB(activity);
 
@@ -62,7 +53,6 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
       }
     }
 
-
     for (Song song : result) {
       ContentValues values = new ContentValues();
 
@@ -78,7 +68,6 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
       valuesCon.put(IsPlayedIn._SongName, song.getSongTitle());
       valuesCon.put(IsPlayedIn._MovieName, movieName);
 
-
       synchronized (db) {
         db.insert(Song._TabellenName, null, values);
         db.insert(IsPlayedIn._TabellenName, null, valuesCon);
@@ -91,8 +80,8 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
 
   @Override
   protected void postResult(Boolean result) {
-    if(result) {
-      ((ResultMovieSoundtracksActivity)activity).updateList();
+    if (result) {
+      ((ResultMovieSoundtracksActivity) activity).updateList();
     }
   }
 

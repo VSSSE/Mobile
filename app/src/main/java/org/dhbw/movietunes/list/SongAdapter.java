@@ -45,23 +45,23 @@ public class SongAdapter extends BaseAdapter {
     SQLiteDatabase db = Database.getDB(activity);
 
     String queryString = "Select count(S." + Song._ID + ") as anzahl"
-                   + " FROM " + Song._TabellenName + " as S,";
+            + " FROM " + Song._TabellenName + " as S,";
 
     String[] args;
 
     if (activityType) {
       queryString += IsSimilarTo._TabellenName + " as I"
-          + " WHERE S." + Song._TrackId + " = I." + IsSimilarTo._ToId
-          + " AND I." + IsSimilarTo._IsId + " = ?";
+              + " WHERE S." + Song._TrackId + " = I." + IsSimilarTo._ToId
+              + " AND I." + IsSimilarTo._IsId + " = ?";
 
-      args = new String[]{ ((ResultSimilarSongsActivity)activity).getTrackId()};
+      args = new String[]{((ResultSimilarSongsActivity) activity).getTrackId()};
 
     } else {
       queryString += IsPlayedIn._TabellenName + " as I"
               + " WHERE S." + Song._SongTitle + " = I." + IsPlayedIn._SongName
               + " AND I." + IsPlayedIn._MovieName + " = ?";
 
-      args = new String[]{ ((ResultMovieSoundtracksActivity)activity).getMovieTitle()};
+      args = new String[]{((ResultMovieSoundtracksActivity) activity).getMovieTitle()};
 
     }
 
@@ -98,14 +98,14 @@ public class SongAdapter extends BaseAdapter {
               + " WHERE S." + Song._TrackId + " = I." + IsSimilarTo._ToId
               + " AND I." + IsSimilarTo._IsId + " = ?";
 
-      args = new String[]{ ((ResultSimilarSongsActivity)activity).getTrackId()};
+      args = new String[]{((ResultSimilarSongsActivity) activity).getTrackId()};
 
     } else {
       queryString += IsPlayedIn._TabellenName + " as I"
               + " WHERE S." + Song._SongTitle + " = I." + IsPlayedIn._SongName
               + " AND I." + IsPlayedIn._MovieName + " = ?";
 
-      args = new String[]{ ((ResultMovieSoundtracksActivity)activity).getMovieTitle()};
+      args = new String[]{((ResultMovieSoundtracksActivity) activity).getMovieTitle()};
 
     }
 

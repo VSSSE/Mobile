@@ -3,7 +3,6 @@ package org.dhbw.movietunes.controller;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import org.dhbw.movietunes.ResultSimilarSongsActivity;
@@ -46,7 +45,6 @@ public class SearchSimilarSongsController extends AsyncSearchController {
       return false;
     }
 
-
     for (Song song : result) {
       ContentValues values = new ContentValues();
 
@@ -56,7 +54,6 @@ public class SearchSimilarSongsController extends AsyncSearchController {
       values.put(Song._SongTitle, song.getSongTitle());
       values.put(Song._TrackId, song.getTrackId());
       values.put(Song._Uri, song.getUri());
-
 
       ContentValues valuesCon = new ContentValues();
 

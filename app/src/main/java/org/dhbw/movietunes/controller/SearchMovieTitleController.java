@@ -3,17 +3,10 @@ package org.dhbw.movietunes.controller;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.ListView;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieTitleActivity;
-import org.dhbw.movietunes.ResultSimilarSongsActivity;
 import org.dhbw.movietunes.database.Database;
 import org.dhbw.movietunes.http.MovieCommunication;
-import org.dhbw.movietunes.list.MovieAdapter;
 import org.dhbw.movietunes.model.IsPlayedIn;
 import org.dhbw.movietunes.model.Movie;
 import org.dhbw.movietunes.model.Song;
@@ -33,7 +26,6 @@ public class SearchMovieTitleController extends AsyncSearchController {
     MovieCommunication movieCommunication = new MovieCommunication();
 
     ArrayList<Movie> result = new ArrayList(movieCommunication.findMovies(searchString));
-
 
     SQLiteDatabase db = Database.getDB(activity);
 
@@ -61,7 +53,6 @@ public class SearchMovieTitleController extends AsyncSearchController {
       }
     }
 
-
     for (Movie movie : result) {
       ContentValues values = new ContentValues();
 
@@ -72,7 +63,6 @@ public class SearchMovieTitleController extends AsyncSearchController {
 
       valuesCon.put(IsPlayedIn._MovieName, movie.getMovieTitle());
       valuesCon.put(IsPlayedIn._SongName, songName);
-
 
       synchronized (db) {
         db.insert(Movie._TabellenName, null, values);
@@ -87,8 +77,8 @@ public class SearchMovieTitleController extends AsyncSearchController {
 
   @Override
   protected void postResult(Boolean result) {
-    if(result) {
-      ((ResultMovieTitleActivity)activity).updateList();
+    if (result) {
+      ((ResultMovieTitleActivity) activity).updateList();
     }
   }
 

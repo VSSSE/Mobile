@@ -183,7 +183,6 @@ public class Extractor {
     Elements elements = document.select("OL");
     Elements eintraege = elements.first().select("LI");
 
-
     for (Element eintrag : eintraege) {
       Movie newmovie = extractSingleMovie(eintrag);
       if (newmovie != null) {

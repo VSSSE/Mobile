@@ -7,22 +7,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.*;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import java.util.ArrayList;
 import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
 import org.dhbw.movietunes.ResultMovieTitleActivity;
-import org.dhbw.movietunes.ResultSimilarSongsActivity;
 import org.dhbw.movietunes.database.Database;
-import org.dhbw.movietunes.http.ImageLoader;
 import org.dhbw.movietunes.model.IsPlayedIn;
-import org.dhbw.movietunes.model.IsSimilarTo;
 import org.dhbw.movietunes.model.Movie;
 import org.dhbw.movietunes.model.Song;
-import org.dhbw.movietunes.player.SpotifyPlayer;
-import org.dhbw.movietunes.player.YoutubePlayer;
 import org.dhbw.movietunes.utils.Utils;
 
 public class MovieAdapter extends BaseAdapter {
@@ -44,8 +37,7 @@ public class MovieAdapter extends BaseAdapter {
             + " WHERE M." + Movie._MovieTitle + " = I." + IsPlayedIn._MovieName
             + " AND I." + IsPlayedIn._SongName + " = ?";
 
-    String[] args = new String[]{ ((ResultMovieTitleActivity)activity).getSongTitle()};
-
+    String[] args = new String[]{((ResultMovieTitleActivity) activity).getSongTitle()};
 
     Cursor cursor = db.rawQuery(queryString, args);
 
@@ -76,8 +68,7 @@ public class MovieAdapter extends BaseAdapter {
             + " WHERE M." + Movie._MovieTitle + " = I." + IsPlayedIn._MovieName
             + " AND I." + IsPlayedIn._SongName + " = ?";
 
-    String[] args = new String[]{ ((ResultMovieTitleActivity)activity).getSongTitle()};
-
+    String[] args = new String[]{((ResultMovieTitleActivity) activity).getSongTitle()};
 
     Cursor cursor = db.rawQuery(queryString, args);
 
@@ -107,7 +98,6 @@ public class MovieAdapter extends BaseAdapter {
 
         inflater.inflate(R.menu.popup_menu_movie_title, popupMenu.getMenu());
 
-
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
           public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
@@ -117,11 +107,11 @@ public class MovieAdapter extends BaseAdapter {
                 activity.startActivity(intent);
                 break;
               case R.id.facebook:
-                Utils.ShareText(activity,"I found " + movie.getMovieTitle()
+                Utils.ShareText(activity, "I found " + movie.getMovieTitle()
                         + " with Movie Tunes!");
                 break;
-                default:
-                  return false;
+              default:
+                return false;
             }
             return true;
           }

@@ -30,5 +30,4 @@ public class Utils {
     activity.startActivity(Intent.createChooser(sharingIntent, activity.getResources().getString(R.string.share_using)));
   }
 
-
 }
