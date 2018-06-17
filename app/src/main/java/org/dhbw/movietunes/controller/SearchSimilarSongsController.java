@@ -36,51 +36,42 @@ public class SearchSimilarSongsController extends AsyncSearchController {
                     + " WHERE S." + Song._SongTitle + " = ?"
             , args);
 
-
+    String toIT;
     if (finder.getCount() > 0) {
       finder.moveToFirst();
-      String toIT = new String(finder.getBlob(
+      toIT = new String(finder.getBlob(
               finder.getColumnIndexOrThrow(Song._TrackId)), UTF8_CHARSET);
-
-      for (Song song : result) {
-        ContentValues values = new ContentValues();
-
-        try {
-          values.put(Song._Artist, song.getArtist().getBytes("UTF-8"));
-          values.put(Song._Duration, song.getDuration().getBytes("UTF-8"));
-          values.put(Song._ImageUri, song.getImageUri().getBytes("UTF-8"));
-          values.put(Song._SongTitle, song.getSongTitle().getBytes("UTF-8"));
-          values.put(Song._TrackId, song.getTrackId().getBytes("UTF-8"));
-          values.put(Song._Uri, song.getUri().getBytes("UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-          LOGGER.log(Level.WARNING, "Could not save Song fully!", e);
-        }
-
-        ContentValues valuesCon = new ContentValues();
-
-        try {
-          valuesCon.put(IsSimilarTo._IsId, song.getTrackId().getBytes("UTF-8"));
-          valuesCon.put(IsSimilarTo._ToId, toIT.getBytes("UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-          LOGGER.log(Level.WARNING, "Could not save SimilarTo fully!", e);
-        }
-
-        synchronized (db) {
-          db.insert(Song._TabellenName, null, values);
-          db.insert(IsSimilarTo._TabellenName, null, valuesCon);
-        }
-
-      }
-
-
-      return result.isEmpty() ? false : true;
-
     } else {
-      LOGGER.log(Level.WARNING, "Didn't find the song!");
+      //TODO search song if not exist and create
+      LOGGER.log(Level.WARNING, "Could not find the song in DB!");
       return false;
     }
 
 
+    for (Song song : result) {
+      ContentValues values = new ContentValues();
+
+      values.put(Song._Artist, song.getArtist());
+      values.put(Song._Duration, song.getDuration());
+      values.put(Song._ImageUri, song.getImageUri());
+      values.put(Song._SongTitle, song.getSongTitle());
+      values.put(Song._TrackId, song.getTrackId());
+      values.put(Song._Uri, song.getUri());
+
+
+      ContentValues valuesCon = new ContentValues();
+
+      valuesCon.put(IsSimilarTo._IsId, song.getTrackId());
+      valuesCon.put(IsSimilarTo._ToId, toIT);
+
+      synchronized (db) {
+        db.insert(Song._TabellenName, null, values);
+        db.insert(IsSimilarTo._TabellenName, null, valuesCon);
+      }
+
+    }
+
+    return result.isEmpty() ? false : true;
 
   }
 

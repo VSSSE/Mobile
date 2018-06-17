@@ -18,37 +18,37 @@ public class Database extends SQLiteOpenHelper {
   private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS ";
   private static final String DROP_TABLE = "DROP TABLE IF EXISTS ";
   private static final String AS_INDEX = " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL";
-  private static final String AS_BLOB = " BLOB NOT NULL";
-  private static final String AS_BLOB_NL = " BLOB";
+  private static final String AS_TEXT = " TEXT NOT NULL";
+  private static final String AS_TEXT_NL = " TEXT";
 
   //Sql umm Tabelle Movie zu erstellen
   private static final String CREATE_MOVIE_TABELLE =
           CREATE_TABLE + Movie._TabellenName + " ( "
                   + Movie._ID + AS_INDEX + ","
-                  + Movie._MovieTitle + AS_BLOB_NL + ","
-                  + Movie._MovieUri + AS_BLOB + ")";
+                  + Movie._MovieTitle + AS_TEXT_NL + ","
+                  + Movie._MovieUri + AS_TEXT + ")";
   //Sql umm Tabelle Song zu erstellen
   private static final String CREATE_SONG_TABELLE =
           CREATE_TABLE + Song._TabellenName + " ( "
                   + Song._ID + AS_INDEX + ","
-                  + Song._SongTitle + AS_BLOB_NL + ","
-                  + Song._Artist + AS_BLOB + ","
-                  + Song._Duration + AS_BLOB + ","
-                  + Song._ImageUri + AS_BLOB + ","
-                  + Song._TrackId + AS_BLOB + ","
-                  + Song._Uri + AS_BLOB + ")";
+                  + Song._SongTitle + AS_TEXT_NL + ","
+                  + Song._Artist + AS_TEXT + ","
+                  + Song._Duration + AS_TEXT + ","
+                  + Song._ImageUri + AS_TEXT + ","
+                  + Song._TrackId + AS_TEXT + ","
+                  + Song._Uri + AS_TEXT + ")";
   //Sql umm Tabelle IsPlayedIn zu erstellen
   private static final String CREATE_ISPLAYEDIN_TABELLE =
           CREATE_TABLE + IsPlayedIn._TabellenName + " ( "
                   + IsPlayedIn._ID + AS_INDEX + ","
-                  + IsPlayedIn._SongId + AS_BLOB_NL + ","
-                  + IsPlayedIn._MovieName + AS_BLOB_NL + ")";
+                  + IsPlayedIn._SongId + AS_TEXT_NL + ","
+                  + IsPlayedIn._MovieName + AS_TEXT_NL + ")";
   //Sql umm Tabelle IsSimilarTo zu erstellen
   private static final String CREATE_ISSIMILARTO_TABELLE =
           CREATE_TABLE + IsSimilarTo._TabellenName + " ( "
                   + IsSimilarTo._ID + AS_INDEX + ","
-                  + IsSimilarTo._IsId + AS_BLOB_NL + ","
-                  + IsSimilarTo._ToId + AS_BLOB_NL + ")";
+                  + IsSimilarTo._IsId + AS_TEXT_NL + ","
+                  + IsSimilarTo._ToId + AS_TEXT_NL + ")";
   private static final Logger LOGGER = Logger.getLogger(Database.class.getName());
   //SQL um Tabellen zu löschen
   private static final String SQL_DELETE_MOVIE = DROP_TABLE + Movie._TabellenName;

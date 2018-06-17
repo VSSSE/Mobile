@@ -21,8 +21,8 @@ public class Movie implements BaseColumns {
   }
   public Movie(Cursor cursor) {
     Charset UTF8_CHARSET = Charset.forName("UTF-8");
-    this.movieUri = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_MovieUri)), UTF8_CHARSET);
-    this.movieTitle = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_MovieTitle)), UTF8_CHARSET);
+    this.movieUri = cursor.getString(cursor.getColumnIndexOrThrow(_MovieUri));
+    this.movieTitle = cursor.getString(cursor.getColumnIndexOrThrow(_MovieTitle));
   }
   public String getMovieUri() {
     return movieUri;

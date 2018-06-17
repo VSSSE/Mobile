@@ -18,9 +18,8 @@ public class IsPlayedIn implements BaseColumns {
   }
 
   public IsPlayedIn(Cursor cursor) {
-    Charset UTF8_CHARSET = Charset.forName("UTF-8");
-    this.songId = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_SongId)), UTF8_CHARSET);
-    this.movieName = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_MovieName)), UTF8_CHARSET);
+    this.songId = cursor.getString(cursor.getColumnIndexOrThrow(_SongId));
+    this.movieName = cursor.getString(cursor.getColumnIndexOrThrow(_MovieName));
   }
 
   public String getSongId() {

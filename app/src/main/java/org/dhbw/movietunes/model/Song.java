@@ -33,12 +33,12 @@ public class Song implements BaseColumns {
   }
   public Song(Cursor cursor) {
     Charset UTF8_CHARSET = Charset.forName("UTF-8");
-    this.trackId = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_TrackId)), UTF8_CHARSET);
-    this.songTitle = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_SongTitle)), UTF8_CHARSET);
-    this.artist = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_Artist)), UTF8_CHARSET);
-    this.duration = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_Duration)), UTF8_CHARSET);
-    this.uri = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_Uri)), UTF8_CHARSET);
-    this.imageUri = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_ImageUri)), UTF8_CHARSET);
+    this.trackId = cursor.getString(cursor.getColumnIndexOrThrow(_TrackId));
+    this.songTitle = cursor.getString(cursor.getColumnIndexOrThrow(_SongTitle));
+    this.artist = cursor.getString(cursor.getColumnIndexOrThrow(_Artist));
+    this.duration = cursor.getString(cursor.getColumnIndexOrThrow(_Duration));
+    this.uri = cursor.getString(cursor.getColumnIndexOrThrow(_Uri));
+    this.imageUri = cursor.getString(cursor.getColumnIndexOrThrow(_ImageUri));
   }
 
   public String getDuration() {

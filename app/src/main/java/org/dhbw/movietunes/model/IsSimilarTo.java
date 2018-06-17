@@ -18,8 +18,8 @@ public class IsSimilarTo implements BaseColumns {
   }
   public IsSimilarTo(Cursor cursor) {
     Charset UTF8_CHARSET = Charset.forName("UTF-8");
-    this.isId = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_IsId)), UTF8_CHARSET);
-    this.toId = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_ToId)), UTF8_CHARSET);
+    this.isId = cursor.getString(cursor.getColumnIndexOrThrow(_IsId));
+    this.toId = cursor.getString(cursor.getColumnIndexOrThrow(_ToId));
   }
   public String getIsId() {
     return isId;
