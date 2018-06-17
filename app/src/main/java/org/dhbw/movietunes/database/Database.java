@@ -12,14 +12,14 @@ import org.dhbw.movietunes.model.Song;
 
 public class Database extends SQLiteOpenHelper {
 
-  private static final int DATABASE_VERSION = 1;
+  private static final int DATABASE_VERSION = 2;
   private static final String DATABASE_NAME = "MovieTunes.db";
   //SQL Primitives
   private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS ";
   private static final String DROP_TABLE = "DROP TABLE IF EXISTS ";
   private static final String AS_INDEX = " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL";
-  private static final String AS_TEXT = " TEXT NOT NULL";
-  private static final String AS_TEXT_NL = " TEXT";
+  private static final String AS_TEXT_NL = " TEXT NOT NULL";
+  private static final String AS_TEXT = " TEXT";
 
   //Sql umm Tabelle Movie zu erstellen
   private static final String CREATE_MOVIE_TABELLE =

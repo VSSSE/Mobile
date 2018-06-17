@@ -75,7 +75,7 @@ public class SearchMovieTitleController extends AsyncSearchController {
 
 
       synchronized (db) {
-        db.insert(Song._TabellenName, null, values);
+        db.insert(Movie._TabellenName, null, values);
         db.insert(IsPlayedIn._TabellenName, null, valuesCon);
       }
 
