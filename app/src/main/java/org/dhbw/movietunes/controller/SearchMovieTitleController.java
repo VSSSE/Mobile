@@ -8,6 +8,7 @@ import org.dhbw.movietunes.ResultMovieTitleActivity;
 import org.dhbw.movietunes.database.Database;
 import org.dhbw.movietunes.http.MovieCommunication;
 import org.dhbw.movietunes.model.IsPlayedIn;
+import org.dhbw.movietunes.model.IsSimilarTo;
 import org.dhbw.movietunes.model.Movie;
 import org.dhbw.movietunes.model.Song;
 
@@ -54,19 +55,47 @@ public class SearchMovieTitleController extends AsyncSearchController {
     }
 
     for (Movie movie : result) {
-      ContentValues values = new ContentValues();
+      String movieName;
 
-      values.put(Movie._MovieTitle, movie.getMovieTitle());
-      values.put(Movie._MovieUri, movie.getMovieUri());
+      String[] argsTo = new String[]{movie.getMovieTitle()};
+      Cursor finderTo = db.rawQuery("Select " + Movie._MovieTitle
+                      + " FROM " + Movie._TabellenName + " as M"
+                      + " WHERE M." + Movie._MovieTitle + " = ?"
+              , argsTo);
 
-      ContentValues valuesCon = new ContentValues();
+      if (finderTo.getCount() > 0) {
+        finder.moveToFirst();
+        movieName = finder.getString(finder.getColumnIndexOrThrow(Movie._MovieTitle));
+      } else {
 
-      valuesCon.put(IsPlayedIn._MovieName, movie.getMovieTitle());
-      valuesCon.put(IsPlayedIn._SongName, songName);
+        ContentValues values = new ContentValues();
 
-      synchronized (db) {
-        db.insert(Movie._TabellenName, null, values);
-        db.insert(IsPlayedIn._TabellenName, null, valuesCon);
+        values.put(Movie._MovieTitle, movie.getMovieTitle());
+        values.put(Movie._MovieUri, movie.getMovieUri());
+
+        synchronized (db) {
+          db.insert(Movie._TabellenName, null, values);
+        }
+
+        movieName = movie.getMovieTitle();
+
+      }
+
+      String[] argsCon = new String[]{movieName, songName};
+      Cursor finderCon = db.rawQuery("Select " + IsPlayedIn._ID
+                      + " FROM " + IsPlayedIn._TabellenName + " as I"
+                      + " WHERE I." + IsPlayedIn._MovieName + " = ?"
+                      + " AND I." + IsPlayedIn._SongName + " = ?"
+              , argsCon);
+      if (finderCon.getCount() == 0) {
+        ContentValues valuesCon = new ContentValues();
+
+        valuesCon.put(IsPlayedIn._MovieName, movieName);
+        valuesCon.put(IsPlayedIn._SongName, songName);
+
+        synchronized (db) {
+          db.insert(IsPlayedIn._TabellenName, null, valuesCon);
+        }
       }
 
     }
