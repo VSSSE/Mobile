@@ -33,14 +33,13 @@ public class SearchSimilarSongsController extends AsyncSearchController {
     String[] args = new String[]{searchString};
     Cursor finder = db.rawQuery("Select " + Song._TrackId
                     + " FROM " + Song._TabellenName + " as S"
-                    + " WHERE S." + Song._SongTitle + " = ?"
+                    + " WHERE S." + Song._TrackId + " = ?"
             , args);
 
     String toIT;
     if (finder.getCount() > 0) {
       finder.moveToFirst();
-      toIT = new String(finder.getBlob(
-              finder.getColumnIndexOrThrow(Song._TrackId)), UTF8_CHARSET);
+      toIT = finder.getString(finder.getColumnIndexOrThrow(Song._TrackId));
     } else {
       //TODO search song if not exist and create
       LOGGER.log(Level.WARNING, "Could not find the song in DB!");

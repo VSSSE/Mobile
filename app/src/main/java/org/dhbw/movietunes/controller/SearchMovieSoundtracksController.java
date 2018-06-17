@@ -47,8 +47,7 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
     String movieName;
     if (finder.getCount() > 0) {
       finder.moveToFirst();
-      movieName = new String(finder.getBlob(
-              finder.getColumnIndexOrThrow(Song._TrackId)), UTF8_CHARSET);
+      movieName = finder.getString(finder.getColumnIndexOrThrow(Song._TrackId));
     } else {
       //TODO search movie if not exist
 
@@ -76,7 +75,7 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
 
       ContentValues valuesCon = new ContentValues();
 
-      valuesCon.put(IsPlayedIn._SongId, song.getTrackId());
+      valuesCon.put(IsPlayedIn._SongName, song.getSongTitle());
       valuesCon.put(IsPlayedIn._MovieName, movieName);
 
 

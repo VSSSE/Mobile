@@ -46,8 +46,7 @@ public class SearchMovieTitleController extends AsyncSearchController {
     String songName;
     if (finder.getCount() > 0) {
       finder.moveToFirst();
-      songName = new String(finder.getBlob(
-              finder.getColumnIndexOrThrow(Song._SongTitle)), UTF8_CHARSET);
+      songName = finder.getString(finder.getColumnIndexOrThrow(Song._SongTitle));
     } else {
       //TODO search song if not exist
 
@@ -58,7 +57,7 @@ public class SearchMovieTitleController extends AsyncSearchController {
       valuesCreate.put(Song._SongTitle, songName);
 
       synchronized (db) {
-        db.insert(Movie._TabellenName, null, valuesCreate);
+        db.insert(Song._TabellenName, null, valuesCreate);
       }
     }
 
@@ -72,7 +71,7 @@ public class SearchMovieTitleController extends AsyncSearchController {
       ContentValues valuesCon = new ContentValues();
 
       valuesCon.put(IsPlayedIn._MovieName, movie.getMovieTitle());
-      valuesCon.put(IsPlayedIn._SongId, songName);
+      valuesCon.put(IsPlayedIn._SongName, songName);
 
 
       synchronized (db) {
