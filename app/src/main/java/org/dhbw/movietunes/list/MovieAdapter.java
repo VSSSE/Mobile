@@ -3,6 +3,8 @@ package org.dhbw.movietunes.list;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.*;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -11,8 +13,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
+import org.dhbw.movietunes.ResultMovieTitleActivity;
 import org.dhbw.movietunes.ResultSimilarSongsActivity;
+import org.dhbw.movietunes.database.Database;
 import org.dhbw.movietunes.http.ImageLoader;
+import org.dhbw.movietunes.model.IsPlayedIn;
+import org.dhbw.movietunes.model.IsSimilarTo;
 import org.dhbw.movietunes.model.Movie;
 import org.dhbw.movietunes.model.Song;
 import org.dhbw.movietunes.player.SpotifyPlayer;
@@ -23,24 +29,65 @@ public class MovieAdapter extends BaseAdapter {
 
   private static LayoutInflater inflater = null;
   private Activity activity;
-  private ArrayList<Movie> data;
 
-  public MovieAdapter(Activity a, ArrayList<Movie> d) {
+  public MovieAdapter(Activity a) {
     activity = a;
-    data = d;
     inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
   }
 
   public int getCount() {
-    return data.size();
+    SQLiteDatabase db = Database.getDB(activity);
+
+    String queryString = "Select count(M." + Movie._ID + ") as anzahl"
+            + " FROM " + Movie._TabellenName + " as M,"
+            + IsPlayedIn._TabellenName + " as I,"
+            + Song._TabellenName + " as S"
+            + " WHERE M." + Movie._MovieTitle + " = I." + IsPlayedIn._MovieName
+            + " AND I." + IsPlayedIn._SongId + " = " + Song._TrackId
+            + " AND S." + Song._SongTitle + " = ?";
+
+    String[] args = new String[]{ ((ResultMovieTitleActivity)activity).getSongTitle()};
+
+
+    Cursor cursor = db.rawQuery(queryString, args);
+
+    cursor.moveToFirst();
+
+    return cursor.getInt(cursor.getColumnIndexOrThrow("anzahl"));
   }
 
-  public Object getItem(int position) {
-    return position;
+  public Movie getItem(int position) {
+    SQLiteDatabase db = Database.getDB(activity);
+
+    Cursor cursor = db.rawQuery("SELECT " + "*"
+            + " FROM " + Movie._TabellenName
+            + " WHERE " + Movie._ID + " = " + position
+            + ";", null);
+
+    cursor.moveToFirst();
+
+    return new Movie(cursor);
   }
 
   public long getItemId(int position) {
-    return position;
+    SQLiteDatabase db = Database.getDB(activity);
+
+    String queryString = "Select M." + Movie._ID
+            + " FROM " + Movie._TabellenName + " as M,"
+            + IsPlayedIn._TabellenName + " as I,"
+            + Song._TabellenName + " as S"
+            + " WHERE M." + Movie._MovieTitle + " = I." + IsPlayedIn._MovieName
+            + " AND I." + IsPlayedIn._SongId + " = " + Song._TrackId
+            + " AND S." + Song._SongTitle + " = ?";
+
+    String[] args = new String[]{ ((ResultMovieTitleActivity)activity).getSongTitle()};
+
+
+    Cursor cursor = db.rawQuery(queryString, args);
+
+    cursor.moveToPosition(position);
+
+    return cursor.getLong(cursor.getColumnIndexOrThrow(Song._ID));
   }
 
   public View getView(int position, View convertView, ViewGroup parent) {
@@ -50,7 +97,7 @@ public class MovieAdapter extends BaseAdapter {
 
     TextView title = vi.findViewById(R.id.title); // title
 
-    final Movie movie = data.get(position);
+    final Movie movie = getItem((int) getItemId(position));
 
     // Setting all values in listview
     title.setText(movie.getMovieTitle());

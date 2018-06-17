@@ -47,7 +47,6 @@ public class SongAdapter extends BaseAdapter {
     String queryString = "Select count(S." + Song._ID + ") as anzahl"
                    + " FROM " + Song._TabellenName + " as S,";
 
-    Cursor cursor;
     String[] args;
 
     if (activityType) {
@@ -66,7 +65,7 @@ public class SongAdapter extends BaseAdapter {
 
     }
 
-    cursor = db.rawQuery(queryString, args);
+    Cursor cursor = db.rawQuery(queryString, args);
 
     cursor.moveToFirst();
 
@@ -92,7 +91,6 @@ public class SongAdapter extends BaseAdapter {
     String queryString = "Select S." + Song._ID
             + " FROM " + Song._TabellenName + " as S,";
 
-    Cursor cursor;
     String[] args;
 
     if (activityType) {
@@ -111,7 +109,7 @@ public class SongAdapter extends BaseAdapter {
 
     }
 
-    cursor = db.rawQuery(queryString, args);
+    Cursor cursor = db.rawQuery(queryString, args);
 
     cursor.moveToPosition(position);
 
