@@ -58,7 +58,7 @@ public class SongAdapter extends BaseAdapter {
 
     } else {
       queryString += IsPlayedIn._TabellenName + " as I"
-              + " WHERE S." + Song._TrackId + " = I." + IsPlayedIn._SongId
+              + " WHERE S." + Song._SongTitle + " = I." + IsPlayedIn._SongName
               + " AND I." + IsPlayedIn._MovieName + " = ?";
 
       args = new String[]{ ((ResultMovieSoundtracksActivity)activity).getMovieTitle()};
@@ -102,7 +102,7 @@ public class SongAdapter extends BaseAdapter {
 
     } else {
       queryString += IsPlayedIn._TabellenName + " as I"
-              + " WHERE S." + Song._TrackId + " = I." + IsPlayedIn._SongId
+              + " WHERE S." + Song._SongTitle + " = I." + IsPlayedIn._SongName
               + " AND I." + IsPlayedIn._MovieName + " = ?";
 
       args = new String[]{ ((ResultMovieSoundtracksActivity)activity).getMovieTitle()};

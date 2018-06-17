@@ -47,8 +47,8 @@ public class Database extends SQLiteOpenHelper {
   private static final String CREATE_ISSIMILARTO_TABELLE =
           CREATE_TABLE + IsSimilarTo._TabellenName + " ( "
                   + IsSimilarTo._ID + AS_INDEX + ","
-                  + IsSimilarTo._IsName + AS_TEXT_NL + ","
-                  + IsSimilarTo._ToName + AS_TEXT_NL + ")";
+                  + IsSimilarTo._IsId + AS_TEXT_NL + ","
+                  + IsSimilarTo._ToId + AS_TEXT_NL + ")";
   private static final Logger LOGGER = Logger.getLogger(Database.class.getName());
   //SQL um Tabellen zu löschen
   private static final String SQL_DELETE_MOVIE = DROP_TABLE + Movie._TabellenName;

@@ -7,24 +7,24 @@ import java.nio.charset.Charset;
 public class IsSimilarTo implements BaseColumns {
 
   public static final String _TabellenName = "IsSimilarTo";
-  public static final String _IsName = "isName";
-  public static final String _ToName = "toName";
-  private String isName;    //this song is similar to toId
-  private String toName;
+  public static final String _IsId = "isId";
+  public static final String _ToId = "toId";
+  private String isId;    //this song is similar to toId
+  private String toId;
 
-  public IsSimilarTo(String isName, String toId) {
-    this.isName = isName;
-    this.toName = toId;
+  public IsSimilarTo(String isId, String toId) {
+    this.isId = isId;
+    this.toId = toId;
   }
   public IsSimilarTo(Cursor cursor) {
-    this.isName = cursor.getString(cursor.getColumnIndexOrThrow(_IsName));
-    this.toName = cursor.getString(cursor.getColumnIndexOrThrow(_ToName));
+    this.isId = cursor.getString(cursor.getColumnIndexOrThrow(_IsId));
+    this.toId = cursor.getString(cursor.getColumnIndexOrThrow(_ToId));
   }
   public String getIsId() {
-    return isName;
+    return isId;
   }
 
   public String getToId() {
-    return toName;
+    return toId;
   }
 }

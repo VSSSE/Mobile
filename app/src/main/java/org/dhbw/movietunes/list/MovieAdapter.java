@@ -40,11 +40,9 @@ public class MovieAdapter extends BaseAdapter {
 
     String queryString = "Select count(M." + Movie._ID + ") as anzahl"
             + " FROM " + Movie._TabellenName + " as M,"
-            + IsPlayedIn._TabellenName + " as I,"
-            + Song._TabellenName + " as S"
+            + IsPlayedIn._TabellenName + " as I"
             + " WHERE M." + Movie._MovieTitle + " = I." + IsPlayedIn._MovieName
-            + " AND I." + IsPlayedIn._SongId + " = " + Song._TrackId
-            + " AND S." + Song._SongTitle + " = ?";
+            + " AND I." + IsPlayedIn._SongName + " = ?";
 
     String[] args = new String[]{ ((ResultMovieTitleActivity)activity).getSongTitle()};
 
@@ -74,11 +72,9 @@ public class MovieAdapter extends BaseAdapter {
 
     String queryString = "Select M." + Movie._ID
             + " FROM " + Movie._TabellenName + " as M,"
-            + IsPlayedIn._TabellenName + " as I,"
-            + Song._TabellenName + " as S"
+            + IsPlayedIn._TabellenName + " as I"
             + " WHERE M." + Movie._MovieTitle + " = I." + IsPlayedIn._MovieName
-            + " AND I." + IsPlayedIn._SongId + " = " + Song._TrackId
-            + " AND S." + Song._SongTitle + " = ?";
+            + " AND I." + IsPlayedIn._SongName + " = ?";
 
     String[] args = new String[]{ ((ResultMovieTitleActivity)activity).getSongTitle()};
 
