@@ -46,25 +46,49 @@ public class SearchSimilarSongsController extends AsyncSearchController {
     }
 
     for (Song song : result) {
-      ContentValues values = new ContentValues();
+      String toId;
 
-      values.put(Song._Artist, song.getArtist());
-      values.put(Song._Duration, song.getDuration());
-      values.put(Song._ImageUri, song.getImageUri());
-      values.put(Song._SongTitle, song.getSongTitle());
-      values.put(Song._TrackId, song.getTrackId());
-      values.put(Song._Uri, song.getUri());
+      String[] argsTo = new String[]{song.getSongTitle()};
+      Cursor finderTo = db.rawQuery("Select " + Song._TrackId
+                      + " FROM " + Song._TabellenName + " as S"
+                      + " WHERE S." + Song._SongTitle + " = ?"
+              , argsTo);
 
-      ContentValues valuesCon = new ContentValues();
+      if (finderTo.getCount() > 0) {
+        finder.moveToFirst();
+        toId = finder.getString(finder.getColumnIndexOrThrow(Song._TrackId));
+      } else {
+        ContentValues values = new ContentValues();
 
-      valuesCon.put(IsSimilarTo._ToId, song.getTrackId());
-      valuesCon.put(IsSimilarTo._IsId, isId);
-
-      synchronized (db) {
-        db.insert(Song._TabellenName, null, values);
-        db.insert(IsSimilarTo._TabellenName, null, valuesCon);
+        values.put(Song._Artist, song.getArtist());
+        values.put(Song._Duration, song.getDuration());
+        values.put(Song._ImageUri, song.getImageUri());
+        values.put(Song._SongTitle, song.getSongTitle());
+        values.put(Song._TrackId, song.getTrackId());
+        values.put(Song._Uri, song.getUri());
+        synchronized (db) {
+          db.insert(Song._TabellenName, null, values);
+        }
+        toId = song.getTrackId();
       }
 
+
+      String[] argsCon = new String[]{toId, isId};
+      Cursor finderCon = db.rawQuery("Select " + IsSimilarTo._ID
+                      + " FROM " + IsSimilarTo._TabellenName + " as I"
+                      + " WHERE I." + IsSimilarTo._ToId + " = ?"
+                      + " AND I." + IsSimilarTo._IsId + " = ?"
+              , argsCon);
+      if (finderCon.getCount() == 0) {
+        ContentValues valuesCon = new ContentValues();
+
+        valuesCon.put(IsSimilarTo._ToId, toId);
+        valuesCon.put(IsSimilarTo._IsId, isId);
+
+        synchronized (db) {
+          db.insert(IsSimilarTo._TabellenName, null, valuesCon);
+        }
+      }
     }
 
     return result.isEmpty() ? false : true;
