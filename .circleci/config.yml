@@ -6,6 +6,16 @@ jobs:
       - image: circleci/android:api-27-alpha
     environment:
       JVM_OPTS: -Xmx3200m
+    dependencies:
+      override:
+        - yarn
+    test:
+      override:
+        - yarn test
+    machine:
+      environment:
+        PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+        NODE_ENV: test
     steps:
       - checkout
       - restore_cache:
