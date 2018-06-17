@@ -36,10 +36,10 @@ public class SearchSimilarSongsController extends AsyncSearchController {
                     + " WHERE S." + Song._TrackId + " = ?"
             , args);
 
-    String toIT;
+    String isId;
     if (finder.getCount() > 0) {
       finder.moveToFirst();
-      toIT = finder.getString(finder.getColumnIndexOrThrow(Song._TrackId));
+      isId = finder.getString(finder.getColumnIndexOrThrow(Song._TrackId));
     } else {
       //TODO search song if not exist and create
       LOGGER.log(Level.WARNING, "Could not find the song in DB!");
@@ -60,8 +60,8 @@ public class SearchSimilarSongsController extends AsyncSearchController {
 
       ContentValues valuesCon = new ContentValues();
 
-      valuesCon.put(IsSimilarTo._IsId, song.getTrackId());
-      valuesCon.put(IsSimilarTo._ToId, toIT);
+      valuesCon.put(IsSimilarTo._ToId, song.getTrackId());
+      valuesCon.put(IsSimilarTo._IsId, isId);
 
       synchronized (db) {
         db.insert(Song._TabellenName, null, values);
