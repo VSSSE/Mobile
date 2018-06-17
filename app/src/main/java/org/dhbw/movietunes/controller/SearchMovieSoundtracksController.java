@@ -38,12 +38,10 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
     String movieName;
     if (finder.getCount() > 0) {
       finder.moveToFirst();
-      movieName = finder.getString(finder.getColumnIndexOrThrow(Song._TrackId));
+      movieName = finder.getString(finder.getColumnIndexOrThrow(Movie._MovieTitle));
     } else {
       //TODO search movie if not exist
-
       movieName = searchString;
-
       ContentValues valuesCreate = new ContentValues();
 
       valuesCreate.put(Movie._MovieTitle, movieName);
@@ -54,23 +52,50 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
     }
 
     for (Song song : result) {
-      ContentValues values = new ContentValues();
+      String songName;
 
-      values.put(Song._Artist, song.getArtist());
-      values.put(Song._Duration, song.getDuration());
-      values.put(Song._ImageUri, song.getImageUri());
-      values.put(Song._SongTitle, song.getSongTitle());
-      values.put(Song._TrackId, song.getTrackId());
-      values.put(Song._Uri, song.getUri());
+      String[] argsTo = new String[]{song.getSongTitle()};
+      Cursor finderTo = db.rawQuery("Select " + Song._SongTitle
+                      + " FROM " + Song._TabellenName + " as S"
+                      + " WHERE S." + Song._SongTitle + " = ?"
+              , argsTo);
 
-      ContentValues valuesCon = new ContentValues();
+      if (finderTo.getCount() > 0) {
+        finderTo.moveToFirst();
+        songName = finderTo.getString(finderTo.getColumnIndexOrThrow(Song._SongTitle));
+      } else {
+        ContentValues values = new ContentValues();
 
-      valuesCon.put(IsPlayedIn._SongName, song.getSongTitle());
-      valuesCon.put(IsPlayedIn._MovieName, movieName);
+        values.put(Song._Artist, song.getArtist());
+        values.put(Song._Duration, song.getDuration());
+        values.put(Song._ImageUri, song.getImageUri());
+        values.put(Song._SongTitle, song.getSongTitle());
+        values.put(Song._TrackId, song.getTrackId());
+        values.put(Song._Uri, song.getUri());
 
-      synchronized (db) {
-        db.insert(Song._TabellenName, null, values);
-        db.insert(IsPlayedIn._TabellenName, null, valuesCon);
+        synchronized (db) {
+          db.insert(Song._TabellenName, null, values);
+        }
+        songName = song.getSongTitle();
+
+      }
+
+      String[] argsCon = new String[]{movieName, songName};
+      Cursor finderCon = db.rawQuery("Select " + IsPlayedIn._ID
+                      + " FROM " + IsPlayedIn._TabellenName + " as I"
+                      + " WHERE I." + IsPlayedIn._MovieName + " = ?"
+                      + " AND I." + IsPlayedIn._SongName + " = ?"
+              , argsCon);
+      if (finderCon.getCount() == 0) {
+        ContentValues valuesCon = new ContentValues();
+
+        valuesCon.put(IsPlayedIn._SongName, songName);
+        valuesCon.put(IsPlayedIn._MovieName, movieName);
+
+        synchronized (db) {
+          db.insert(IsPlayedIn._TabellenName, null, valuesCon);
+        }
+
       }
 
     }
