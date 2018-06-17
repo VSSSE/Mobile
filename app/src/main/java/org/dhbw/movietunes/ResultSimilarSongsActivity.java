@@ -12,6 +12,7 @@ import org.dhbw.movietunes.menu.MainMenu;
 public class ResultSimilarSongsActivity extends MainMenu {
 
   public static final String EXTRA_MESSAGE = "org.dhbw.movietunes.SimilarSongsFor";
+  private String trackId;
 
   protected void onCreate(Bundle savedInstanceState) {
 
@@ -21,7 +22,7 @@ public class ResultSimilarSongsActivity extends MainMenu {
 
     Intent intent = getIntent();
 
-    String trackId = intent.getStringExtra(EXTRA_MESSAGE);
+    trackId = intent.getStringExtra(EXTRA_MESSAGE);
     SearchSimilarSongsController controller
             = new SearchSimilarSongsController(this);
 
@@ -29,4 +30,7 @@ public class ResultSimilarSongsActivity extends MainMenu {
 
   }
 
+  public String getTrackId() {
+    return trackId;
+  }
 }

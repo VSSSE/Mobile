@@ -10,7 +10,7 @@ import java.nio.charset.Charset;
 
 public class Song implements BaseColumns {
   public static final String _TabellenName = "Song";
-  public static final String _TtrackId = "trackId";
+  public static final String _TrackId = "trackId";
   public static final String _SongTitle = "songTitle";
   public static final String _Artist = "artist";
   public static final String _Duration = "duration";
@@ -33,7 +33,7 @@ public class Song implements BaseColumns {
   }
   public Song(Cursor cursor) {
     Charset UTF8_CHARSET = Charset.forName("UTF-8");
-    this.trackId = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_TtrackId)), UTF8_CHARSET);
+    this.trackId = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_TrackId)), UTF8_CHARSET);
     this.songTitle = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_SongTitle)), UTF8_CHARSET);
     this.artist = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_Artist)), UTF8_CHARSET);
     this.duration = new String(cursor.getBlob(cursor.getColumnIndexOrThrow(_Duration)), UTF8_CHARSET);

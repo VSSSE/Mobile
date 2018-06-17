@@ -35,7 +35,7 @@ public class Database extends SQLiteOpenHelper {
                   + Song._Artist + AS_BLOB + ","
                   + Song._Duration + AS_BLOB + ","
                   + Song._ImageUri + AS_BLOB + ","
-                  + Song._TtrackId + AS_BLOB + ","
+                  + Song._TrackId + AS_BLOB + ","
                   + Song._Uri + AS_BLOB + ")";
   //Sql umm Tabelle IsPlayedIn zu erstellen
   private static final String CREATE_ISPLAYEDIN_TABELLE =
