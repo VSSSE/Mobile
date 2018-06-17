@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "publish-release": "^1.6.0"
+  },
+  "author": "c0d3d3v <live.for.program@gmail.com>",
+  "name": "VSS-Mobile",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VSSSE/VSS-Mobile"
+  },
+  "description": "This is a developer release! Use it on your own risk!",
+  "license": "MIT",
+  "homepage": "https://vssse.wordpress.com/"
+}
