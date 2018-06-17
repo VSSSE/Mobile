@@ -49,6 +49,8 @@ jobs:
           name: Deploy Over GIT
           command: |
             ./gradlew assemble
+            export TERM=linux
+            export TERMINFO=/etc/terminfo
             sudo apt-get update && sudo apt-get install yarn
             yarn add publish-release
             cp app/build/outputs/apk/release/app-release-unsigned.apk install/ -f
