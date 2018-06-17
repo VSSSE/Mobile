@@ -32,7 +32,6 @@ public class Song implements BaseColumns {
     this.imageUri = imageUri;
   }
   public Song(Cursor cursor) {
-    Charset UTF8_CHARSET = Charset.forName("UTF-8");
     this.trackId = cursor.getString(cursor.getColumnIndexOrThrow(_TrackId));
     this.songTitle = cursor.getString(cursor.getColumnIndexOrThrow(_SongTitle));
     this.artist = cursor.getString(cursor.getColumnIndexOrThrow(_Artist));

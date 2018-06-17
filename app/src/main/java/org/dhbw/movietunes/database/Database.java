@@ -41,14 +41,14 @@ public class Database extends SQLiteOpenHelper {
   private static final String CREATE_ISPLAYEDIN_TABELLE =
           CREATE_TABLE + IsPlayedIn._TabellenName + " ( "
                   + IsPlayedIn._ID + AS_INDEX + ","
-                  + IsPlayedIn._SongId + AS_TEXT_NL + ","
+                  + IsPlayedIn._SongName + AS_TEXT_NL + ","
                   + IsPlayedIn._MovieName + AS_TEXT_NL + ")";
   //Sql umm Tabelle IsSimilarTo zu erstellen
   private static final String CREATE_ISSIMILARTO_TABELLE =
           CREATE_TABLE + IsSimilarTo._TabellenName + " ( "
                   + IsSimilarTo._ID + AS_INDEX + ","
-                  + IsSimilarTo._IsId + AS_TEXT_NL + ","
-                  + IsSimilarTo._ToId + AS_TEXT_NL + ")";
+                  + IsSimilarTo._IsName + AS_TEXT_NL + ","
+                  + IsSimilarTo._ToName + AS_TEXT_NL + ")";
   private static final Logger LOGGER = Logger.getLogger(Database.class.getName());
   //SQL um Tabellen zu löschen
   private static final String SQL_DELETE_MOVIE = DROP_TABLE + Movie._TabellenName;

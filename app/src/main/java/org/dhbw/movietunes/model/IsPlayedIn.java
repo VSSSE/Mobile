@@ -7,24 +7,21 @@ import java.nio.charset.Charset;
 public class IsPlayedIn implements BaseColumns {
 
   public static final String _TabellenName = "IsPlayedIn";
-  public static final String _SongId = "songId";
+  public static final String _SongName = "songName";
   public static final String _MovieName = "movieName";
-  private String songId;
+  private String songName;
   private String movieName;
 
-  public IsPlayedIn(String songId, String movieName) {
-    this.songId = songId;
+  public IsPlayedIn(String songName, String movieName) {
+    this.songName = songName;
     this.movieName = movieName;
   }
 
   public IsPlayedIn(Cursor cursor) {
-    this.songId = cursor.getString(cursor.getColumnIndexOrThrow(_SongId));
+    this.songName = cursor.getString(cursor.getColumnIndexOrThrow(_SongName));
     this.movieName = cursor.getString(cursor.getColumnIndexOrThrow(_MovieName));
   }
 
-  public String getSongId() {
-    return songId;
-  }
 
   public String getMovieName() {
     return movieName;

@@ -20,7 +20,6 @@ public class Movie implements BaseColumns {
     this.movieTitle = movieTitle;
   }
   public Movie(Cursor cursor) {
-    Charset UTF8_CHARSET = Charset.forName("UTF-8");
     this.movieUri = cursor.getString(cursor.getColumnIndexOrThrow(_MovieUri));
     this.movieTitle = cursor.getString(cursor.getColumnIndexOrThrow(_MovieTitle));
   }
