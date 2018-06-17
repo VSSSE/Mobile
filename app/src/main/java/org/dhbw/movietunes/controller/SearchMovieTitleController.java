@@ -64,8 +64,8 @@ public class SearchMovieTitleController extends AsyncSearchController {
               , argsTo);
 
       if (finderTo.getCount() > 0) {
-        finder.moveToFirst();
-        movieName = finder.getString(finder.getColumnIndexOrThrow(Movie._MovieTitle));
+        finderTo.moveToFirst();
+        movieName = finderTo.getString(finder.getColumnIndexOrThrow(Movie._MovieTitle));
       } else {
 
         ContentValues values = new ContentValues();

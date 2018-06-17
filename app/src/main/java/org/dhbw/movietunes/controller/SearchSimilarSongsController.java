@@ -55,8 +55,8 @@ public class SearchSimilarSongsController extends AsyncSearchController {
               , argsTo);
 
       if (finderTo.getCount() > 0) {
-        finder.moveToFirst();
-        toId = finder.getString(finder.getColumnIndexOrThrow(Song._TrackId));
+        finderTo.moveToFirst();
+        toId = finderTo.getString(finder.getColumnIndexOrThrow(Song._TrackId));
       } else {
         ContentValues values = new ContentValues();
 
