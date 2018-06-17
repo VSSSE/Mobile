@@ -6,6 +6,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.dhbw.movietunes.http.HttpCommunication;
 import org.dhbw.movietunes.model.Movie;
 import org.dhbw.movietunes.model.PlaylistKey;
 import org.dhbw.movietunes.model.Song;
@@ -17,25 +20,40 @@ import org.jsoup.select.Elements;
 
 public class Extractor {
 
+  private static final Logger LOGGER = Logger.getLogger(Extractor.class.getName());
+
+  private static final String parseError = "It was not possible to parse the result!";
+
   private PlaylistKey extractSinglePlaylist(JsonObject playlist) {
-    return new PlaylistKey(
+    try {
+     return new PlaylistKey(
             playlist.getAsJsonObject("owner").getAsJsonPrimitive("id").getAsString(),
             playlist.getAsJsonPrimitive("id").getAsString(),
             playlist.getAsJsonPrimitive("name").getAsString(),
             playlist.getAsJsonObject("external_urls").getAsJsonPrimitive("spotify").getAsString());
+
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
+      return  null;
+    }
   }
 
   private List<PlaylistKey> getListOfPlaylists(String playlistSearchResult) {
-    JsonElement root = new JsonParser().parse(playlistSearchResult);
-    JsonArray playlists = root.getAsJsonObject()
-            .getAsJsonObject("playlists").getAsJsonArray("items");
 
     ArrayList<PlaylistKey> list = new ArrayList<>();
+    try {
+      JsonElement root = new JsonParser().parse(playlistSearchResult);
+      JsonArray playlists = root.getAsJsonObject()
+              .getAsJsonObject("playlists").getAsJsonArray("items");
 
-    for (JsonElement playlist : playlists) {
-      list.add(extractSinglePlaylist(playlist.getAsJsonObject()));
+
+      for (JsonElement playlist : playlists) {
+        list.add(extractSinglePlaylist(playlist.getAsJsonObject()));
+      }
+
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
     }
-
     return list;
   }
 
@@ -51,26 +69,37 @@ public class Extractor {
 
   private String extractArtists(JsonObject track) {
     String result = "";
-    JsonArray artists = track.getAsJsonArray("artists");
+    try {
+      JsonArray artists = track.getAsJsonArray("artists");
 
-    for (JsonElement artist : artists) {
-      if (!result.isEmpty()) {
-        result += ", ";
+      for (JsonElement artist : artists) {
+        if (!result.isEmpty()) {
+          result += ", ";
+        }
+
+        result += artist.getAsJsonObject().getAsJsonPrimitive("name").getAsString();
       }
 
-      result += artist.getAsJsonObject().getAsJsonPrimitive("name").getAsString();
-    }
 
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
+    }
     return result;
   }
 
   private String extractBestImage(JsonObject track) {
+    try {
     JsonArray images = track.getAsJsonObject("album").getAsJsonArray("images");
 
-    if (images.size() == 0) {
+      if (images.size() == 0) {
+        return "";
+      } else {
+        return images.get(0).getAsJsonObject().getAsJsonPrimitive("url").getAsString();
+      }
+
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
       return "";
-    } else {
-      return images.get(0).getAsJsonObject().getAsJsonPrimitive("url").getAsString();
     }
 
   }
@@ -86,6 +115,7 @@ public class Extractor {
               extractBestImage(track)
       );
     } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
       return null;
     }
 
@@ -98,6 +128,7 @@ public class Extractor {
               video.getAsJsonObject("snippet").getAsJsonPrimitive("title").getAsString()
       );
     } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
       return null;
     }
 
@@ -106,44 +137,61 @@ public class Extractor {
   public List<Song> getSongsFromPlaylist(String tracklistDetailsResponse) {
     List<Song> result = new ArrayList<>();
 
-    JsonElement root = new JsonParser().parse(tracklistDetailsResponse);
+    try {
+      JsonElement root = new JsonParser().parse(tracklistDetailsResponse);
 
-    JsonArray items = root.getAsJsonObject().getAsJsonArray("items");
+      JsonArray items = root.getAsJsonObject().getAsJsonArray("items");
 
-    for (JsonElement item : items) {
-      JsonObject track = item.getAsJsonObject().getAsJsonObject("track");
-      Song newSong = extractSingleSong(track);
-      if (newSong != null) {
-        result.add(newSong);
+      for (JsonElement item : items) {
+        JsonObject track = item.getAsJsonObject().getAsJsonObject("track");
+        Song newSong = extractSingleSong(track);
+        if (newSong != null) {
+          result.add(newSong);
+        }
       }
+
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
     }
     return result;
   }
 
   public List<Song> getRecommendedSongs(String recommendationsBody) {
     List<Song> result = new ArrayList<>();
-    JsonElement root = new JsonParser().parse(recommendationsBody);
 
-    JsonArray tracks = root.getAsJsonObject().getAsJsonArray("tracks");
-    for (JsonElement track : tracks) {
-      Song newSong = extractSingleSong(track.getAsJsonObject());
-      if (newSong != null) {
-        result.add(newSong);
+    try {
+      JsonElement root = new JsonParser().parse(recommendationsBody);
+
+      JsonArray tracks = root.getAsJsonObject().getAsJsonArray("tracks");
+      for (JsonElement track : tracks) {
+        Song newSong = extractSingleSong(track.getAsJsonObject());
+        if (newSong != null) {
+          result.add(newSong);
+        }
       }
+
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
     }
     return result;
   }
 
   private List<Video> getVideos(String recommendationsBody) {
     List<Video> result = new ArrayList<>();
-    JsonElement root = new JsonParser().parse(recommendationsBody);
 
-    JsonArray videos = root.getAsJsonObject().getAsJsonArray("items");
-    for (JsonElement video : videos) {
-      Video newVideo = extractSingleVideo(video.getAsJsonObject());
-      if (newVideo != null) {
-        result.add(newVideo);
+    try {
+      JsonElement root = new JsonParser().parse(recommendationsBody);
+
+      JsonArray videos = root.getAsJsonObject().getAsJsonArray("items");
+      for (JsonElement video : videos) {
+        Video newVideo = extractSingleVideo(video.getAsJsonObject());
+        if (newVideo != null) {
+          result.add(newVideo);
+        }
       }
+
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
     }
     return result;
   }
@@ -171,6 +219,7 @@ public class Extractor {
       }
 
     } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
       return null;
     }
 
@@ -179,16 +228,21 @@ public class Extractor {
   public List<Movie> getMovies(String recommendationsBody) {
     List<Movie> result = new ArrayList<>();
 
-    Document document = Jsoup.parse(recommendationsBody);
-    Elements elements = document.select("OL");
-    Elements eintraege = elements.first().select("LI");
+    try {
+      Document document = Jsoup.parse(recommendationsBody);
+      Elements elements = document.select("OL");
+      Elements eintraege = elements.first().select("LI");
 
-    for (Element eintrag : eintraege) {
-      Movie newmovie = extractSingleMovie(eintrag);
-      if (newmovie != null) {
-        result.add(newmovie);
+      for (Element eintrag : eintraege) {
+        Movie newmovie = extractSingleMovie(eintrag);
+        if (newmovie != null) {
+          result.add(newmovie);
+        }
       }
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
     }
+
     return result;
   }
 
