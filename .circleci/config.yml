@@ -60,9 +60,11 @@ jobs:
             cp app/build/outputs/apk/release/app-release-unsigned.apk install/ -f
             cp app/build/outputs/apk/debug/app-debug.apk install/ -f
             last=$(git describe --abbrev=0 --tags)
-            git tag $(($last + 1))
-            git push origin $(($last + 1))
-            yarn run publish-release --reuseRelease --assets install/app-debug.apk,install/app-release-unsigned.apk --owner "VSSSE" --repo "VSS-Mobile" --tag "alpha $(($last + 1))" --name "Movie Tunes 1.0.0" --notes "This is a developer release! Use it on your own risk" --token ${GIT_TOKEN}
+            echo $last
+            newTag = $(($last + 1))
+            git tag "$newTag"
+            git push origin "$newTag"
+            yarn run publish-release --reuseRelease --assets install/app-debug.apk,install/app-release-unsigned.apk --owner "VSSSE" --repo "VSS-Mobile" --tag "$newTag" --name "Movie Tunes 1.0.0" --notes "This is a developer release! Use it on your own risk" --token ${GIT_TOKEN}
             # if [[ $(git --no-pager show -s --format='%an <%ae>' HEAD) != "circelCI <circelci@c0d3d3v.ml>" ]]; then
             #  cp app/build/outputs/apk/release/app-release-unsigned.apk install/ -f
             #  cp app/build/outputs/apk/debug/app-debug.apk install/ -f
