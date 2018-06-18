@@ -61,8 +61,9 @@ jobs:
             cp app/build/outputs/apk/debug/app-debug.apk install/ -f
             last=$(git describe --abbrev=0 --tags)
             echo $last
-            newTag = $(($last + 1))
+            newTag=$(($last + 1))
             git tag "$newTag"
+            echo $newTag
             git push origin "$newTag"
             yarn run publish-release --reuseRelease --assets install/app-debug.apk,install/app-release-unsigned.apk --owner "VSSSE" --repo "VSS-Mobile" --tag "$newTag" --name "Movie Tunes 1.0.0" --notes "This is a developer release! Use it on your own risk" --token ${GIT_TOKEN}
             # if [[ $(git --no-pager show -s --format='%an <%ae>' HEAD) != "circelCI <circelci@c0d3d3v.ml>" ]]; then

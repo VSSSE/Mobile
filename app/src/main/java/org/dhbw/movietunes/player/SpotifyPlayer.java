@@ -21,8 +21,8 @@ public class SpotifyPlayer extends Player {
   }
 
   @Override
-  public String createUri(String searchString) {
-    if (preUri != null || preUri.isEmpty()) {
+  public String createUri(String searchString, String searchString2) {
+    if (preUri == null || (preUri != null && preUri.isEmpty())) {
       spotifyCommunication = new SpotifyCommunication();
       Song result = spotifyCommunication.getSong(searchString);
 
@@ -35,9 +35,9 @@ public class SpotifyPlayer extends Player {
       values.put(Song._TrackId, result.getTrackId());
       values.put(Song._Uri, result.getUri());
 
-      String selection = Song._SongTitle + " = " + searchString;
+      String selection = Song._SongTitle + " = ?";
 
-
+      String[] args = new String[]{searchString};
       SQLiteDatabase dbUpChat = Database.getDB(activity);
 
       synchronized (dbUpChat) {
@@ -45,15 +45,18 @@ public class SpotifyPlayer extends Player {
                 Song._TabellenName,
                 values,
                 selection,
-                null);
+                args);
       }
 
 
 
-      result.getUri();
+      return result.getUri();
+    }
+    else
+    {
+      return preUri;
     }
 
-    return preUri;
   }
 
 }

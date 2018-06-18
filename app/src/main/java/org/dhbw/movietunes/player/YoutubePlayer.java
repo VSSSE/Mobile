@@ -12,9 +12,9 @@ public class YoutubePlayer extends Player {
   }
 
   @Override
-  public String createUri(String searchString) {
+  public String createUri(String searchString, String searchString2) {
     ytCom = new YoutubeCommunication();
-    Video thatVideo = ytCom.findFirstVideo(searchString);
+    Video thatVideo = ytCom.findFirstVideo(searchString + " " + searchString2);
 
     if (thatVideo != null) {
       return "https://www.youtube.com/watch?v=" + thatVideo.getVideoID();

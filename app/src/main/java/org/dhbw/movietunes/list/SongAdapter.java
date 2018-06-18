@@ -158,11 +158,11 @@ public class SongAdapter extends BaseAdapter {
             switch (item.getItemId()) {
               case R.id.spotify:
                 SpotifyPlayer sp = new SpotifyPlayer(activity, song.getUri());
-                sp.execute(song.getSongTitle() + " " + song.getArtist());
+                sp.execute(song.getSongTitle(), song.getArtist());
                 break;
               case R.id.youTube:
                 YoutubePlayer yt = new YoutubePlayer(activity);
-                yt.execute(song.getSongTitle() + " " + song.getArtist());
+                yt.execute(song.getSongTitle(), song.getArtist());
                 break;
               case R.id.similar:
                 Intent intent = new Intent(activity.getApplicationContext(), ResultSimilarSongsActivity.class);

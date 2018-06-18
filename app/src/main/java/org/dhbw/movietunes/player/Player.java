@@ -15,13 +15,13 @@ public abstract class Player extends AsyncTask<String, Integer, String> {
 
   @Override
   protected String doInBackground(String... params) {
-    if (params.length != 1) {
-      throw new HttpException("Expected 1 prameter, got " + params.length);
+    if (params.length != 2) {
+      throw new HttpException("Expected 2 prameters, got " + params.length);
     }
-    return createUri(params[0]);
+    return createUri(params[0], params[1]);
   }
 
-  protected abstract String createUri(String searchString);
+  protected abstract String createUri(String searchString, String searchString2);
 
   @Override
   protected void onPostExecute(String result) {
