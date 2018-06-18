@@ -46,9 +46,15 @@ public class Extractor {
       JsonArray playlists = root.getAsJsonObject()
               .getAsJsonObject("playlists").getAsJsonArray("items");
 
-
+      int counter = 0;
       for (JsonElement playlist : playlists) {
-        list.add(extractSinglePlaylist(playlist.getAsJsonObject()));
+          PlaylistKey newPlaylist = extractSinglePlaylist(playlist.getAsJsonObject());
+        if (newPlaylist != null) {
+            list.add(newPlaylist);
+            if(++counter > 100) {
+                break;
+            }
+        }
       }
 
     } catch (Exception e) {
@@ -73,12 +79,17 @@ public class Extractor {
 
       JsonArray items = root.getAsJsonObject().getAsJsonObject("tracks").getAsJsonArray("items");
 
+      int counter = 0;
       for (JsonElement item : items) {
         JsonObject track = item.getAsJsonObject();
         Song newSong = extractSingleSong(track);
         if (newSong != null) {
           result.add(newSong);
+            if(++counter > 100) {
+                break;
+            }
         }
+
       }
 
     } catch (Exception e) {
@@ -171,12 +182,15 @@ public class Extractor {
       JsonElement root = new JsonParser().parse(tracklistDetailsResponse);
 
       JsonArray items = root.getAsJsonObject().getAsJsonArray("items");
-
+      int counter = 0;
       for (JsonElement item : items) {
         JsonObject track = item.getAsJsonObject().getAsJsonObject("track");
         Song newSong = extractSingleSong(track);
         if (newSong != null) {
           result.add(newSong);
+            if(++counter > 100) {
+                break;
+            }
         }
       }
 
@@ -193,10 +207,14 @@ public class Extractor {
       JsonElement root = new JsonParser().parse(recommendationsBody);
 
       JsonArray tracks = root.getAsJsonObject().getAsJsonArray("tracks");
+      int counter = 0;
       for (JsonElement track : tracks) {
         Song newSong = extractSingleSong(track.getAsJsonObject());
         if (newSong != null) {
           result.add(newSong);
+            if(++counter > 100) {
+                break;
+            }
         }
       }
 
@@ -213,10 +231,14 @@ public class Extractor {
       JsonElement root = new JsonParser().parse(recommendationsBody);
 
       JsonArray videos = root.getAsJsonObject().getAsJsonArray("items");
+      int counter = 0;
       for (JsonElement video : videos) {
         Video newVideo = extractSingleVideo(video.getAsJsonObject());
         if (newVideo != null) {
           result.add(newVideo);
+            if(++counter > 100) {
+                break;
+            }
         }
       }
 
@@ -263,10 +285,14 @@ public class Extractor {
       Elements elements = document.select("OL");
       Elements eintraege = elements.first().select("LI");
 
+      int counter = 0;
       for (Element eintrag : eintraege) {
         Movie newmovie = extractSingleMovie(eintrag);
         if (newmovie != null) {
           result.add(newmovie);
+            if(++counter > 100) {
+                break;
+            }
         }
       }
     } catch (Exception e) {

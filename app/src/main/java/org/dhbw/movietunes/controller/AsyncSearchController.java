@@ -15,7 +15,7 @@ import org.dhbw.movietunes.exception.HttpException;
 
 public abstract class AsyncSearchController extends AsyncTask<String, Integer, Boolean> {
   protected static final Logger LOGGER = Logger.getLogger(AsyncSearchController.class.getName());
-  protected static final Charset UTF8_CHARSET = Charset.forName("UTF-8");
+
   protected Activity activity;
 
   public AsyncSearchController(Activity activity) {
