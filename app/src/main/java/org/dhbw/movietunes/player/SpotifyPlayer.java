@@ -22,7 +22,7 @@ public class SpotifyPlayer extends Player {
 
   @Override
   public String createUri(String searchString) {
-    if (preUri.isEmpty()) {
+    if (preUri != null || preUri.isEmpty()) {
       spotifyCommunication = new SpotifyCommunication();
       Song result = spotifyCommunication.getSong(searchString);
 
