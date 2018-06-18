@@ -17,13 +17,13 @@ public class SpotifyPlayer extends Player {
   public SpotifyPlayer(Activity activity, String uri) {
     super(activity);
     this.preUri = uri;
-    spotifyCommunication = new SpotifyCommunication();
 
   }
 
   @Override
   public String createUri(String searchString) {
     if (preUri.isEmpty()) {
+      spotifyCommunication = new SpotifyCommunication();
       Song result = spotifyCommunication.getSong(searchString);
 
       ContentValues values = new ContentValues();

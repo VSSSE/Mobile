@@ -9,11 +9,11 @@ public class YoutubePlayer extends Player {
 
   public YoutubePlayer(Activity activity) {
     super(activity);
-    ytCom = new YoutubeCommunication();
   }
 
   @Override
   public String createUri(String searchString) {
+    ytCom = new YoutubeCommunication();
     Video thatVideo = ytCom.findFirstVideo(searchString);
 
     if (thatVideo != null) {
