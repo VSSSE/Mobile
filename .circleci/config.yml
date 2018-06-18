@@ -69,7 +69,7 @@ jobs:
             echo $newTag
             git tag "$newTag"
             git push origin "$newTag"
-            yarn run publish-release --reuseRelease --assets install/app-debug.apk,install/app-release-unsigned.apk --owner "VSSSE" --repo "VSS-Mobile" --tag "$newTag" --name "Movie Tunes 1.0.0" --notes "This is a developer release! Use it on your own risk" --token ${GIT_TOKEN} &
+            yarn run publish-release --reuseRelease --assets install/app-debug.apk,install/app-release-unsigned.apk --owner "VSSSE" --repo "VSS-Mobile" --tag "$newTag" --name "Movie Tunes 1.0.0" --notes "This is a developer release! Use it on your own risk" --token ${GIT_TOKEN} >> yarn.log
       - store_artifacts:
           path: app/build/reports
           destination: reports
