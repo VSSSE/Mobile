@@ -56,9 +56,39 @@ public class Extractor {
     }
     return list;
   }
-
   public PlaylistKey getFirstPlaylist(String playlistSearchResult) {
     List<PlaylistKey> result = getListOfPlaylists(playlistSearchResult);
+
+    if (result.isEmpty()) {
+      return null;
+    } else {
+      return result.get(0);
+    }
+  }
+  private List<Song> getListOfSongs(String songSearchResult) {
+    List<Song> result = new ArrayList<>();
+
+    try {
+      JsonElement root = new JsonParser().parse(songSearchResult);
+
+      JsonArray items = root.getAsJsonObject().getAsJsonObject("tracks").getAsJsonArray("items");
+
+      for (JsonElement item : items) {
+        JsonObject track = item.getAsJsonObject();
+        Song newSong = extractSingleSong(track);
+        if (newSong != null) {
+          result.add(newSong);
+        }
+      }
+
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, parseError, e);
+    }
+    return result;
+  }
+
+  public Song getFirstSong(String songSearchResult) {
+    List<Song> result = getListOfSongs(songSearchResult);
 
     if (result.isEmpty()) {
       return null;

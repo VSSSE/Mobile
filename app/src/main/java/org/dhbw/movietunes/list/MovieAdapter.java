@@ -43,7 +43,9 @@ public class MovieAdapter extends BaseAdapter {
 
     cursor.moveToFirst();
 
-    return cursor.getInt(cursor.getColumnIndexOrThrow("anzahl"));
+    int result = cursor.getInt(cursor.getColumnIndexOrThrow("anzahl"));
+    cursor.close();
+    return result;
   }
 
   public Movie getItem(int position) {
@@ -56,7 +58,10 @@ public class MovieAdapter extends BaseAdapter {
 
     cursor.moveToFirst();
 
-    return new Movie(cursor);
+    Movie result = new Movie(cursor);
+    cursor.close();
+    return result;
+
   }
 
   public long getItemId(int position) {
@@ -74,7 +79,9 @@ public class MovieAdapter extends BaseAdapter {
 
     cursor.moveToPosition(position);
 
-    return cursor.getLong(cursor.getColumnIndexOrThrow(Song._ID));
+    long result = cursor.getLong(cursor.getColumnIndexOrThrow(Song._ID));
+    cursor.close();
+    return result;
   }
 
   public View getView(int position, View convertView, ViewGroup parent) {

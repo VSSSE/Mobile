@@ -58,6 +58,20 @@ public class SpotifyCommunication {
     return responseBody;
   }
 
+  private String getJsonForSearchSong(String searchString) {
+    Request request = new Request.Builder()
+            .url("https://api.spotify.com/v1/search?q=" + searchString + "&type=track")
+            .addHeader(HEADER_1, HEADER_2 + token)
+            .get()
+            .build();
+
+    String responseBody = HttpCommunication.executeRequest(request);
+    if (responseBody == null || responseBody.isEmpty()) {
+      throw new HttpException("Response body for search is empty!");
+    }
+    return responseBody;
+  }
+
   private String getSoundtrackJson(PlaylistKey playlistKey) {
     String user = playlistKey.getUserId();
     String playlist = playlistKey.getPlaylistId();
@@ -107,6 +121,10 @@ public class SpotifyCommunication {
 
   public List<Song> getRecommendations(String trackId) {
     return extractor.getRecommendedSongs(getRecommendationsBody(trackId));
+  }
+
+  public Song getSong(String searchString) {
+    return extractor.getFirstSong(getJsonForSearchSong(searchString));
   }
 
 }

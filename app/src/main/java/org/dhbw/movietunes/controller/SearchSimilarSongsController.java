@@ -39,11 +39,14 @@ public class SearchSimilarSongsController extends AsyncSearchController {
     if (finder.getCount() > 0) {
       finder.moveToFirst();
       isId = finder.getString(finder.getColumnIndexOrThrow(Song._TrackId));
+      finder.close();
     } else {
       //TODO search song if not exist and create
       LOGGER.log(Level.WARNING, "Could not find the song in DB!");
+
       return false;
     }
+
 
     for (Song song : result) {
       String toId;
@@ -57,6 +60,7 @@ public class SearchSimilarSongsController extends AsyncSearchController {
       if (finderTo.getCount() > 0) {
         finderTo.moveToFirst();
         toId = finderTo.getString(finderTo.getColumnIndexOrThrow(Song._TrackId));
+        finderTo.close();
       } else {
         ContentValues values = new ContentValues();
 
@@ -84,11 +88,11 @@ public class SearchSimilarSongsController extends AsyncSearchController {
 
         valuesCon.put(IsSimilarTo._ToId, toId);
         valuesCon.put(IsSimilarTo._IsId, isId);
-
         synchronized (db) {
           db.insert(IsSimilarTo._TabellenName, null, valuesCon);
         }
       }
+      finderCon.close();
     }
 
     return result.isEmpty() ? false : true;

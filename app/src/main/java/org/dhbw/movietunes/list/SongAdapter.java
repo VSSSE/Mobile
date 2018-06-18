@@ -69,7 +69,9 @@ public class SongAdapter extends BaseAdapter {
 
     cursor.moveToFirst();
 
-    return cursor.getInt(cursor.getColumnIndexOrThrow("anzahl"));
+    int result = cursor.getInt(cursor.getColumnIndexOrThrow("anzahl"));
+    cursor.close();
+    return result;
   }
 
   public Song getItem(int position) {
@@ -82,7 +84,9 @@ public class SongAdapter extends BaseAdapter {
 
     cursor.moveToFirst();
 
-    return new Song(cursor);
+    Song result =  new Song(cursor);
+    cursor.close();
+    return result;
   }
 
   public long getItemId(int position) {
@@ -113,7 +117,9 @@ public class SongAdapter extends BaseAdapter {
 
     cursor.moveToPosition(position);
 
-    return cursor.getLong(cursor.getColumnIndexOrThrow(Song._ID));
+    long result = cursor.getLong(cursor.getColumnIndexOrThrow(Song._ID));
+    cursor.close();
+    return result;
   }
 
   public View getView(int position, View convertView, ViewGroup parent) {

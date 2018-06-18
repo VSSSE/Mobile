@@ -39,6 +39,7 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
     if (finder.getCount() > 0) {
       finder.moveToFirst();
       movieName = finder.getString(finder.getColumnIndexOrThrow(Movie._MovieTitle));
+      finder.close();
     } else {
       //TODO search movie if not exist
       movieName = searchString;
@@ -63,6 +64,7 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
       if (finderTo.getCount() > 0) {
         finderTo.moveToFirst();
         songName = finderTo.getString(finderTo.getColumnIndexOrThrow(Song._SongTitle));
+        finderTo.close();
       } else {
         ContentValues values = new ContentValues();
 
@@ -97,6 +99,7 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
         }
 
       }
+      finderCon.close();
 
     }
 
