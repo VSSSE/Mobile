@@ -5,7 +5,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ MainActivityEspressoTest.class, ResultSountracksTest.class})
+@SuiteClasses({ InstrumentedTest.class, ExtractorTest.class, HttpCommunicatorTest.class,
+        SpotifyCommunicationTest.class, YoutubeCommunicationTest.class,
+        MovieCommunicationTest.class, SonstigeTest.class})
 public class VssApplicationTests {
 
 }

@@ -17,9 +17,9 @@ android {
         versionCode 1
         versionName "1.0"
         testApplicationId "cucumber.cukeulator.test"
-        testInstrumentationRunner "cucumber.cukeulator.test.Instrumentation"
+        testInstrumentationRunner "org.dhbw.movietunes"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "org.dhbw.movietunes.AndroidJUnitRunner"
     }
     testOptions {
         //unitTests.returnDefaultValues = true
@@ -69,7 +69,11 @@ dependencies {
     androidTestImplementation 'io.cucumber:cucumber-android:3.0.2'
     androidTestImplementation 'io.cucumber:cucumber-picocontainer:3.0.2'
 
-
+    androidTestImplementation('info.cukes:cucumber-android:1.2.4') {
+        exclude module: 'cucumber-jvm-deps'
+        exclude module: 'guava'
+    }
+    androidTestImplementation 'info.cukes:cucumber-jvm-deps:1.0.3'
 }
 
 
