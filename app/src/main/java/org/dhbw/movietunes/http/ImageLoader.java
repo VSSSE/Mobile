@@ -109,7 +109,7 @@ public class ImageLoader {
     return null;
   }
 
-  boolean imageViewReused(PhotoToLoad photoToLoad) {
+  private boolean imageViewReused(PhotoToLoad photoToLoad) {
     String tag = imageViews.get(photoToLoad.imageView);
     if (tag == null || !tag.equals(photoToLoad.url))
       return true;
@@ -126,7 +126,7 @@ public class ImageLoader {
     public String url;
     public ImageView imageView;
 
-    public PhotoToLoad(String u, ImageView i) {
+    PhotoToLoad(String u, ImageView i) {
       url = u;
       imageView = i;
     }
@@ -158,7 +158,7 @@ public class ImageLoader {
     Bitmap bitmap;
     PhotoToLoad photoToLoad;
 
-    public BitmapDisplayer(Bitmap b, PhotoToLoad p) {
+    BitmapDisplayer(Bitmap b, PhotoToLoad p) {
       bitmap = b;
       photoToLoad = p;
     }
