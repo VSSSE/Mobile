@@ -1,4 +1,4 @@
-package org.dhbw.movietunes;
+package org.dhbw.movietunes.test;
 
 import android.support.test.runner.AndroidJUnit4;
 

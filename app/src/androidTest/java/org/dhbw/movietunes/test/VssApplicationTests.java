@@ -1,4 +1,4 @@
-package org.dhbw.movietunes;
+package org.dhbw.movietunes.test;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

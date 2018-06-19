@@ -1,4 +1,4 @@
-package org.dhbw.movietunes;
+package org.dhbw.movietunes.test;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -29,7 +29,7 @@ import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
-public class SonstigeTest extends AndroidTestCase {
+public class SonstigeTest  {
 
 
     @Before

@@ -1,4 +1,4 @@
-package org.dhbw.movietunes;
+package org.dhbw.movietunes.test;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+
+import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.exception.ExtractorException;
 import org.dhbw.movietunes.extract.Extractor;
 import org.dhbw.movietunes.model.Movie;

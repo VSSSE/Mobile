@@ -1,4 +1,4 @@
-package org.dhbw.movietunes;
+package org.dhbw.movietunes.test;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
