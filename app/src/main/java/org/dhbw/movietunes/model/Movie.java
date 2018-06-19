@@ -32,4 +32,11 @@ public class Movie implements BaseColumns {
     return movieTitle;
   }
 
+  public boolean equalsTo(Movie object2) {
+
+    return object2 != null &&
+            (movieUri.equals(object2.movieUri)) &&
+            (movieTitle.equals(object2.movieTitle));
+  }
+
 }

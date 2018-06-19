@@ -28,4 +28,11 @@ public class IsSimilarTo implements BaseColumns {
   public String getToId() {
     return toId;
   }
+
+  public boolean equalsTo(IsSimilarTo object2) {
+
+    return object2 != null &&
+            (isId.equals(object2.isId)) &&
+            (toId.equals(object2.toId));
+  }
 }

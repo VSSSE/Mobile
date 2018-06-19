@@ -25,4 +25,13 @@ public class IsPlayedIn implements BaseColumns {
     return movieName;
   }
 
+  public String getSongName() {
+    return songName;
+  }
+  public boolean equalsTo(IsPlayedIn object2) {
+
+    return object2 != null &&
+            (songName.equals(object2.songName)) &&
+            (movieName.equals(object2.movieName));
+  }
 }

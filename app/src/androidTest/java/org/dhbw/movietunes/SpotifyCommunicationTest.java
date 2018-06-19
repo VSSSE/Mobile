@@ -1,7 +1,10 @@
 package org.dhbw.movietunes;
 
+import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import java.util.List;
+
+import org.dhbw.movietunes.controller.SearchMovieSoundtracksController;
 import org.dhbw.movietunes.http.SpotifyCommunication;
 import org.dhbw.movietunes.model.Song;
 import org.junit.Before;
@@ -38,5 +41,7 @@ public class SpotifyCommunicationTest {
     assertNotNull(recomendetSongs.get(0));
     assertFalse(recomendetSongs.get(0).getSongTitle().isEmpty());
   }
+
+
 
 }

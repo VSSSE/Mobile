@@ -13,7 +13,7 @@ import org.dhbw.movietunes.model.Song;
 public class Database extends SQLiteOpenHelper {
 
   private static final int DATABASE_VERSION = 2;
-  private static final String DATABASE_NAME = "MovieTunes.db";
+  public static final String DATABASE_NAME = "MovieTunes.db";
   //SQL Primitives
   private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS ";
   private static final String DROP_TABLE = "DROP TABLE IF EXISTS ";
