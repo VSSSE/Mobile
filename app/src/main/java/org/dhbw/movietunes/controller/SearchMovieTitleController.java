@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
+import java.util.logging.Level;
+
 import org.dhbw.movietunes.ResultMovieTitleActivity;
 import org.dhbw.movietunes.database.Database;
 import org.dhbw.movietunes.http.MovieCommunication;
@@ -25,8 +27,16 @@ public class SearchMovieTitleController extends AsyncSearchController {
   @Override
   protected Boolean search(String searchString) {
     MovieCommunication movieCommunication = new MovieCommunication();
+    ArrayList<Movie> result;
+    try {
+      result = new ArrayList(movieCommunication.findMovies(searchString));
 
-    ArrayList<Movie> result = new ArrayList(movieCommunication.findMovies(searchString));
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, "Something bad happend", e);
+      return false;
+    }
+
+
 
     SQLiteDatabase db = Database.getDB(activity);
 

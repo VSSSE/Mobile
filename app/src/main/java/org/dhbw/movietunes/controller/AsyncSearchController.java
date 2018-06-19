@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import java.nio.charset.Charset;
 import java.util.logging.Logger;
 import org.dhbw.movietunes.R;
@@ -49,7 +51,15 @@ public abstract class AsyncSearchController extends AsyncTask<String, Integer, B
     ProgressBar bar = activity.findViewById(R.id.progressSearch);
     bar.setVisibility(View.GONE);
 
+
+    if (!result) {
+      Toast.makeText(activity, R.string.nothingfound,
+              Toast.LENGTH_LONG).show();
+    }
+
+
     postResult(result);
+
   }
 
   protected abstract void postResult(Boolean result);

@@ -16,5 +16,9 @@
   <string name="shareonFacebook">Share</string>
   <string name="searchSoundtracks">Search Soundtracks</string>
   <string name="movietitielsTitle">Movie titles:</string>
+  <string name="nothingfound">Sorry, we couldn\'t find anything for your query.</string>
+  <string name="noYoutubeVideo">Sorry, we couldn\'t find the song on Youtube.</string>
+  <string name="noSpotify">Sorry, we couldn\'t find the song on Spotify.</string>
+
 
 </resources>

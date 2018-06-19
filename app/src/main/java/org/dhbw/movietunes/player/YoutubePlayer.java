@@ -1,6 +1,9 @@
 package org.dhbw.movietunes.player;
 
 import android.app.Activity;
+import android.widget.Toast;
+
+import org.dhbw.movietunes.R;
 import org.dhbw.movietunes.http.YoutubeCommunication;
 import org.dhbw.movietunes.model.Video;
 
@@ -19,7 +22,10 @@ public class YoutubePlayer extends Player {
     if (thatVideo != null) {
       return "https://www.youtube.com/watch?v=" + thatVideo.getVideoID();
     } else {
-      return "https://www.youtube.com/watch?v=VideoNotFound";
+      Toast.makeText(activity, R.string.noYoutubeVideo,
+              Toast.LENGTH_LONG).show();
+      //return "https://www.youtube.com/watch?v=VideoNotFound";
+      return null;
     }
   }
 }

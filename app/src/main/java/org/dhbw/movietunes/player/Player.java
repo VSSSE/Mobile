@@ -25,7 +25,9 @@ public abstract class Player extends AsyncTask<String, Integer, String> {
 
   @Override
   protected void onPostExecute(String result) {
-    activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(result)));
+    if (result != null) {
+      activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(result)));
+    }
   }
 
 }

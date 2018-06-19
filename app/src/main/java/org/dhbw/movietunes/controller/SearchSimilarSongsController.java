@@ -24,9 +24,14 @@ public class SearchSimilarSongsController extends AsyncSearchController {
   @Override
   protected Boolean search(String searchString) {
     SpotifyCommunication spotifyCommunication = new SpotifyCommunication();
+    ArrayList<Song> result;
 
-    ArrayList<Song> result = new ArrayList(spotifyCommunication.getRecommendations(searchString));
-
+    try {
+      result = new ArrayList(spotifyCommunication.getRecommendations(searchString));
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, "Something bad happend", e);
+      return false;
+    }
     SQLiteDatabase db = Database.getDB(activity);
 
     String[] args = new String[]{searchString};

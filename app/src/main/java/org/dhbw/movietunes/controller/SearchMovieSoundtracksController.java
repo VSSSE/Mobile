@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
+import java.util.logging.Level;
+
 import org.dhbw.movietunes.ResultMovieSoundtracksActivity;
 import org.dhbw.movietunes.database.Database;
 import org.dhbw.movietunes.http.SpotifyCommunication;
@@ -24,9 +26,13 @@ public class SearchMovieSoundtracksController extends AsyncSearchController {
   @Override
   protected Boolean search(String searchString) {
     SpotifyCommunication spotifyCommunication = new SpotifyCommunication();
-
-    ArrayList<Song> result = new ArrayList(spotifyCommunication.findSoundtracks(searchString));
-
+    ArrayList<Song> result;
+    try {
+      result = new ArrayList(spotifyCommunication.findSoundtracks(searchString));
+    } catch (Exception e) {
+      LOGGER.log(Level.WARNING, "Something bad happend", e);
+      return false;
+    }
     SQLiteDatabase db = Database.getDB(activity);
 
     String[] args = new String[]{searchString};

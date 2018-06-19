@@ -4,6 +4,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
+
 import org.dhbw.movietunes.exception.HttpException;
 
 public class HttpCommunication {
@@ -15,16 +17,18 @@ public class HttpCommunication {
   }
 
   public static String executeRequest(Request request) {
-    LOGGER.log(Level.INFO, "Request: {0}", request.toString());
+    LOGGER.log(Level.INFO, "Request: " + request.toString());
 
     String response;
     try {
-      response = new OkHttpClient().newCall(request).execute().body().string();
+      Response re =  new OkHttpClient().newCall(request).execute();
+      response =    re.body().string();
+
     } catch (Exception e) {
       throw new HttpException("Http Request faild!", e);
     }
 
-    LOGGER.log(Level.INFO, "Response: {0}", response);
+    LOGGER.log(Level.INFO, "Response: " + response);
     return response;
   }
 
