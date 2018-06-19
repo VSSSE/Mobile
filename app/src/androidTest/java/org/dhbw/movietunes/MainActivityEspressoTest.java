@@ -55,6 +55,8 @@ public class MainActivityEspressoTest {
         // This view is in a different Activity, no need to tell Espresso.
         onView(withId(R.id.intro_text)).check(matches(withText(R.string.searchmoviesinstructions)));
     }
+
+    //http://www.vogella.com/tutorials/AndroidTestingEspresso/article.html
     @Test
     public void openSountrackSearch() {
         onView(withId(R.id.search_button)).perform(click());
